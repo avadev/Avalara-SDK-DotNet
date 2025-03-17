@@ -12,7 +12,7 @@
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Avalara.SDK</RootNamespace>
-    <Version>24.12.10</Version>
+    <Version>25.3.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Avalara.SDK.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
