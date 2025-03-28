@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -46,7 +46,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizedApiRequestModel" /> class.
         /// </summary>
-        /// <param name="path">The path and query of the API request you want to pre-authorize, omitting the leading /api/.</param>
+        /// <param name="path">The path and query of the API request you want to pre-authorize.</param>
         /// <param name="ttl">Seconds until this AuthorizedApiRequest should expire, 3600 if omitted; values greater than 86400 will not be honored.</param>
         public AuthorizedApiRequestModel(string path = default(string), int ttl = default(int))
         {
@@ -55,9 +55,9 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// The path and query of the API request you want to pre-authorize, omitting the leading /api/
+        /// The path and query of the API request you want to pre-authorize
         /// </summary>
-        /// <value>The path and query of the API request you want to pre-authorize, omitting the leading /api/</value>
+        /// <value>The path and query of the API request you want to pre-authorize</value>
         /// <example>form-pdf?filter[form_type_eq]&#x3D;1099-NEC&amp;filter[reference_id_eq]&#x3D;SE-02453450&amp;filter[tax_year_eq]&#x3D;2023</example>
         [DataMember(Name = "path", EmitDefaultValue = true)]
         public string Path { get; set; }

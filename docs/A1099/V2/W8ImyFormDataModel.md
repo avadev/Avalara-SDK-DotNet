@@ -125,10 +125,10 @@ Name | Type | Description | Notes
 **EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
 **Box35FormedOnDate** | **DateTime?** |  | [optional] 
 **Box36FiledOnDate** | **DateTime?** |  | [optional] 
-**Id** | **int** |  | [optional] 
+**Id** | **string** |  | [optional] 
 **EntryStatus** | **string** |  | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
-**CompanyId** | **int?** | The ID of the associated company. | [optional] 
+**CompanyId** | **string** | The ID of the associated company. | [optional] 
 **Archived** | **bool?** | Indicates whether the form is archived. | [optional] 
 **EntryStatusDate** | **DateTime?** |  | [optional] 
 **PdfJson** | **string** |  | [optional] 
@@ -139,7 +139,7 @@ Name | Type | Description | Notes
 **AppVersion** | **string** |  | [optional] 
 **Platform** | **string** |  | [optional] 
 **OsVersion** | **string** |  | [optional] 
-**AncestorId** | **long?** |  | [optional] 
+**AncestorId** | **string** |  | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

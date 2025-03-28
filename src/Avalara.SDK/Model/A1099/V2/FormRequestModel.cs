@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -119,15 +119,15 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
         /// <param name="formType">\&quot;W9\&quot; is currently the only supported value.</param>
-        /// <param name="companyId">1099&#39;s ID of your company, found in the W-9 UI.</param>
+        /// <param name="companyId">Track1099&#39;s ID of your company, found in the W-9 UI.</param>
         /// <param name="companyName">Name of your company, set in the W-9 UI.</param>
         /// <param name="companyEmail">Contact email of your company, set in the W-9 UI.</param>
         /// <param name="referenceId">Your internal identifier for the vendor from whom you are requesting a form.</param>
-        /// <param name="signedAt">The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in 1099.</param>
+        /// <param name="signedAt">The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in Track1099.</param>
         /// <param name="tinMatchStatus">Result of IRS TIN match query for name and TIN in the last signed form, null if signed_at is null.</param>
         /// <param name="expiresAt">Timestamp when this FormRequest will expire, ttl (or 3600) seconds from creation.</param>
         /// <param name="signedPdf">URL of PDF representation of just-signed form, otherwise null. Integrations may use this value to offer a \&quot;download for your records\&quot; function after a vendor completes and signs a form. Link expires at the same time as this FormRequest. Treat the format of this URL as opaque and expect it to change in the future..</param>
-        public FormRequestModel(string id = default(string), TypeEnum? type = default(TypeEnum?), FormTypeEnum? formType = default(FormTypeEnum?), int companyId = default(int), string companyName = default(string), string companyEmail = default(string), string referenceId = default(string), DateTime signedAt = default(DateTime), TinMatchStatusEnum? tinMatchStatus = default(TinMatchStatusEnum?), DateTime expiresAt = default(DateTime), string signedPdf = default(string))
+        public FormRequestModel(string id = default(string), TypeEnum? type = default(TypeEnum?), FormTypeEnum? formType = default(FormTypeEnum?), string companyId = default(string), string companyName = default(string), string companyEmail = default(string), string referenceId = default(string), DateTime signedAt = default(DateTime), TinMatchStatusEnum? tinMatchStatus = default(TinMatchStatusEnum?), DateTime expiresAt = default(DateTime), string signedPdf = default(string))
         {
             this.Id = id;
             this.Type = type;
@@ -150,12 +150,12 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Id { get; set; }
 
         /// <summary>
-        /// 1099&#39;s ID of your company, found in the W-9 UI
+        /// Track1099&#39;s ID of your company, found in the W-9 UI
         /// </summary>
-        /// <value>1099&#39;s ID of your company, found in the W-9 UI</value>
+        /// <value>Track1099&#39;s ID of your company, found in the W-9 UI</value>
         /// <example>2345678</example>
         [DataMember(Name = "companyId", EmitDefaultValue = false)]
-        public int CompanyId { get; set; }
+        public string CompanyId { get; set; }
 
         /// <summary>
         /// Name of your company, set in the W-9 UI
@@ -182,9 +182,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string ReferenceId { get; set; }
 
         /// <summary>
-        /// The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in 1099
+        /// The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in Track1099
         /// </summary>
-        /// <value>The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in 1099</value>
+        /// <value>The timestamp this vendor (identified by your ReferenceId) last signed a complete W-9, null if you did not include a ReferenceId or the vendor has not yet signed a W-9 in Track1099</value>
         /// <example>2022-04-29T15:19:42Z</example>
         [DataMember(Name = "signedAt", EmitDefaultValue = false)]
         public DateTime SignedAt { get; set; }

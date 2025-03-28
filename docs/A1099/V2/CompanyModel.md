@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **long** | Company ID | [optional] 
-**UserId** | **long** | User ID associated with the company | [optional] 
+**Id** | **string** | Company ID | [optional] 
+**UserId** | **string** | User ID associated with the company | [optional] 
 **Name** | **string** | Legal company name | [optional] 
 **Email** | **string** | Company email address | [optional] 
 **ShippingAddress** | **string** | Shipping address | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Telephone** | **string** | Phone number | [optional] 
 **Tin** | **string** | Tax identification number | [optional] 
 **DbaName** | **string** | DBA (Doing Business As) name | [optional] 
-**AccountId** | **long** | Account ID associated with the company | [optional] 
+**AccountId** | **string** | Account ID associated with the company | [optional] 
 **ReferenceId** | **string** | Optional identifier for reference | [optional] 
 **DoTinMatch** | **bool** | Flag indicating whether to perform TIN matching | [optional] 
 **GroupName** | **string** | Group Name associated with the company | [optional] 

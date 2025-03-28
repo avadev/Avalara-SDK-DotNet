@@ -33,13 +33,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the DownloadDocument API
     /// </summary>
-    public class DownloadDocumentRequest
-    {
+    public class DownloadDocumentRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public DownloadDocumentRequest()
-        {
+        public DownloadDocumentRequest () {
         }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
@@ -62,13 +60,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the FetchDocuments API
     /// </summary>
-    public class FetchDocumentsRequest
-    {
+    public class FetchDocumentsRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public FetchDocumentsRequest()
-        {
+        public FetchDocumentsRequest () {
         }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
@@ -77,7 +73,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <summary>
         /// 
         /// </summary>
-        public DocumentFetchRequest DocumentFetchRequest { get; set; }
+        public FetchDocumentsRequest FetchDocumentsRequest { get; set; }
         /// <summary>
         /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
         /// </summary>
@@ -87,13 +83,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetDocumentList API
     /// </summary>
-    public class GetDocumentListRequest
-    {
+    public class GetDocumentListRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public GetDocumentListRequest()
-        {
+        public GetDocumentListRequest () {
         }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
@@ -140,13 +134,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetDocumentStatus API
     /// </summary>
-    public class GetDocumentStatusRequest
-    {
+    public class GetDocumentStatusRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public GetDocumentStatusRequest()
-        {
+        public GetDocumentStatusRequest () {
         }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
@@ -165,13 +157,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the SubmitDocument API
     /// </summary>
-    public class SubmitDocumentRequest
-    {
+    public class SubmitDocumentRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public SubmitDocumentRequest()
-        {
+        public SubmitDocumentRequest () {
         }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
@@ -195,7 +185,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDocumentsApiSync
+    public interface IDocumentsApiSync 
     {
         #region Synchronous Operations
         /// <summary>
@@ -259,7 +249,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDocumentsApiAsync
+    public interface IDocumentsApiAsync 
     {
         #region Asynchronous Operations
         /// <summary>
@@ -331,7 +321,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     public partial class DocumentsApi : IDocumentsApiSync, IDocumentsApiAsync
     {
         private Avalara.SDK.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
-
+		
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentsApi"/> class
         /// using a Configuration object and client instance.
@@ -339,9 +329,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public DocumentsApi(Avalara.SDK.Client.IApiClient client)
         {
-            SetConfiguration(client);
-            this.ExceptionFactory = Avalara.SDK.Client.Configuration.DefaultExceptionFactory;
-        }
+             SetConfiguration(client);
+             this.ExceptionFactory = Avalara.SDK.Client.Configuration.DefaultExceptionFactory;
+        }       
 
         /// <summary>
         /// The client for accessing this underlying API.
@@ -501,7 +491,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-            var localVarResponse = await this.Client.GetAsync<FileParameter>("/einvoicing/documents/{documentId}/$download", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<FileParameter>("/einvoicing/documents/{documentId}/$download", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -538,9 +528,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling DocumentsApi->FetchDocuments");
 
-            // verify the required parameter 'DocumentFetchRequest' is set
-            if (requestParameters.DocumentFetchRequest == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.DocumentFetchRequest' when calling DocumentsApi->FetchDocuments");
+            // verify the required parameter 'FetchDocumentsRequest' is set
+            if (requestParameters.FetchDocumentsRequest == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.FetchDocumentsRequest' when calling DocumentsApi->FetchDocuments");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -564,7 +554,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.DocumentFetchRequest;
+            localVarRequestOptions.Data = requestParameters.FetchDocumentsRequest;
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<DocumentFetch>("/einvoicing/documents/$fetch", localVarRequestOptions, requiredScopes, AvalaraMicroservice.EInvoicing);
@@ -606,9 +596,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling DocumentsApi->FetchDocuments");
 
-            // verify the required parameter 'requestParameters.DocumentFetchRequest' is set
-            if (requestParameters.DocumentFetchRequest == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.DocumentFetchRequest' when calling DocumentsApi->FetchDocuments");
+            // verify the required parameter 'requestParameters.FetchDocumentsRequest' is set
+            if (requestParameters.FetchDocumentsRequest == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.FetchDocumentsRequest' when calling DocumentsApi->FetchDocuments");
 
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
@@ -634,10 +624,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.DocumentFetchRequest;
+            localVarRequestOptions.Data = requestParameters.FetchDocumentsRequest;
 
             // make the HTTP request
-            var localVarResponse = await this.Client.PostAsync<DocumentFetch>("/einvoicing/documents/$fetch", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PostAsync<DocumentFetch>("/einvoicing/documents/$fetch", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -825,7 +815,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-            var localVarResponse = await this.Client.GetAsync<DocumentListResponse>("/einvoicing/documents", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<DocumentListResponse>("/einvoicing/documents", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -959,7 +949,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-            var localVarResponse = await this.Client.GetAsync<DocumentStatusResponse>("/einvoicing/documents/{documentId}/status", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<DocumentStatusResponse>("/einvoicing/documents/{documentId}/status", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1107,7 +1097,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             localVarRequestOptions.FormParameters.Add("data", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Data)); // form parameter
 
             // make the HTTP request
-            var localVarResponse = await this.Client.PostAsync<DocumentSubmitResponse>("/einvoicing/documents", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PostAsync<DocumentSubmitResponse>("/einvoicing/documents", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1127,10 +1117,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.3.2";
+            this.Client.SdkVersion = "25.3.3";
         }
-
+        
     }
 
-
+    
 }

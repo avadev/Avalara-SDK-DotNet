@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 **State** | **string** | State | [optional] 
 **Zip** | **string** | Zip code | 
 **ForeignProvince** | **string** | Foreign province | [optional] 
-**Id** | **long** | Unique identifier set when the record is created | [optional] [readonly] 
+**Id** | **string** | Unique identifier set when the record is created | [optional] [readonly] 
 **CreatedAt** | **DateTime** | Date time when the issuer was created | [optional] [readonly] 
 **UpdatedAt** | **DateTime** | Date time when the issuer was updated | [optional] [readonly] 
-**UserId** | **long** | id or the manager_id of the user to whom this issuer belongs to | [optional] [readonly] 
+**UserId** | **string** | id or the manager_id of the user to whom this issuer belongs to | [optional] [readonly] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 
