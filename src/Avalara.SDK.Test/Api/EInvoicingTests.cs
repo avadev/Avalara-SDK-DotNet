@@ -28,7 +28,6 @@ namespace Avalara.SDK.Test.Api
     public class EInvoicingTests : IDisposable
     {
         private MandatesApi mandatesApi;
-        private DocumentsApi documentsApi;
         private ApiClient apiclient;
         public EInvoicingTests()
         {
@@ -48,7 +47,6 @@ namespace Avalara.SDK.Test.Api
             apiclient = new ApiClient(configuration);
 
             mandatesApi = new MandatesApi(apiclient);
-            documentsApi = new DocumentsApi(apiclient);
 
         }
 
@@ -67,22 +65,12 @@ namespace Avalara.SDK.Test.Api
         }
 
         /// <summary>
-        /// Test Get Documents
-        /// </summary>
-        [Fact]
-        public async Task DocumentsTest()
-        {
-            var response = await documentsApi.GetDocumentListAsync(new GetDocumentListRequest() { });
-            Assert.NotNull(response);
-        }
-
-        /// <summary>
         /// Test Get Mandates
         /// </summary>
         [Fact]
         public async Task MandatesTest()
         {
-            var response = await mandatesApi.GetMandatesAsync(new GetMandatesRequest() { });
+            var response = await mandatesApi.GetMandatesAsync(new GetMandatesRequestSdk() { });
             Assert.NotNull(response.Value);
         }
     }
