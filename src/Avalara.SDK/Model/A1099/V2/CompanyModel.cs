@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -68,7 +68,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="maxReminderAttempts">Maximum number of reminder attempts.</param>
         /// <param name="createdAt">Record creation timestamp.</param>
         /// <param name="updatedAt">Record last update timestamp.</param>
-        public CompanyModel(long id = default(long), long userId = default(long), string name = default(string), string email = default(string), string shippingAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string dbaName = default(string), long accountId = default(long), string referenceId = default(string), bool doTinMatch = default(bool), string groupName = default(string), string foreignProvince = default(string), string shippingCountryCode = default(string), bool resendRequests = default(bool), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public CompanyModel(string id = default(string), string userId = default(string), string name = default(string), string email = default(string), string shippingAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string dbaName = default(string), string accountId = default(string), string referenceId = default(string), bool doTinMatch = default(bool), string groupName = default(string), string foreignProvince = default(string), string shippingCountryCode = default(string), bool resendRequests = default(bool), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Id = id;
             this.UserId = userId;
@@ -98,17 +98,15 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Company ID
         /// </summary>
         /// <value>Company ID</value>
-        /// <example>0</example>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// User ID associated with the company
         /// </summary>
         /// <value>User ID associated with the company</value>
-        /// <example>0</example>
         [DataMember(Name = "userId", EmitDefaultValue = false)]
-        public long UserId { get; set; }
+        public string UserId { get; set; }
 
         /// <summary>
         /// Legal company name
@@ -185,9 +183,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Account ID associated with the company
         /// </summary>
         /// <value>Account ID associated with the company</value>
-        /// <example>0</example>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public long AccountId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Optional identifier for reference

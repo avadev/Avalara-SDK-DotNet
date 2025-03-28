@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// AuthorizedApiRequestV2DataModel
+    /// Describes a one-time-use URL that, when accessed, executes the API request specified in path using the account and credentials you used to create this AuthorizedApiRequest
     /// </summary>
     [DataContract(Name = "AuthorizedApiRequestV2DataModel")]
     public partial class AuthorizedApiRequestV2DataModel : IValidatableObject
@@ -47,8 +47,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Initializes a new instance of the <see cref="AuthorizedApiRequestV2DataModel" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="path">path.</param>
-        /// <param name="expiresAt">expiresAt.</param>
+        /// <param name="path">The path and query of the API request you want to pre-authorize.</param>
+        /// <param name="expiresAt">Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation.</param>
         public AuthorizedApiRequestV2DataModel(string id = default(string), string path = default(string), string expiresAt = default(string))
         {
             this.Id = id;
@@ -64,15 +64,17 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Path
+        /// The path and query of the API request you want to pre-authorize
         /// </summary>
+        /// <value>The path and query of the API request you want to pre-authorize</value>
         /// <example>form-pdf?filter[form_type_eq]&#x3D;1099-NEC&amp;filter[reference_id_eq]&#x3D;SE-02453450&amp;filter[tax_year_eq]&#x3D;2024</example>
         [DataMember(Name = "path", EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpiresAt
+        /// Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation
         /// </summary>
+        /// <value>Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation</value>
         /// <example>2022-04-29T15:19:42.995-04:00</example>
         [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
         public string ExpiresAt { get; set; }

@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -31,13 +31,13 @@ using Avalara.SDK.Model.A1099.V2;
 namespace Avalara.SDK.Api.A1099.V2
 {
     /// <summary>
-    /// Represents the Request object for the Call1099IssuersGet API
+    /// Represents the Request object for the CreateIssuer API
     /// </summary>
-    public class Call1099IssuersGetRequest {
+    public class CreateIssuerRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public Call1099IssuersGetRequest () {
+        public CreateIssuerRequest () {
         }
         /// <summary>
         /// API version
@@ -48,7 +48,88 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         public string XCorrelationId { get; set; }
         /// <summary>
-        /// A filter statement to identify specific records to retrieve. For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+        /// <summary>
+        /// The issuer to create
+        /// </summary>
+        public IssuerModel IssuerModel { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the Request object for the DeleteIssuer API
+    /// </summary>
+    public class DeleteIssuerRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public DeleteIssuerRequest () {
+        }
+        /// <summary>
+        /// Id of the issuer to delete
+        /// </summary>
+        public string IssuerId { get; set; }
+        /// <summary>
+        /// API version
+        /// </summary>
+        public string? AvalaraVersion { get; set; } = "2.0";
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the Request object for the GetIssuer API
+    /// </summary>
+    public class GetIssuerRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetIssuerRequest () {
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string IssuerId { get; set; }
+        /// <summary>
+        /// API version
+        /// </summary>
+        public string? AvalaraVersion { get; set; } = "2.0";
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the Request object for the ListIssuers API
+    /// </summary>
+    public class ListIssuersRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public ListIssuersRequest () {
+        }
+        /// <summary>
+        /// API version
+        /// </summary>
+        public string? AvalaraVersion { get; set; } = "2.0";
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// A filter statement to identify specific records to retrieve. For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.  Filterable: name, nameDba, referenceId, taxYear 
         /// </summary>
         public string Filter { get; set; }
         /// <summary>
@@ -62,68 +143,30 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC.
         /// </summary>
-        public string Sort { get; set; }
+        public string OrderBy { get; set; }
+        /// <summary>
+        /// Set true to request count of complete collection in response.
+        /// </summary>
+        public bool? Count { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
-    /// Represents the Request object for the Call1099IssuersIssuerIdDelete API
+    /// Represents the Request object for the UpdateIssuer API
     /// </summary>
-    public class Call1099IssuersIssuerIdDeleteRequest {
+    public class UpdateIssuerRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public Call1099IssuersIssuerIdDeleteRequest () {
-        }
-        /// <summary>
-        /// Id of the issuer to delete
-        /// </summary>
-        public long IssuerId { get; set; }
-        /// <summary>
-        /// API version
-        /// </summary>
-        public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the Request object for the Call1099IssuersIssuerIdGet API
-    /// </summary>
-    public class Call1099IssuersIssuerIdGetRequest {
-        /// <summary>
-        /// Constructor for the Request object
-        /// </summary>
-        public Call1099IssuersIssuerIdGetRequest () {
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public long IssuerId { get; set; }
-        /// <summary>
-        /// API version
-        /// </summary>
-        public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the Request object for the Call1099IssuersIssuerIdPut API
-    /// </summary>
-    public class Call1099IssuersIssuerIdPutRequest {
-        /// <summary>
-        /// Constructor for the Request object
-        /// </summary>
-        public Call1099IssuersIssuerIdPutRequest () {
+        public UpdateIssuerRequest () {
         }
         /// <summary>
         /// Id of the issuer to Update
         /// </summary>
-        public long IssuerId { get; set; }
+        public string IssuerId { get; set; }
         /// <summary>
         /// API version
         /// </summary>
@@ -132,31 +175,12 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
         /// <summary>
         /// The issuer to update
-        /// </summary>
-        public IssuerModel IssuerModel { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the Request object for the Call1099IssuersPost API
-    /// </summary>
-    public class Call1099IssuersPostRequest {
-        /// <summary>
-        /// Constructor for the Request object
-        /// </summary>
-        public Call1099IssuersPostRequest () {
-        }
-        /// <summary>
-        /// API version
-        /// </summary>
-        public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
-        /// <summary>
-        /// The issuer to create
         /// </summary>
         public IssuerModel IssuerModel { get; set; }
     }
@@ -169,15 +193,15 @@ namespace Avalara.SDK.Api.A1099.V2
     {
         #region Synchronous Operations
         /// <summary>
-        /// List issuers
+        /// Create a new issuer
         /// </summary>
         /// <remarks>
-        /// List existing issuers for a given tax year. Filterable fields are name, referenceId and taxYear
+        /// Create a new issuer
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerModelPaginatedQueryResultModel</returns>
-        IssuerModelPaginatedQueryResultModel Call1099IssuersGet(Call1099IssuersGetRequest requestParameters);
+        /// <returns>IssuerModel</returns>
+        IssuerModel CreateIssuer(CreateIssuerRequest requestParameters);
 
         /// <summary>
         /// Delete an issuer
@@ -188,7 +212,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns></returns>
-        void Call1099IssuersIssuerIdDelete(Call1099IssuersIssuerIdDeleteRequest requestParameters);
+        void DeleteIssuer(DeleteIssuerRequest requestParameters);
 
         /// <summary>
         /// Get a single issuer
@@ -199,7 +223,18 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>IssuerModel</returns>
-        IssuerModel Call1099IssuersIssuerIdGet(Call1099IssuersIssuerIdGetRequest requestParameters);
+        IssuerModel GetIssuer(GetIssuerRequest requestParameters);
+
+        /// <summary>
+        /// List issuers
+        /// </summary>
+        /// <remarks>
+        /// List existing issuers for a given tax year. Filterable fields are name, referenceId and taxYear
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>IssuerModelPaginatedQueryResultModel</returns>
+        IssuerModelPaginatedQueryResultModel ListIssuers(ListIssuersRequest requestParameters);
 
         /// <summary>
         /// Update an issuer
@@ -210,18 +245,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns></returns>
-        void Call1099IssuersIssuerIdPut(Call1099IssuersIssuerIdPutRequest requestParameters);
-
-        /// <summary>
-        /// Create a new issuer
-        /// </summary>
-        /// <remarks>
-        /// Create a new issuer
-        /// </remarks>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerModel</returns>
-        IssuerModel Call1099IssuersPost(Call1099IssuersPostRequest requestParameters);
+        void UpdateIssuer(UpdateIssuerRequest requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -233,16 +257,16 @@ namespace Avalara.SDK.Api.A1099.V2
     {
         #region Asynchronous Operations
         /// <summary>
-        /// List issuers
+        /// Create a new issuer
         /// </summary>
         /// <remarks>
-        /// List existing issuers for a given tax year. Filterable fields are name, referenceId and taxYear
+        /// Create a new issuer
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerModelPaginatedQueryResultModel</returns>
-        System.Threading.Tasks.Task<IssuerModelPaginatedQueryResultModel> Call1099IssuersGetAsync(Call1099IssuersGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of IssuerModel</returns>
+        System.Threading.Tasks.Task<IssuerModel> CreateIssuerAsync(CreateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete an issuer
@@ -254,7 +278,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Call1099IssuersIssuerIdDeleteAsync(Call1099IssuersIssuerIdDeleteRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeleteIssuerAsync(DeleteIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a single issuer
@@ -266,7 +290,19 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IssuerModel</returns>
-        System.Threading.Tasks.Task<IssuerModel> Call1099IssuersIssuerIdGetAsync(Call1099IssuersIssuerIdGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IssuerModel> GetIssuerAsync(GetIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List issuers
+        /// </summary>
+        /// <remarks>
+        /// List existing issuers for a given tax year. Filterable fields are name, referenceId and taxYear
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IssuerModelPaginatedQueryResultModel</returns>
+        System.Threading.Tasks.Task<IssuerModelPaginatedQueryResultModel> ListIssuersAsync(ListIssuersRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update an issuer
@@ -278,19 +314,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task Call1099IssuersIssuerIdPutAsync(Call1099IssuersIssuerIdPutRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create a new issuer
-        /// </summary>
-        /// <remarks>
-        /// Create a new issuer
-        /// </remarks>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerModel</returns>
-        System.Threading.Tasks.Task<IssuerModel> Call1099IssuersPostAsync(Call1099IssuersPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task UpdateIssuerAsync(UpdateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -335,14 +359,440 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
+        /// Create a new issuer Create a new issuer
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>IssuerModel</returns>
+        public IssuerModel CreateIssuer(CreateIssuerRequest requestParameters)
+        {
+            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = CreateIssuerWithHttpInfo(requestParameters);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a new issuer Create a new issuer
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>ApiResponse of IssuerModel</returns>
+        private Avalara.SDK.Client.ApiResponse<IssuerModel> CreateIssuerWithHttpInfo(CreateIssuerRequest requestParameters)
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->CreateIssuer");
+
+            // verify the required parameter 'XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->CreateIssuer");
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+            localVarRequestOptions.Data = requestParameters.IssuerModel;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<IssuerModel>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a new issuer Create a new issuer
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IssuerModel</returns>
+        public async System.Threading.Tasks.Task<IssuerModel> CreateIssuerAsync(CreateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = await CreateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a new issuer Create a new issuer
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IssuerModel)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModel>> CreateIssuerWithHttpInfoAsync(CreateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'requestParameters.AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->CreateIssuer");
+
+            // verify the required parameter 'requestParameters.XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->CreateIssuer");
+
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+            localVarRequestOptions.Data = requestParameters.IssuerModel;
+
+            // make the HTTP request
+			var localVarResponse = await this.Client.PostAsync<IssuerModel>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an issuer Delete a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns></returns>
+        public void DeleteIssuer(DeleteIssuerRequest requestParameters)
+        {
+            DeleteIssuerWithHttpInfo(requestParameters);
+        }
+
+        /// <summary>
+        /// Delete an issuer Delete a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        private Avalara.SDK.Client.ApiResponse<Object> DeleteIssuerWithHttpInfo(DeleteIssuerRequest requestParameters)
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->DeleteIssuer");
+
+            // verify the required parameter 'AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->DeleteIssuer");
+
+            // verify the required parameter 'XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->DeleteIssuer");
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/1099/issuers/{issuerId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an issuer Delete a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteIssuerAsync(DeleteIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await DeleteIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete an issuer Delete a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> DeleteIssuerWithHttpInfoAsync(DeleteIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'requestParameters.IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->DeleteIssuer");
+
+            // verify the required parameter 'requestParameters.AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->DeleteIssuer");
+
+            // verify the required parameter 'requestParameters.XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->DeleteIssuer");
+
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+			var localVarResponse = await this.Client.DeleteAsync<Object>("/1099/issuers/{issuerId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get a single issuer Get a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>IssuerModel</returns>
+        public IssuerModel GetIssuer(GetIssuerRequest requestParameters)
+        {
+            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = GetIssuerWithHttpInfo(requestParameters);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a single issuer Get a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>ApiResponse of IssuerModel</returns>
+        private Avalara.SDK.Client.ApiResponse<IssuerModel> GetIssuerWithHttpInfo(GetIssuerRequest requestParameters)
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->GetIssuer");
+
+            // verify the required parameter 'AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->GetIssuer");
+
+            // verify the required parameter 'XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->GetIssuer");
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<IssuerModel>("/1099/issuers/{issuerId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get a single issuer Get a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IssuerModel</returns>
+        public async System.Threading.Tasks.Task<IssuerModel> GetIssuerAsync(GetIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = await GetIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a single issuer Get a single issuer by id
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IssuerModel)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModel>> GetIssuerWithHttpInfoAsync(GetIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'requestParameters.IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->GetIssuer");
+
+            // verify the required parameter 'requestParameters.AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->GetIssuer");
+
+            // verify the required parameter 'requestParameters.XCorrelationId' is set
+            if (requestParameters.XCorrelationId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->GetIssuer");
+
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+			var localVarResponse = await this.Client.GetAsync<IssuerModel>("/1099/issuers/{issuerId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetIssuer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List issuers List existing issuers for a given tax year. Filterable fields are name, referenceId and taxYear
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>IssuerModelPaginatedQueryResultModel</returns>
-        public IssuerModelPaginatedQueryResultModel Call1099IssuersGet(Call1099IssuersGetRequest requestParameters)
+        public IssuerModelPaginatedQueryResultModel ListIssuers(ListIssuersRequest requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> localVarResponse = Call1099IssuersGetWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> localVarResponse = ListIssuersWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -352,17 +802,17 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of IssuerModelPaginatedQueryResultModel</returns>
-        private Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> Call1099IssuersGetWithHttpInfo(Call1099IssuersGetRequest requestParameters)
+        private Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> ListIssuersWithHttpInfo(ListIssuersRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
             // verify the required parameter 'AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersGet");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->ListIssuers");
 
             // verify the required parameter 'XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersGet");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->ListIssuers");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -382,29 +832,37 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (requestParameters.Filter != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "filter", requestParameters.Filter));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$filter", requestParameters.Filter));
             }
             if (requestParameters.Top != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "top", requestParameters.Top));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$top", requestParameters.Top));
             }
             if (requestParameters.Skip != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "skip", requestParameters.Skip));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$skip", requestParameters.Skip));
             }
-            if (requestParameters.Sort != null)
+            if (requestParameters.OrderBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "sort", requestParameters.Sort));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$orderBy", requestParameters.OrderBy));
+            }
+            if (requestParameters.Count != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("count", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Count)); // header parameter
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<IssuerModelPaginatedQueryResultModel>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListIssuers", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -418,9 +876,9 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IssuerModelPaginatedQueryResultModel</returns>
-        public async System.Threading.Tasks.Task<IssuerModelPaginatedQueryResultModel> Call1099IssuersGetAsync(Call1099IssuersGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IssuerModelPaginatedQueryResultModel> ListIssuersAsync(ListIssuersRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> localVarResponse = await Call1099IssuersGetWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel> localVarResponse = await ListIssuersWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -431,17 +889,17 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IssuerModelPaginatedQueryResultModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel>> Call1099IssuersGetWithHttpInfoAsync(Call1099IssuersGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModelPaginatedQueryResultModel>> ListIssuersWithHttpInfoAsync(ListIssuersRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
             // verify the required parameter 'requestParameters.AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersGet");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->ListIssuers");
 
             // verify the required parameter 'requestParameters.XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersGet");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->ListIssuers");
 
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
@@ -463,283 +921,37 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (requestParameters.Filter != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "filter", requestParameters.Filter));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$filter", requestParameters.Filter));
             }
             if (requestParameters.Top != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "top", requestParameters.Top));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$top", requestParameters.Top));
             }
             if (requestParameters.Skip != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "skip", requestParameters.Skip));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$skip", requestParameters.Skip));
             }
-            if (requestParameters.Sort != null)
+            if (requestParameters.OrderBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "sort", requestParameters.Sort));
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$orderBy", requestParameters.OrderBy));
+            }
+            if (requestParameters.Count != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("count", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Count)); // header parameter
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.GetAsync<IssuerModelPaginatedQueryResultModel>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersGet", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Delete an issuer Delete a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns></returns>
-        public void Call1099IssuersIssuerIdDelete(Call1099IssuersIssuerIdDeleteRequest requestParameters)
-        {
-            Call1099IssuersIssuerIdDeleteWithHttpInfo(requestParameters);
-        }
-
-        /// <summary>
-        /// Delete an issuer Delete a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        private Avalara.SDK.Client.ApiResponse<Object> Call1099IssuersIssuerIdDeleteWithHttpInfo(Call1099IssuersIssuerIdDeleteRequest requestParameters)
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdDelete");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdDelete");
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/1099/issuers/{issuerId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdDelete", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Delete an issuer Delete a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task Call1099IssuersIssuerIdDeleteAsync(Call1099IssuersIssuerIdDeleteRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            await Call1099IssuersIssuerIdDeleteWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Delete an issuer Delete a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> Call1099IssuersIssuerIdDeleteWithHttpInfoAsync(Call1099IssuersIssuerIdDeleteRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'requestParameters.AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdDelete");
-
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdDelete");
-
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-			var localVarResponse = await this.Client.DeleteAsync<Object>("/1099/issuers/{issuerId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdDelete", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get a single issuer Get a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerModel</returns>
-        public IssuerModel Call1099IssuersIssuerIdGet(Call1099IssuersIssuerIdGetRequest requestParameters)
-        {
-            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = Call1099IssuersIssuerIdGetWithHttpInfo(requestParameters);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get a single issuer Get a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of IssuerModel</returns>
-        private Avalara.SDK.Client.ApiResponse<IssuerModel> Call1099IssuersIssuerIdGetWithHttpInfo(Call1099IssuersIssuerIdGetRequest requestParameters)
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdGet");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdGet");
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IssuerModel>("/1099/issuers/{issuerId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdGet", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Get a single issuer Get a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerModel</returns>
-        public async System.Threading.Tasks.Task<IssuerModel> Call1099IssuersIssuerIdGetAsync(Call1099IssuersIssuerIdGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = await Call1099IssuersIssuerIdGetWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get a single issuer Get a single issuer by id
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IssuerModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModel>> Call1099IssuersIssuerIdGetWithHttpInfoAsync(Call1099IssuersIssuerIdGetRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'requestParameters.AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdGet");
-
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdGet");
-
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<IssuerModel>("/1099/issuers/{issuerId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListIssuers", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -752,9 +964,9 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns></returns>
-        public void Call1099IssuersIssuerIdPut(Call1099IssuersIssuerIdPutRequest requestParameters)
+        public void UpdateIssuer(UpdateIssuerRequest requestParameters)
         {
-            Call1099IssuersIssuerIdPutWithHttpInfo(requestParameters);
+            UpdateIssuerWithHttpInfo(requestParameters);
         }
 
         /// <summary>
@@ -763,24 +975,26 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        private Avalara.SDK.Client.ApiResponse<Object> Call1099IssuersIssuerIdPutWithHttpInfo(Call1099IssuersIssuerIdPutRequest requestParameters)
+        private Avalara.SDK.Client.ApiResponse<Object> UpdateIssuerWithHttpInfo(UpdateIssuerRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
+            // verify the required parameter 'IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->UpdateIssuer");
+
             // verify the required parameter 'AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdPut");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->UpdateIssuer");
 
             // verify the required parameter 'XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdPut");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->UpdateIssuer");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "text/json",
-                "application/*+json"
+                "application/json"
             };
 
             // to determine the Accept header
@@ -797,6 +1011,10 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IssuerModel;
 
             // make the HTTP request
@@ -804,7 +1022,7 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdPut", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateIssuer", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -818,9 +1036,9 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task Call1099IssuersIssuerIdPutAsync(Call1099IssuersIssuerIdPutRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task UpdateIssuerAsync(UpdateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await Call1099IssuersIssuerIdPutWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            await UpdateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -830,25 +1048,27 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> Call1099IssuersIssuerIdPutWithHttpInfoAsync(Call1099IssuersIssuerIdPutRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> UpdateIssuerWithHttpInfoAsync(UpdateIssuerRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
+            // verify the required parameter 'requestParameters.IssuerId' is set
+            if (requestParameters.IssuerId == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.IssuerId' when calling Class1099IssuersApi->UpdateIssuer");
+
             // verify the required parameter 'requestParameters.AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersIssuerIdPut");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->UpdateIssuer");
 
             // verify the required parameter 'requestParameters.XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersIssuerIdPut");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->UpdateIssuer");
 
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
-                "text/json", 
-                "application/*+json"
+                "application/json"
             };
 
             // to determine the Accept header
@@ -866,6 +1086,10 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.PathParameters.Add("issuerId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.IssuerId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IssuerModel;
 
             // make the HTTP request
@@ -873,141 +1097,7 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersIssuerIdPut", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Create a new issuer Create a new issuer
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerModel</returns>
-        public IssuerModel Call1099IssuersPost(Call1099IssuersPostRequest requestParameters)
-        {
-            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = Call1099IssuersPostWithHttpInfo(requestParameters);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create a new issuer Create a new issuer
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of IssuerModel</returns>
-        private Avalara.SDK.Client.ApiResponse<IssuerModel> Call1099IssuersPostWithHttpInfo(Call1099IssuersPostRequest requestParameters)
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersPost");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersPost");
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-            localVarRequestOptions.Data = requestParameters.IssuerModel;
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<IssuerModel>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersPost", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Create a new issuer Create a new issuer
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerModel</returns>
-        public async System.Threading.Tasks.Task<IssuerModel> Call1099IssuersPostAsync(Call1099IssuersPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Avalara.SDK.Client.ApiResponse<IssuerModel> localVarResponse = await Call1099IssuersPostWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create a new issuer Create a new issuer
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IssuerModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerModel>> Call1099IssuersPostWithHttpInfoAsync(Call1099IssuersPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'requestParameters.AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling Class1099IssuersApi->Call1099IssuersPost");
-
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling Class1099IssuersApi->Call1099IssuersPost");
-
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-            localVarRequestOptions.Data = requestParameters.IssuerModel;
-
-            // make the HTTP request
-			var localVarResponse = await this.Client.PostAsync<IssuerModel>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Call1099IssuersPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateIssuer", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1023,7 +1113,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.3.2";
+            this.Client.SdkVersion = "25.3.3";
         }
         
     }

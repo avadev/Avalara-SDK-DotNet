@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -113,14 +113,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="zip">The ZIP code of residence of the employee..</param>
         /// <param name="typeOfTin">The type of TIN provided..</param>
         /// <param name="tin">The taxpayer identification number (TIN) of the employee..</param>
-        /// <param name="box3MaritalStatus">The marital status of the employee..</param>
-        /// <param name="box4LastNameDiffers">Indicates whether the last name differs from prior records..</param>
-        /// <param name="box5NumAllowances">The number of allowances claimed by the employee..</param>
+        /// <param name="maritalStatus">The marital status of the employee..</param>
+        /// <param name="lastNameDiffers">Indicates whether the last name differs from prior records..</param>
+        /// <param name="numAllowances">The number of allowances claimed by the employee..</param>
         /// <param name="otherDependents">The number of dependents other than allowances..</param>
         /// <param name="nonJobIncome">The amount of non-job income..</param>
         /// <param name="deductions">The amount of deductions claimed..</param>
-        /// <param name="box6AdditionalWithheld">The additional amount withheld..</param>
-        /// <param name="box7ExemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
+        /// <param name="additionalWithheld">The additional amount withheld..</param>
+        /// <param name="exemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
         /// <param name="officeCode">The office code associated with the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="id">id.</param>
@@ -141,7 +141,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="platform">platform.</param>
         /// <param name="osVersion">osVersion.</param>
         /// <param name="ancestorId">ancestorId.</param>
-        public W4FormDataModel(DateTime? signedDate = default(DateTime?), DateTime? createdAt = default(DateTime?), string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string typeOfTin = default(string), string tin = default(string), string box3MaritalStatus = default(string), bool? box4LastNameDiffers = default(bool?), int? box5NumAllowances = default(int?), int? otherDependents = default(int?), double? nonJobIncome = default(double?), double? deductions = default(double?), double? box6AdditionalWithheld = default(double?), bool? box7ExemptFromWithholding = default(bool?), string officeCode = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), int id = default(int), string entryStatus = default(string), DateTime? updatedAt = default(DateTime?), string referenceId = default(string), int? companyId = default(int?), string displayName = default(string), string email = default(string), bool? archived = default(bool?), DateTime? entryStatusDate = default(DateTime?), string pdfJson = default(string), string pdfVersion = default(string), string requestToken = default(string), string signature = default(string), bool? mobile = default(bool?), string appVersion = default(string), string platform = default(string), string osVersion = default(string), long? ancestorId = default(long?))
+        public W4FormDataModel(DateTime? signedDate = default(DateTime?), DateTime? createdAt = default(DateTime?), string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string typeOfTin = default(string), string tin = default(string), string maritalStatus = default(string), bool? lastNameDiffers = default(bool?), int? numAllowances = default(int?), int? otherDependents = default(int?), double? nonJobIncome = default(double?), double? deductions = default(double?), double? additionalWithheld = default(double?), bool? exemptFromWithholding = default(bool?), string officeCode = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string id = default(string), string entryStatus = default(string), DateTime? updatedAt = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool? archived = default(bool?), DateTime? entryStatusDate = default(DateTime?), string pdfJson = default(string), string pdfVersion = default(string), string requestToken = default(string), string signature = default(string), bool? mobile = default(bool?), string appVersion = default(string), string platform = default(string), string osVersion = default(string), string ancestorId = default(string))
         {
             this.SignedDate = signedDate;
             this.CreatedAt = createdAt;
@@ -155,14 +155,14 @@ namespace Avalara.SDK.Model.A1099.V2
             this.Zip = zip;
             this.TypeOfTin = typeOfTin;
             this.Tin = tin;
-            this.Box3MaritalStatus = box3MaritalStatus;
-            this.Box4LastNameDiffers = box4LastNameDiffers;
-            this.Box5NumAllowances = box5NumAllowances;
+            this.MaritalStatus = maritalStatus;
+            this.LastNameDiffers = lastNameDiffers;
+            this.NumAllowances = numAllowances;
             this.OtherDependents = otherDependents;
             this.NonJobIncome = nonJobIncome;
             this.Deductions = deductions;
-            this.Box6AdditionalWithheld = box6AdditionalWithheld;
-            this.Box7ExemptFromWithholding = box7ExemptFromWithholding;
+            this.AdditionalWithheld = additionalWithheld;
+            this.ExemptFromWithholding = exemptFromWithholding;
             this.OfficeCode = officeCode;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Id = id;
@@ -285,24 +285,24 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>The marital status of the employee.</value>
         /// <example>Married</example>
-        [DataMember(Name = "box3MaritalStatus", EmitDefaultValue = true)]
-        public string Box3MaritalStatus { get; set; }
+        [DataMember(Name = "maritalStatus", EmitDefaultValue = true)]
+        public string MaritalStatus { get; set; }
 
         /// <summary>
         /// Indicates whether the last name differs from prior records.
         /// </summary>
         /// <value>Indicates whether the last name differs from prior records.</value>
         /// <example>false</example>
-        [DataMember(Name = "box4LastNameDiffers", EmitDefaultValue = true)]
-        public bool? Box4LastNameDiffers { get; set; }
+        [DataMember(Name = "lastNameDiffers", EmitDefaultValue = true)]
+        public bool? LastNameDiffers { get; set; }
 
         /// <summary>
         /// The number of allowances claimed by the employee.
         /// </summary>
         /// <value>The number of allowances claimed by the employee.</value>
         /// <example>3</example>
-        [DataMember(Name = "box5NumAllowances", EmitDefaultValue = true)]
-        public int? Box5NumAllowances { get; set; }
+        [DataMember(Name = "numAllowances", EmitDefaultValue = true)]
+        public int? NumAllowances { get; set; }
 
         /// <summary>
         /// The number of dependents other than allowances.
@@ -316,7 +316,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The amount of non-job income.
         /// </summary>
         /// <value>The amount of non-job income.</value>
-        /// <example>5000.0</example>
+        /// <example>5000</example>
         [DataMember(Name = "nonJobIncome", EmitDefaultValue = true)]
         public double? NonJobIncome { get; set; }
 
@@ -324,7 +324,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The amount of deductions claimed.
         /// </summary>
         /// <value>The amount of deductions claimed.</value>
-        /// <example>2000.0</example>
+        /// <example>2000</example>
         [DataMember(Name = "deductions", EmitDefaultValue = true)]
         public double? Deductions { get; set; }
 
@@ -332,17 +332,17 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The additional amount withheld.
         /// </summary>
         /// <value>The additional amount withheld.</value>
-        /// <example>150.0</example>
-        [DataMember(Name = "box6AdditionalWithheld", EmitDefaultValue = true)]
-        public double? Box6AdditionalWithheld { get; set; }
+        /// <example>150</example>
+        [DataMember(Name = "additionalWithheld", EmitDefaultValue = true)]
+        public double? AdditionalWithheld { get; set; }
 
         /// <summary>
         /// Indicates whether the employee is exempt from withholding.
         /// </summary>
         /// <value>Indicates whether the employee is exempt from withholding.</value>
         /// <example>false</example>
-        [DataMember(Name = "box7ExemptFromWithholding", EmitDefaultValue = true)]
-        public bool? Box7ExemptFromWithholding { get; set; }
+        [DataMember(Name = "exemptFromWithholding", EmitDefaultValue = true)]
+        public bool? ExemptFromWithholding { get; set; }
 
         /// <summary>
         /// The office code associated with the form.
@@ -364,7 +364,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets EntryStatus
@@ -391,7 +391,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>The ID of the associated company.</value>
         [DataMember(Name = "companyId", EmitDefaultValue = true)]
-        public int? CompanyId { get; set; }
+        public string CompanyId { get; set; }
 
         /// <summary>
         /// The display name associated with the form.
@@ -472,7 +472,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets AncestorId
         /// </summary>
         [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
-        public long? AncestorId { get; set; }
+        public string AncestorId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -495,14 +495,14 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  Zip: ").Append(Zip).Append("\n");
             sb.Append("  TypeOfTin: ").Append(TypeOfTin).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
-            sb.Append("  Box3MaritalStatus: ").Append(Box3MaritalStatus).Append("\n");
-            sb.Append("  Box4LastNameDiffers: ").Append(Box4LastNameDiffers).Append("\n");
-            sb.Append("  Box5NumAllowances: ").Append(Box5NumAllowances).Append("\n");
+            sb.Append("  MaritalStatus: ").Append(MaritalStatus).Append("\n");
+            sb.Append("  LastNameDiffers: ").Append(LastNameDiffers).Append("\n");
+            sb.Append("  NumAllowances: ").Append(NumAllowances).Append("\n");
             sb.Append("  OtherDependents: ").Append(OtherDependents).Append("\n");
             sb.Append("  NonJobIncome: ").Append(NonJobIncome).Append("\n");
             sb.Append("  Deductions: ").Append(Deductions).Append("\n");
-            sb.Append("  Box6AdditionalWithheld: ").Append(Box6AdditionalWithheld).Append("\n");
-            sb.Append("  Box7ExemptFromWithholding: ").Append(Box7ExemptFromWithholding).Append("\n");
+            sb.Append("  AdditionalWithheld: ").Append(AdditionalWithheld).Append("\n");
+            sb.Append("  ExemptFromWithholding: ").Append(ExemptFromWithholding).Append("\n");
             sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
             sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");

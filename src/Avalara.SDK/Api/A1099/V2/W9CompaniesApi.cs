@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -31,13 +31,13 @@ using Avalara.SDK.Model.A1099.V2;
 namespace Avalara.SDK.Api.A1099.V2
 {
     /// <summary>
-    /// Represents the Request object for the W9CompaniesPost API
+    /// Represents the Request object for the CreateW9Company API
     /// </summary>
-    public class W9CompaniesPostRequest {
+    public class CreateW9CompanyRequest {
         /// <summary>
         /// Constructor for the Request object
         /// </summary>
-        public W9CompaniesPostRequest () {
+        public CreateW9CompanyRequest () {
         }
         /// <summary>
         /// API version
@@ -47,6 +47,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API.  For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/).
+        /// </summary>
+        public string XAvalaraClient { get; set; }
         /// <summary>
         /// The company to create
         /// </summary>
@@ -69,7 +73,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>CompanyModel</returns>
-        CompanyModel W9CompaniesPost(W9CompaniesPostRequest requestParameters);
+        CompanyModel CreateW9Company(CreateW9CompanyRequest requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -90,7 +94,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CompanyModel</returns>
-        System.Threading.Tasks.Task<CompanyModel> W9CompaniesPostAsync(W9CompaniesPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CompanyModel> CreateW9CompanyAsync(CreateW9CompanyRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -140,9 +144,9 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>CompanyModel</returns>
-        public CompanyModel W9CompaniesPost(W9CompaniesPostRequest requestParameters)
+        public CompanyModel CreateW9Company(CreateW9CompanyRequest requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<CompanyModel> localVarResponse = W9CompaniesPostWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<CompanyModel> localVarResponse = CreateW9CompanyWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -152,24 +156,22 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of CompanyModel</returns>
-        private Avalara.SDK.Client.ApiResponse<CompanyModel> W9CompaniesPostWithHttpInfo(W9CompaniesPostRequest requestParameters)
+        private Avalara.SDK.Client.ApiResponse<CompanyModel> CreateW9CompanyWithHttpInfo(CreateW9CompanyRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
             // verify the required parameter 'AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling W9CompaniesApi->W9CompaniesPost");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling W9CompaniesApi->CreateW9Company");
 
             // verify the required parameter 'XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling W9CompaniesApi->W9CompaniesPost");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling W9CompaniesApi->CreateW9Company");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "text/json",
-                "application/*+json"
+                "application/json"
             };
 
             // to determine the Accept header
@@ -185,6 +187,10 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyModel;
 
             // make the HTTP request
@@ -192,7 +198,7 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("W9CompaniesPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateW9Company", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -206,9 +212,9 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CompanyModel</returns>
-        public async System.Threading.Tasks.Task<CompanyModel> W9CompaniesPostAsync(W9CompaniesPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CompanyModel> CreateW9CompanyAsync(CreateW9CompanyRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<CompanyModel> localVarResponse = await W9CompaniesPostWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<CompanyModel> localVarResponse = await CreateW9CompanyWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -219,25 +225,23 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CompanyModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyModel>> W9CompaniesPostWithHttpInfoAsync(W9CompaniesPostRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyModel>> CreateW9CompanyWithHttpInfoAsync(CreateW9CompanyRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
             // verify the required parameter 'requestParameters.AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling W9CompaniesApi->W9CompaniesPost");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling W9CompaniesApi->CreateW9Company");
 
             // verify the required parameter 'requestParameters.XCorrelationId' is set
             if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling W9CompaniesApi->W9CompaniesPost");
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling W9CompaniesApi->CreateW9Company");
 
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
-                "text/json", 
-                "application/*+json"
+                "application/json"
             };
 
             // to determine the Accept header
@@ -254,6 +258,10 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyModel;
 
             // make the HTTP request
@@ -261,7 +269,7 @@ namespace Avalara.SDK.Api.A1099.V2
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("W9CompaniesPost", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateW9Company", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -277,7 +285,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.3.2";
+            this.Client.SdkVersion = "25.3.3";
         }
         
     }

@@ -8,7 +8,7 @@
  *
  * Avalara 1099 API Definition
  *
- * This is the API specification for Avalara's 1099 service, based on the OpenAPI 3.0 standard. The API allows users to manage and track 1099 tax forms efficiently. This is the specification for the Avalara 1099 & W9 API. Some overall notes about the API:  - The API generally follows the [JSON:API](https://jsonapi.org/) specification. - Authentication is done by including an API **Bearer** token in the **Authorization** header (API tokens can be generated from your [profile page](https://www.track1099.com/api_tokens) when logged into the application). - The maximum request size allowed is **100MB**.  [Find out more about Avalara](https://www.avalara.com)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -117,7 +117,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="platform">platform.</param>
         /// <param name="osVersion">osVersion.</param>
         /// <param name="ancestorId">ancestorId.</param>
-        public BaseFormDataModel(int id = default(int), string entryStatus = default(string), DateTime? updatedAt = default(DateTime?), string referenceId = default(string), int? companyId = default(int?), string displayName = default(string), string email = default(string), bool? archived = default(bool?), DateTime? entryStatusDate = default(DateTime?), string pdfJson = default(string), string pdfVersion = default(string), string requestToken = default(string), string signature = default(string), bool? mobile = default(bool?), string appVersion = default(string), string platform = default(string), string osVersion = default(string), long? ancestorId = default(long?))
+        public BaseFormDataModel(string id = default(string), string entryStatus = default(string), DateTime? updatedAt = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool? archived = default(bool?), DateTime? entryStatusDate = default(DateTime?), string pdfJson = default(string), string pdfVersion = default(string), string requestToken = default(string), string signature = default(string), bool? mobile = default(bool?), string appVersion = default(string), string platform = default(string), string osVersion = default(string), string ancestorId = default(string))
         {
             this.Id = id;
             this.EntryStatus = entryStatus;
@@ -143,7 +143,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets EntryStatus
@@ -170,7 +170,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>The ID of the associated company.</value>
         [DataMember(Name = "companyId", EmitDefaultValue = true)]
-        public int? CompanyId { get; set; }
+        public string CompanyId { get; set; }
 
         /// <summary>
         /// The display name associated with the form.
@@ -251,7 +251,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets AncestorId
         /// </summary>
         [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
-        public long? AncestorId { get; set; }
+        public string AncestorId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

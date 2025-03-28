@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ForeignTinNotRequired** | **bool?** | Indicates whether a foreign TIN is not required. | [optional] 
 **Archived** | **bool?** | Indicates whether the form is archived. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
-**CompanyId** | **int?** | The ID of the associated company. | [optional] 
+**CompanyId** | **string** | The ID of the associated company. | [optional] 
 **DisplayName** | **string** | The display name associated with the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
 **TypeOfTin** | **string** | The type of TIN provided. | [optional] 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
 **CreatedAt** | **DateTime?** | The creation date of the form. | [optional] 
 **UpdatedAt** | **DateTime?** | The last updated date of the form. | [optional] 
-**Id** | **int** |  | [optional] 
+**Id** | **string** |  | [optional] 
 **EntryStatus** | **string** |  | [optional] 
 **EntryStatusDate** | **DateTime?** |  | [optional] 
 **PdfJson** | **string** |  | [optional] 
@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 **AppVersion** | **string** |  | [optional] 
 **Platform** | **string** |  | [optional] 
 **OsVersion** | **string** |  | [optional] 
-**AncestorId** | **long?** |  | [optional] 
+**AncestorId** | **string** |  | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 
