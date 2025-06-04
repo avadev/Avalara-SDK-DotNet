@@ -60,6 +60,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// The count of records in the result set
         /// </summary>
         /// <value>The count of records in the result set</value>
+        /// <example>500</example>
         [DataMember(Name = "@recordSetCount", EmitDefaultValue = false)]
         public int RecordSetCount { get; set; }
 
@@ -67,6 +68,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Next Link
         /// </summary>
         /// <value>Next Link</value>
+        /// <example>TODO</example>
         [DataMember(Name = "@nextLink", EmitDefaultValue = false)]
         public string NextLink { get; set; }
 

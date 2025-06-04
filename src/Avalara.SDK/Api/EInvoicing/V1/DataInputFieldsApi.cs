@@ -1,3 +1,22 @@
+/*
+ * AvaTax Software Development Kit for C#
+ *
+ * (c) 2004-2022 Avalara, Inc.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Avalara E-Invoicing API
+ *
+ * An API that supports sending data for an E-Invoicing compliance use-case.
+ *
+
+ * @author     Sachin Baijal <sachin.baijal@avalara.com>
+ * @author     Jonathan Wenger <jonathan.wenger@avalara.com>
+ * @copyright  2004-2022 Avalara, Inc.
+ * @license    https://www.apache.org/licenses/LICENSE-2.0
+ * @link       https://github.com/avadev/AvaTax-REST-V3-DotNet-SDK
+ */
 
 
 using System;
@@ -14,11 +33,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetDataInputFields API
     /// </summary>
-    public class GetDataInputFieldsRequestSdk {
+    public class GetDataInputFieldsRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetDataInputFieldsRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
         /// </summary>
@@ -61,7 +85,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DataInputFieldsResponse</returns>
-        DataInputFieldsResponse GetDataInputFields(GetDataInputFieldsRequestSdk requestParameters);
+        DataInputFieldsResponse GetDataInputFields(GetDataInputFieldsRequest requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -82,7 +106,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataInputFieldsResponse</returns>
-        System.Threading.Tasks.Task<DataInputFieldsResponse> GetDataInputFieldsAsync(GetDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataInputFieldsResponse> GetDataInputFieldsAsync(GetDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -132,7 +156,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DataInputFieldsResponse</returns>
-        public DataInputFieldsResponse GetDataInputFields(GetDataInputFieldsRequestSdk requestParameters)
+        public DataInputFieldsResponse GetDataInputFields(GetDataInputFieldsRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse> localVarResponse = GetDataInputFieldsWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -144,7 +168,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of DataInputFieldsResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse> GetDataInputFieldsWithHttpInfo(GetDataInputFieldsRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse> GetDataInputFieldsWithHttpInfo(GetDataInputFieldsRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -213,7 +237,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataInputFieldsResponse</returns>
-        public async System.Threading.Tasks.Task<DataInputFieldsResponse> GetDataInputFieldsAsync(GetDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataInputFieldsResponse> GetDataInputFieldsAsync(GetDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse> localVarResponse = await GetDataInputFieldsWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -226,7 +250,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataInputFieldsResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse>> GetDataInputFieldsWithHttpInfoAsync(GetDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DataInputFieldsResponse>> GetDataInputFieldsWithHttpInfoAsync(GetDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -299,7 +323,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.5.3";
+            this.Client.SdkVersion = "25.5.4";
         }
         
     }

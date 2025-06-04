@@ -6,9 +6,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Avalara 1099 & W-9 API Definition
+ * Avalara 1099 API Definition
  *
- * ## 🔐 Authentication  Use **username/password** or generate a **license key** from: *Avalara Portal → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -220,99 +220,22 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="box35FormedOnDate">box35FormedOnDate.</param>
         /// <param name="box36FiledOnDate">box36FiledOnDate.</param>
-        /// <param name="employeeFirstName">The first name of the employee..</param>
-        /// <param name="employeeMiddleName">The middle name of the employee..</param>
-        /// <param name="employeeLastName">The last name of the employee..</param>
-        /// <param name="employeeNameSuffix">The name suffix of the employee..</param>
-        /// <param name="address">The address of the individual or entity..</param>
-        /// <param name="city">The city of the address..</param>
-        /// <param name="state">The state of the address..</param>
-        /// <param name="zip">The ZIP code of the address..</param>
-        /// <param name="box3MaritalStatus">The marital status of the employee..</param>
-        /// <param name="box4LastNameDiffers">Indicates whether the last name differs from prior records..</param>
-        /// <param name="box5NumAllowances">The number of allowances claimed by the employee..</param>
-        /// <param name="otherDependents">The number of dependents other than allowances..</param>
-        /// <param name="nonJobIncome">The amount of non-job income..</param>
-        /// <param name="deductions">The amount of deductions claimed..</param>
-        /// <param name="box6AdditionalWithheld">The additional amount withheld..</param>
-        /// <param name="box7ExemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
-        /// <param name="officeCode">The office code associated with the form..</param>
-        /// <param name="ftinNotRequired">Indicates whether a foreign TIN is not required..</param>
-        /// <param name="benefitLimitation">The benefit limitation for tax treaty claims..</param>
-        /// <param name="part4SponsoringEntity">The sponsoring entity information for Part 4..</param>
-        /// <param name="part4SponsoringEntityGiin">The GIIN for the sponsoring entity in Part 4..</param>
-        /// <param name="part7SponsoringEntity">The sponsoring entity information for Part 7..</param>
-        /// <param name="part12IgaCountry">The IGA country information for Part 12..</param>
-        /// <param name="part12IgaType">The IGA type information for Part 12..</param>
-        /// <param name="part12FatcaStatusUnderIgaAnnexIi">The FATCA status under IGA Annex II for Part 12..</param>
-        /// <param name="part12TrusteeName">The trustee name for Part 12..</param>
-        /// <param name="part12TrusteeIsForeign">Indicates whether the trustee is foreign for Part 12..</param>
-        /// <param name="part12Model2IgaGiin">The GIIN for Model 2 IGA in Part 12..</param>
-        /// <param name="box37AExchange">The exchange information for Box 37A..</param>
-        /// <param name="box37BExchange">The exchange information for Box 37B..</param>
-        /// <param name="box37BEntity">The entity information for Box 37B..</param>
-        /// <param name="part28SponsoringEntity">The sponsoring entity information for Part 28..</param>
-        /// <param name="part28SponsoringEntityGiin">The GIIN for the sponsoring entity in Part 28..</param>
-        /// <param name="makingTreatyClaim">makingTreatyClaim.</param>
-        /// <param name="treatyCountry">The country for which the treaty applies..</param>
-        /// <param name="treatyArticle">The specific article of the treaty being claimed..</param>
-        /// <param name="withholdingRate">The withholding rate applied as per the treaty..</param>
-        /// <param name="incomeType">The type of income covered by the treaty..</param>
-        /// <param name="treatyReasons">The reasons for claiming treaty benefits..</param>
-        /// <param name="certifyBox14A">certifyBox14A.</param>
-        /// <param name="certifyBox14B">certifyBox14B.</param>
-        /// <param name="certifyBox14C">certifyBox14C.</param>
-        /// <param name="certifyBox171">certifyBox171.</param>
-        /// <param name="certifyBox172">certifyBox172.</param>
-        /// <param name="certifyBox18">certifyBox18.</param>
-        /// <param name="certifyBox19">certifyBox19.</param>
-        /// <param name="certifyBox21">certifyBox21.</param>
-        /// <param name="certifyBox23">certifyBox23.</param>
-        /// <param name="certifyBox24D">certifyBox24D.</param>
-        /// <param name="certifyBox25A">certifyBox25A.</param>
-        /// <param name="certifyBox25B">certifyBox25B.</param>
-        /// <param name="certifyBox25C">certifyBox25C.</param>
-        /// <param name="certifyBox27">certifyBox27.</param>
-        /// <param name="certifyBox28A">certifyBox28A.</param>
-        /// <param name="certifyBox28B">certifyBox28B.</param>
-        /// <param name="certifyBox29A">certifyBox29A.</param>
-        /// <param name="certifyBox29B">certifyBox29B.</param>
-        /// <param name="certifyBox29C">certifyBox29C.</param>
-        /// <param name="certifyBox29D">certifyBox29D.</param>
-        /// <param name="certifyBox29E">certifyBox29E.</param>
-        /// <param name="certifyBox29F">certifyBox29F.</param>
-        /// <param name="certifyBox30">certifyBox30.</param>
-        /// <param name="certifyBox33">certifyBox33.</param>
-        /// <param name="certifyBox40A">certifyBox40A.</param>
-        /// <param name="certifyBox40B">certifyBox40B.</param>
-        /// <param name="certifyBox40C">certifyBox40C.</param>
-        /// <param name="certifyBox41">certifyBox41.</param>
-        /// <param name="certifyBox43">certifyBox43.</param>
-        /// <param name="certifyPart29Signature">certifyPart29Signature.</param>
-        /// <param name="part19FormationOrResolutionDate">part19FormationOrResolutionDate.</param>
-        /// <param name="part20FilingDate">part20FilingDate.</param>
-        /// <param name="part21DeterminationDate">part21DeterminationDate.</param>
-        /// <param name="substantialUsOwners">substantialUsOwners.</param>
-        /// <param name="birthday">The birthday of the individual associated with the form..</param>
-        /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not required..</param>
-        /// <param name="archived">Indicates whether the form is archived..</param>
+        /// <param name="id">id.</param>
+        /// <param name="entryStatus">entryStatus.</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="companyId">The ID of the associated company..</param>
-        /// <param name="signerCapacity">The capacity in which the signer is signing the form..</param>
-        /// <param name="tinMatchStatus">The status of the TIN match..</param>
-        /// <param name="signature">The signature itself.</param>
-        /// <param name="businessClassification">The classification of the business..</param>
-        /// <param name="businessName">The name of the business associated with the form..</param>
-        /// <param name="businessOther">businessOther.</param>
-        /// <param name="exemptPayeeCode">exemptPayeeCode.</param>
-        /// <param name="exemptFatcaCode">exemptFatcaCode.</param>
-        /// <param name="accountNumber">The account number associated with the form..</param>
-        /// <param name="foreignCountryIndicator">Indicates whether the individual or entity is in a foreign country..</param>
-        /// <param name="foreignAddress">The foreign address of the individual or entity..</param>
-        /// <param name="backupWithholding">Indicates whether backup withholding applies..</param>
-        /// <param name="is1099able">is1099able.</param>
-        /// <param name="foreignPartnerOwnerOrBeneficiary">Indicates whether the individual is a foreign partner, owner, or beneficiary..</param>
-        public W8ImyFormDataModel(DateTime? signedDate = default(DateTime?), string disregardedEntityChapter4FatcaStatus = default(string), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), string displayName = default(string), string email = default(string), string tin = default(string), string typeOfTin = default(string), string name = default(string), string citizenshipCountry = default(string), string chapter3EntityType = default(string), string chapter4FatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residencePostalCode = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingPostalCode = default(string), string mailingCountry = default(string), string disregardedEntity = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedPostalCode = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), string ein = default(string), string einType = default(string), string giin = default(string), string foreignTin = default(string), string referenceNumber = default(string), bool certifyBox14 = default(bool), bool certifyBox15A = default(bool), bool certifyBox15B = default(bool), bool certifyBox15C = default(bool), bool certifyBox15D = default(bool), bool certifyBox15E = default(bool), bool certifyBox15F = default(bool), bool certifyBox15G = default(bool), bool certifyBox15H = default(bool), bool certifyBox15I = default(bool), bool certifyBox16A = default(bool), bool box16BQddCorporate = default(bool), bool box16BQddPartnership = default(bool), bool box16BQddDisregardedEntity = default(bool), bool certifyBox17A = default(bool), bool certifyBox17B = default(bool), bool certifyBox17C = default(bool), bool certifyBox17D = default(bool), bool certifyBox17E = default(bool), bool certifyBox18A = default(bool), bool certifyBox18B = default(bool), bool certifyBox18C = default(bool), bool certifyBox18D = default(bool), bool certifyBox18E = default(bool), bool certifyBox18F = default(bool), bool certifyBox19A = default(bool), bool certifyBox19B = default(bool), bool certifyBox19C = default(bool), bool certifyBox19D = default(bool), bool certifyBox19E = default(bool), bool certifyBox19F = default(bool), bool certifyBox20 = default(bool), bool certifyBox21A = default(bool), bool certifyBox21B = default(bool), bool certifyBox21C = default(bool), bool certifyBox21D = default(bool), bool certifyBox21E = default(bool), bool certifyBox21F = default(bool), bool certifyBox22 = default(bool), string box23ANameSponsoringEntity = default(string), bool certifyBox23B = default(bool), bool certifyBox23C = default(bool), bool certifyBox24A = default(bool), bool certifyBox24B = default(bool), bool certifyBox24C = default(bool), bool certifyBox25 = default(bool), bool certifyBox26 = default(bool), string box27ANameSponsoringEntity = default(string), bool certifyBox27B = default(bool), bool certifyBox28 = default(bool), bool certifyBox29 = default(bool), bool certifyBox30A = default(bool), bool certifyBox30B = default(bool), bool certifyBox30C = default(bool), bool certifyBox31 = default(bool), bool certifyBox32 = default(bool), string box32IgaCountry = default(string), string box32IgaType = default(string), string box32IgaTreatedAs = default(string), string box32TrusteeOrSponsor = default(string), bool box32TrusteeIsForeign = default(bool), bool certifyBox33A = default(bool), bool certifyBox33B = default(bool), bool certifyBox33C = default(bool), bool certifyBox33D = default(bool), bool certifyBox33E = default(bool), bool certifyBox33F = default(bool), bool certifyBox34 = default(bool), bool certifyBox35 = default(bool), bool certifyBox36 = default(bool), bool certifyBox37A = default(bool), string box37ASecuritiesMarket = default(string), bool certifyBox37B = default(bool), string box37BNameOfEntity = default(string), string box37BSecuritiesMarket = default(string), bool certifyBox38 = default(bool), bool certifyBox39 = default(bool), bool certifyBox40 = default(bool), string box41SponsoringEntity = default(string), bool certifyBox42 = default(bool), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime? box35FormedOnDate = default(DateTime?), DateTime? box36FiledOnDate = default(DateTime?), string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string box3MaritalStatus = default(string), bool? box4LastNameDiffers = default(bool?), int? box5NumAllowances = default(int?), int? otherDependents = default(int?), double? nonJobIncome = default(double?), double? deductions = default(double?), double? box6AdditionalWithheld = default(double?), bool? box7ExemptFromWithholding = default(bool?), string officeCode = default(string), bool? ftinNotRequired = default(bool?), string benefitLimitation = default(string), string part4SponsoringEntity = default(string), string part4SponsoringEntityGiin = default(string), string part7SponsoringEntity = default(string), string part12IgaCountry = default(string), string part12IgaType = default(string), string part12FatcaStatusUnderIgaAnnexIi = default(string), string part12TrusteeName = default(string), bool? part12TrusteeIsForeign = default(bool?), string part12Model2IgaGiin = default(string), string box37AExchange = default(string), string box37BExchange = default(string), string box37BEntity = default(string), string part28SponsoringEntity = default(string), string part28SponsoringEntityGiin = default(string), bool? makingTreatyClaim = default(bool?), string treatyCountry = default(string), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), bool certifyBox14A = default(bool), bool certifyBox14B = default(bool), bool certifyBox14C = default(bool), bool certifyBox171 = default(bool), bool certifyBox172 = default(bool), bool certifyBox18 = default(bool), bool certifyBox19 = default(bool), bool certifyBox21 = default(bool), bool certifyBox23 = default(bool), bool certifyBox24D = default(bool), bool certifyBox25A = default(bool), bool certifyBox25B = default(bool), bool certifyBox25C = default(bool), bool certifyBox27 = default(bool), bool certifyBox28A = default(bool), bool certifyBox28B = default(bool), bool certifyBox29A = default(bool), bool certifyBox29B = default(bool), bool certifyBox29C = default(bool), bool certifyBox29D = default(bool), bool certifyBox29E = default(bool), bool certifyBox29F = default(bool), bool certifyBox30 = default(bool), bool certifyBox33 = default(bool), bool certifyBox40A = default(bool), bool certifyBox40B = default(bool), bool certifyBox40C = default(bool), bool certifyBox41 = default(bool), bool certifyBox43 = default(bool), bool certifyPart29Signature = default(bool), DateTime? part19FormationOrResolutionDate = default(DateTime?), DateTime? part20FilingDate = default(DateTime?), DateTime? part21DeterminationDate = default(DateTime?), List<W8BenESubstantialUsOwnerDataModel> substantialUsOwners = default(List<W8BenESubstantialUsOwnerDataModel>), string birthday = default(string), bool? foreignTinNotRequired = default(bool?), bool? archived = default(bool?), string referenceId = default(string), int? companyId = default(int?), string signerCapacity = default(string), string tinMatchStatus = default(string), string signature = default(string), string businessClassification = default(string), string businessName = default(string), string businessOther = default(string), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), string accountNumber = default(string), bool? foreignCountryIndicator = default(bool?), string foreignAddress = default(string), bool? backupWithholding = default(bool?), bool? is1099able = default(bool?), bool? foreignPartnerOwnerOrBeneficiary = default(bool?))
+        /// <param name="archived">Indicates whether the form is archived..</param>
+        /// <param name="entryStatusDate">entryStatusDate.</param>
+        /// <param name="pdfJson">pdfJson.</param>
+        /// <param name="pdfVersion">pdfVersion.</param>
+        /// <param name="requestToken">requestToken.</param>
+        /// <param name="signature">signature.</param>
+        /// <param name="mobile">mobile.</param>
+        /// <param name="appVersion">appVersion.</param>
+        /// <param name="platform">platform.</param>
+        /// <param name="osVersion">osVersion.</param>
+        /// <param name="ancestorId">ancestorId.</param>
+        public W8ImyFormDataModel(DateTime? signedDate = default(DateTime?), string disregardedEntityChapter4FatcaStatus = default(string), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), string displayName = default(string), string email = default(string), string tin = default(string), string typeOfTin = default(string), string name = default(string), string citizenshipCountry = default(string), string chapter3EntityType = default(string), string chapter4FatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residencePostalCode = default(string), string residenceCountry = default(string), bool? residenceIsMailing = default(bool?), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingPostalCode = default(string), string mailingCountry = default(string), string disregardedEntity = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedPostalCode = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), string ein = default(string), string einType = default(string), string giin = default(string), string foreignTin = default(string), string referenceNumber = default(string), bool? certifyBox14 = default(bool?), bool? certifyBox15A = default(bool?), bool? certifyBox15B = default(bool?), bool? certifyBox15C = default(bool?), bool? certifyBox15D = default(bool?), bool? certifyBox15E = default(bool?), bool? certifyBox15F = default(bool?), bool? certifyBox15G = default(bool?), bool? certifyBox15H = default(bool?), bool? certifyBox15I = default(bool?), bool? certifyBox16A = default(bool?), bool? box16BQddCorporate = default(bool?), bool? box16BQddPartnership = default(bool?), bool? box16BQddDisregardedEntity = default(bool?), bool? certifyBox17A = default(bool?), bool? certifyBox17B = default(bool?), bool? certifyBox17C = default(bool?), bool? certifyBox17D = default(bool?), bool? certifyBox17E = default(bool?), bool? certifyBox18A = default(bool?), bool? certifyBox18B = default(bool?), bool? certifyBox18C = default(bool?), bool? certifyBox18D = default(bool?), bool? certifyBox18E = default(bool?), bool? certifyBox18F = default(bool?), bool? certifyBox19A = default(bool?), bool? certifyBox19B = default(bool?), bool? certifyBox19C = default(bool?), bool? certifyBox19D = default(bool?), bool? certifyBox19E = default(bool?), bool? certifyBox19F = default(bool?), bool? certifyBox20 = default(bool?), bool? certifyBox21A = default(bool?), bool? certifyBox21B = default(bool?), bool? certifyBox21C = default(bool?), bool? certifyBox21D = default(bool?), bool? certifyBox21E = default(bool?), bool? certifyBox21F = default(bool?), bool? certifyBox22 = default(bool?), string box23ANameSponsoringEntity = default(string), bool? certifyBox23B = default(bool?), bool? certifyBox23C = default(bool?), bool? certifyBox24A = default(bool?), bool? certifyBox24B = default(bool?), bool? certifyBox24C = default(bool?), bool? certifyBox25 = default(bool?), bool? certifyBox26 = default(bool?), string box27ANameSponsoringEntity = default(string), bool? certifyBox27B = default(bool?), bool? certifyBox28 = default(bool?), bool? certifyBox29 = default(bool?), bool? certifyBox30A = default(bool?), bool? certifyBox30B = default(bool?), bool? certifyBox30C = default(bool?), bool? certifyBox31 = default(bool?), bool? certifyBox32 = default(bool?), string box32IgaCountry = default(string), string box32IgaType = default(string), string box32IgaTreatedAs = default(string), string box32TrusteeOrSponsor = default(string), bool? box32TrusteeIsForeign = default(bool?), bool? certifyBox33A = default(bool?), bool? certifyBox33B = default(bool?), bool? certifyBox33C = default(bool?), bool? certifyBox33D = default(bool?), bool? certifyBox33E = default(bool?), bool? certifyBox33F = default(bool?), bool? certifyBox34 = default(bool?), bool? certifyBox35 = default(bool?), bool? certifyBox36 = default(bool?), bool? certifyBox37A = default(bool?), string box37ASecuritiesMarket = default(string), bool? certifyBox37B = default(bool?), string box37BNameOfEntity = default(string), string box37BSecuritiesMarket = default(string), bool? certifyBox38 = default(bool?), bool? certifyBox39 = default(bool?), bool? certifyBox40 = default(bool?), string box41SponsoringEntity = default(string), bool? certifyBox42 = default(bool?), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime? box35FormedOnDate = default(DateTime?), DateTime? box36FiledOnDate = default(DateTime?), string id = default(string), string entryStatus = default(string), string referenceId = default(string), string companyId = default(string), bool? archived = default(bool?), DateTime? entryStatusDate = default(DateTime?), string pdfJson = default(string), string pdfVersion = default(string), string requestToken = default(string), string signature = default(string), bool? mobile = default(bool?), string appVersion = default(string), string platform = default(string), string osVersion = default(string), string ancestorId = default(string))
         {
             this.SignedDate = signedDate;
             this.DisregardedEntityChapter4FatcaStatus = disregardedEntityChapter4FatcaStatus;
@@ -433,98 +356,21 @@ namespace Avalara.SDK.Model.A1099.V2
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Box35FormedOnDate = box35FormedOnDate;
             this.Box36FiledOnDate = box36FiledOnDate;
-            this.EmployeeFirstName = employeeFirstName;
-            this.EmployeeMiddleName = employeeMiddleName;
-            this.EmployeeLastName = employeeLastName;
-            this.EmployeeNameSuffix = employeeNameSuffix;
-            this.Address = address;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
-            this.Box3MaritalStatus = box3MaritalStatus;
-            this.Box4LastNameDiffers = box4LastNameDiffers;
-            this.Box5NumAllowances = box5NumAllowances;
-            this.OtherDependents = otherDependents;
-            this.NonJobIncome = nonJobIncome;
-            this.Deductions = deductions;
-            this.Box6AdditionalWithheld = box6AdditionalWithheld;
-            this.Box7ExemptFromWithholding = box7ExemptFromWithholding;
-            this.OfficeCode = officeCode;
-            this.FtinNotRequired = ftinNotRequired;
-            this.BenefitLimitation = benefitLimitation;
-            this.Part4SponsoringEntity = part4SponsoringEntity;
-            this.Part4SponsoringEntityGiin = part4SponsoringEntityGiin;
-            this.Part7SponsoringEntity = part7SponsoringEntity;
-            this.Part12IgaCountry = part12IgaCountry;
-            this.Part12IgaType = part12IgaType;
-            this.Part12FatcaStatusUnderIgaAnnexIi = part12FatcaStatusUnderIgaAnnexIi;
-            this.Part12TrusteeName = part12TrusteeName;
-            this.Part12TrusteeIsForeign = part12TrusteeIsForeign;
-            this.Part12Model2IgaGiin = part12Model2IgaGiin;
-            this.Box37AExchange = box37AExchange;
-            this.Box37BExchange = box37BExchange;
-            this.Box37BEntity = box37BEntity;
-            this.Part28SponsoringEntity = part28SponsoringEntity;
-            this.Part28SponsoringEntityGiin = part28SponsoringEntityGiin;
-            this.MakingTreatyClaim = makingTreatyClaim;
-            this.TreatyCountry = treatyCountry;
-            this.TreatyArticle = treatyArticle;
-            this.WithholdingRate = withholdingRate;
-            this.IncomeType = incomeType;
-            this.TreatyReasons = treatyReasons;
-            this.CertifyBox14A = certifyBox14A;
-            this.CertifyBox14B = certifyBox14B;
-            this.CertifyBox14C = certifyBox14C;
-            this.CertifyBox171 = certifyBox171;
-            this.CertifyBox172 = certifyBox172;
-            this.CertifyBox18 = certifyBox18;
-            this.CertifyBox19 = certifyBox19;
-            this.CertifyBox21 = certifyBox21;
-            this.CertifyBox23 = certifyBox23;
-            this.CertifyBox24D = certifyBox24D;
-            this.CertifyBox25A = certifyBox25A;
-            this.CertifyBox25B = certifyBox25B;
-            this.CertifyBox25C = certifyBox25C;
-            this.CertifyBox27 = certifyBox27;
-            this.CertifyBox28A = certifyBox28A;
-            this.CertifyBox28B = certifyBox28B;
-            this.CertifyBox29A = certifyBox29A;
-            this.CertifyBox29B = certifyBox29B;
-            this.CertifyBox29C = certifyBox29C;
-            this.CertifyBox29D = certifyBox29D;
-            this.CertifyBox29E = certifyBox29E;
-            this.CertifyBox29F = certifyBox29F;
-            this.CertifyBox30 = certifyBox30;
-            this.CertifyBox33 = certifyBox33;
-            this.CertifyBox40A = certifyBox40A;
-            this.CertifyBox40B = certifyBox40B;
-            this.CertifyBox40C = certifyBox40C;
-            this.CertifyBox41 = certifyBox41;
-            this.CertifyBox43 = certifyBox43;
-            this.CertifyPart29Signature = certifyPart29Signature;
-            this.Part19FormationOrResolutionDate = part19FormationOrResolutionDate;
-            this.Part20FilingDate = part20FilingDate;
-            this.Part21DeterminationDate = part21DeterminationDate;
-            this.SubstantialUsOwners = substantialUsOwners;
-            this.Birthday = birthday;
-            this.ForeignTinNotRequired = foreignTinNotRequired;
-            this.Archived = archived;
+            this.Id = id;
+            this.EntryStatus = entryStatus;
             this.ReferenceId = referenceId;
             this.CompanyId = companyId;
-            this.SignerCapacity = signerCapacity;
-            this.TinMatchStatus = tinMatchStatus;
+            this.Archived = archived;
+            this.EntryStatusDate = entryStatusDate;
+            this.PdfJson = pdfJson;
+            this.PdfVersion = pdfVersion;
+            this.RequestToken = requestToken;
             this.Signature = signature;
-            this.BusinessClassification = businessClassification;
-            this.BusinessName = businessName;
-            this.BusinessOther = businessOther;
-            this.ExemptPayeeCode = exemptPayeeCode;
-            this.ExemptFatcaCode = exemptFatcaCode;
-            this.AccountNumber = accountNumber;
-            this.ForeignCountryIndicator = foreignCountryIndicator;
-            this.ForeignAddress = foreignAddress;
-            this.BackupWithholding = backupWithholding;
-            this.Is1099able = is1099able;
-            this.ForeignPartnerOwnerOrBeneficiary = foreignPartnerOwnerOrBeneficiary;
+            this.Mobile = mobile;
+            this.AppVersion = appVersion;
+            this.Platform = platform;
+            this.OsVersion = osVersion;
+            this.AncestorId = ancestorId;
         }
 
         /// <summary>
@@ -664,9 +510,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether the residence address is also the mailing address.
         /// </summary>
         /// <value>Indicates whether the residence address is also the mailing address.</value>
-        /// <example>false</example>
         [DataMember(Name = "residenceIsMailing", EmitDefaultValue = true)]
-        public bool ResidenceIsMailing { get; set; }
+        public bool? ResidenceIsMailing { get; set; }
 
         /// <summary>
         /// The mailing address.
@@ -799,313 +644,274 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 14.
         /// </summary>
         /// <value>Indicates certification for box 14.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox14", EmitDefaultValue = true)]
-        public bool CertifyBox14 { get; set; }
+        public bool? CertifyBox14 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15A.
         /// </summary>
         /// <value>Indicates certification for box 15A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15A", EmitDefaultValue = true)]
-        public bool CertifyBox15A { get; set; }
+        public bool? CertifyBox15A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15B.
         /// </summary>
         /// <value>Indicates certification for box 15B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15B", EmitDefaultValue = true)]
-        public bool CertifyBox15B { get; set; }
+        public bool? CertifyBox15B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15C.
         /// </summary>
         /// <value>Indicates certification for box 15C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15C", EmitDefaultValue = true)]
-        public bool CertifyBox15C { get; set; }
+        public bool? CertifyBox15C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15D.
         /// </summary>
         /// <value>Indicates certification for box 15D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15D", EmitDefaultValue = true)]
-        public bool CertifyBox15D { get; set; }
+        public bool? CertifyBox15D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15E.
         /// </summary>
         /// <value>Indicates certification for box 15E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15E", EmitDefaultValue = true)]
-        public bool CertifyBox15E { get; set; }
+        public bool? CertifyBox15E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15F.
         /// </summary>
         /// <value>Indicates certification for box 15F.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15F", EmitDefaultValue = true)]
-        public bool CertifyBox15F { get; set; }
+        public bool? CertifyBox15F { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15G.
         /// </summary>
         /// <value>Indicates certification for box 15G.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15G", EmitDefaultValue = true)]
-        public bool CertifyBox15G { get; set; }
+        public bool? CertifyBox15G { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15H.
         /// </summary>
         /// <value>Indicates certification for box 15H.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15H", EmitDefaultValue = true)]
-        public bool CertifyBox15H { get; set; }
+        public bool? CertifyBox15H { get; set; }
 
         /// <summary>
         /// Indicates certification for box 15I.
         /// </summary>
         /// <value>Indicates certification for box 15I.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox15I", EmitDefaultValue = true)]
-        public bool CertifyBox15I { get; set; }
+        public bool? CertifyBox15I { get; set; }
 
         /// <summary>
         /// Indicates certification for box 16A.
         /// </summary>
         /// <value>Indicates certification for box 16A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox16A", EmitDefaultValue = true)]
-        public bool CertifyBox16A { get; set; }
+        public bool? CertifyBox16A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 16B as a QDD corporate entity.
         /// </summary>
         /// <value>Indicates certification for box 16B as a QDD corporate entity.</value>
-        /// <example>false</example>
         [DataMember(Name = "box16BQddCorporate", EmitDefaultValue = true)]
-        public bool Box16BQddCorporate { get; set; }
+        public bool? Box16BQddCorporate { get; set; }
 
         /// <summary>
         /// Indicates certification for box 16B as a QDD partnership.
         /// </summary>
         /// <value>Indicates certification for box 16B as a QDD partnership.</value>
-        /// <example>false</example>
         [DataMember(Name = "box16BQddPartnership", EmitDefaultValue = true)]
-        public bool Box16BQddPartnership { get; set; }
+        public bool? Box16BQddPartnership { get; set; }
 
         /// <summary>
         /// Indicates certification for box 16B as a QDD disregarded entity.
         /// </summary>
         /// <value>Indicates certification for box 16B as a QDD disregarded entity.</value>
-        /// <example>false</example>
         [DataMember(Name = "box16BQddDisregardedEntity", EmitDefaultValue = true)]
-        public bool Box16BQddDisregardedEntity { get; set; }
+        public bool? Box16BQddDisregardedEntity { get; set; }
 
         /// <summary>
         /// Indicates certification for box 17A.
         /// </summary>
         /// <value>Indicates certification for box 17A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox17A", EmitDefaultValue = true)]
-        public bool CertifyBox17A { get; set; }
+        public bool? CertifyBox17A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 17B.
         /// </summary>
         /// <value>Indicates certification for box 17B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox17B", EmitDefaultValue = true)]
-        public bool CertifyBox17B { get; set; }
+        public bool? CertifyBox17B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 17C.
         /// </summary>
         /// <value>Indicates certification for box 17C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox17C", EmitDefaultValue = true)]
-        public bool CertifyBox17C { get; set; }
+        public bool? CertifyBox17C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 17D.
         /// </summary>
         /// <value>Indicates certification for box 17D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox17D", EmitDefaultValue = true)]
-        public bool CertifyBox17D { get; set; }
+        public bool? CertifyBox17D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 17E.
         /// </summary>
         /// <value>Indicates certification for box 17E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox17E", EmitDefaultValue = true)]
-        public bool CertifyBox17E { get; set; }
+        public bool? CertifyBox17E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18A.
         /// </summary>
         /// <value>Indicates certification for box 18A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18A", EmitDefaultValue = true)]
-        public bool CertifyBox18A { get; set; }
+        public bool? CertifyBox18A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18B.
         /// </summary>
         /// <value>Indicates certification for box 18B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18B", EmitDefaultValue = true)]
-        public bool CertifyBox18B { get; set; }
+        public bool? CertifyBox18B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18C.
         /// </summary>
         /// <value>Indicates certification for box 18C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18C", EmitDefaultValue = true)]
-        public bool CertifyBox18C { get; set; }
+        public bool? CertifyBox18C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18D.
         /// </summary>
         /// <value>Indicates certification for box 18D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18D", EmitDefaultValue = true)]
-        public bool CertifyBox18D { get; set; }
+        public bool? CertifyBox18D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18E.
         /// </summary>
         /// <value>Indicates certification for box 18E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18E", EmitDefaultValue = true)]
-        public bool CertifyBox18E { get; set; }
+        public bool? CertifyBox18E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 18F.
         /// </summary>
         /// <value>Indicates certification for box 18F.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox18F", EmitDefaultValue = true)]
-        public bool CertifyBox18F { get; set; }
+        public bool? CertifyBox18F { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19A.
         /// </summary>
         /// <value>Indicates certification for box 19A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19A", EmitDefaultValue = true)]
-        public bool CertifyBox19A { get; set; }
+        public bool? CertifyBox19A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19B.
         /// </summary>
         /// <value>Indicates certification for box 19B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19B", EmitDefaultValue = true)]
-        public bool CertifyBox19B { get; set; }
+        public bool? CertifyBox19B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19C.
         /// </summary>
         /// <value>Indicates certification for box 19C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19C", EmitDefaultValue = true)]
-        public bool CertifyBox19C { get; set; }
+        public bool? CertifyBox19C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19D.
         /// </summary>
         /// <value>Indicates certification for box 19D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19D", EmitDefaultValue = true)]
-        public bool CertifyBox19D { get; set; }
+        public bool? CertifyBox19D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19E.
         /// </summary>
         /// <value>Indicates certification for box 19E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19E", EmitDefaultValue = true)]
-        public bool CertifyBox19E { get; set; }
+        public bool? CertifyBox19E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 19F.
         /// </summary>
         /// <value>Indicates certification for box 19F.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox19F", EmitDefaultValue = true)]
-        public bool CertifyBox19F { get; set; }
+        public bool? CertifyBox19F { get; set; }
 
         /// <summary>
         /// Indicates certification for box 20.
         /// </summary>
         /// <value>Indicates certification for box 20.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox20", EmitDefaultValue = true)]
-        public bool CertifyBox20 { get; set; }
+        public bool? CertifyBox20 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21A.
         /// </summary>
         /// <value>Indicates certification for box 21A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21A", EmitDefaultValue = true)]
-        public bool CertifyBox21A { get; set; }
+        public bool? CertifyBox21A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21B.
         /// </summary>
         /// <value>Indicates certification for box 21B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21B", EmitDefaultValue = true)]
-        public bool CertifyBox21B { get; set; }
+        public bool? CertifyBox21B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21C.
         /// </summary>
         /// <value>Indicates certification for box 21C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21C", EmitDefaultValue = true)]
-        public bool CertifyBox21C { get; set; }
+        public bool? CertifyBox21C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21D.
         /// </summary>
         /// <value>Indicates certification for box 21D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21D", EmitDefaultValue = true)]
-        public bool CertifyBox21D { get; set; }
+        public bool? CertifyBox21D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21E.
         /// </summary>
         /// <value>Indicates certification for box 21E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21E", EmitDefaultValue = true)]
-        public bool CertifyBox21E { get; set; }
+        public bool? CertifyBox21E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 21F.
         /// </summary>
         /// <value>Indicates certification for box 21F.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox21F", EmitDefaultValue = true)]
-        public bool CertifyBox21F { get; set; }
+        public bool? CertifyBox21F { get; set; }
 
         /// <summary>
         /// Indicates certification for box 22.
         /// </summary>
         /// <value>Indicates certification for box 22.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox22", EmitDefaultValue = true)]
-        public bool CertifyBox22 { get; set; }
+        public bool? CertifyBox22 { get; set; }
 
         /// <summary>
         /// The name of the sponsoring entity for box 23A.
@@ -1118,57 +924,50 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 23B.
         /// </summary>
         /// <value>Indicates certification for box 23B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox23B", EmitDefaultValue = true)]
-        public bool CertifyBox23B { get; set; }
+        public bool? CertifyBox23B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 23C.
         /// </summary>
         /// <value>Indicates certification for box 23C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox23C", EmitDefaultValue = true)]
-        public bool CertifyBox23C { get; set; }
+        public bool? CertifyBox23C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 24A.
         /// </summary>
         /// <value>Indicates certification for box 24A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox24A", EmitDefaultValue = true)]
-        public bool CertifyBox24A { get; set; }
+        public bool? CertifyBox24A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 24B.
         /// </summary>
         /// <value>Indicates certification for box 24B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox24B", EmitDefaultValue = true)]
-        public bool CertifyBox24B { get; set; }
+        public bool? CertifyBox24B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 24C.
         /// </summary>
         /// <value>Indicates certification for box 24C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox24C", EmitDefaultValue = true)]
-        public bool CertifyBox24C { get; set; }
+        public bool? CertifyBox24C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 25.
         /// </summary>
         /// <value>Indicates certification for box 25.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox25", EmitDefaultValue = true)]
-        public bool CertifyBox25 { get; set; }
+        public bool? CertifyBox25 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 26.
         /// </summary>
         /// <value>Indicates certification for box 26.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox26", EmitDefaultValue = true)]
-        public bool CertifyBox26 { get; set; }
+        public bool? CertifyBox26 { get; set; }
 
         /// <summary>
         /// The name of the sponsoring entity for box 27A.
@@ -1181,65 +980,57 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 27B.
         /// </summary>
         /// <value>Indicates certification for box 27B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox27B", EmitDefaultValue = true)]
-        public bool CertifyBox27B { get; set; }
+        public bool? CertifyBox27B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 28.
         /// </summary>
         /// <value>Indicates certification for box 28.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox28", EmitDefaultValue = true)]
-        public bool CertifyBox28 { get; set; }
+        public bool? CertifyBox28 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 29.
         /// </summary>
         /// <value>Indicates certification for box 29.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox29", EmitDefaultValue = true)]
-        public bool CertifyBox29 { get; set; }
+        public bool? CertifyBox29 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 30A.
         /// </summary>
         /// <value>Indicates certification for box 30A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox30A", EmitDefaultValue = true)]
-        public bool CertifyBox30A { get; set; }
+        public bool? CertifyBox30A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 30B.
         /// </summary>
         /// <value>Indicates certification for box 30B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox30B", EmitDefaultValue = true)]
-        public bool CertifyBox30B { get; set; }
+        public bool? CertifyBox30B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 30C.
         /// </summary>
         /// <value>Indicates certification for box 30C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox30C", EmitDefaultValue = true)]
-        public bool CertifyBox30C { get; set; }
+        public bool? CertifyBox30C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 31.
         /// </summary>
         /// <value>Indicates certification for box 31.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox31", EmitDefaultValue = true)]
-        public bool CertifyBox31 { get; set; }
+        public bool? CertifyBox31 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 32.
         /// </summary>
         /// <value>Indicates certification for box 32.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox32", EmitDefaultValue = true)]
-        public bool CertifyBox32 { get; set; }
+        public bool? CertifyBox32 { get; set; }
 
         /// <summary>
         /// The IGA country information for box 32.
@@ -1273,89 +1064,78 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether the trustee is foreign for box 32.
         /// </summary>
         /// <value>Indicates whether the trustee is foreign for box 32.</value>
-        /// <example>false</example>
         [DataMember(Name = "box32TrusteeIsForeign", EmitDefaultValue = true)]
-        public bool Box32TrusteeIsForeign { get; set; }
+        public bool? Box32TrusteeIsForeign { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33A.
         /// </summary>
         /// <value>Indicates certification for box 33A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33A", EmitDefaultValue = true)]
-        public bool CertifyBox33A { get; set; }
+        public bool? CertifyBox33A { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33B.
         /// </summary>
         /// <value>Indicates certification for box 33B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33B", EmitDefaultValue = true)]
-        public bool CertifyBox33B { get; set; }
+        public bool? CertifyBox33B { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33C.
         /// </summary>
         /// <value>Indicates certification for box 33C.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33C", EmitDefaultValue = true)]
-        public bool CertifyBox33C { get; set; }
+        public bool? CertifyBox33C { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33D.
         /// </summary>
         /// <value>Indicates certification for box 33D.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33D", EmitDefaultValue = true)]
-        public bool CertifyBox33D { get; set; }
+        public bool? CertifyBox33D { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33E.
         /// </summary>
         /// <value>Indicates certification for box 33E.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33E", EmitDefaultValue = true)]
-        public bool CertifyBox33E { get; set; }
+        public bool? CertifyBox33E { get; set; }
 
         /// <summary>
         /// Indicates certification for box 33F.
         /// </summary>
         /// <value>Indicates certification for box 33F.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox33F", EmitDefaultValue = true)]
-        public bool CertifyBox33F { get; set; }
+        public bool? CertifyBox33F { get; set; }
 
         /// <summary>
         /// Indicates certification for box 34.
         /// </summary>
         /// <value>Indicates certification for box 34.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox34", EmitDefaultValue = true)]
-        public bool CertifyBox34 { get; set; }
+        public bool? CertifyBox34 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 35.
         /// </summary>
         /// <value>Indicates certification for box 35.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox35", EmitDefaultValue = true)]
-        public bool CertifyBox35 { get; set; }
+        public bool? CertifyBox35 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 36.
         /// </summary>
         /// <value>Indicates certification for box 36.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox36", EmitDefaultValue = true)]
-        public bool CertifyBox36 { get; set; }
+        public bool? CertifyBox36 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 37A.
         /// </summary>
         /// <value>Indicates certification for box 37A.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox37A", EmitDefaultValue = true)]
-        public bool CertifyBox37A { get; set; }
+        public bool? CertifyBox37A { get; set; }
 
         /// <summary>
         /// The securities market information for box 37A.
@@ -1368,9 +1148,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 37B.
         /// </summary>
         /// <value>Indicates certification for box 37B.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox37B", EmitDefaultValue = true)]
-        public bool CertifyBox37B { get; set; }
+        public bool? CertifyBox37B { get; set; }
 
         /// <summary>
         /// The name of the entity for box 37B.
@@ -1390,25 +1169,22 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 38.
         /// </summary>
         /// <value>Indicates certification for box 38.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox38", EmitDefaultValue = true)]
-        public bool CertifyBox38 { get; set; }
+        public bool? CertifyBox38 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 39.
         /// </summary>
         /// <value>Indicates certification for box 39.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox39", EmitDefaultValue = true)]
-        public bool CertifyBox39 { get; set; }
+        public bool? CertifyBox39 { get; set; }
 
         /// <summary>
         /// Indicates certification for box 40.
         /// </summary>
         /// <value>Indicates certification for box 40.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox40", EmitDefaultValue = true)]
-        public bool CertifyBox40 { get; set; }
+        public bool? CertifyBox40 { get; set; }
 
         /// <summary>
         /// The sponsoring entity information for box 41.
@@ -1421,9 +1197,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates certification for box 42.
         /// </summary>
         /// <value>Indicates certification for box 42.</value>
-        /// <example>false</example>
         [DataMember(Name = "certifyBox42", EmitDefaultValue = true)]
-        public bool CertifyBox42 { get; set; }
+        public bool? CertifyBox42 { get; set; }
 
         /// <summary>
         /// The name of the signer of the form.
@@ -1454,577 +1229,21 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime? Box36FiledOnDate { get; set; }
 
         /// <summary>
-        /// The first name of the employee.
+        /// Gets or Sets Id
         /// </summary>
-        /// <value>The first name of the employee.</value>
-        /// <example>Jane</example>
-        [DataMember(Name = "employeeFirstName", EmitDefaultValue = true)]
-        public string EmployeeFirstName { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public string Id { get; set; }
 
         /// <summary>
-        /// The middle name of the employee.
+        /// Gets or Sets EntryStatus
         /// </summary>
-        /// <value>The middle name of the employee.</value>
-        /// <example>A.</example>
-        [DataMember(Name = "employeeMiddleName", EmitDefaultValue = true)]
-        public string EmployeeMiddleName { get; set; }
-
-        /// <summary>
-        /// The last name of the employee.
-        /// </summary>
-        /// <value>The last name of the employee.</value>
-        /// <example>Smith</example>
-        [DataMember(Name = "employeeLastName", EmitDefaultValue = true)]
-        public string EmployeeLastName { get; set; }
-
-        /// <summary>
-        /// The name suffix of the employee.
-        /// </summary>
-        /// <value>The name suffix of the employee.</value>
-        /// <example>Jr.</example>
-        [DataMember(Name = "employeeNameSuffix", EmitDefaultValue = true)]
-        public string EmployeeNameSuffix { get; set; }
-
-        /// <summary>
-        /// The address of the individual or entity.
-        /// </summary>
-        /// <value>The address of the individual or entity.</value>
-        /// <example>123 Main St</example>
-        [DataMember(Name = "address", EmitDefaultValue = true)]
-        public string Address { get; set; }
-
-        /// <summary>
-        /// The city of the address.
-        /// </summary>
-        /// <value>The city of the address.</value>
-        /// <example>Anytown</example>
-        [DataMember(Name = "city", EmitDefaultValue = true)]
-        public string City { get; set; }
-
-        /// <summary>
-        /// The state of the address.
-        /// </summary>
-        /// <value>The state of the address.</value>
-        /// <example>CA</example>
-        [DataMember(Name = "state", EmitDefaultValue = true)]
-        public string State { get; set; }
-
-        /// <summary>
-        /// The ZIP code of the address.
-        /// </summary>
-        /// <value>The ZIP code of the address.</value>
-        /// <example>90210</example>
-        [DataMember(Name = "zip", EmitDefaultValue = true)]
-        public string Zip { get; set; }
-
-        /// <summary>
-        /// The marital status of the employee.
-        /// </summary>
-        /// <value>The marital status of the employee.</value>
-        /// <example>Married</example>
-        [DataMember(Name = "box3MaritalStatus", EmitDefaultValue = true)]
-        public string Box3MaritalStatus { get; set; }
-
-        /// <summary>
-        /// Indicates whether the last name differs from prior records.
-        /// </summary>
-        /// <value>Indicates whether the last name differs from prior records.</value>
-        /// <example>false</example>
-        [DataMember(Name = "box4LastNameDiffers", EmitDefaultValue = true)]
-        public bool? Box4LastNameDiffers { get; set; }
-
-        /// <summary>
-        /// The number of allowances claimed by the employee.
-        /// </summary>
-        /// <value>The number of allowances claimed by the employee.</value>
-        /// <example>3</example>
-        [DataMember(Name = "box5NumAllowances", EmitDefaultValue = true)]
-        public int? Box5NumAllowances { get; set; }
-
-        /// <summary>
-        /// The number of dependents other than allowances.
-        /// </summary>
-        /// <value>The number of dependents other than allowances.</value>
-        /// <example>1</example>
-        [DataMember(Name = "otherDependents", EmitDefaultValue = true)]
-        public int? OtherDependents { get; set; }
-
-        /// <summary>
-        /// The amount of non-job income.
-        /// </summary>
-        /// <value>The amount of non-job income.</value>
-        /// <example>5000.0</example>
-        [DataMember(Name = "nonJobIncome", EmitDefaultValue = true)]
-        public double? NonJobIncome { get; set; }
-
-        /// <summary>
-        /// The amount of deductions claimed.
-        /// </summary>
-        /// <value>The amount of deductions claimed.</value>
-        /// <example>2000.0</example>
-        [DataMember(Name = "deductions", EmitDefaultValue = true)]
-        public double? Deductions { get; set; }
-
-        /// <summary>
-        /// The additional amount withheld.
-        /// </summary>
-        /// <value>The additional amount withheld.</value>
-        /// <example>150.0</example>
-        [DataMember(Name = "box6AdditionalWithheld", EmitDefaultValue = true)]
-        public double? Box6AdditionalWithheld { get; set; }
-
-        /// <summary>
-        /// Indicates whether the employee is exempt from withholding.
-        /// </summary>
-        /// <value>Indicates whether the employee is exempt from withholding.</value>
-        /// <example>false</example>
-        [DataMember(Name = "box7ExemptFromWithholding", EmitDefaultValue = true)]
-        public bool? Box7ExemptFromWithholding { get; set; }
-
-        /// <summary>
-        /// The office code associated with the form.
-        /// </summary>
-        /// <value>The office code associated with the form.</value>
-        /// <example>OC12345</example>
-        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
-        public string OfficeCode { get; set; }
-
-        /// <summary>
-        /// Indicates whether a foreign TIN is not required.
-        /// </summary>
-        /// <value>Indicates whether a foreign TIN is not required.</value>
-        [DataMember(Name = "ftinNotRequired", EmitDefaultValue = true)]
-        public bool? FtinNotRequired { get; set; }
-
-        /// <summary>
-        /// The benefit limitation for tax treaty claims.
-        /// </summary>
-        /// <value>The benefit limitation for tax treaty claims.</value>
-        /// <example>Treaty Benefit</example>
-        [DataMember(Name = "benefitLimitation", EmitDefaultValue = true)]
-        public string BenefitLimitation { get; set; }
-
-        /// <summary>
-        /// The sponsoring entity information for Part 4.
-        /// </summary>
-        /// <value>The sponsoring entity information for Part 4.</value>
-        /// <example>Parent Company</example>
-        [DataMember(Name = "part4SponsoringEntity", EmitDefaultValue = true)]
-        public string Part4SponsoringEntity { get; set; }
-
-        /// <summary>
-        /// The GIIN for the sponsoring entity in Part 4.
-        /// </summary>
-        /// <value>The GIIN for the sponsoring entity in Part 4.</value>
-        /// <example>GIIN11223344</example>
-        [DataMember(Name = "part4SponsoringEntityGiin", EmitDefaultValue = true)]
-        public string Part4SponsoringEntityGiin { get; set; }
-
-        /// <summary>
-        /// The sponsoring entity information for Part 7.
-        /// </summary>
-        /// <value>The sponsoring entity information for Part 7.</value>
-        /// <example>Affiliated Organization</example>
-        [DataMember(Name = "part7SponsoringEntity", EmitDefaultValue = true)]
-        public string Part7SponsoringEntity { get; set; }
-
-        /// <summary>
-        /// The IGA country information for Part 12.
-        /// </summary>
-        /// <value>The IGA country information for Part 12.</value>
-        /// <example>USA</example>
-        [DataMember(Name = "part12IgaCountry", EmitDefaultValue = true)]
-        public string Part12IgaCountry { get; set; }
-
-        /// <summary>
-        /// The IGA type information for Part 12.
-        /// </summary>
-        /// <value>The IGA type information for Part 12.</value>
-        /// <example>Model 1</example>
-        [DataMember(Name = "part12IgaType", EmitDefaultValue = true)]
-        public string Part12IgaType { get; set; }
-
-        /// <summary>
-        /// The FATCA status under IGA Annex II for Part 12.
-        /// </summary>
-        /// <value>The FATCA status under IGA Annex II for Part 12.</value>
-        /// <example>Registered Deemed Compliant</example>
-        [DataMember(Name = "part12FatcaStatusUnderIgaAnnexIi", EmitDefaultValue = true)]
-        public string Part12FatcaStatusUnderIgaAnnexIi { get; set; }
-
-        /// <summary>
-        /// The trustee name for Part 12.
-        /// </summary>
-        /// <value>The trustee name for Part 12.</value>
-        /// <example>Trustee Inc.</example>
-        [DataMember(Name = "part12TrusteeName", EmitDefaultValue = true)]
-        public string Part12TrusteeName { get; set; }
-
-        /// <summary>
-        /// Indicates whether the trustee is foreign for Part 12.
-        /// </summary>
-        /// <value>Indicates whether the trustee is foreign for Part 12.</value>
-        /// <example>false</example>
-        [DataMember(Name = "part12TrusteeIsForeign", EmitDefaultValue = true)]
-        public bool? Part12TrusteeIsForeign { get; set; }
-
-        /// <summary>
-        /// The GIIN for Model 2 IGA in Part 12.
-        /// </summary>
-        /// <value>The GIIN for Model 2 IGA in Part 12.</value>
-        /// <example>GIIN33445566</example>
-        [DataMember(Name = "part12Model2IgaGiin", EmitDefaultValue = true)]
-        public string Part12Model2IgaGiin { get; set; }
-
-        /// <summary>
-        /// The exchange information for Box 37A.
-        /// </summary>
-        /// <value>The exchange information for Box 37A.</value>
-        /// <example>NYSE</example>
-        [DataMember(Name = "box37AExchange", EmitDefaultValue = true)]
-        public string Box37AExchange { get; set; }
-
-        /// <summary>
-        /// The exchange information for Box 37B.
-        /// </summary>
-        /// <value>The exchange information for Box 37B.</value>
-        /// <example>NASDAQ</example>
-        [DataMember(Name = "box37BExchange", EmitDefaultValue = true)]
-        public string Box37BExchange { get; set; }
-
-        /// <summary>
-        /// The entity information for Box 37B.
-        /// </summary>
-        /// <value>The entity information for Box 37B.</value>
-        /// <example>Trading Partner</example>
-        [DataMember(Name = "box37BEntity", EmitDefaultValue = true)]
-        public string Box37BEntity { get; set; }
-
-        /// <summary>
-        /// The sponsoring entity information for Part 28.
-        /// </summary>
-        /// <value>The sponsoring entity information for Part 28.</value>
-        /// <example>Global Trust</example>
-        [DataMember(Name = "part28SponsoringEntity", EmitDefaultValue = true)]
-        public string Part28SponsoringEntity { get; set; }
-
-        /// <summary>
-        /// The GIIN for the sponsoring entity in Part 28.
-        /// </summary>
-        /// <value>The GIIN for the sponsoring entity in Part 28.</value>
-        /// <example>GIIN99887766</example>
-        [DataMember(Name = "part28SponsoringEntityGiin", EmitDefaultValue = true)]
-        public string Part28SponsoringEntityGiin { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MakingTreatyClaim
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "makingTreatyClaim", EmitDefaultValue = true)]
-        public bool? MakingTreatyClaim { get; set; }
-
-        /// <summary>
-        /// The country for which the treaty applies.
-        /// </summary>
-        /// <value>The country for which the treaty applies.</value>
-        /// <example>Canada</example>
-        [DataMember(Name = "treatyCountry", EmitDefaultValue = true)]
-        public string TreatyCountry { get; set; }
-
-        /// <summary>
-        /// The specific article of the treaty being claimed.
-        /// </summary>
-        /// <value>The specific article of the treaty being claimed.</value>
-        /// <example>Article 12</example>
-        [DataMember(Name = "treatyArticle", EmitDefaultValue = true)]
-        public string TreatyArticle { get; set; }
-
-        /// <summary>
-        /// The withholding rate applied as per the treaty.
-        /// </summary>
-        /// <value>The withholding rate applied as per the treaty.</value>
-        /// <example>15%</example>
-        [DataMember(Name = "withholdingRate", EmitDefaultValue = true)]
-        public string WithholdingRate { get; set; }
-
-        /// <summary>
-        /// The type of income covered by the treaty.
-        /// </summary>
-        /// <value>The type of income covered by the treaty.</value>
-        /// <example>Dividend</example>
-        [DataMember(Name = "incomeType", EmitDefaultValue = true)]
-        public string IncomeType { get; set; }
-
-        /// <summary>
-        /// The reasons for claiming treaty benefits.
-        /// </summary>
-        /// <value>The reasons for claiming treaty benefits.</value>
-        /// <example>Reduced withholding</example>
-        [DataMember(Name = "treatyReasons", EmitDefaultValue = true)]
-        public string TreatyReasons { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox14A
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox14A", EmitDefaultValue = true)]
-        public bool CertifyBox14A { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox14B
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox14B", EmitDefaultValue = true)]
-        public bool CertifyBox14B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox14C
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox14C", EmitDefaultValue = true)]
-        public bool CertifyBox14C { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox171
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox17_1", EmitDefaultValue = true)]
-        public bool CertifyBox171 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox172
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox17_2", EmitDefaultValue = true)]
-        public bool CertifyBox172 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox18
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox18", EmitDefaultValue = true)]
-        public bool CertifyBox18 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox19
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox19", EmitDefaultValue = true)]
-        public bool CertifyBox19 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox21
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox21", EmitDefaultValue = true)]
-        public bool CertifyBox21 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox23
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox23", EmitDefaultValue = true)]
-        public bool CertifyBox23 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox24D
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox24D", EmitDefaultValue = true)]
-        public bool CertifyBox24D { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox25A
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox25A", EmitDefaultValue = true)]
-        public bool CertifyBox25A { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox25B
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox25B", EmitDefaultValue = true)]
-        public bool CertifyBox25B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox25C
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox25C", EmitDefaultValue = true)]
-        public bool CertifyBox25C { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox27
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox27", EmitDefaultValue = true)]
-        public bool CertifyBox27 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox28A
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox28A", EmitDefaultValue = true)]
-        public bool CertifyBox28A { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox28B
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox28B", EmitDefaultValue = true)]
-        public bool CertifyBox28B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29A
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29A", EmitDefaultValue = true)]
-        public bool CertifyBox29A { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29B
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29B", EmitDefaultValue = true)]
-        public bool CertifyBox29B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29C
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29C", EmitDefaultValue = true)]
-        public bool CertifyBox29C { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29D
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29D", EmitDefaultValue = true)]
-        public bool CertifyBox29D { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29E
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29E", EmitDefaultValue = true)]
-        public bool CertifyBox29E { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox29F
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox29F", EmitDefaultValue = true)]
-        public bool CertifyBox29F { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox30
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox30", EmitDefaultValue = true)]
-        public bool CertifyBox30 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox33
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox33", EmitDefaultValue = true)]
-        public bool CertifyBox33 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox40A
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox40A", EmitDefaultValue = true)]
-        public bool CertifyBox40A { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox40B
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox40B", EmitDefaultValue = true)]
-        public bool CertifyBox40B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox40C
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox40C", EmitDefaultValue = true)]
-        public bool CertifyBox40C { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox41
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox41", EmitDefaultValue = true)]
-        public bool CertifyBox41 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyBox43
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyBox43", EmitDefaultValue = true)]
-        public bool CertifyBox43 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertifyPart29Signature
-        /// </summary>
-        /// <example>false</example>
-        [DataMember(Name = "certifyPart29Signature", EmitDefaultValue = true)]
-        public bool CertifyPart29Signature { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Part19FormationOrResolutionDate
-        /// </summary>
-        [DataMember(Name = "part19FormationOrResolutionDate", EmitDefaultValue = true)]
-        public DateTime? Part19FormationOrResolutionDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Part20FilingDate
-        /// </summary>
-        [DataMember(Name = "part20FilingDate", EmitDefaultValue = true)]
-        public DateTime? Part20FilingDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Part21DeterminationDate
-        /// </summary>
-        [DataMember(Name = "part21DeterminationDate", EmitDefaultValue = true)]
-        public DateTime? Part21DeterminationDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SubstantialUsOwners
-        /// </summary>
-        /// <example>[]</example>
-        [DataMember(Name = "substantialUsOwners", EmitDefaultValue = false)]
-        public List<W8BenESubstantialUsOwnerDataModel> SubstantialUsOwners { get; set; }
-
-        /// <summary>
-        /// The birthday of the individual associated with the form.
-        /// </summary>
-        /// <value>The birthday of the individual associated with the form.</value>
-        [DataMember(Name = "birthday", EmitDefaultValue = true)]
-        public string Birthday { get; set; }
-
-        /// <summary>
-        /// Indicates whether a foreign TIN is not required.
-        /// </summary>
-        /// <value>Indicates whether a foreign TIN is not required.</value>
-        [DataMember(Name = "foreignTinNotRequired", EmitDefaultValue = true)]
-        public bool? ForeignTinNotRequired { get; set; }
-
-        /// <summary>
-        /// Indicates whether the form is archived.
-        /// </summary>
-        /// <value>Indicates whether the form is archived.</value>
-        /// <example>false</example>
-        [DataMember(Name = "archived", EmitDefaultValue = true)]
-        public bool? Archived { get; set; }
+        [DataMember(Name = "entryStatus", EmitDefaultValue = true)]
+        public string EntryStatus { get; set; }
 
         /// <summary>
         /// A reference identifier for the form.
         /// </summary>
         /// <value>A reference identifier for the form.</value>
-        /// <example>REF67890</example>
         [DataMember(Name = "referenceId", EmitDefaultValue = true)]
         public string ReferenceId { get; set; }
 
@@ -2032,111 +1251,75 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The ID of the associated company.
         /// </summary>
         /// <value>The ID of the associated company.</value>
-        /// <example>4004</example>
         [DataMember(Name = "companyId", EmitDefaultValue = true)]
-        public int? CompanyId { get; set; }
+        public string CompanyId { get; set; }
 
         /// <summary>
-        /// The capacity in which the signer is signing the form.
+        /// Indicates whether the form is archived.
         /// </summary>
-        /// <value>The capacity in which the signer is signing the form.</value>
-        /// <example>Authorized Representative</example>
-        [DataMember(Name = "signerCapacity", EmitDefaultValue = true)]
-        public string SignerCapacity { get; set; }
+        /// <value>Indicates whether the form is archived.</value>
+        [DataMember(Name = "archived", EmitDefaultValue = true)]
+        public bool? Archived { get; set; }
 
         /// <summary>
-        /// The status of the TIN match.
+        /// Gets or Sets EntryStatusDate
         /// </summary>
-        /// <value>The status of the TIN match.</value>
-        /// <example>Match</example>
-        [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
-        public string TinMatchStatus { get; set; }
+        [DataMember(Name = "entryStatusDate", EmitDefaultValue = true)]
+        public DateTime? EntryStatusDate { get; set; }
 
         /// <summary>
-        /// The signature itself
+        /// Gets or Sets PdfJson
         /// </summary>
-        /// <value>The signature itself</value>
+        [DataMember(Name = "pdfJson", EmitDefaultValue = true)]
+        public string PdfJson { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PdfVersion
+        /// </summary>
+        [DataMember(Name = "pdfVersion", EmitDefaultValue = true)]
+        public string PdfVersion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RequestToken
+        /// </summary>
+        [DataMember(Name = "requestToken", EmitDefaultValue = true)]
+        public string RequestToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Signature
+        /// </summary>
         [DataMember(Name = "signature", EmitDefaultValue = true)]
         public string Signature { get; set; }
 
         /// <summary>
-        /// The classification of the business.
+        /// Gets or Sets Mobile
         /// </summary>
-        /// <value>The classification of the business.</value>
-        /// <example>LLC</example>
-        [DataMember(Name = "businessClassification", EmitDefaultValue = true)]
-        public string BusinessClassification { get; set; }
+        [DataMember(Name = "mobile", EmitDefaultValue = true)]
+        public bool? Mobile { get; set; }
 
         /// <summary>
-        /// The name of the business associated with the form.
+        /// Gets or Sets AppVersion
         /// </summary>
-        /// <value>The name of the business associated with the form.</value>
-        /// <example>Doe Enterprises</example>
-        [DataMember(Name = "businessName", EmitDefaultValue = true)]
-        public string BusinessName { get; set; }
+        [DataMember(Name = "appVersion", EmitDefaultValue = true)]
+        public string AppVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets BusinessOther
+        /// Gets or Sets Platform
         /// </summary>
-        [DataMember(Name = "businessOther", EmitDefaultValue = true)]
-        public string BusinessOther { get; set; }
+        [DataMember(Name = "platform", EmitDefaultValue = true)]
+        public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExemptPayeeCode
+        /// Gets or Sets OsVersion
         /// </summary>
-        [DataMember(Name = "exemptPayeeCode", EmitDefaultValue = true)]
-        public string ExemptPayeeCode { get; set; }
+        [DataMember(Name = "osVersion", EmitDefaultValue = true)]
+        public string OsVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExemptFatcaCode
+        /// Gets or Sets AncestorId
         /// </summary>
-        [DataMember(Name = "exemptFatcaCode", EmitDefaultValue = true)]
-        public string ExemptFatcaCode { get; set; }
-
-        /// <summary>
-        /// The account number associated with the form.
-        /// </summary>
-        /// <value>The account number associated with the form.</value>
-        /// <example>ACC123456</example>
-        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
-        public string AccountNumber { get; set; }
-
-        /// <summary>
-        /// Indicates whether the individual or entity is in a foreign country.
-        /// </summary>
-        /// <value>Indicates whether the individual or entity is in a foreign country.</value>
-        /// <example>false</example>
-        [DataMember(Name = "foreignCountryIndicator", EmitDefaultValue = true)]
-        public bool? ForeignCountryIndicator { get; set; }
-
-        /// <summary>
-        /// The foreign address of the individual or entity.
-        /// </summary>
-        /// <value>The foreign address of the individual or entity.</value>
-        [DataMember(Name = "foreignAddress", EmitDefaultValue = true)]
-        public string ForeignAddress { get; set; }
-
-        /// <summary>
-        /// Indicates whether backup withholding applies.
-        /// </summary>
-        /// <value>Indicates whether backup withholding applies.</value>
-        /// <example>false</example>
-        [DataMember(Name = "backupWithholding", EmitDefaultValue = true)]
-        public bool? BackupWithholding { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Is1099able
-        /// </summary>
-        [DataMember(Name = "is1099able", EmitDefaultValue = true)]
-        public bool? Is1099able { get; set; }
-
-        /// <summary>
-        /// Indicates whether the individual is a foreign partner, owner, or beneficiary.
-        /// </summary>
-        /// <value>Indicates whether the individual is a foreign partner, owner, or beneficiary.</value>
-        /// <example>false</example>
-        [DataMember(Name = "foreignPartnerOwnerOrBeneficiary", EmitDefaultValue = true)]
-        public bool? ForeignPartnerOwnerOrBeneficiary { get; set; }
+        [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
+        public string AncestorId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -2266,98 +1449,21 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
             sb.Append("  Box35FormedOnDate: ").Append(Box35FormedOnDate).Append("\n");
             sb.Append("  Box36FiledOnDate: ").Append(Box36FiledOnDate).Append("\n");
-            sb.Append("  EmployeeFirstName: ").Append(EmployeeFirstName).Append("\n");
-            sb.Append("  EmployeeMiddleName: ").Append(EmployeeMiddleName).Append("\n");
-            sb.Append("  EmployeeLastName: ").Append(EmployeeLastName).Append("\n");
-            sb.Append("  EmployeeNameSuffix: ").Append(EmployeeNameSuffix).Append("\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Zip: ").Append(Zip).Append("\n");
-            sb.Append("  Box3MaritalStatus: ").Append(Box3MaritalStatus).Append("\n");
-            sb.Append("  Box4LastNameDiffers: ").Append(Box4LastNameDiffers).Append("\n");
-            sb.Append("  Box5NumAllowances: ").Append(Box5NumAllowances).Append("\n");
-            sb.Append("  OtherDependents: ").Append(OtherDependents).Append("\n");
-            sb.Append("  NonJobIncome: ").Append(NonJobIncome).Append("\n");
-            sb.Append("  Deductions: ").Append(Deductions).Append("\n");
-            sb.Append("  Box6AdditionalWithheld: ").Append(Box6AdditionalWithheld).Append("\n");
-            sb.Append("  Box7ExemptFromWithholding: ").Append(Box7ExemptFromWithholding).Append("\n");
-            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
-            sb.Append("  FtinNotRequired: ").Append(FtinNotRequired).Append("\n");
-            sb.Append("  BenefitLimitation: ").Append(BenefitLimitation).Append("\n");
-            sb.Append("  Part4SponsoringEntity: ").Append(Part4SponsoringEntity).Append("\n");
-            sb.Append("  Part4SponsoringEntityGiin: ").Append(Part4SponsoringEntityGiin).Append("\n");
-            sb.Append("  Part7SponsoringEntity: ").Append(Part7SponsoringEntity).Append("\n");
-            sb.Append("  Part12IgaCountry: ").Append(Part12IgaCountry).Append("\n");
-            sb.Append("  Part12IgaType: ").Append(Part12IgaType).Append("\n");
-            sb.Append("  Part12FatcaStatusUnderIgaAnnexIi: ").Append(Part12FatcaStatusUnderIgaAnnexIi).Append("\n");
-            sb.Append("  Part12TrusteeName: ").Append(Part12TrusteeName).Append("\n");
-            sb.Append("  Part12TrusteeIsForeign: ").Append(Part12TrusteeIsForeign).Append("\n");
-            sb.Append("  Part12Model2IgaGiin: ").Append(Part12Model2IgaGiin).Append("\n");
-            sb.Append("  Box37AExchange: ").Append(Box37AExchange).Append("\n");
-            sb.Append("  Box37BExchange: ").Append(Box37BExchange).Append("\n");
-            sb.Append("  Box37BEntity: ").Append(Box37BEntity).Append("\n");
-            sb.Append("  Part28SponsoringEntity: ").Append(Part28SponsoringEntity).Append("\n");
-            sb.Append("  Part28SponsoringEntityGiin: ").Append(Part28SponsoringEntityGiin).Append("\n");
-            sb.Append("  MakingTreatyClaim: ").Append(MakingTreatyClaim).Append("\n");
-            sb.Append("  TreatyCountry: ").Append(TreatyCountry).Append("\n");
-            sb.Append("  TreatyArticle: ").Append(TreatyArticle).Append("\n");
-            sb.Append("  WithholdingRate: ").Append(WithholdingRate).Append("\n");
-            sb.Append("  IncomeType: ").Append(IncomeType).Append("\n");
-            sb.Append("  TreatyReasons: ").Append(TreatyReasons).Append("\n");
-            sb.Append("  CertifyBox14A: ").Append(CertifyBox14A).Append("\n");
-            sb.Append("  CertifyBox14B: ").Append(CertifyBox14B).Append("\n");
-            sb.Append("  CertifyBox14C: ").Append(CertifyBox14C).Append("\n");
-            sb.Append("  CertifyBox171: ").Append(CertifyBox171).Append("\n");
-            sb.Append("  CertifyBox172: ").Append(CertifyBox172).Append("\n");
-            sb.Append("  CertifyBox18: ").Append(CertifyBox18).Append("\n");
-            sb.Append("  CertifyBox19: ").Append(CertifyBox19).Append("\n");
-            sb.Append("  CertifyBox21: ").Append(CertifyBox21).Append("\n");
-            sb.Append("  CertifyBox23: ").Append(CertifyBox23).Append("\n");
-            sb.Append("  CertifyBox24D: ").Append(CertifyBox24D).Append("\n");
-            sb.Append("  CertifyBox25A: ").Append(CertifyBox25A).Append("\n");
-            sb.Append("  CertifyBox25B: ").Append(CertifyBox25B).Append("\n");
-            sb.Append("  CertifyBox25C: ").Append(CertifyBox25C).Append("\n");
-            sb.Append("  CertifyBox27: ").Append(CertifyBox27).Append("\n");
-            sb.Append("  CertifyBox28A: ").Append(CertifyBox28A).Append("\n");
-            sb.Append("  CertifyBox28B: ").Append(CertifyBox28B).Append("\n");
-            sb.Append("  CertifyBox29A: ").Append(CertifyBox29A).Append("\n");
-            sb.Append("  CertifyBox29B: ").Append(CertifyBox29B).Append("\n");
-            sb.Append("  CertifyBox29C: ").Append(CertifyBox29C).Append("\n");
-            sb.Append("  CertifyBox29D: ").Append(CertifyBox29D).Append("\n");
-            sb.Append("  CertifyBox29E: ").Append(CertifyBox29E).Append("\n");
-            sb.Append("  CertifyBox29F: ").Append(CertifyBox29F).Append("\n");
-            sb.Append("  CertifyBox30: ").Append(CertifyBox30).Append("\n");
-            sb.Append("  CertifyBox33: ").Append(CertifyBox33).Append("\n");
-            sb.Append("  CertifyBox40A: ").Append(CertifyBox40A).Append("\n");
-            sb.Append("  CertifyBox40B: ").Append(CertifyBox40B).Append("\n");
-            sb.Append("  CertifyBox40C: ").Append(CertifyBox40C).Append("\n");
-            sb.Append("  CertifyBox41: ").Append(CertifyBox41).Append("\n");
-            sb.Append("  CertifyBox43: ").Append(CertifyBox43).Append("\n");
-            sb.Append("  CertifyPart29Signature: ").Append(CertifyPart29Signature).Append("\n");
-            sb.Append("  Part19FormationOrResolutionDate: ").Append(Part19FormationOrResolutionDate).Append("\n");
-            sb.Append("  Part20FilingDate: ").Append(Part20FilingDate).Append("\n");
-            sb.Append("  Part21DeterminationDate: ").Append(Part21DeterminationDate).Append("\n");
-            sb.Append("  SubstantialUsOwners: ").Append(SubstantialUsOwners).Append("\n");
-            sb.Append("  Birthday: ").Append(Birthday).Append("\n");
-            sb.Append("  ForeignTinNotRequired: ").Append(ForeignTinNotRequired).Append("\n");
-            sb.Append("  Archived: ").Append(Archived).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
-            sb.Append("  SignerCapacity: ").Append(SignerCapacity).Append("\n");
-            sb.Append("  TinMatchStatus: ").Append(TinMatchStatus).Append("\n");
+            sb.Append("  Archived: ").Append(Archived).Append("\n");
+            sb.Append("  EntryStatusDate: ").Append(EntryStatusDate).Append("\n");
+            sb.Append("  PdfJson: ").Append(PdfJson).Append("\n");
+            sb.Append("  PdfVersion: ").Append(PdfVersion).Append("\n");
+            sb.Append("  RequestToken: ").Append(RequestToken).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
-            sb.Append("  BusinessClassification: ").Append(BusinessClassification).Append("\n");
-            sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
-            sb.Append("  BusinessOther: ").Append(BusinessOther).Append("\n");
-            sb.Append("  ExemptPayeeCode: ").Append(ExemptPayeeCode).Append("\n");
-            sb.Append("  ExemptFatcaCode: ").Append(ExemptFatcaCode).Append("\n");
-            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-            sb.Append("  ForeignCountryIndicator: ").Append(ForeignCountryIndicator).Append("\n");
-            sb.Append("  ForeignAddress: ").Append(ForeignAddress).Append("\n");
-            sb.Append("  BackupWithholding: ").Append(BackupWithholding).Append("\n");
-            sb.Append("  Is1099able: ").Append(Is1099able).Append("\n");
-            sb.Append("  ForeignPartnerOwnerOrBeneficiary: ").Append(ForeignPartnerOwnerOrBeneficiary).Append("\n");
+            sb.Append("  Mobile: ").Append(Mobile).Append("\n");
+            sb.Append("  AppVersion: ").Append(AppVersion).Append("\n");
+            sb.Append("  Platform: ").Append(Platform).Append("\n");
+            sb.Append("  OsVersion: ").Append(OsVersion).Append("\n");
+            sb.Append("  AncestorId: ").Append(AncestorId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

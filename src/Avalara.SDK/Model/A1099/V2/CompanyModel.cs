@@ -6,9 +6,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Avalara 1099 & W-9 API Definition
+ * Avalara 1099 API Definition
  *
- * ## 🔐 Authentication  Use **username/password** or generate a **license key** from: *Avalara Portal → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -48,50 +48,50 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <param name="id">Company ID.</param>
         /// <param name="userId">User ID associated with the company.</param>
+        /// <param name="name">Legal company name.</param>
+        /// <param name="email">Company email address.</param>
+        /// <param name="shippingAddress">Shipping address.</param>
+        /// <param name="city">City.</param>
+        /// <param name="state">State code.</param>
+        /// <param name="zip">ZIP/Postal code.</param>
+        /// <param name="telephone">Phone number.</param>
+        /// <param name="tin">Tax identification number.</param>
+        /// <param name="dbaName">DBA (Doing Business As) name.</param>
         /// <param name="accountId">Account ID associated with the company.</param>
+        /// <param name="referenceId">Optional identifier for reference.</param>
+        /// <param name="doTinMatch">Flag indicating whether to perform TIN matching.</param>
+        /// <param name="groupName">Group Name associated with the company.</param>
+        /// <param name="foreignProvince">Foreign province for non-US addresses.</param>
+        /// <param name="shippingCountryCode">Shipping country code.</param>
+        /// <param name="resendRequests">Flag indicating whether to resend requests.</param>
+        /// <param name="resendIntervalDays">Interval in days for resending requests.</param>
+        /// <param name="maxReminderAttempts">Maximum number of reminder attempts.</param>
         /// <param name="createdAt">Record creation timestamp.</param>
         /// <param name="updatedAt">Record last update timestamp.</param>
-        /// <param name="name">name.</param>
-        /// <param name="email">email.</param>
-        /// <param name="address">address.</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">state.</param>
-        /// <param name="zip">zip.</param>
-        /// <param name="telephone">telephone.</param>
-        /// <param name="tin">tin.</param>
-        /// <param name="dbaName">dbaName.</param>
-        /// <param name="referenceId">referenceId.</param>
-        /// <param name="doTinMatch">doTinMatch.</param>
-        /// <param name="groupName">groupName.</param>
-        /// <param name="foreignProvince">foreignProvince.</param>
-        /// <param name="countryCode">countryCode.</param>
-        /// <param name="resendRequests">resendRequests.</param>
-        /// <param name="resendIntervalDays">resendIntervalDays.</param>
-        /// <param name="maxReminderAttempts">maxReminderAttempts.</param>
-        public CompanyModel(string id = default(string), long userId = default(long), long accountId = default(long), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string name = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string dbaName = default(string), string referenceId = default(string), bool doTinMatch = default(bool), string groupName = default(string), string foreignProvince = default(string), string countryCode = default(string), bool resendRequests = default(bool), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?))
+        public CompanyModel(string id = default(string), string userId = default(string), string name = default(string), string email = default(string), string shippingAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string dbaName = default(string), string accountId = default(string), string referenceId = default(string), bool doTinMatch = default(bool), string groupName = default(string), string foreignProvince = default(string), string shippingCountryCode = default(string), bool resendRequests = default(bool), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Id = id;
             this.UserId = userId;
-            this.AccountId = accountId;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             this.Name = name;
             this.Email = email;
-            this.Address = address;
+            this.ShippingAddress = shippingAddress;
             this.City = city;
             this.State = state;
             this.Zip = zip;
             this.Telephone = telephone;
             this.Tin = tin;
             this.DbaName = dbaName;
+            this.AccountId = accountId;
             this.ReferenceId = referenceId;
             this.DoTinMatch = doTinMatch;
             this.GroupName = groupName;
             this.ForeignProvince = foreignProvince;
-            this.CountryCode = countryCode;
+            this.ShippingCountryCode = shippingCountryCode;
             this.ResendRequests = resendRequests;
             this.ResendIntervalDays = resendIntervalDays;
             this.MaxReminderAttempts = maxReminderAttempts;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
@@ -105,17 +105,145 @@ namespace Avalara.SDK.Model.A1099.V2
         /// User ID associated with the company
         /// </summary>
         /// <value>User ID associated with the company</value>
-        /// <example>0</example>
         [DataMember(Name = "userId", EmitDefaultValue = false)]
-        public long UserId { get; set; }
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// Legal company name
+        /// </summary>
+        /// <value>Legal company name</value>
+        /// <example>Example Corp</example>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Company email address
+        /// </summary>
+        /// <value>Company email address</value>
+        /// <example>contact@examplecorp.com</example>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Shipping address
+        /// </summary>
+        /// <value>Shipping address</value>
+        /// <example>123 Business Ave</example>
+        [DataMember(Name = "shippingAddress", EmitDefaultValue = true)]
+        public string ShippingAddress { get; set; }
+
+        /// <summary>
+        /// City
+        /// </summary>
+        /// <value>City</value>
+        /// <example>Phoenix</example>
+        [DataMember(Name = "city", EmitDefaultValue = true)]
+        public string City { get; set; }
+
+        /// <summary>
+        /// State code
+        /// </summary>
+        /// <value>State code</value>
+        /// <example>AZ</example>
+        [DataMember(Name = "state", EmitDefaultValue = true)]
+        public string State { get; set; }
+
+        /// <summary>
+        /// ZIP/Postal code
+        /// </summary>
+        /// <value>ZIP/Postal code</value>
+        /// <example>85001-1234</example>
+        [DataMember(Name = "zip", EmitDefaultValue = true)]
+        public string Zip { get; set; }
+
+        /// <summary>
+        /// Phone number
+        /// </summary>
+        /// <value>Phone number</value>
+        /// <example>602-555-0123</example>
+        [DataMember(Name = "telephone", EmitDefaultValue = true)]
+        public string Telephone { get; set; }
+
+        /// <summary>
+        /// Tax identification number
+        /// </summary>
+        /// <value>Tax identification number</value>
+        /// <example>12-3456789</example>
+        [DataMember(Name = "tin", EmitDefaultValue = true)]
+        public string Tin { get; set; }
+
+        /// <summary>
+        /// DBA (Doing Business As) name
+        /// </summary>
+        /// <value>DBA (Doing Business As) name</value>
+        [DataMember(Name = "dbaName", EmitDefaultValue = true)]
+        public string DbaName { get; set; }
 
         /// <summary>
         /// Account ID associated with the company
         /// </summary>
         /// <value>Account ID associated with the company</value>
-        /// <example>0</example>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public long AccountId { get; set; }
+        public string AccountId { get; set; }
+
+        /// <summary>
+        /// Optional identifier for reference
+        /// </summary>
+        /// <value>Optional identifier for reference</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// Flag indicating whether to perform TIN matching
+        /// </summary>
+        /// <value>Flag indicating whether to perform TIN matching</value>
+        /// <example>false</example>
+        [DataMember(Name = "doTinMatch", EmitDefaultValue = true)]
+        public bool DoTinMatch { get; set; }
+
+        /// <summary>
+        /// Group Name associated with the company
+        /// </summary>
+        /// <value>Group Name associated with the company</value>
+        [DataMember(Name = "groupName", EmitDefaultValue = true)]
+        public string GroupName { get; set; }
+
+        /// <summary>
+        /// Foreign province for non-US addresses
+        /// </summary>
+        /// <value>Foreign province for non-US addresses</value>
+        [DataMember(Name = "foreignProvince", EmitDefaultValue = true)]
+        public string ForeignProvince { get; set; }
+
+        /// <summary>
+        /// Shipping country code
+        /// </summary>
+        /// <value>Shipping country code</value>
+        /// <example>US</example>
+        [DataMember(Name = "shippingCountryCode", EmitDefaultValue = true)]
+        public string ShippingCountryCode { get; set; }
+
+        /// <summary>
+        /// Flag indicating whether to resend requests
+        /// </summary>
+        /// <value>Flag indicating whether to resend requests</value>
+        /// <example>false</example>
+        [DataMember(Name = "resendRequests", EmitDefaultValue = true)]
+        public bool ResendRequests { get; set; }
+
+        /// <summary>
+        /// Interval in days for resending requests
+        /// </summary>
+        /// <value>Interval in days for resending requests</value>
+        [DataMember(Name = "resendIntervalDays", EmitDefaultValue = true)]
+        public int? ResendIntervalDays { get; set; }
+
+        /// <summary>
+        /// Maximum number of reminder attempts
+        /// </summary>
+        /// <value>Maximum number of reminder attempts</value>
+        [DataMember(Name = "maxReminderAttempts", EmitDefaultValue = true)]
+        public int? MaxReminderAttempts { get; set; }
 
         /// <summary>
         /// Record creation timestamp
@@ -132,108 +260,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Address
-        /// </summary>
-        [DataMember(Name = "address", EmitDefaultValue = false)]
-        public string Address { get; set; }
-
-        /// <summary>
-        /// Gets or Sets City
-        /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
-
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Zip
-        /// </summary>
-        [DataMember(Name = "zip", EmitDefaultValue = false)]
-        public string Zip { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Telephone
-        /// </summary>
-        [DataMember(Name = "telephone", EmitDefaultValue = false)]
-        public string Telephone { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tin
-        /// </summary>
-        [DataMember(Name = "tin", EmitDefaultValue = false)]
-        public string Tin { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbaName
-        /// </summary>
-        [DataMember(Name = "dbaName", EmitDefaultValue = false)]
-        public string DbaName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReferenceId
-        /// </summary>
-        [DataMember(Name = "referenceId", EmitDefaultValue = false)]
-        public string ReferenceId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DoTinMatch
-        /// </summary>
-        [DataMember(Name = "doTinMatch", EmitDefaultValue = true)]
-        public bool DoTinMatch { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GroupName
-        /// </summary>
-        [DataMember(Name = "groupName", EmitDefaultValue = false)]
-        public string GroupName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ForeignProvince
-        /// </summary>
-        [DataMember(Name = "foreignProvince", EmitDefaultValue = false)]
-        public string ForeignProvince { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CountryCode
-        /// </summary>
-        [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ResendRequests
-        /// </summary>
-        [DataMember(Name = "resendRequests", EmitDefaultValue = true)]
-        public bool ResendRequests { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ResendIntervalDays
-        /// </summary>
-        [DataMember(Name = "resendIntervalDays", EmitDefaultValue = true)]
-        public int? ResendIntervalDays { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxReminderAttempts
-        /// </summary>
-        [DataMember(Name = "maxReminderAttempts", EmitDefaultValue = true)]
-        public int? MaxReminderAttempts { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -243,26 +269,26 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class CompanyModel {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
             sb.Append("  Telephone: ").Append(Telephone).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
             sb.Append("  DbaName: ").Append(DbaName).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  DoTinMatch: ").Append(DoTinMatch).Append("\n");
             sb.Append("  GroupName: ").Append(GroupName).Append("\n");
             sb.Append("  ForeignProvince: ").Append(ForeignProvince).Append("\n");
-            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  ShippingCountryCode: ").Append(ShippingCountryCode).Append("\n");
             sb.Append("  ResendRequests: ").Append(ResendRequests).Append("\n");
             sb.Append("  ResendIntervalDays: ").Append(ResendIntervalDays).Append("\n");
             sb.Append("  MaxReminderAttempts: ").Append(MaxReminderAttempts).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.EInvoicing.V1
 {
 /// <summary>
-    /// Structure for reporting errors encountered during API operations, including title, status, and detailed message.
+    /// ErrorResponse
     /// </summary>
     [DataContract(Name = "ErrorResponse")]
     public partial class ErrorResponse : IValidatableObject
@@ -82,7 +82,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <summary>
         /// Gets or Sets Instance
         /// </summary>
-        /// <example>Invalid request format or parameters.</example>
+        /// <example>unknown parameter &#39;city&#39;</example>
         [DataMember(Name = "instance", EmitDefaultValue = false)]
         public string Instance { get; set; }
 

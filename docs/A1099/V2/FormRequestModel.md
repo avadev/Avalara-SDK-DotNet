@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
 **FormType** | **string** | \&quot;W9\&quot; is currently the only supported value | [optional] 
-**CompanyId** | **int** | Track1099&#39;s ID of your company, found in the W-9 UI | [optional] 
+**CompanyId** | **string** | Track1099&#39;s ID of your company, found in the W-9 UI | [optional] 
 **CompanyName** | **string** | Name of your company, set in the W-9 UI | [optional] 
 **CompanyEmail** | **string** | Contact email of your company, set in the W-9 UI | [optional] 
 **ReferenceId** | **string** | Your internal identifier for the vendor from whom you are requesting a form | [optional] 

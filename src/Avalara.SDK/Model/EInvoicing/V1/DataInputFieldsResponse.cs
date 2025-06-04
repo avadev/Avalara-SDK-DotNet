@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.EInvoicing.V1
 {
 /// <summary>
-    /// Response model providing a list of input fields required, optional, or conditional for different country mandates.
+    /// DataInputFieldsResponse
     /// </summary>
     [DataContract(Name = "DataInputFieldsResponse")]
     public partial class DataInputFieldsResponse : IValidatableObject

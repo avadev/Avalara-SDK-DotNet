@@ -68,6 +68,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Avalara unique ID of the participant in the directory.
         /// </summary>
         /// <value>Avalara unique ID of the participant in the directory.</value>
+        /// <example>2a27ee0cf5bcb6165ab891503652343419a8fc5fe6b406299c47d7b44aa8548c</example>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
@@ -75,6 +76,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Name of the participant (typically, the name of the business entity).
         /// </summary>
         /// <value>Name of the participant (typically, the name of the business entity).</value>
+        /// <example>Pineapple Labs ltd</example>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
@@ -82,6 +84,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// The network where the participant is present.
         /// </summary>
         /// <value>The network where the participant is present.</value>
+        /// <example>Peppol</example>
         [DataMember(Name = "network", EmitDefaultValue = false)]
         public string Network { get; set; }
 

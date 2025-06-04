@@ -5,7 +5,7 @@ Generic paginated model to wrap query response data
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RecordsetCount** | **int?** |  | [optional] 
+**RecordsetCount** | **int** |  | [optional] 
 **Value** | **List&lt;Object&gt;** |  | [optional] 
 **NextLink** | **string** |  | [optional] 
 

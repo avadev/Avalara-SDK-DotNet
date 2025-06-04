@@ -1,3 +1,22 @@
+/*
+ * AvaTax Software Development Kit for C#
+ *
+ * (c) 2004-2022 Avalara, Inc.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Avalara E-Invoicing API
+ *
+ * An API that supports sending data for an E-Invoicing compliance use-case.
+ *
+
+ * @author     Sachin Baijal <sachin.baijal@avalara.com>
+ * @author     Jonathan Wenger <jonathan.wenger@avalara.com>
+ * @copyright  2004-2022 Avalara, Inc.
+ * @license    https://www.apache.org/licenses/LICENSE-2.0
+ * @link       https://github.com/avadev/AvaTax-REST-V3-DotNet-SDK
+ */
 
 
 using System;
@@ -14,11 +33,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetMandateDataInputFields API
     /// </summary>
-    public class GetMandateDataInputFieldsRequestSdk {
+    public class GetMandateDataInputFieldsRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetMandateDataInputFieldsRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// The unique ID for the mandate that was returned in the GET /einvoicing/mandates response body
         /// </summary>
@@ -40,11 +64,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetMandates API
     /// </summary>
-    public class GetMandatesRequestSdk {
+    public class GetMandatesRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetMandatesRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
         /// </summary>
@@ -87,7 +116,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>List&lt;MandateDataInputField&gt;</returns>
-        List<MandateDataInputField> GetMandateDataInputFields(GetMandateDataInputFieldsRequestSdk requestParameters);
+        List<MandateDataInputField> GetMandateDataInputFields(GetMandateDataInputFieldsRequest requestParameters);
 
         /// <summary>
         /// List country mandates that are supported by the Avalara E-Invoicing platform
@@ -98,7 +127,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>MandatesResponse</returns>
-        MandatesResponse GetMandates(GetMandatesRequestSdk requestParameters);
+        MandatesResponse GetMandates(GetMandatesRequest requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -119,7 +148,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;MandateDataInputField&gt;</returns>
-        System.Threading.Tasks.Task<List<MandateDataInputField>> GetMandateDataInputFieldsAsync(GetMandateDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<MandateDataInputField>> GetMandateDataInputFieldsAsync(GetMandateDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List country mandates that are supported by the Avalara E-Invoicing platform
@@ -131,7 +160,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MandatesResponse</returns>
-        System.Threading.Tasks.Task<MandatesResponse> GetMandatesAsync(GetMandatesRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<MandatesResponse> GetMandatesAsync(GetMandatesRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -181,7 +210,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>List&lt;MandateDataInputField&gt;</returns>
-        public List<MandateDataInputField> GetMandateDataInputFields(GetMandateDataInputFieldsRequestSdk requestParameters)
+        public List<MandateDataInputField> GetMandateDataInputFields(GetMandateDataInputFieldsRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>> localVarResponse = GetMandateDataInputFieldsWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -193,7 +222,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of List&lt;MandateDataInputField&gt;</returns>
-        private Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>> GetMandateDataInputFieldsWithHttpInfo(GetMandateDataInputFieldsRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>> GetMandateDataInputFieldsWithHttpInfo(GetMandateDataInputFieldsRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -257,7 +286,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;MandateDataInputField&gt;</returns>
-        public async System.Threading.Tasks.Task<List<MandateDataInputField>> GetMandateDataInputFieldsAsync(GetMandateDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<MandateDataInputField>> GetMandateDataInputFieldsAsync(GetMandateDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>> localVarResponse = await GetMandateDataInputFieldsWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -270,7 +299,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;MandateDataInputField&gt;)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>>> GetMandateDataInputFieldsWithHttpInfoAsync(GetMandateDataInputFieldsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<List<MandateDataInputField>>> GetMandateDataInputFieldsWithHttpInfoAsync(GetMandateDataInputFieldsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -335,7 +364,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>MandatesResponse</returns>
-        public MandatesResponse GetMandates(GetMandatesRequestSdk requestParameters)
+        public MandatesResponse GetMandates(GetMandatesRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<MandatesResponse> localVarResponse = GetMandatesWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -347,7 +376,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of MandatesResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<MandatesResponse> GetMandatesWithHttpInfo(GetMandatesRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<MandatesResponse> GetMandatesWithHttpInfo(GetMandatesRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -416,7 +445,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MandatesResponse</returns>
-        public async System.Threading.Tasks.Task<MandatesResponse> GetMandatesAsync(GetMandatesRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MandatesResponse> GetMandatesAsync(GetMandatesRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<MandatesResponse> localVarResponse = await GetMandatesWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -429,7 +458,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MandatesResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<MandatesResponse>> GetMandatesWithHttpInfoAsync(GetMandatesRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<MandatesResponse>> GetMandatesWithHttpInfoAsync(GetMandatesRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -502,7 +531,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.5.3";
+            this.Client.SdkVersion = "25.5.4";
         }
         
     }

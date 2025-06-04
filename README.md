@@ -96,10 +96,6 @@ Class | Method | HTTP request | Description
 *InteropApi* | [**SubmitInteropDocument**](docs/EInvoicing/V1/InteropApi.md#submitinteropdocument) | **POST** /interop/documents | Submit a document
 *MandatesApi* | [**GetMandateDataInputFields**](docs/EInvoicing/V1/MandatesApi.md#getmandatedatainputfields) | **GET** /mandates/{mandateId}/data-input-fields | Returns document field information for a country mandate, a selected document type, and its version
 *MandatesApi* | [**GetMandates**](docs/EInvoicing/V1/MandatesApi.md#getmandates) | **GET** /mandates | List country mandates that are supported by the Avalara E-Invoicing platform
-*SubscriptionsApi* | [**CreateWebhookSubscription**](docs/EInvoicing/V1/SubscriptionsApi.md#createwebhooksubscription) | **POST** /webhooks/subscriptions | Create a subscription to events
-*SubscriptionsApi* | [**DeleteWebhookSubscription**](docs/EInvoicing/V1/SubscriptionsApi.md#deletewebhooksubscription) | **DELETE** /webhooks/subscriptions/{subscription-id} | Unsubscribe from events
-*SubscriptionsApi* | [**GetWebhookSubscription**](docs/EInvoicing/V1/SubscriptionsApi.md#getwebhooksubscription) | **GET** /webhooks/subscriptions/{subscription-id} | Get details of a subscription
-*SubscriptionsApi* | [**ListWebhookSubscriptions**](docs/EInvoicing/V1/SubscriptionsApi.md#listwebhooksubscriptions) | **GET** /webhooks/subscriptions | List all subscriptions
 *TradingPartnersApi* | [**BatchSearchParticipants**](docs/EInvoicing/V1/TradingPartnersApi.md#batchsearchparticipants) | **POST** /trading-partners/batch-searches | Creates a batch search and performs a batch search in the directory for participants in the background.
 *TradingPartnersApi* | [**DownloadBatchSearchReport**](docs/EInvoicing/V1/TradingPartnersApi.md#downloadbatchsearchreport) | **GET** /trading-partners/batch-searches/{id}/$download-results | Download batch search results in a csv file.
 *TradingPartnersApi* | [**GetBatchSearchDetail**](docs/EInvoicing/V1/TradingPartnersApi.md#getbatchsearchdetail) | **GET** /trading-partners/batch-searches/{id} | Get the batch search details for a given id.
@@ -111,30 +107,24 @@ Class | Method | HTTP request | Description
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CompaniesW9Api* | [**CreateCompany**](docs/A1099/V2/CompaniesW9Api.md#createcompany) | **POST** /w9/companies | Creates a new company
-*CompaniesW9Api* | [**GetCompanies**](docs/A1099/V2/CompaniesW9Api.md#getcompanies) | **GET** /w9/companies | List companies
-*CompaniesW9Api* | [**GetCompany**](docs/A1099/V2/CompaniesW9Api.md#getcompany) | **GET** /w9/companies/{id} | Retrieve a company
-*CompaniesW9Api* | [**UpdateCompany**](docs/A1099/V2/CompaniesW9Api.md#updatecompany) | **PUT** /w9/companies/{id} | Update a company
-*Forms1099Api* | [**BulkUpsert1099Forms**](docs/A1099/V2/Forms1099Api.md#bulkupsert1099forms) | **POST** /1099/forms/$bulk-upsert | Create or update multiple 1099 forms.
-*Forms1099Api* | [**Create1099Form**](docs/A1099/V2/Forms1099Api.md#create1099form) | **POST** /1099/forms | Create a 1099 form.
-*Forms1099Api* | [**Delete1099Form**](docs/A1099/V2/Forms1099Api.md#delete1099form) | **DELETE** /1099/forms/{id} | Delete a 1099 form.
-*Forms1099Api* | [**Get1099Form**](docs/A1099/V2/Forms1099Api.md#get1099form) | **GET** /1099/forms/{id} | Retrieve a 1099 form.
-*Forms1099Api* | [**Get1099FormPdf**](docs/A1099/V2/Forms1099Api.md#get1099formpdf) | **GET** /1099/forms/{id}/pdf | Retrieve the PDF file for a single 1099 by form id.
-*Forms1099Api* | [**List1099Forms**](docs/A1099/V2/Forms1099Api.md#list1099forms) | **GET** /1099/forms | Retrieve a list of 1099 forms based on query parameters.
-*Forms1099Api* | [**Update1099Form**](docs/A1099/V2/Forms1099Api.md#update1099form) | **PUT** /1099/forms/{id} | Update a 1099 form.
-*FormsW9Api* | [**CreateW9Form**](docs/A1099/V2/FormsW9Api.md#createw9form) | **POST** /w9/forms | Create a W9/W4/W8 form
-*FormsW9Api* | [**DeleteW9Form**](docs/A1099/V2/FormsW9Api.md#deletew9form) | **DELETE** /w9/forms/{id} | Delete a form
-*FormsW9Api* | [**GetW9Form**](docs/A1099/V2/FormsW9Api.md#getw9form) | **GET** /w9/forms/{id} | Retrieve a W9/W4/W8 form
-*FormsW9Api* | [**GetW9FormRequest**](docs/A1099/V2/FormsW9Api.md#getw9formrequest) | **GET** /w9/forms/requests/{formRequestId} | Retrieve a form request
-*FormsW9Api* | [**ListW9Forms**](docs/A1099/V2/FormsW9Api.md#listw9forms) | **GET** /w9/forms | List W9/W4/W8 forms.
-*FormsW9Api* | [**UpdateW9Form**](docs/A1099/V2/FormsW9Api.md#updatew9form) | **PUT** /w9/forms/{id} | Update a W9/W4/W8 form
-*FormsW9Api* | [**UploadW9Files**](docs/A1099/V2/FormsW9Api.md#uploadw9files) | **PUT** /w9/forms/{id}/attachment | Upload files for a W9/W4/W8 form
-*Issuers1099Api* | [**CreateIssuer**](docs/A1099/V2/Issuers1099Api.md#createissuer) | **POST** /1099/issuers | Create an issuer
-*Issuers1099Api* | [**DeleteIssuer**](docs/A1099/V2/Issuers1099Api.md#deleteissuer) | **DELETE** /1099/issuers/{id} | Delete an issuer
-*Issuers1099Api* | [**GetIssuer**](docs/A1099/V2/Issuers1099Api.md#getissuer) | **GET** /1099/issuers/{id} | Get an issuer
-*Issuers1099Api* | [**GetIssuers**](docs/A1099/V2/Issuers1099Api.md#getissuers) | **GET** /1099/issuers | List issuers
-*Issuers1099Api* | [**UpdateIssuer**](docs/A1099/V2/Issuers1099Api.md#updateissuer) | **PUT** /1099/issuers/{id} | Update an issuer
-*Jobs1099Api* | [**GetJob**](docs/A1099/V2/Jobs1099Api.md#getjob) | **GET** /1099/jobs/{id} | Retrieves information about the job
+*Class1099FormsApi* | [**BulkUpsert1099Forms**](docs/A1099/V2/Class1099FormsApi.md#bulkupsert1099forms) | **POST** /1099/forms/$bulk | Create/Update 1099 forms
+*Class1099FormsApi* | [**Call1099FormsPost**](docs/A1099/V2/Class1099FormsApi.md#call1099formspost) | **POST** /1099/forms | Create a new 1099 form
+*Class1099FormsApi* | [**Delete1099Form**](docs/A1099/V2/Class1099FormsApi.md#delete1099form) | **DELETE** /1099/forms/{formId} | Delete a 1099 form
+*Class1099FormsApi* | [**Download1099FormPDF**](docs/A1099/V2/Class1099FormsApi.md#download1099formpdf) | **POST** /1099/forms/$initiate-download | Submit a download job to retrieve PDF forms
+*Class1099FormsApi* | [**Get1099Form**](docs/A1099/V2/Class1099FormsApi.md#get1099form) | **GET** /1099/forms/{formId} | Get a single 1099 form
+*Class1099FormsApi* | [**List1099Forms**](docs/A1099/V2/Class1099FormsApi.md#list1099forms) | **GET** /1099/forms | List 1099 forms
+*Class1099FormsApi* | [**Update1099Form**](docs/A1099/V2/Class1099FormsApi.md#update1099form) | **PUT** /1099/forms/{formId} | Update an existing form.
+*Class1099IssuersApi* | [**CreateIssuer**](docs/A1099/V2/Class1099IssuersApi.md#createissuer) | **POST** /1099/issuers | Create a new issuer
+*Class1099IssuersApi* | [**DeleteIssuer**](docs/A1099/V2/Class1099IssuersApi.md#deleteissuer) | **DELETE** /1099/issuers/{issuerId} | Delete an issuer
+*Class1099IssuersApi* | [**GetIssuer**](docs/A1099/V2/Class1099IssuersApi.md#getissuer) | **GET** /1099/issuers/{issuerId} | Get a single issuer
+*Class1099IssuersApi* | [**ListIssuers**](docs/A1099/V2/Class1099IssuersApi.md#listissuers) | **GET** /1099/issuers | List issuers
+*Class1099IssuersApi* | [**UpdateIssuer**](docs/A1099/V2/Class1099IssuersApi.md#updateissuer) | **PUT** /1099/issuers/{issuerId} | Update an issuer
+*JobsApi* | [**GetJob**](docs/A1099/V2/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get status of an existing job
+*W4W8W9FormsApi* | [**CreateW9Form**](docs/A1099/V2/W4W8W9FormsApi.md#createw9form) | **POST** /w9/forms | Create a new W9/W8/W4 form
+*W4W8W9FormsApi* | [**GetW9Form**](docs/A1099/V2/W4W8W9FormsApi.md#getw9form) | **GET** /w9/forms/{formId} | Retrieve a W9/W8/W4 form
+*W4W8W9FormsApi* | [**GetW9Forms**](docs/A1099/V2/W4W8W9FormsApi.md#getw9forms) | **GET** /w9/forms | List W9/W4/W8 forms.
+*W4W8W9FormsApi* | [**W9FormRequestsFormRequestIdGet**](docs/A1099/V2/W4W8W9FormsApi.md#w9formrequestsformrequestidget) | **GET** /w9/form-requests/{formRequestId} | Get form request TODO-I Don't think this API should exist and instead we need `POST /w9/{id}/request`.
+*W9CompaniesApi* | [**CreateW9Company**](docs/A1099/V2/W9CompaniesApi.md#createw9company) | **POST** /w9/companies | Creates a new company
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
@@ -146,7 +136,6 @@ Class | Method | HTTP request | Description
  - [Model.EInvoicing.V1.BadRequest](docs/EInvoicing/V1/BadRequest.md)
  - [Model.EInvoicing.V1.BatchSearch](docs/EInvoicing/V1/BatchSearch.md)
  - [Model.EInvoicing.V1.BatchSearchListResponse](docs/EInvoicing/V1/BatchSearchListResponse.md)
- - [Model.EInvoicing.V1.BatchSearchParticipants202Response](docs/EInvoicing/V1/BatchSearchParticipants202Response.md)
  - [Model.EInvoicing.V1.ConditionalForField](docs/EInvoicing/V1/ConditionalForField.md)
  - [Model.EInvoicing.V1.DataInputField](docs/EInvoicing/V1/DataInputField.md)
  - [Model.EInvoicing.V1.DataInputFieldNotUsedFor](docs/EInvoicing/V1/DataInputFieldNotUsedFor.md)
@@ -165,17 +154,10 @@ Class | Method | HTTP request | Description
  - [Model.EInvoicing.V1.DocumentSubmitResponse](docs/EInvoicing/V1/DocumentSubmitResponse.md)
  - [Model.EInvoicing.V1.DocumentSummary](docs/EInvoicing/V1/DocumentSummary.md)
  - [Model.EInvoicing.V1.ErrorResponse](docs/EInvoicing/V1/ErrorResponse.md)
- - [Model.EInvoicing.V1.EventId](docs/EInvoicing/V1/EventId.md)
- - [Model.EInvoicing.V1.EventMessage](docs/EInvoicing/V1/EventMessage.md)
- - [Model.EInvoicing.V1.EventPayload](docs/EInvoicing/V1/EventPayload.md)
- - [Model.EInvoicing.V1.EventSubscription](docs/EInvoicing/V1/EventSubscription.md)
  - [Model.EInvoicing.V1.FetchDocumentsRequest](docs/EInvoicing/V1/FetchDocumentsRequest.md)
  - [Model.EInvoicing.V1.FetchDocumentsRequestDataInner](docs/EInvoicing/V1/FetchDocumentsRequestDataInner.md)
  - [Model.EInvoicing.V1.FetchDocumentsRequestMetadata](docs/EInvoicing/V1/FetchDocumentsRequestMetadata.md)
  - [Model.EInvoicing.V1.ForbiddenError](docs/EInvoicing/V1/ForbiddenError.md)
- - [Model.EInvoicing.V1.HmacSignature](docs/EInvoicing/V1/HmacSignature.md)
- - [Model.EInvoicing.V1.HmacSignatureValue](docs/EInvoicing/V1/HmacSignatureValue.md)
- - [Model.EInvoicing.V1.Id](docs/EInvoicing/V1/Id.md)
  - [Model.EInvoicing.V1.InputDataFormats](docs/EInvoicing/V1/InputDataFormats.md)
  - [Model.EInvoicing.V1.InternalServerError](docs/EInvoicing/V1/InternalServerError.md)
  - [Model.EInvoicing.V1.Mandate](docs/EInvoicing/V1/Mandate.md)
@@ -184,90 +166,55 @@ Class | Method | HTTP request | Description
  - [Model.EInvoicing.V1.MandatesResponse](docs/EInvoicing/V1/MandatesResponse.md)
  - [Model.EInvoicing.V1.NotFoundError](docs/EInvoicing/V1/NotFoundError.md)
  - [Model.EInvoicing.V1.NotUsedForField](docs/EInvoicing/V1/NotUsedForField.md)
- - [Model.EInvoicing.V1.OutputDataFormats](docs/EInvoicing/V1/OutputDataFormats.md)
- - [Model.EInvoicing.V1.Pagination](docs/EInvoicing/V1/Pagination.md)
  - [Model.EInvoicing.V1.RequiredWhenField](docs/EInvoicing/V1/RequiredWhenField.md)
- - [Model.EInvoicing.V1.Signature](docs/EInvoicing/V1/Signature.md)
- - [Model.EInvoicing.V1.SignatureSignature](docs/EInvoicing/V1/SignatureSignature.md)
- - [Model.EInvoicing.V1.SignatureValue](docs/EInvoicing/V1/SignatureValue.md)
- - [Model.EInvoicing.V1.SignatureValueSignature](docs/EInvoicing/V1/SignatureValueSignature.md)
  - [Model.EInvoicing.V1.StatusEvent](docs/EInvoicing/V1/StatusEvent.md)
  - [Model.EInvoicing.V1.SubmitDocumentMetadata](docs/EInvoicing/V1/SubmitDocumentMetadata.md)
  - [Model.EInvoicing.V1.SubmitInteropDocument202Response](docs/EInvoicing/V1/SubmitInteropDocument202Response.md)
- - [Model.EInvoicing.V1.SubscriptionCommon](docs/EInvoicing/V1/SubscriptionCommon.md)
- - [Model.EInvoicing.V1.SubscriptionDetail](docs/EInvoicing/V1/SubscriptionDetail.md)
- - [Model.EInvoicing.V1.SubscriptionListResponse](docs/EInvoicing/V1/SubscriptionListResponse.md)
- - [Model.EInvoicing.V1.SubscriptionRegistration](docs/EInvoicing/V1/SubscriptionRegistration.md)
- - [Model.EInvoicing.V1.SuccessResponse](docs/EInvoicing/V1/SuccessResponse.md)
- - [Model.EInvoicing.V1.WebhookInvocation](docs/EInvoicing/V1/WebhookInvocation.md)
- - [Model.EInvoicing.V1.WebhooksErrorInfo](docs/EInvoicing/V1/WebhooksErrorInfo.md)
- - [Model.EInvoicing.V1.WebhooksErrorResponse](docs/EInvoicing/V1/WebhooksErrorResponse.md)
  - [Model.EInvoicing.V1.WorkflowIds](docs/EInvoicing/V1/WorkflowIds.md)
 
 
 <a name="documentation-for-A1099-V2-models"></a>
 ### A1099 V2 Model Documentation
 
- - [Model.A1099.V2.Attribute](docs/A1099/V2/Attribute.md)
+ - [Model.A1099.V2.AddressVerificationStatus](docs/A1099/V2/AddressVerificationStatus.md)
  - [Model.A1099.V2.AuthorizedApiRequestModel](docs/A1099/V2/AuthorizedApiRequestModel.md)
  - [Model.A1099.V2.AuthorizedApiRequestV2DataModel](docs/A1099/V2/AuthorizedApiRequestV2DataModel.md)
- - [Model.A1099.V2.BaseCompanyModel](docs/A1099/V2/BaseCompanyModel.md)
- - [Model.A1099.V2.BaseFormListRequest](docs/A1099/V2/BaseFormListRequest.md)
+ - [Model.A1099.V2.BaseFormDataModel](docs/A1099/V2/BaseFormDataModel.md)
  - [Model.A1099.V2.BulkUpsert1099FormsRequest](docs/A1099/V2/BulkUpsert1099FormsRequest.md)
- - [Model.A1099.V2.CompanyCreateUpdateRequestModel](docs/A1099/V2/CompanyCreateUpdateRequestModel.md)
  - [Model.A1099.V2.CompanyModel](docs/A1099/V2/CompanyModel.md)
- - [Model.A1099.V2.CompanyResponse](docs/A1099/V2/CompanyResponse.md)
- - [Model.A1099.V2.CompanyResponseModel](docs/A1099/V2/CompanyResponseModel.md)
- - [Model.A1099.V2.Data](docs/A1099/V2/Data.md)
  - [Model.A1099.V2.ErrorModel](docs/A1099/V2/ErrorModel.md)
- - [Model.A1099.V2.ErrorResponse](docs/A1099/V2/ErrorResponse.md)
- - [Model.A1099.V2.Form1099Base](docs/A1099/V2/Form1099Base.md)
- - [Model.A1099.V2.Form1099DivList](docs/A1099/V2/Form1099DivList.md)
- - [Model.A1099.V2.Form1099DivListItem](docs/A1099/V2/Form1099DivListItem.md)
- - [Model.A1099.V2.Form1099DivRequest](docs/A1099/V2/Form1099DivRequest.md)
- - [Model.A1099.V2.Form1099List](docs/A1099/V2/Form1099List.md)
- - [Model.A1099.V2.Form1099ListDataInner](docs/A1099/V2/Form1099ListDataInner.md)
- - [Model.A1099.V2.Form1099Misc](docs/A1099/V2/Form1099Misc.md)
- - [Model.A1099.V2.Form1099MiscList](docs/A1099/V2/Form1099MiscList.md)
- - [Model.A1099.V2.Form1099MiscListItem](docs/A1099/V2/Form1099MiscListItem.md)
- - [Model.A1099.V2.Form1099MiscRequest](docs/A1099/V2/Form1099MiscRequest.md)
- - [Model.A1099.V2.Form1099Nec](docs/A1099/V2/Form1099Nec.md)
- - [Model.A1099.V2.Form1099NecList](docs/A1099/V2/Form1099NecList.md)
- - [Model.A1099.V2.Form1099NecListItem](docs/A1099/V2/Form1099NecListItem.md)
- - [Model.A1099.V2.Form1099NecRequest](docs/A1099/V2/Form1099NecRequest.md)
- - [Model.A1099.V2.Form1099ProccessResult](docs/A1099/V2/Form1099ProccessResult.md)
- - [Model.A1099.V2.Form1099R](docs/A1099/V2/Form1099R.md)
- - [Model.A1099.V2.Form1099RList](docs/A1099/V2/Form1099RList.md)
- - [Model.A1099.V2.Form1099RListItem](docs/A1099/V2/Form1099RListItem.md)
- - [Model.A1099.V2.Form1099RRequest](docs/A1099/V2/Form1099RRequest.md)
- - [Model.A1099.V2.Form1099StatusDetail](docs/A1099/V2/Form1099StatusDetail.md)
- - [Model.A1099.V2.FormRequestBase](docs/A1099/V2/FormRequestBase.md)
+ - [Model.A1099.V2.FederalEfileStatus](docs/A1099/V2/FederalEfileStatus.md)
+ - [Model.A1099.V2.Form1099BaseModel](docs/A1099/V2/Form1099BaseModel.md)
+ - [Model.A1099.V2.Form1099BaseModelFederalEfileStatus](docs/A1099/V2/Form1099BaseModelFederalEfileStatus.md)
+ - [Model.A1099.V2.Form1099BaseModelPostalMailStatus](docs/A1099/V2/Form1099BaseModelPostalMailStatus.md)
+ - [Model.A1099.V2.Form1099MiscModel](docs/A1099/V2/Form1099MiscModel.md)
+ - [Model.A1099.V2.Form1099NecModel](docs/A1099/V2/Form1099NecModel.md)
+ - [Model.A1099.V2.Form1099OneOf](docs/A1099/V2/Form1099OneOf.md)
  - [Model.A1099.V2.FormRequestModel](docs/A1099/V2/FormRequestModel.md)
- - [Model.A1099.V2.FormResponseBase](docs/A1099/V2/FormResponseBase.md)
- - [Model.A1099.V2.FormSingleRequestBase](docs/A1099/V2/FormSingleRequestBase.md)
- - [Model.A1099.V2.GetIssuer400Response](docs/A1099/V2/GetIssuer400Response.md)
+ - [Model.A1099.V2.GenericPaginatedModel](docs/A1099/V2/GenericPaginatedModel.md)
+ - [Model.A1099.V2.GetW9Form200Response](docs/A1099/V2/GetW9Form200Response.md)
  - [Model.A1099.V2.HttpValidationProblemDetails](docs/A1099/V2/HttpValidationProblemDetails.md)
- - [Model.A1099.V2.ICreateForm1099Request](docs/A1099/V2/ICreateForm1099Request.md)
- - [Model.A1099.V2.IUpdateForm1099Request](docs/A1099/V2/IUpdateForm1099Request.md)
- - [Model.A1099.V2.IW9FormDataModelsOneOf](docs/A1099/V2/IW9FormDataModelsOneOf.md)
+ - [Model.A1099.V2.InitiateDownloadInputModel](docs/A1099/V2/InitiateDownloadInputModel.md)
+ - [Model.A1099.V2.InitiateDownloadInputModelStateEfileStatus](docs/A1099/V2/InitiateDownloadInputModelStateEfileStatus.md)
+ - [Model.A1099.V2.InititateDownloadOutputModel](docs/A1099/V2/InititateDownloadOutputModel.md)
  - [Model.A1099.V2.IssuerModel](docs/A1099/V2/IssuerModel.md)
- - [Model.A1099.V2.IssuerResponse](docs/A1099/V2/IssuerResponse.md)
- - [Model.A1099.V2.JobResult](docs/A1099/V2/JobResult.md)
- - [Model.A1099.V2.Link](docs/A1099/V2/Link.md)
+ - [Model.A1099.V2.IssuerModelPaginatedQueryResultModel](docs/A1099/V2/IssuerModelPaginatedQueryResultModel.md)
+ - [Model.A1099.V2.JobModel](docs/A1099/V2/JobModel.md)
+ - [Model.A1099.V2.JobModelData](docs/A1099/V2/JobModelData.md)
+ - [Model.A1099.V2.JobModelDataOneOf](docs/A1099/V2/JobModelDataOneOf.md)
+ - [Model.A1099.V2.JobModelDataOneOfBulkDownload](docs/A1099/V2/JobModelDataOneOfBulkDownload.md)
+ - [Model.A1099.V2.JobModelDataOneOfUpsert](docs/A1099/V2/JobModelDataOneOfUpsert.md)
+ - [Model.A1099.V2.List1099Forms200Response](docs/A1099/V2/List1099Forms200Response.md)
  - [Model.A1099.V2.PaginatedQueryResultModel](docs/A1099/V2/PaginatedQueryResultModel.md)
- - [Model.A1099.V2.PaginatedQueryResultModelCompanyResponse](docs/A1099/V2/PaginatedQueryResultModelCompanyResponse.md)
- - [Model.A1099.V2.PaginatedQueryResultModelIssuerResponse](docs/A1099/V2/PaginatedQueryResultModelIssuerResponse.md)
  - [Model.A1099.V2.PaginatedW9FormsModel](docs/A1099/V2/PaginatedW9FormsModel.md)
+ - [Model.A1099.V2.PostalMailStatus](docs/A1099/V2/PostalMailStatus.md)
  - [Model.A1099.V2.ProblemDetails](docs/A1099/V2/ProblemDetails.md)
- - [Model.A1099.V2.StateAndLocalWithholding](docs/A1099/V2/StateAndLocalWithholding.md)
- - [Model.A1099.V2.StateAndLocalWithholdingRequest](docs/A1099/V2/StateAndLocalWithholdingRequest.md)
- - [Model.A1099.V2.StateEfileStatusDetail](docs/A1099/V2/StateEfileStatusDetail.md)
- - [Model.A1099.V2.ValidationError](docs/A1099/V2/ValidationError.md)
+ - [Model.A1099.V2.StateEfileStatusesInner](docs/A1099/V2/StateEfileStatusesInner.md)
+ - [Model.A1099.V2.StateWithholding](docs/A1099/V2/StateWithholding.md)
+ - [Model.A1099.V2.TinMatchStatus](docs/A1099/V2/TinMatchStatus.md)
  - [Model.A1099.V2.W4FormDataModel](docs/A1099/V2/W4FormDataModel.md)
- - [Model.A1099.V2.W8BenESubstantialUsOwnerDataModel](docs/A1099/V2/W8BenESubstantialUsOwnerDataModel.md)
  - [Model.A1099.V2.W8BenFormDataModel](docs/A1099/V2/W8BenFormDataModel.md)
  - [Model.A1099.V2.W8BeneFormDataModel](docs/A1099/V2/W8BeneFormDataModel.md)
  - [Model.A1099.V2.W8ImyFormDataModel](docs/A1099/V2/W8ImyFormDataModel.md)
- - [Model.A1099.V2.W9FormBaseResponse](docs/A1099/V2/W9FormBaseResponse.md)
  - [Model.A1099.V2.W9FormDataModel](docs/A1099/V2/W9FormDataModel.md)
- - [Model.A1099.V2.W9FormResponse](docs/A1099/V2/W9FormResponse.md)
+ - [Model.A1099.V2.W9FormDataModelsOneOf](docs/A1099/V2/W9FormDataModelsOneOf.md)
