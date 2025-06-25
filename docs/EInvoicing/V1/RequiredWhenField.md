@@ -1,5 +1,4 @@
 # Avalara.SDK.Model.EInvoicing.V1.RequiredWhenField
-Mandates for which this field is required
 
 ## Properties
 

@@ -6,9 +6,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Avalara 1099 & W-9 API Definition
+ * Avalara 1099 API Definition
  *
- * ## 🔐 Authentication  Use **username/password** or generate a **license key** from: *Avalara Portal → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// AuthorizedApiRequestV2DataModel
+    /// Describes a one-time-use URL that, when accessed, executes the API request specified in path using the account and credentials you used to create this AuthorizedApiRequest
     /// </summary>
     [DataContract(Name = "AuthorizedApiRequestV2DataModel")]
     public partial class AuthorizedApiRequestV2DataModel : IValidatableObject
@@ -47,8 +47,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Initializes a new instance of the <see cref="AuthorizedApiRequestV2DataModel" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="path">path.</param>
-        /// <param name="expiresAt">expiresAt.</param>
+        /// <param name="path">The path and query of the API request you want to pre-authorize.</param>
+        /// <param name="expiresAt">Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation.</param>
         public AuthorizedApiRequestV2DataModel(string id = default(string), string path = default(string), string expiresAt = default(string))
         {
             this.Id = id;
@@ -60,21 +60,23 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets Id
         /// </summary>
         /// <example>d0d09a2f-619e-4e9d-aae4-3311d9e0c67c</example>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Path
+        /// The path and query of the API request you want to pre-authorize
         /// </summary>
+        /// <value>The path and query of the API request you want to pre-authorize</value>
         /// <example>form-pdf?filter[form_type_eq]&#x3D;1099-NEC&amp;filter[reference_id_eq]&#x3D;SE-02453450&amp;filter[tax_year_eq]&#x3D;2024</example>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
+        [DataMember(Name = "path", EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpiresAt
+        /// Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation
         /// </summary>
+        /// <value>Timestamp when this AuthorizedApiRequest will expire, ttl (or 3600) seconds from creation</value>
         /// <example>2022-04-29T15:19:42.995-04:00</example>
-        [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
+        [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
         public string ExpiresAt { get; set; }
 
         /// <summary>

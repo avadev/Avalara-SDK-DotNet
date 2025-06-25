@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.EInvoicing.V1
 {
 /// <summary>
-    /// An object representing the country mandate
+    /// Mandate
     /// </summary>
     [DataContract(Name = "Mandate")]
     public partial class Mandate : IValidatableObject
@@ -50,29 +50,19 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="countryMandate">**[LEGACY]** This field is retained for backward compatibility. It is recommended to use &#x60;mandateId&#x60; instead. The &#x60;countryMandate&#x60; similar to the &#x60;mandateId&#x60; is comprised of the country code, mandate type, and the network or regulation type (for example, AU-B2G-PEPPOL). .</param>
         /// <param name="countryCode">Country code.</param>
         /// <param name="description">Mandate description.</param>
-        /// <param name="supportedByELRAPI">Indicates whether this mandate supported by the ELR API.</param>
+        /// <param name="supportedByPartnerAPI">Indicates whether this mandate supported by the partner API.</param>
         /// <param name="mandateFormat">Mandate format.</param>
-        /// <param name="eInvoicingFlow">The type of e-invoicing flow for this mandate.</param>
-        /// <param name="eInvoicingFlowDocumentationLink">Link to the documentation for this mandate&#39;s e-invoicing flow.</param>
-        /// <param name="getInvoiceAvailableMediaType">List of available media types for downloading invoices for this mandate.</param>
-        /// <param name="supportsInboundDigitalDocument">Indicates whether this mandate supports inbound digital documents.</param>
         /// <param name="inputDataFormats">Format and version used when inputting the data.</param>
-        /// <param name="outputDataFormats">Lists the supported output document formats for the country mandate. For countries where specifying an output document format is required (e.g., France), this array will contain the applicable formats. For other countries where output format selection is not necessary, the array will be empty..</param>
         /// <param name="workflowIds">Workflow ID list.</param>
-        public Mandate(string mandateId = default(string), string countryMandate = default(string), string countryCode = default(string), string description = default(string), bool supportedByELRAPI = default(bool), string mandateFormat = default(string), string eInvoicingFlow = default(string), string eInvoicingFlowDocumentationLink = default(string), List<string> getInvoiceAvailableMediaType = default(List<string>), string supportsInboundDigitalDocument = default(string), List<InputDataFormats> inputDataFormats = default(List<InputDataFormats>), List<OutputDataFormats> outputDataFormats = default(List<OutputDataFormats>), List<WorkflowIds> workflowIds = default(List<WorkflowIds>))
+        public Mandate(string mandateId = default(string), string countryMandate = default(string), string countryCode = default(string), string description = default(string), bool supportedByPartnerAPI = default(bool), string mandateFormat = default(string), List<InputDataFormats> inputDataFormats = default(List<InputDataFormats>), List<WorkflowIds> workflowIds = default(List<WorkflowIds>))
         {
             this.MandateId = mandateId;
             this.CountryMandate = countryMandate;
             this.CountryCode = countryCode;
             this.Description = description;
-            this.SupportedByELRAPI = supportedByELRAPI;
+            this.SupportedByPartnerAPI = supportedByPartnerAPI;
             this.MandateFormat = mandateFormat;
-            this.EInvoicingFlow = eInvoicingFlow;
-            this.EInvoicingFlowDocumentationLink = eInvoicingFlowDocumentationLink;
-            this.GetInvoiceAvailableMediaType = getInvoiceAvailableMediaType;
-            this.SupportsInboundDigitalDocument = supportsInboundDigitalDocument;
             this.InputDataFormats = inputDataFormats;
-            this.OutputDataFormats = outputDataFormats;
             this.WorkflowIds = workflowIds;
         }
 
@@ -109,12 +99,12 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string Description { get; set; }
 
         /// <summary>
-        /// Indicates whether this mandate supported by the ELR API
+        /// Indicates whether this mandate supported by the partner API
         /// </summary>
-        /// <value>Indicates whether this mandate supported by the ELR API</value>
+        /// <value>Indicates whether this mandate supported by the partner API</value>
         /// <example>true</example>
-        [DataMember(Name = "supportedByELRAPI", EmitDefaultValue = true)]
-        public bool SupportedByELRAPI { get; set; }
+        [DataMember(Name = "supportedByPartnerAPI", EmitDefaultValue = true)]
+        public bool SupportedByPartnerAPI { get; set; }
 
         /// <summary>
         /// Mandate format
@@ -125,50 +115,11 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string MandateFormat { get; set; }
 
         /// <summary>
-        /// The type of e-invoicing flow for this mandate
-        /// </summary>
-        /// <value>The type of e-invoicing flow for this mandate</value>
-        /// <example>Network</example>
-        [DataMember(Name = "eInvoicingFlow", EmitDefaultValue = false)]
-        public string EInvoicingFlow { get; set; }
-
-        /// <summary>
-        /// Link to the documentation for this mandate&#39;s e-invoicing flow
-        /// </summary>
-        /// <value>Link to the documentation for this mandate&#39;s e-invoicing flow</value>
-        /// <example>https://documentation.example.com/flows/pt-b2c-pdf</example>
-        [DataMember(Name = "eInvoicingFlowDocumentationLink", EmitDefaultValue = false)]
-        public string EInvoicingFlowDocumentationLink { get; set; }
-
-        /// <summary>
-        /// List of available media types for downloading invoices for this mandate
-        /// </summary>
-        /// <value>List of available media types for downloading invoices for this mandate</value>
-        /// <example>[&quot;application/pdf&quot;,&quot;application/xml&quot;]</example>
-        [DataMember(Name = "getInvoiceAvailableMediaType", EmitDefaultValue = false)]
-        public List<string> GetInvoiceAvailableMediaType { get; set; }
-
-        /// <summary>
-        /// Indicates whether this mandate supports inbound digital documents
-        /// </summary>
-        /// <value>Indicates whether this mandate supports inbound digital documents</value>
-        /// <example>TRUE</example>
-        [DataMember(Name = "supportsInboundDigitalDocument", EmitDefaultValue = false)]
-        public string SupportsInboundDigitalDocument { get; set; }
-
-        /// <summary>
         /// Format and version used when inputting the data
         /// </summary>
         /// <value>Format and version used when inputting the data</value>
         [DataMember(Name = "inputDataFormats", EmitDefaultValue = false)]
         public List<InputDataFormats> InputDataFormats { get; set; }
-
-        /// <summary>
-        /// Lists the supported output document formats for the country mandate. For countries where specifying an output document format is required (e.g., France), this array will contain the applicable formats. For other countries where output format selection is not necessary, the array will be empty.
-        /// </summary>
-        /// <value>Lists the supported output document formats for the country mandate. For countries where specifying an output document format is required (e.g., France), this array will contain the applicable formats. For other countries where output format selection is not necessary, the array will be empty.</value>
-        [DataMember(Name = "outputDataFormats", EmitDefaultValue = false)]
-        public List<OutputDataFormats> OutputDataFormats { get; set; }
 
         /// <summary>
         /// Workflow ID list
@@ -189,14 +140,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  CountryMandate: ").Append(CountryMandate).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  SupportedByELRAPI: ").Append(SupportedByELRAPI).Append("\n");
+            sb.Append("  SupportedByPartnerAPI: ").Append(SupportedByPartnerAPI).Append("\n");
             sb.Append("  MandateFormat: ").Append(MandateFormat).Append("\n");
-            sb.Append("  EInvoicingFlow: ").Append(EInvoicingFlow).Append("\n");
-            sb.Append("  EInvoicingFlowDocumentationLink: ").Append(EInvoicingFlowDocumentationLink).Append("\n");
-            sb.Append("  GetInvoiceAvailableMediaType: ").Append(GetInvoiceAvailableMediaType).Append("\n");
-            sb.Append("  SupportsInboundDigitalDocument: ").Append(SupportsInboundDigitalDocument).Append("\n");
             sb.Append("  InputDataFormats: ").Append(InputDataFormats).Append("\n");
-            sb.Append("  OutputDataFormats: ").Append(OutputDataFormats).Append("\n");
             sb.Append("  WorkflowIds: ").Append(WorkflowIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

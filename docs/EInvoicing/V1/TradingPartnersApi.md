@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="batchsearchparticipants"></a>
 # **BatchSearchParticipants**
-> BatchSearchParticipants202Response BatchSearchParticipants (BatchSearchParticipantsRequestSdk requestParameters)
+> void BatchSearchParticipants (BatchSearchParticipantsRequest requestParameters)
 
 Creates a batch search and performs a batch search in the directory for participants in the background.
 
@@ -41,7 +41,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new TradingPartnersApi(apiClient);
-            var requestParameters = new BatchSearchParticipantsRequestSdk();
+            var requestParameters = new BatchSearchParticipantsRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Name = Automotive Companies in London Search;  // string | The human readable name given to this batch search.
             requestParameters.NotificationEmail = user@example.com;  // string | The email address of the user to whom the batch search completion notification must go to.
@@ -52,8 +52,7 @@ namespace Example
             try
             {
                 // Creates a batch search and performs a batch search in the directory for participants in the background.
-                BatchSearchParticipants202Response result = apiInstance.BatchSearchParticipants(requestParameters);
-                Debug.WriteLine(result);
+                apiInstance.BatchSearchParticipants(requestParameters);
             }
             catch (ApiException  e)
             {
@@ -79,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BatchSearchParticipants202Response**](BatchSearchParticipants202Response.md)
+void (empty response body)
 
 ### Authorization
 
@@ -104,7 +103,7 @@ Name | Type | Description  | Notes
 
 <a name="downloadbatchsearchreport"></a>
 # **DownloadBatchSearchReport**
-> FileParameter DownloadBatchSearchReport (DownloadBatchSearchReportRequestSdk requestParameters)
+> FileParameter DownloadBatchSearchReport (DownloadBatchSearchReportRequest requestParameters)
 
 Download batch search results in a csv file.
 
@@ -132,7 +131,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new TradingPartnersApi(apiClient);
-            var requestParameters = new DownloadBatchSearchReportRequestSdk();
+            var requestParameters = new DownloadBatchSearchReportRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Id = 2f5ea4b5-4dae-445a-b3e4-9f65a61eaa99;  // string | The ID of the batch search whose report is to be downloaded.
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\" (optional) 
@@ -191,11 +190,11 @@ Name | Type | Description  | Notes
 
 <a name="getbatchsearchdetail"></a>
 # **GetBatchSearchDetail**
-> BatchSearch GetBatchSearchDetail (GetBatchSearchDetailRequestSdk requestParameters)
+> BatchSearch GetBatchSearchDetail (GetBatchSearchDetailRequest requestParameters)
 
 Get the batch search details for a given id.
 
-This endpoint provides a detailed information for a specific batch search based on a given ID. It is ideal for tracking the progress of a previously initiated batch search operation.
+Get the batch search details for a given id.
 
 ### Example
 ```csharp
@@ -219,7 +218,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new TradingPartnersApi(apiClient);
-            var requestParameters = new GetBatchSearchDetailRequestSdk();
+            var requestParameters = new GetBatchSearchDetailRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Id = 2f5ea4b5-4dae-445a-b3e4-9f65a61eaa99;  // string | The ID of the batch search that was submitted earlier.
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\" (optional) 
@@ -270,7 +269,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Get the batch search details for a given id. |  * X-Correlation-Id -  <br>  |
 | **401** | Unauthorized |  * X-Correlation-Id -  <br>  |
-| **404** | Report not found |  * X-Correlation-Id -  <br>  |
 | **403** | Forbidden |  * X-Correlation-Id -  <br>  |
 | **500** | Internal server error |  * X-Correlation-Id -  <br>  |
 
@@ -278,11 +276,11 @@ Name | Type | Description  | Notes
 
 <a name="listbatchsearches"></a>
 # **ListBatchSearches**
-> BatchSearchListResponse ListBatchSearches (ListBatchSearchesRequestSdk requestParameters)
+> BatchSearchListResponse ListBatchSearches (ListBatchSearchesRequest requestParameters)
 
 List all batch searches that were previously submitted.
 
-This endpoint provides a way to retrieve a comprehensive list of all batch search operations that have been previously submitted. This endpoint returns details about each batch search, such as their id, status, created date and associated metadata, allowing users to easily view past batch search requests. It's particularly useful for tracking the progress of a previously initiated batch search operations.
+Retrieves all batch searches performed by the user.
 
 ### Example
 ```csharp
@@ -306,7 +304,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new TradingPartnersApi(apiClient);
-            var requestParameters = new ListBatchSearchesRequestSdk();
+            var requestParameters = new ListBatchSearchesRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\" (optional) 
             requestParameters.Filter = name eq 'Batch_Search_Import_V4';  // string | Filter by field name and value. This filter only supports <code>eq</code> .The parameters supported is <code>name</code>.    Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. Filtering will be done over the provided parameters. (optional) 
@@ -364,7 +362,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of batch searches |  * X-Correlation-Id -  <br>  |
-| **400** | Bad request |  * X-Correlation-Id -  <br>  |
 | **401** | Unauthorized |  * X-Correlation-Id -  <br>  |
 | **403** | Forbidden |  * X-Correlation-Id -  <br>  |
 | **500** | Internal server error |  * X-Correlation-Id -  <br>  |
@@ -373,11 +370,11 @@ Name | Type | Description  | Notes
 
 <a name="searchparticipants"></a>
 # **SearchParticipants**
-> DirectorySearchResponse SearchParticipants (SearchParticipantsRequestSdk requestParameters)
+> DirectorySearchResponse SearchParticipants (SearchParticipantsRequest requestParameters)
 
 Returns a list of participants matching the input query.
 
-This endpoint provides a list of trading partners that match a specified input query. The search is performed based on various filters, search text, and other relevant parameters.
+Returns a list of participants matching the input query.
 
 ### Example
 ```csharp
@@ -401,7 +398,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new TradingPartnersApi(apiClient);
-            var requestParameters = new SearchParticipantsRequestSdk();
+            var requestParameters = new SearchParticipantsRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Search = Acme and 7726627177 or BMW;  // string | Search by value supports logical AND and OR. Refer to [https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#search](https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#search) for more information on search. Search will be done over <code>name</code> and <code>identifier</code> parameters only.
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\" (optional) 

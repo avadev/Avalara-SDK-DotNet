@@ -47,7 +47,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Initializes a new instance of the <see cref="DocumentSummary" /> class.
         /// </summary>
         /// <param name="id">The unique ID for this document.</param>
-        /// <param name="companyId">Unique identifier that represents the company within the system..</param>
         /// <param name="processDateTime">The date and time when the document was processed, displayed in the format YYYY-MM-DDThh:mm:ss.</param>
         /// <param name="status">The Document status.</param>
         /// <param name="supplierName">The name of the supplier in the transaction.</param>
@@ -61,10 +60,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="countryMandate">The e-invoicing mandate for the specified country.</param>
         /// <param name="varInterface">The interface where the document is sent.</param>
         /// <param name="receiver">The document recipient based on the interface.</param>
-        public DocumentSummary(string id = default(string), string companyId = default(string), string processDateTime = default(string), string status = default(string), string supplierName = default(string), string customerName = default(string), string documentType = default(string), string documentVersion = default(string), string documentNumber = default(string), string documentDate = default(string), string flow = default(string), string countryCode = default(string), string countryMandate = default(string), string varInterface = default(string), string receiver = default(string))
+        public DocumentSummary(string id = default(string), string processDateTime = default(string), string status = default(string), string supplierName = default(string), string customerName = default(string), string documentType = default(string), string documentVersion = default(string), string documentNumber = default(string), string documentDate = default(string), string flow = default(string), string countryCode = default(string), string countryMandate = default(string), string varInterface = default(string), string receiver = default(string))
         {
             this.Id = id;
-            this.CompanyId = companyId;
             this.ProcessDateTime = processDateTime;
             this.Status = status;
             this.SupplierName = supplierName;
@@ -87,14 +85,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <example>52f60401-44d0-4667-ad47-4afe519abb53</example>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Unique identifier that represents the company within the system.
-        /// </summary>
-        /// <value>Unique identifier that represents the company within the system.</value>
-        /// <example>a5869a7b-4d5d-4ec1-9b29-fd272aa58ab2</example>
-        [DataMember(Name = "companyId", EmitDefaultValue = false)]
-        public string CompanyId { get; set; }
 
         /// <summary>
         /// The date and time when the document was processed, displayed in the format YYYY-MM-DDThh:mm:ss
@@ -209,7 +199,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             StringBuilder sb = new StringBuilder();
             sb.Append("class DocumentSummary {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ProcessDateTime: ").Append(ProcessDateTime).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");

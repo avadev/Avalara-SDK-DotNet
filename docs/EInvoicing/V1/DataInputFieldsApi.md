@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getdatainputfields"></a>
 # **GetDataInputFields**
-> DataInputFieldsResponse GetDataInputFields (GetDataInputFieldsRequestSdk requestParameters)
+> DataInputFieldsResponse GetDataInputFields (GetDataInputFieldsRequest requestParameters)
 
 Returns the optionality of document fields for different country mandates
 
@@ -37,7 +37,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DataInputFieldsApi(apiClient);
-            var requestParameters = new GetDataInputFieldsRequestSdk();
+            var requestParameters = new GetDataInputFieldsRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
             requestParameters.Filter = requiredFor/countryMandate eq AU-B2G-PEPPOL;  // string | Filter by field name and value. This filter only supports <code>eq</code> and <code>contains</code>. Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. (optional) 

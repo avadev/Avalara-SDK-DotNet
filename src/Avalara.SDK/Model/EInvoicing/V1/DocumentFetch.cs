@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.EInvoicing.V1
 {
 /// <summary>
-    /// An object of the inbound document
+    /// DocumentFetch
     /// </summary>
     [DataContract(Name = "documentFetch")]
     public partial class DocumentFetch : IValidatableObject
