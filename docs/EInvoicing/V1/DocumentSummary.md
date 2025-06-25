@@ -6,7 +6,6 @@ Displays a summary of information about the document
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique ID for this document | [optional] 
-**CompanyId** | **string** | Unique identifier that represents the company within the system. | [optional] 
 **ProcessDateTime** | **string** | The date and time when the document was processed, displayed in the format YYYY-MM-DDThh:mm:ss | [optional] 
 **Status** | **string** | The Document status | [optional] 
 **SupplierName** | **string** | The name of the supplier in the transaction | [optional] 

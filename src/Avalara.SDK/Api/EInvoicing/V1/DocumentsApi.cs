@@ -1,3 +1,22 @@
+/*
+ * AvaTax Software Development Kit for C#
+ *
+ * (c) 2004-2022 Avalara, Inc.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Avalara E-Invoicing API
+ *
+ * An API that supports sending data for an E-Invoicing compliance use-case.
+ *
+
+ * @author     Sachin Baijal <sachin.baijal@avalara.com>
+ * @author     Jonathan Wenger <jonathan.wenger@avalara.com>
+ * @copyright  2004-2022 Avalara, Inc.
+ * @license    https://www.apache.org/licenses/LICENSE-2.0
+ * @link       https://github.com/avadev/AvaTax-REST-V3-DotNet-SDK
+ */
 
 
 using System;
@@ -14,11 +33,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the DownloadDocument API
     /// </summary>
-    public class DownloadDocumentRequestSdk {
+    public class DownloadDocumentRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public DownloadDocumentRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// This header indicates the MIME type of the document
         /// </summary>
@@ -36,11 +60,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the FetchDocuments API
     /// </summary>
-    public class FetchDocumentsRequestSdk {
+    public class FetchDocumentsRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public FetchDocumentsRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// 
         /// </summary>
@@ -54,11 +83,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetDocumentList API
     /// </summary>
-    public class GetDocumentListRequestSdk {
+    public class GetDocumentListRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetDocumentListRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
         /// </summary>
@@ -100,11 +134,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the GetDocumentStatus API
     /// </summary>
-    public class GetDocumentStatusRequestSdk {
+    public class GetDocumentStatusRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public GetDocumentStatusRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// The unique ID for this document that was returned in the POST /einvoicing/documents response body
         /// </summary>
@@ -118,11 +157,16 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// <summary>
     /// Represents the Request object for the SubmitDocument API
     /// </summary>
-    public class SubmitDocumentRequestSdk {
+    public class SubmitDocumentRequest {
+        /// <summary>
+        /// Constructor for the Request object
+        /// </summary>
+        public SubmitDocumentRequest () {
+        }
         /// <summary>
         /// The HTTP Header meant to specify the version of the API intended to be used
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.3";
+        public string? AvalaraVersion { get; set; } = "1.2";
         /// <summary>
         /// 
         /// </summary>
@@ -153,7 +197,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>FileParameter</returns>
-        FileParameter DownloadDocument(DownloadDocumentRequestSdk requestParameters);
+        FileParameter DownloadDocument(DownloadDocumentRequest requestParameters);
 
         /// <summary>
         /// Fetch the inbound document from a tax authority
@@ -164,7 +208,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentFetch</returns>
-        DocumentFetch FetchDocuments(FetchDocumentsRequestSdk requestParameters);
+        DocumentFetch FetchDocuments(FetchDocumentsRequest requestParameters);
 
         /// <summary>
         /// Returns a summary of documents for a date range
@@ -175,7 +219,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentListResponse</returns>
-        DocumentListResponse GetDocumentList(GetDocumentListRequestSdk requestParameters);
+        DocumentListResponse GetDocumentList(GetDocumentListRequest requestParameters);
 
         /// <summary>
         /// Checks the status of a document
@@ -186,7 +230,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentStatusResponse</returns>
-        DocumentStatusResponse GetDocumentStatus(GetDocumentStatusRequestSdk requestParameters);
+        DocumentStatusResponse GetDocumentStatus(GetDocumentStatusRequest requestParameters);
 
         /// <summary>
         /// Submits a document to Avalara E-Invoicing API
@@ -197,7 +241,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentSubmitResponse</returns>
-        DocumentSubmitResponse SubmitDocument(SubmitDocumentRequestSdk requestParameters);
+        DocumentSubmitResponse SubmitDocument(SubmitDocumentRequest requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -218,7 +262,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> DownloadDocumentAsync(DownloadDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<FileParameter> DownloadDocumentAsync(DownloadDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fetch the inbound document from a tax authority
@@ -230,7 +274,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentFetch</returns>
-        System.Threading.Tasks.Task<DocumentFetch> FetchDocumentsAsync(FetchDocumentsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DocumentFetch> FetchDocumentsAsync(FetchDocumentsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns a summary of documents for a date range
@@ -242,7 +286,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentListResponse</returns>
-        System.Threading.Tasks.Task<DocumentListResponse> GetDocumentListAsync(GetDocumentListRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DocumentListResponse> GetDocumentListAsync(GetDocumentListRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Checks the status of a document
@@ -254,7 +298,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentStatusResponse</returns>
-        System.Threading.Tasks.Task<DocumentStatusResponse> GetDocumentStatusAsync(GetDocumentStatusRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DocumentStatusResponse> GetDocumentStatusAsync(GetDocumentStatusRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Submits a document to Avalara E-Invoicing API
@@ -266,7 +310,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentSubmitResponse</returns>
-        System.Threading.Tasks.Task<DocumentSubmitResponse> SubmitDocumentAsync(SubmitDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DocumentSubmitResponse> SubmitDocumentAsync(SubmitDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -316,7 +360,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>FileParameter</returns>
-        public FileParameter DownloadDocument(DownloadDocumentRequestSdk requestParameters)
+        public FileParameter DownloadDocument(DownloadDocumentRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<FileParameter> localVarResponse = DownloadDocumentWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -328,7 +372,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of FileParameter</returns>
-        private Avalara.SDK.Client.ApiResponse<FileParameter> DownloadDocumentWithHttpInfo(DownloadDocumentRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<FileParameter> DownloadDocumentWithHttpInfo(DownloadDocumentRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -389,7 +433,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> DownloadDocumentAsync(DownloadDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<FileParameter> DownloadDocumentAsync(DownloadDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<FileParameter> localVarResponse = await DownloadDocumentWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -402,7 +446,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileParameter)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<FileParameter>> DownloadDocumentWithHttpInfoAsync(DownloadDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<FileParameter>> DownloadDocumentWithHttpInfoAsync(DownloadDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -464,7 +508,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentFetch</returns>
-        public DocumentFetch FetchDocuments(FetchDocumentsRequestSdk requestParameters)
+        public DocumentFetch FetchDocuments(FetchDocumentsRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<DocumentFetch> localVarResponse = FetchDocumentsWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -476,7 +520,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of DocumentFetch</returns>
-        private Avalara.SDK.Client.ApiResponse<DocumentFetch> FetchDocumentsWithHttpInfo(FetchDocumentsRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<DocumentFetch> FetchDocumentsWithHttpInfo(FetchDocumentsRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -531,7 +575,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentFetch</returns>
-        public async System.Threading.Tasks.Task<DocumentFetch> FetchDocumentsAsync(FetchDocumentsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DocumentFetch> FetchDocumentsAsync(FetchDocumentsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<DocumentFetch> localVarResponse = await FetchDocumentsWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -544,7 +588,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DocumentFetch)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentFetch>> FetchDocumentsWithHttpInfoAsync(FetchDocumentsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentFetch>> FetchDocumentsWithHttpInfoAsync(FetchDocumentsRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -600,7 +644,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentListResponse</returns>
-        public DocumentListResponse GetDocumentList(GetDocumentListRequestSdk requestParameters)
+        public DocumentListResponse GetDocumentList(GetDocumentListRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<DocumentListResponse> localVarResponse = GetDocumentListWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -612,7 +656,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of DocumentListResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<DocumentListResponse> GetDocumentListWithHttpInfo(GetDocumentListRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<DocumentListResponse> GetDocumentListWithHttpInfo(GetDocumentListRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -693,7 +737,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentListResponse</returns>
-        public async System.Threading.Tasks.Task<DocumentListResponse> GetDocumentListAsync(GetDocumentListRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DocumentListResponse> GetDocumentListAsync(GetDocumentListRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<DocumentListResponse> localVarResponse = await GetDocumentListWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -706,7 +750,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DocumentListResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentListResponse>> GetDocumentListWithHttpInfoAsync(GetDocumentListRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentListResponse>> GetDocumentListWithHttpInfoAsync(GetDocumentListRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -788,7 +832,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentStatusResponse</returns>
-        public DocumentStatusResponse GetDocumentStatus(GetDocumentStatusRequestSdk requestParameters)
+        public DocumentStatusResponse GetDocumentStatus(GetDocumentStatusRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<DocumentStatusResponse> localVarResponse = GetDocumentStatusWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -800,7 +844,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of DocumentStatusResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<DocumentStatusResponse> GetDocumentStatusWithHttpInfo(GetDocumentStatusRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<DocumentStatusResponse> GetDocumentStatusWithHttpInfo(GetDocumentStatusRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -854,7 +898,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentStatusResponse</returns>
-        public async System.Threading.Tasks.Task<DocumentStatusResponse> GetDocumentStatusAsync(GetDocumentStatusRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DocumentStatusResponse> GetDocumentStatusAsync(GetDocumentStatusRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<DocumentStatusResponse> localVarResponse = await GetDocumentStatusWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -867,7 +911,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DocumentStatusResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentStatusResponse>> GetDocumentStatusWithHttpInfoAsync(GetDocumentStatusRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentStatusResponse>> GetDocumentStatusWithHttpInfoAsync(GetDocumentStatusRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -922,7 +966,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>DocumentSubmitResponse</returns>
-        public DocumentSubmitResponse SubmitDocument(SubmitDocumentRequestSdk requestParameters)
+        public DocumentSubmitResponse SubmitDocument(SubmitDocumentRequest requestParameters)
         {
             Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse> localVarResponse = SubmitDocumentWithHttpInfo(requestParameters);
             return localVarResponse.Data;
@@ -934,7 +978,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>ApiResponse of DocumentSubmitResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse> SubmitDocumentWithHttpInfo(SubmitDocumentRequestSdk requestParameters)
+        private Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse> SubmitDocumentWithHttpInfo(SubmitDocumentRequest requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -995,7 +1039,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DocumentSubmitResponse</returns>
-        public async System.Threading.Tasks.Task<DocumentSubmitResponse> SubmitDocumentAsync(SubmitDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DocumentSubmitResponse> SubmitDocumentAsync(SubmitDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse> localVarResponse = await SubmitDocumentWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1008,7 +1052,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DocumentSubmitResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse>> SubmitDocumentWithHttpInfoAsync(SubmitDocumentRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<DocumentSubmitResponse>> SubmitDocumentWithHttpInfoAsync(SubmitDocumentRequest requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1073,7 +1117,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.6.0";
+            this.Client.SdkVersion = "25.6.1";
         }
         
     }

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="getmandatedatainputfields"></a>
 # **GetMandateDataInputFields**
-> List&lt;MandateDataInputField&gt; GetMandateDataInputFields (GetMandateDataInputFieldsRequestSdk requestParameters)
+> List&lt;MandateDataInputField&gt; GetMandateDataInputFields (GetMandateDataInputFieldsRequest requestParameters)
 
 Returns document field information for a country mandate, a selected document type, and its version
 
@@ -38,7 +38,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new MandatesApi(apiClient);
-            var requestParameters = new GetMandateDataInputFieldsRequestSdk();
+            var requestParameters = new GetMandateDataInputFieldsRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.MandateId = AD-B2G-PEPPOL;  // string | The unique ID for the mandate that was returned in the GET /einvoicing/mandates response body
             requestParameters.DocumentType = ubl-invoice;  // string | Select the documentType for which you wish to view the data-input-fields (You may obtain the supported documentTypes from the GET /mandates endpoint)
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 <a name="getmandates"></a>
 # **GetMandates**
-> MandatesResponse GetMandates (GetMandatesRequestSdk requestParameters)
+> MandatesResponse GetMandates (GetMandatesRequest requestParameters)
 
 List country mandates that are supported by the Avalara E-Invoicing platform
 
@@ -128,7 +128,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new MandatesApi(apiClient);
-            var requestParameters = new GetMandatesRequestSdk();
+            var requestParameters = new GetMandatesRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
             requestParameters.Filter = countryMandate eq DE-B2G-PEPPOL;  // string | Filter by field name and value. This filter only supports <code>eq</code> and <code>contains</code>. Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. (optional) 

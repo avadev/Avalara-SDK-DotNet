@@ -54,11 +54,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="workflowId">Specifies a unique ID for this workflow. (required).</param>
         /// <param name="dataFormat">Specifies the data format for this workflow. (required).</param>
         /// <param name="dataFormatVersion">Specifies the data format version number. (required).</param>
-        /// <param name="outputDataFormat">Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate..</param>
-        /// <param name="outputDataFormatVersion">Specifies the version of the selected output document format.</param>
         /// <param name="countryCode">The two-letter ISO-3166 country code for the country where the document is being submitted (required).</param>
         /// <param name="countryMandate">The e-invoicing mandate for the specified country. (required).</param>
-        public SubmitDocumentMetadata(string workflowId = default(string), string dataFormat = default(string), string dataFormatVersion = default(string), string outputDataFormat = default(string), string outputDataFormatVersion = default(string), string countryCode = default(string), string countryMandate = default(string))
+        public SubmitDocumentMetadata(string workflowId = default(string), string dataFormat = default(string), string dataFormatVersion = default(string), string countryCode = default(string), string countryMandate = default(string))
         {
             // to ensure "workflowId" is required (not null)
             if (workflowId == null)
@@ -90,8 +88,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
                 throw new ArgumentNullException("countryMandate is a required property for SubmitDocumentMetadata and cannot be null");
             }
             this.CountryMandate = countryMandate;
-            this.OutputDataFormat = outputDataFormat;
-            this.OutputDataFormatVersion = outputDataFormatVersion;
         }
 
         /// <summary>
@@ -117,22 +113,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <example>2.1</example>
         [DataMember(Name = "dataFormatVersion", IsRequired = true, EmitDefaultValue = true)]
         public string DataFormatVersion { get; set; }
-
-        /// <summary>
-        /// Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate.
-        /// </summary>
-        /// <value>Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate.</value>
-        /// <example>ubl-invoice</example>
-        [DataMember(Name = "outputDataFormat", EmitDefaultValue = false)]
-        public string OutputDataFormat { get; set; }
-
-        /// <summary>
-        /// Specifies the version of the selected output document format
-        /// </summary>
-        /// <value>Specifies the version of the selected output document format</value>
-        /// <example>2.1</example>
-        [DataMember(Name = "outputDataFormatVersion", EmitDefaultValue = false)]
-        public string OutputDataFormatVersion { get; set; }
 
         /// <summary>
         /// The two-letter ISO-3166 country code for the country where the document is being submitted
@@ -161,8 +141,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("  DataFormat: ").Append(DataFormat).Append("\n");
             sb.Append("  DataFormatVersion: ").Append(DataFormatVersion).Append("\n");
-            sb.Append("  OutputDataFormat: ").Append(OutputDataFormat).Append("\n");
-            sb.Append("  OutputDataFormatVersion: ").Append(OutputDataFormatVersion).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  CountryMandate: ").Append(CountryMandate).Append("\n");
             sb.Append("}\n");

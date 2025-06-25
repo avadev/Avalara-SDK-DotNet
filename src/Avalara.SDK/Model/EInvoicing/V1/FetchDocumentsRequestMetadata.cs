@@ -54,11 +54,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="workflowId">Specifies a unique ID for this workflow. (required).</param>
         /// <param name="dataFormat">Specifies the data format for this workflow (required).</param>
         /// <param name="dataFormatVersion">Specifies the data format version number (required).</param>
-        /// <param name="outputDataFormat">Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate. (required).</param>
-        /// <param name="outputDataFormatVersion">Specifies the version of the selected output document format (required).</param>
         /// <param name="countryCode">The two-letter ISO-3166 country code for the country for which document is being retrieved (required).</param>
         /// <param name="countryMandate">The e-invoicing mandate for the specified country (required).</param>
-        public FetchDocumentsRequestMetadata(string workflowId = default(string), string dataFormat = default(string), decimal dataFormatVersion = default(decimal), string outputDataFormat = default(string), decimal outputDataFormatVersion = default(decimal), string countryCode = default(string), string countryMandate = default(string))
+        public FetchDocumentsRequestMetadata(string workflowId = default(string), string dataFormat = default(string), decimal dataFormatVersion = default(decimal), string countryCode = default(string), string countryMandate = default(string))
         {
             // to ensure "workflowId" is required (not null)
             if (workflowId == null)
@@ -73,13 +71,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             }
             this.DataFormat = dataFormat;
             this.DataFormatVersion = dataFormatVersion;
-            // to ensure "outputDataFormat" is required (not null)
-            if (outputDataFormat == null)
-            {
-                throw new ArgumentNullException("outputDataFormat is a required property for FetchDocumentsRequestMetadata and cannot be null");
-            }
-            this.OutputDataFormat = outputDataFormat;
-            this.OutputDataFormatVersion = outputDataFormatVersion;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
@@ -119,22 +110,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public decimal DataFormatVersion { get; set; }
 
         /// <summary>
-        /// Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate.
-        /// </summary>
-        /// <value>Specifies the format of the output document to be generated for the recipient. This format should be chosen based on the recipient&#39;s preferences or requirements as defined by applicable e-invoicing regulations. When not specified for mandates that don&#39;t require a specific output format, the system will use the default format defined for that mandate.</value>
-        /// <example>ubl-invoice</example>
-        [DataMember(Name = "outputDataFormat", IsRequired = true, EmitDefaultValue = true)]
-        public string OutputDataFormat { get; set; }
-
-        /// <summary>
-        /// Specifies the version of the selected output document format
-        /// </summary>
-        /// <value>Specifies the version of the selected output document format</value>
-        /// <example>2.1</example>
-        [DataMember(Name = "outputDataFormatVersion", IsRequired = true, EmitDefaultValue = true)]
-        public decimal OutputDataFormatVersion { get; set; }
-
-        /// <summary>
         /// The two-letter ISO-3166 country code for the country for which document is being retrieved
         /// </summary>
         /// <value>The two-letter ISO-3166 country code for the country for which document is being retrieved</value>
@@ -161,8 +136,6 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("  DataFormat: ").Append(DataFormat).Append("\n");
             sb.Append("  DataFormatVersion: ").Append(DataFormatVersion).Append("\n");
-            sb.Append("  OutputDataFormat: ").Append(OutputDataFormat).Append("\n");
-            sb.Append("  OutputDataFormatVersion: ").Append(OutputDataFormatVersion).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  CountryMandate: ").Append(CountryMandate).Append("\n");
             sb.Append("}\n");

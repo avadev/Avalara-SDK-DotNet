@@ -6,9 +6,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Avalara 1099 & W-9 API Definition
+ * Avalara 1099 API Definition
  *
- * ## 🔐 Authentication  Use **username/password** or generate a **license key** from: *Avalara Portal → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication Use **username/password** or **generate a license** key from: Avalara Portal → Settings → License and API Keys  More info on authentication: [Avalara Authentication Methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  Validate your credentials here: [Test Credentials](https://developer.avalara.com/avatax/test-credentials/)  ## API & SDK Docs [Avalara (C#/.NET) SDK on GitHub](https://github.com/avadev/Avalara-SDK-DotNet/tree/main#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples for 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -127,7 +127,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tinMatchStatus">Result of IRS TIN match query for name and TIN in the last signed form, null if signed_at is null.</param>
         /// <param name="expiresAt">Timestamp when this FormRequest will expire, ttl (or 3600) seconds from creation.</param>
         /// <param name="signedPdf">URL of PDF representation of just-signed form, otherwise null. Integrations may use this value to offer a \&quot;download for your records\&quot; function after a vendor completes and signs a form. Link expires at the same time as this FormRequest. Treat the format of this URL as opaque and expect it to change in the future..</param>
-        public FormRequestModel(string id = default(string), TypeEnum? type = default(TypeEnum?), FormTypeEnum? formType = default(FormTypeEnum?), int companyId = default(int), string companyName = default(string), string companyEmail = default(string), string referenceId = default(string), DateTime signedAt = default(DateTime), TinMatchStatusEnum? tinMatchStatus = default(TinMatchStatusEnum?), DateTime expiresAt = default(DateTime), string signedPdf = default(string))
+        public FormRequestModel(string id = default(string), TypeEnum? type = default(TypeEnum?), FormTypeEnum? formType = default(FormTypeEnum?), string companyId = default(string), string companyName = default(string), string companyEmail = default(string), string referenceId = default(string), DateTime signedAt = default(DateTime), TinMatchStatusEnum? tinMatchStatus = default(TinMatchStatusEnum?), DateTime expiresAt = default(DateTime), string signedPdf = default(string))
         {
             this.Id = id;
             this.Type = type;
@@ -146,7 +146,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets Id
         /// </summary>
         /// <example>d0d09a2f-619e-4e9d-aae4-3311d9e0c67c</example>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
@@ -155,14 +155,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Track1099&#39;s ID of your company, found in the W-9 UI</value>
         /// <example>2345678</example>
         [DataMember(Name = "companyId", EmitDefaultValue = false)]
-        public int CompanyId { get; set; }
+        public string CompanyId { get; set; }
 
         /// <summary>
         /// Name of your company, set in the W-9 UI
         /// </summary>
         /// <value>Name of your company, set in the W-9 UI</value>
         /// <example>ACME Corp</example>
-        [DataMember(Name = "companyName", EmitDefaultValue = false)]
+        [DataMember(Name = "companyName", EmitDefaultValue = true)]
         public string CompanyName { get; set; }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Contact email of your company, set in the W-9 UI</value>
         /// <example>roadrunner@acmecorp.com</example>
-        [DataMember(Name = "companyEmail", EmitDefaultValue = false)]
+        [DataMember(Name = "companyEmail", EmitDefaultValue = true)]
         public string CompanyEmail { get; set; }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Your internal identifier for the vendor from whom you are requesting a form</value>
         /// <example>SE-02453450</example>
-        [DataMember(Name = "referenceId", EmitDefaultValue = false)]
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
         public string ReferenceId { get; set; }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// URL of PDF representation of just-signed form, otherwise null. Integrations may use this value to offer a \&quot;download for your records\&quot; function after a vendor completes and signs a form. Link expires at the same time as this FormRequest. Treat the format of this URL as opaque and expect it to change in the future.
         /// </summary>
         /// <value>URL of PDF representation of just-signed form, otherwise null. Integrations may use this value to offer a \&quot;download for your records\&quot; function after a vendor completes and signs a form. Link expires at the same time as this FormRequest. Treat the format of this URL as opaque and expect it to change in the future.</value>
-        [DataMember(Name = "signedPdf", EmitDefaultValue = false)]
+        [DataMember(Name = "signedPdf", EmitDefaultValue = true)]
         public string SignedPdf { get; set; }
 
         /// <summary>

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="downloaddocument"></a>
 # **DownloadDocument**
-> FileParameter DownloadDocument (DownloadDocumentRequestSdk requestParameters)
+> FileParameter DownloadDocument (DownloadDocumentRequest requestParameters)
 
 Returns a copy of the document
 
@@ -41,7 +41,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DocumentsApi(apiClient);
-            var requestParameters = new DownloadDocumentRequestSdk();
+            var requestParameters = new DownloadDocumentRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Accept = application/pdf;  // string | This header indicates the MIME type of the document
             requestParameters.DocumentId = "documentId_example";  // string | The unique ID for this document that was returned in the POST /einvoicing/document response body
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 <a name="fetchdocuments"></a>
 # **FetchDocuments**
-> DocumentFetch FetchDocuments (FetchDocumentsRequestSdk requestParameters)
+> DocumentFetch FetchDocuments (FetchDocumentsRequest requestParameters)
 
 Fetch the inbound document from a tax authority
 
@@ -128,7 +128,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DocumentsApi(apiClient);
-            var requestParameters = new FetchDocumentsRequestSdk();
+            var requestParameters = new FetchDocumentsRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.FetchDocumentsRequest = new FetchDocumentsRequest(); // FetchDocumentsRequest | 
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="getdocumentlist"></a>
 # **GetDocumentList**
-> DocumentListResponse GetDocumentList (GetDocumentListRequestSdk requestParameters)
+> DocumentListResponse GetDocumentList (GetDocumentListRequest requestParameters)
 
 Returns a summary of documents for a date range
 
@@ -212,7 +212,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DocumentsApi(apiClient);
-            var requestParameters = new GetDocumentListRequestSdk();
+            var requestParameters = new GetDocumentListRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
             requestParameters.StartDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Start date of documents to return. This defaults to the previous month. (optional) 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 <a name="getdocumentstatus"></a>
 # **GetDocumentStatus**
-> DocumentStatusResponse GetDocumentStatus (GetDocumentStatusRequestSdk requestParameters)
+> DocumentStatusResponse GetDocumentStatus (GetDocumentStatusRequest requestParameters)
 
 Checks the status of a document
 
@@ -310,7 +310,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DocumentsApi(apiClient);
-            var requestParameters = new GetDocumentStatusRequestSdk();
+            var requestParameters = new GetDocumentStatusRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.DocumentId = "documentId_example";  // string | The unique ID for this document that was returned in the POST /einvoicing/documents response body
             requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 <a name="submitdocument"></a>
 # **SubmitDocument**
-> DocumentSubmitResponse SubmitDocument (SubmitDocumentRequestSdk requestParameters)
+> DocumentSubmitResponse SubmitDocument (SubmitDocumentRequest requestParameters)
 
 Submits a document to Avalara E-Invoicing API
 
@@ -394,7 +394,7 @@ namespace Example
             ApiClient apiClient= new ApiClient(config);
             
             var apiInstance = new DocumentsApi(apiClient);
-            var requestParameters = new SubmitDocumentRequestSdk();
+            var requestParameters = new SubmitDocumentRequest();
             requestParameters.AvalaraVersion = 1.2;  // string | The HTTP Header meant to specify the version of the API intended to be used
             requestParameters.Metadata = new SubmitDocumentMetadata(); // SubmitDocumentMetadata | 
             requestParameters.Data = new Object(); // Object | The document to be submitted, as indicated by the metadata fields 'dataFormat' and 'dataFormatVersion'
