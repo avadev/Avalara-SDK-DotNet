@@ -278,7 +278,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The birthday of the individual associated with the form.
         /// </summary>
         /// <value>The birthday of the individual associated with the form.</value>
-        /// <example>Mon Oct 01 17:00:00 PDT 1990</example>
+        /// <example>Tue Oct 02 00:00:00 UTC 1990</example>
         [DataMember(Name = "birthday", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Birthday { get; set; }

@@ -44,6 +44,103 @@ namespace Avalara.SDK.Model.A1099.V2
     public partial class Form1099DivRequest : IValidatableObject
     {
         /// <summary>
+        /// Defines Type
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum Form1099Nec for value: Form1099Nec
+            /// </summary>
+            [EnumMember(Value = "Form1099Nec")]
+            Form1099Nec = 1,
+
+            /// <summary>
+            /// Enum Form1099Misc for value: Form1099Misc
+            /// </summary>
+            [EnumMember(Value = "Form1099Misc")]
+            Form1099Misc = 2,
+
+            /// <summary>
+            /// Enum Form1099Div for value: Form1099Div
+            /// </summary>
+            [EnumMember(Value = "Form1099Div")]
+            Form1099Div = 3,
+
+            /// <summary>
+            /// Enum Form1099R for value: Form1099R
+            /// </summary>
+            [EnumMember(Value = "Form1099R")]
+            Form1099R = 4,
+
+            /// <summary>
+            /// Enum Form1099K for value: Form1099K
+            /// </summary>
+            [EnumMember(Value = "Form1099K")]
+            Form1099K = 5,
+
+            /// <summary>
+            /// Enum Form1095B for value: Form1095B
+            /// </summary>
+            [EnumMember(Value = "Form1095B")]
+            Form1095B = 6
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        /// <example>Form1099Nec</example>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TypeEnum? Type { get; set; }
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Defines TinType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TinTypeEnum
+        {
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 1,
+
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 2,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 3,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 4
+        }
+
+
+        /// <summary>
+        /// Gets or Sets TinType
+        /// </summary>
+        /// <example>EIN</example>
+        [DataMember(Name = "tinType", EmitDefaultValue = false)]
+        public TinTypeEnum? TinType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Form1099DivRequest" /> class.
         /// </summary>
         /// <param name="totalOrdinaryDividends">totalOrdinaryDividends.</param>
@@ -65,16 +162,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="exemptInterestDividends">exemptInterestDividends.</param>
         /// <param name="specifiedPrivateActivityBondInterestDividends">specifiedPrivateActivityBondInterestDividends.</param>
         /// <param name="fatcaFilingRequirement">fatcaFilingRequirement.</param>
-        /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        /// <param name="type">type.</param>
         /// <param name="issuerId">issuerId.</param>
         /// <param name="referenceId">referenceId.</param>
         /// <param name="recipientName">recipientName.</param>
         /// <param name="recipientTin">recipientTin.</param>
         /// <param name="tinType">tinType.</param>
         /// <param name="recipientSecondName">recipientSecondName.</param>
-        /// <param name="streetAddress">streetAddress.</param>
-        /// <param name="streetAddressLine2">streetAddressLine2.</param>
+        /// <param name="address">address.</param>
+        /// <param name="address2">address2.</param>
         /// <param name="city">city.</param>
         /// <param name="state">state.</param>
         /// <param name="zip">zip.</param>
@@ -88,7 +183,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="stateEFile">stateEFile.</param>
         /// <param name="tinMatch">tinMatch.</param>
         /// <param name="addressVerification">addressVerification.</param>
-        public Form1099DivRequest(string totalOrdinaryDividends = default(string), string qualifiedDividends = default(string), string totalCapitalGainDistr = default(string), string unrecapSec1250Gain = default(string), string section1202Gain = default(string), string collectiblesGain = default(string), string section897OrdinaryDividends = default(string), string section897CapitalGain = default(string), string nondividendDistributions = default(string), string federalIncomeTaxWithheld = default(string), string section199ADividends = default(string), string investmentExpenses = default(string), string foreignTaxPaid = default(string), string foreignCountryOrUSPossession = default(string), string cashLiquidationDistributions = default(string), string noncashLiquidationDistributions = default(string), string exemptInterestDividends = default(string), string specifiedPrivateActivityBondInterestDividends = default(string), string fatcaFilingRequirement = default(string), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest), string type = default(string), string issuerId = default(string), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), string tinType = default(string), string recipientSecondName = default(string), string streetAddress = default(string), string streetAddressLine2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string recipientEmail = default(string), string accountNumber = default(string), string officeCode = default(string), string recipientNonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool))
+        /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
+        public Form1099DivRequest(string totalOrdinaryDividends = default(string), string qualifiedDividends = default(string), string totalCapitalGainDistr = default(string), string unrecapSec1250Gain = default(string), string section1202Gain = default(string), string collectiblesGain = default(string), string section897OrdinaryDividends = default(string), string section897CapitalGain = default(string), string nondividendDistributions = default(string), string federalIncomeTaxWithheld = default(string), string section199ADividends = default(string), string investmentExpenses = default(string), string foreignTaxPaid = default(string), string foreignCountryOrUSPossession = default(string), string cashLiquidationDistributions = default(string), string noncashLiquidationDistributions = default(string), string exemptInterestDividends = default(string), string specifiedPrivateActivityBondInterestDividends = default(string), string fatcaFilingRequirement = default(string), string issuerId = default(string), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string recipientEmail = default(string), string accountNumber = default(string), string officeCode = default(string), string recipientNonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
         {
             this.TotalOrdinaryDividends = totalOrdinaryDividends;
             this.QualifiedDividends = qualifiedDividends;
@@ -109,16 +205,14 @@ namespace Avalara.SDK.Model.A1099.V2
             this.ExemptInterestDividends = exemptInterestDividends;
             this.SpecifiedPrivateActivityBondInterestDividends = specifiedPrivateActivityBondInterestDividends;
             this.FatcaFilingRequirement = fatcaFilingRequirement;
-            this.StateAndLocalWithholding = stateAndLocalWithholding;
-            this.Type = type;
             this.IssuerId = issuerId;
             this.ReferenceId = referenceId;
             this.RecipientName = recipientName;
             this.RecipientTin = recipientTin;
             this.TinType = tinType;
             this.RecipientSecondName = recipientSecondName;
-            this.StreetAddress = streetAddress;
-            this.StreetAddressLine2 = streetAddressLine2;
+            this.Address = address;
+            this.Address2 = address2;
             this.City = city;
             this.State = state;
             this.Zip = zip;
@@ -132,6 +226,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.StateEFile = stateEFile;
             this.TinMatch = tinMatch;
             this.AddressVerification = addressVerification;
+            this.StateAndLocalWithholding = stateAndLocalWithholding;
         }
 
         /// <summary>
@@ -249,21 +344,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string FatcaFilingRequirement { get; set; }
 
         /// <summary>
-        /// Gets or Sets StateAndLocalWithholding
-        /// </summary>
-        [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = false)]
-        public StateAndLocalWithholdingRequest StateAndLocalWithholding { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or Sets IssuerId
         /// </summary>
-        [DataMember(Name = "issuerId", EmitDefaultValue = false)]
+        [DataMember(Name = "issuerId", EmitDefaultValue = true)]
         public string IssuerId { get; set; }
 
         /// <summary>
@@ -275,7 +358,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Gets or Sets RecipientName
         /// </summary>
-        [DataMember(Name = "recipientName", EmitDefaultValue = false)]
+        [DataMember(Name = "recipientName", EmitDefaultValue = true)]
         public string RecipientName { get; set; }
 
         /// <summary>
@@ -285,28 +368,22 @@ namespace Avalara.SDK.Model.A1099.V2
         public string RecipientTin { get; set; }
 
         /// <summary>
-        /// Gets or Sets TinType
-        /// </summary>
-        [DataMember(Name = "tinType", EmitDefaultValue = false)]
-        public string TinType { get; set; }
-
-        /// <summary>
         /// Gets or Sets RecipientSecondName
         /// </summary>
-        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
+        [DataMember(Name = "recipientSecondName", EmitDefaultValue = false)]
         public string RecipientSecondName { get; set; }
 
         /// <summary>
-        /// Gets or Sets StreetAddress
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name = "streetAddress", EmitDefaultValue = false)]
-        public string StreetAddress { get; set; }
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets StreetAddressLine2
+        /// Gets or Sets Address2
         /// </summary>
-        [DataMember(Name = "streetAddressLine2", EmitDefaultValue = true)]
-        public string StreetAddressLine2 { get; set; }
+        [DataMember(Name = "address2", EmitDefaultValue = true)]
+        public string Address2 { get; set; }
 
         /// <summary>
         /// Gets or Sets City
@@ -387,6 +464,12 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool AddressVerification { get; set; }
 
         /// <summary>
+        /// Gets or Sets StateAndLocalWithholding
+        /// </summary>
+        [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = false)]
+        public StateAndLocalWithholdingRequest StateAndLocalWithholding { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -413,7 +496,6 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ExemptInterestDividends: ").Append(ExemptInterestDividends).Append("\n");
             sb.Append("  SpecifiedPrivateActivityBondInterestDividends: ").Append(SpecifiedPrivateActivityBondInterestDividends).Append("\n");
             sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
-            sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
@@ -421,8 +503,8 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  RecipientTin: ").Append(RecipientTin).Append("\n");
             sb.Append("  TinType: ").Append(TinType).Append("\n");
             sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
-            sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
-            sb.Append("  StreetAddressLine2: ").Append(StreetAddressLine2).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
@@ -436,6 +518,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  StateEFile: ").Append(StateEFile).Append("\n");
             sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
             sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
+            sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

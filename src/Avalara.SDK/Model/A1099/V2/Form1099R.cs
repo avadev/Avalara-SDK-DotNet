@@ -89,7 +89,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="recipientName">recipientName.</param>
         /// <param name="recipientSecondName">recipientSecondName.</param>
         /// <param name="address">address.</param>
-        /// <param name="addressRecipientSecond">addressRecipientSecond.</param>
+        /// <param name="address2">address2.</param>
         /// <param name="city">city.</param>
         /// <param name="state">state.</param>
         /// <param name="zip">zip.</param>
@@ -99,7 +99,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        public Form1099R(double? grossDistributions = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionIndicator = default(bool?), double? capitalGain = default(double?), double? fedIncomeTaxWithheld = default(double?), double? employeeContributions = default(double?), double? netUnrealizedAppreciation = default(double?), string distributionCodeRequired = default(string), string distributionCodeOptional = default(string), bool? iraSepSimpleIndicator = default(bool?), double? totalIraSepSimpleDistribution = default(double?), double? other = default(double?), string otherPercent = default(string), string percentageTotalDistribution = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrr = default(double?), string firstYearDesignatedRothContrib = default(string), bool? fatcaRequirementIndicator = default(bool?), string dateOfPayment = default(string), string id = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), Form1099StatusDetail federalEfileStatus = default(Form1099StatusDetail), bool stateEfile = default(bool), List<StateEfileStatusDetail> stateEfileStatus = default(List<StateEfileStatusDetail>), bool postalMail = default(bool), Form1099StatusDetail postalMailStatus = default(Form1099StatusDetail), bool tinMatch = default(bool), Form1099StatusDetail tinMatchStatus = default(Form1099StatusDetail), bool addressVerification = default(bool), Form1099StatusDetail addressVerificationStatus = default(Form1099StatusDetail), string referenceId = default(string), string email = default(string), string tinType = default(string), string tin = default(string), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string addressRecipientSecond = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string countryCode = default(string), List<ValidationError> validationErrors = default(List<ValidationError>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
+        public Form1099R(double? grossDistributions = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionIndicator = default(bool?), double? capitalGain = default(double?), double? fedIncomeTaxWithheld = default(double?), double? employeeContributions = default(double?), double? netUnrealizedAppreciation = default(double?), string distributionCodeRequired = default(string), string distributionCodeOptional = default(string), bool? iraSepSimpleIndicator = default(bool?), double? totalIraSepSimpleDistribution = default(double?), double? other = default(double?), string otherPercent = default(string), string percentageTotalDistribution = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrr = default(double?), string firstYearDesignatedRothContrib = default(string), bool? fatcaRequirementIndicator = default(bool?), string dateOfPayment = default(string), string id = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), Form1099StatusDetail federalEfileStatus = default(Form1099StatusDetail), bool stateEfile = default(bool), List<StateEfileStatusDetail> stateEfileStatus = default(List<StateEfileStatusDetail>), bool postalMail = default(bool), Form1099StatusDetail postalMailStatus = default(Form1099StatusDetail), bool tinMatch = default(bool), Form1099StatusDetail tinMatchStatus = default(Form1099StatusDetail), bool addressVerification = default(bool), Form1099StatusDetail addressVerificationStatus = default(Form1099StatusDetail), string referenceId = default(string), string email = default(string), string tinType = default(string), string tin = default(string), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string countryCode = default(string), List<ValidationError> validationErrors = default(List<ValidationError>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
         {
             this.GrossDistributions = grossDistributions;
             this.TaxableAmount = taxableAmount;
@@ -144,7 +144,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.RecipientName = recipientName;
             this.RecipientSecondName = recipientSecondName;
             this.Address = address;
-            this.AddressRecipientSecond = addressRecipientSecond;
+            this.Address2 = address2;
             this.City = city;
             this.State = state;
             this.Zip = zip;
@@ -415,10 +415,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets AddressRecipientSecond
+        /// Gets or Sets Address2
         /// </summary>
-        [DataMember(Name = "addressRecipientSecond", EmitDefaultValue = true)]
-        public string AddressRecipientSecond { get; set; }
+        [DataMember(Name = "address2", EmitDefaultValue = true)]
+        public string Address2 { get; set; }
 
         /// <summary>
         /// Gets or Sets City
@@ -525,7 +525,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
             sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  AddressRecipientSecond: ").Append(AddressRecipientSecond).Append("\n");
+            sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");

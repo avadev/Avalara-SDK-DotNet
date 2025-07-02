@@ -105,7 +105,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Gets or Sets LocalityIdNumber
         /// </summary>
-        [DataMember(Name = "localityIdNumber", EmitDefaultValue = false)]
+        [DataMember(Name = "localityIdNumber", EmitDefaultValue = true)]
         public string LocalityIdNumber { get; set; }
 
         /// <summary>

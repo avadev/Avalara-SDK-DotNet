@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | [optional] 
+**Type** | **string** |  | [optional] [readonly] 
 **IssuerId** | **string** |  | [optional] 
 **ReferenceId** | **string** |  | [optional] 
 **RecipientName** | **string** |  | [optional] 
 **RecipientTin** | **string** |  | [optional] 
 **TinType** | **string** |  | [optional] 
 **RecipientSecondName** | **string** |  | [optional] 
-**StreetAddress** | **string** |  | [optional] 
-**StreetAddressLine2** | **string** |  | [optional] 
+**Address** | **string** |  | [optional] 
+**Address2** | **string** |  | [optional] 
 **City** | **string** |  | [optional] 
 **State** | **string** |  | [optional] 
 **Zip** | **string** |  | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **StateEFile** | **bool** |  | [optional] 
 **TinMatch** | **bool** |  | [optional] 
 **AddressVerification** | **bool** |  | [optional] 
-**StateAndLocalWithholding** | [**StateAndLocalWithholding**](StateAndLocalWithholding.md) |  | [optional] 
+**StateAndLocalWithholding** | [**StateAndLocalWithholdingRequest**](StateAndLocalWithholdingRequest.md) |  | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

@@ -24,6 +24,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         public string XCorrelationId { get; set; }
         /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+        /// <summary>
         /// The company to create
         /// </summary>
         public CompanyCreateUpdateRequestModel CompanyCreateUpdateRequestModel { get; set; }
@@ -45,6 +49,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -55,10 +63,6 @@ namespace Avalara.SDK.Api.A1099.V2
         /// API version
         /// </summary>
         public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
         /// <summary>
         /// A filter statement to identify specific records to retrieve.  For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.
         /// </summary>
@@ -83,6 +87,14 @@ namespace Avalara.SDK.Api.A1099.V2
         /// If true, return ONLY the global count of elements in the collection.  It only applies when count&#x3D;true.
         /// </summary>
         public bool? CountOnly { get; set; }
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -101,6 +113,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -119,6 +135,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
         /// <summary>
         /// The updated company data
         /// </summary>
@@ -324,10 +344,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->CreateCompany");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->CreateCompany");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -348,7 +364,14 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
 
             // make the HTTP request
@@ -391,10 +414,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->CreateCompany");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->CreateCompany");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -417,7 +436,14 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
 
             // make the HTTP request
@@ -461,10 +487,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->DeleteCompany");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->DeleteCompany");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -483,7 +505,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/w9/companies/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -528,10 +557,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->DeleteCompany");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->DeleteCompany");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -552,7 +577,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.DeleteAsync<Object>("/w9/companies/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -591,10 +623,6 @@ namespace Avalara.SDK.Api.A1099.V2
             // verify the required parameter 'AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->GetCompanies");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->GetCompanies");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -637,7 +665,14 @@ namespace Avalara.SDK.Api.A1099.V2
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "countOnly", requestParameters.CountOnly));
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<PaginatedQueryResultModelCompanyResponse>("/w9/companies", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -679,10 +714,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->GetCompanies");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->GetCompanies");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -726,7 +757,14 @@ namespace Avalara.SDK.Api.A1099.V2
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "countOnly", requestParameters.CountOnly));
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.GetAsync<PaginatedQueryResultModelCompanyResponse>("/w9/companies", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -770,10 +808,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->GetCompany");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->GetCompany");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -792,7 +826,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -838,10 +879,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->GetCompany");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->GetCompany");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -862,7 +899,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.GetAsync<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -906,10 +950,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->UpdateCompany");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->UpdateCompany");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -931,7 +971,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
 
             // make the HTTP request
@@ -978,10 +1025,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling CompaniesW9Api->UpdateCompany");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling CompaniesW9Api->UpdateCompany");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1005,7 +1048,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
 
             // make the HTTP request
@@ -1029,7 +1079,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.6.0";
+            this.Client.SdkVersion = "25.7.0";
         }
         
     }

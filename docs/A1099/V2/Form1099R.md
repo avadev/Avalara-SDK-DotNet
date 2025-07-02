@@ -47,7 +47,7 @@ Name | Type | Description | Notes
 **RecipientName** | **string** |  | [optional] 
 **RecipientSecondName** | **string** |  | [optional] 
 **Address** | **string** |  | [optional] 
-**AddressRecipientSecond** | **string** |  | [optional] 
+**Address2** | **string** |  | [optional] 
 **City** | **string** |  | [optional] 
 **State** | **string** |  | [optional] 
 **Zip** | **string** |  | [optional] 

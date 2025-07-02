@@ -44,6 +44,44 @@ namespace Avalara.SDK.Model.A1099.V2
     public partial class FormRequestBase : IValidatableObject
     {
         /// <summary>
+        /// Defines TinType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TinTypeEnum
+        {
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 1,
+
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 2,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 3,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 4
+        }
+
+
+        /// <summary>
+        /// Gets or Sets TinType
+        /// </summary>
+        /// <example>EIN</example>
+        [DataMember(Name = "tinType", EmitDefaultValue = false)]
+        public TinTypeEnum? TinType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="FormRequestBase" /> class.
         /// </summary>
         /// <param name="issuerId">issuerId.</param>
@@ -52,8 +90,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="recipientTin">recipientTin.</param>
         /// <param name="tinType">tinType.</param>
         /// <param name="recipientSecondName">recipientSecondName.</param>
-        /// <param name="streetAddress">streetAddress.</param>
-        /// <param name="streetAddressLine2">streetAddressLine2.</param>
+        /// <param name="address">address.</param>
+        /// <param name="address2">address2.</param>
         /// <param name="city">city.</param>
         /// <param name="state">state.</param>
         /// <param name="zip">zip.</param>
@@ -68,7 +106,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tinMatch">tinMatch.</param>
         /// <param name="addressVerification">addressVerification.</param>
         /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        public FormRequestBase(string issuerId = default(string), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), string tinType = default(string), string recipientSecondName = default(string), string streetAddress = default(string), string streetAddressLine2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string recipientEmail = default(string), string accountNumber = default(string), string officeCode = default(string), string recipientNonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
+        public FormRequestBase(string issuerId = default(string), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string recipientEmail = default(string), string accountNumber = default(string), string officeCode = default(string), string recipientNonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
         {
             this.IssuerId = issuerId;
             this.ReferenceId = referenceId;
@@ -76,8 +114,8 @@ namespace Avalara.SDK.Model.A1099.V2
             this.RecipientTin = recipientTin;
             this.TinType = tinType;
             this.RecipientSecondName = recipientSecondName;
-            this.StreetAddress = streetAddress;
-            this.StreetAddressLine2 = streetAddressLine2;
+            this.Address = address;
+            this.Address2 = address2;
             this.City = city;
             this.State = state;
             this.Zip = zip;
@@ -97,7 +135,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Gets or Sets IssuerId
         /// </summary>
-        [DataMember(Name = "issuerId", EmitDefaultValue = false)]
+        [DataMember(Name = "issuerId", EmitDefaultValue = true)]
         public string IssuerId { get; set; }
 
         /// <summary>
@@ -109,7 +147,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Gets or Sets RecipientName
         /// </summary>
-        [DataMember(Name = "recipientName", EmitDefaultValue = false)]
+        [DataMember(Name = "recipientName", EmitDefaultValue = true)]
         public string RecipientName { get; set; }
 
         /// <summary>
@@ -119,28 +157,22 @@ namespace Avalara.SDK.Model.A1099.V2
         public string RecipientTin { get; set; }
 
         /// <summary>
-        /// Gets or Sets TinType
-        /// </summary>
-        [DataMember(Name = "tinType", EmitDefaultValue = false)]
-        public string TinType { get; set; }
-
-        /// <summary>
         /// Gets or Sets RecipientSecondName
         /// </summary>
-        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
+        [DataMember(Name = "recipientSecondName", EmitDefaultValue = false)]
         public string RecipientSecondName { get; set; }
 
         /// <summary>
-        /// Gets or Sets StreetAddress
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name = "streetAddress", EmitDefaultValue = false)]
-        public string StreetAddress { get; set; }
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets StreetAddressLine2
+        /// Gets or Sets Address2
         /// </summary>
-        [DataMember(Name = "streetAddressLine2", EmitDefaultValue = true)]
-        public string StreetAddressLine2 { get; set; }
+        [DataMember(Name = "address2", EmitDefaultValue = true)]
+        public string Address2 { get; set; }
 
         /// <summary>
         /// Gets or Sets City
@@ -224,7 +256,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets StateAndLocalWithholding
         /// </summary>
         [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = false)]
-        public StateAndLocalWithholding StateAndLocalWithholding { get; set; }
+        public StateAndLocalWithholdingRequest StateAndLocalWithholding { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -240,8 +272,8 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  RecipientTin: ").Append(RecipientTin).Append("\n");
             sb.Append("  TinType: ").Append(TinType).Append("\n");
             sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
-            sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
-            sb.Append("  StreetAddressLine2: ").Append(StreetAddressLine2).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");

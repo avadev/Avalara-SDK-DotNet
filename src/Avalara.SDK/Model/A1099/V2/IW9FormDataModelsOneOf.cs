@@ -331,7 +331,6 @@ namespace Avalara.SDK.Model.A1099.V2
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                Console.WriteLine($"❌ Failed to deserialize into W9FormDataModel: {exception}");
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into W9FormDataModel: {1}", jsonString, exception.ToString()));
             }
 

@@ -24,6 +24,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         public string XCorrelationId { get; set; }
         /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+        /// <summary>
         /// Form to be created
         /// </summary>
         public IW9FormDataModelsOneOf IW9FormDataModelsOneOf { get; set; }
@@ -45,6 +49,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -63,24 +71,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the Request object for the GetW9FormRequest API
-    /// </summary>
-    public class GetW9FormRequestRequestSdk {
         /// <summary>
-        /// 
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
         /// </summary>
-        public string FormRequestId { get; set; }
-        /// <summary>
-        /// API version
-        /// </summary>
-        public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -91,10 +85,6 @@ namespace Avalara.SDK.Api.A1099.V2
         /// API version
         /// </summary>
         public string? AvalaraVersion { get; set; } = "2.0";
-        /// <summary>
-        /// Unique correlation Id in a GUID format
-        /// </summary>
-        public string XCorrelationId { get; set; }
         /// <summary>
         /// A filter statement to identify specific records to retrieve. For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.
         /// </summary>
@@ -115,6 +105,14 @@ namespace Avalara.SDK.Api.A1099.V2
         /// When true, returns a @recordSetCount in the result set
         /// </summary>
         public bool? Count { get; set; }
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -133,6 +131,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
     }
 
     /// <summary>
@@ -151,6 +153,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
         /// <summary>
         /// Form to be updated
         /// </summary>
@@ -173,6 +179,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Unique correlation Id in a GUID format
         /// </summary>
         public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -215,17 +225,6 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="requestParameters">Request Object for the API</param>
         /// <returns>IW9FormDataModelsOneOf</returns>
         IW9FormDataModelsOneOf GetW9Form(GetW9FormRequestSdk requestParameters);
-
-        /// <summary>
-        /// Retrieve a form request
-        /// </summary>
-        /// <remarks>
-        /// Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </remarks>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>FormRequestModel</returns>
-        FormRequestModel GetW9FormRequest(GetW9FormRequestRequestSdk requestParameters);
 
         /// <summary>
         /// List W9/W4/W8 forms.
@@ -309,18 +308,6 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IW9FormDataModelsOneOf</returns>
         System.Threading.Tasks.Task<IW9FormDataModelsOneOf> GetW9FormAsync(GetW9FormRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieve a form request
-        /// </summary>
-        /// <remarks>
-        /// Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </remarks>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FormRequestModel</returns>
-        System.Threading.Tasks.Task<FormRequestModel> GetW9FormRequestAsync(GetW9FormRequestRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List W9/W4/W8 forms.
@@ -438,10 +425,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->CreateW9Form");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->CreateW9Form");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -462,7 +445,14 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IW9FormDataModelsOneOf;
 
             // make the HTTP request
@@ -505,10 +495,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->CreateW9Form");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->CreateW9Form");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -531,7 +517,14 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IW9FormDataModelsOneOf;
 
             // make the HTTP request
@@ -575,10 +568,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->DeleteW9Form");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->DeleteW9Form");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -597,7 +586,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/w9/forms/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -642,10 +638,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->DeleteW9Form");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->DeleteW9Form");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -666,7 +658,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.DeleteAsync<Object>("/w9/forms/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -710,10 +709,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9Form");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->GetW9Form");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -732,7 +727,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<IW9FormDataModelsOneOf>("/w9/forms/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -778,10 +780,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9Form");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->GetW9Form");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -802,7 +800,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.GetAsync<IW9FormDataModelsOneOf>("/w9/forms/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -810,142 +815,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetW9Form", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieve a form request Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>FormRequestModel</returns>
-        public FormRequestModel GetW9FormRequest(GetW9FormRequestRequestSdk requestParameters)
-        {
-            Avalara.SDK.Client.ApiResponse<FormRequestModel> localVarResponse = GetW9FormRequestWithHttpInfo(requestParameters);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve a form request Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of FormRequestModel</returns>
-        private Avalara.SDK.Client.ApiResponse<FormRequestModel> GetW9FormRequestWithHttpInfo(GetW9FormRequestRequestSdk requestParameters)
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'FormRequestId' is set
-            if (requestParameters.FormRequestId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.FormRequestId' when calling FormsW9Api->GetW9FormRequest");
-
-            // verify the required parameter 'AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9FormRequest");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->GetW9FormRequest");
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("formRequestId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.FormRequestId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<FormRequestModel>("/w9/forms/requests/{formRequestId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetW9FormRequest", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Retrieve a form request Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FormRequestModel</returns>
-        public async System.Threading.Tasks.Task<FormRequestModel> GetW9FormRequestAsync(GetW9FormRequestRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Avalara.SDK.Client.ApiResponse<FormRequestModel> localVarResponse = await GetW9FormRequestWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve a form request Retrieve a form request after creation: not likely to be useful except in testing. Previously-valid form requests will be Not Found after &#x60;expires_at&#x60;.
-        /// </summary>
-        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestParameters">Request Object for the API</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (FormRequestModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<FormRequestModel>> GetW9FormRequestWithHttpInfoAsync(GetW9FormRequestRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            //OAuth2 Scopes
-            String requiredScopes = "";
-            // verify the required parameter 'requestParameters.FormRequestId' is set
-            if (requestParameters.FormRequestId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.FormRequestId' when calling FormsW9Api->GetW9FormRequest");
-
-            // verify the required parameter 'requestParameters.AvalaraVersion' is set
-            if (requestParameters.AvalaraVersion == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9FormRequest");
-
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->GetW9FormRequest");
-
-
-            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("formRequestId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.FormRequestId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
-
-            // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<FormRequestModel>("/w9/forms/requests/{formRequestId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetW9FormRequest", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -977,10 +846,6 @@ namespace Avalara.SDK.Api.A1099.V2
             // verify the required parameter 'AvalaraVersion' is set
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->ListW9Forms");
-
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->ListW9Forms");
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1019,7 +884,14 @@ namespace Avalara.SDK.Api.A1099.V2
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "count", requestParameters.Count));
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<PaginatedW9FormsModel>("/w9/forms", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -1061,10 +933,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->ListW9Forms");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->ListW9Forms");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1104,7 +972,14 @@ namespace Avalara.SDK.Api.A1099.V2
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "count", requestParameters.Count));
             }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.GetAsync<PaginatedW9FormsModel>("/w9/forms", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -1148,10 +1023,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->SendW9FormEmail");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->SendW9FormEmail");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1170,7 +1041,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<IW9FormDataModelsOneOf>("/w9/forms/{id}/$send-email", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -1216,10 +1094,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->SendW9FormEmail");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->SendW9FormEmail");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1240,7 +1114,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
 
             // make the HTTP request
 			var localVarResponse = await this.Client.PostAsync<IW9FormDataModelsOneOf>("/w9/forms/{id}/$send-email", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -1284,10 +1165,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->UpdateW9Form");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->UpdateW9Form");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1309,7 +1186,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IW9FormDataModelsOneOf;
 
             // make the HTTP request
@@ -1356,10 +1240,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->UpdateW9Form");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->UpdateW9Form");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1383,7 +1263,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             localVarRequestOptions.Data = requestParameters.IW9FormDataModelsOneOf;
 
             // make the HTTP request
@@ -1428,10 +1315,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->UploadW9Files");
 
-            // verify the required parameter 'XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->UploadW9Files");
-
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1451,7 +1334,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             if (requestParameters.File != null)
             {
                 localVarRequestOptions.FileParameters.Add("file", requestParameters.File);
@@ -1501,10 +1391,6 @@ namespace Avalara.SDK.Api.A1099.V2
             if (requestParameters.AvalaraVersion == null)
                 throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->UploadW9Files");
 
-            // verify the required parameter 'requestParameters.XCorrelationId' is set
-            if (requestParameters.XCorrelationId == null)
-                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.XCorrelationId' when calling FormsW9Api->UploadW9Files");
-
 
             Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
 
@@ -1526,7 +1412,14 @@ namespace Avalara.SDK.Api.A1099.V2
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
             if (requestParameters.File != null)
             {
                 localVarRequestOptions.FileParameters.Add("file", requestParameters.File);
@@ -1553,7 +1446,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.6.0";
+            this.Client.SdkVersion = "25.7.0";
         }
         
     }

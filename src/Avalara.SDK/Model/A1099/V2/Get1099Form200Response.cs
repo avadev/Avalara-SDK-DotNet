@@ -47,6 +47,18 @@ namespace Avalara.SDK.Model.A1099.V2
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Get1099Form200Response" /> class
+        /// with the <see cref="Form1095B" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of Form1095B.</param>
+        public Get1099Form200Response(Form1095B actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Get1099Form200Response" /> class
         /// with the <see cref="Form1099K" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of Form1099K.</param>
@@ -107,7 +119,11 @@ namespace Avalara.SDK.Model.A1099.V2
             }
             set
             {
-                if (value.GetType() == typeof(Form1099K) || value is Form1099K)
+                if (value.GetType() == typeof(Form1095B) || value is Form1095B)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(Form1099K) || value is Form1099K)
                 {
                     this._actualInstance = value;
                 }
@@ -125,9 +141,19 @@ namespace Avalara.SDK.Model.A1099.V2
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: Form1099K, Form1099Misc, Form1099Nec, Form1099R");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Form1095B, Form1099K, Form1099Misc, Form1099Nec, Form1099R");
                 }
             }
+        }
+
+        /// <summary>
+        /// Get the actual instance of `Form1095B`. If the actual instance is not `Form1095B`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of Form1095B</returns>
+        public Form1095B GetForm1095B()
+        {
+            return (Form1095B)this.ActualInstance;
         }
 
         /// <summary>
@@ -207,6 +233,26 @@ namespace Avalara.SDK.Model.A1099.V2
             }
             int match = 0;
             List<string> matchedTypes = new List<string>();
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(Form1095B).GetProperty("AdditionalProperties") == null)
+                {
+                    newGet1099Form200Response = new Get1099Form200Response(JsonConvert.DeserializeObject<Form1095B>(jsonString, Get1099Form200Response.SerializerSettings));
+                }
+                else
+                {
+                    newGet1099Form200Response = new Get1099Form200Response(JsonConvert.DeserializeObject<Form1095B>(jsonString, Get1099Form200Response.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("Form1095B");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1095B: {1}", jsonString, exception.ToString()));
+            }
 
             try
             {
