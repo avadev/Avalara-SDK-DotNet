@@ -106,7 +106,7 @@ namespace Avalara.SDK.Client
         /// <summary>
         /// Official URL of AvaTax (QA)
         /// </summary>
-        private static readonly string TRACK1099_SERVICE_QA_URL = "https://api-ava1099.gamma.qa.us-west-2.aws.avalara.io";
+        private static readonly string TRACK1099_SERVICE_QA_URL = "https://api-ava1099.edge.qa.us-east-1.aws.avalara.io";
         /// <summary>
         /// Official URL of AvaTax (Sandbox)
         /// </summary>
