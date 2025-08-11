@@ -46,6 +46,24 @@ jobs:
 
           echo "A1099 token URL: ${TOKEN_URL}"
 
+      - name: Retrieve bearer token for EInvoicing
+        id: get_bearer_token_einvoicing
+        run: |
+          response=$(curl -X POST ${{secrets.AI_SBX_URL}}/connect/token \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials&client_id=${{secrets.OKTA_CLIENT_ID}}&client_secret=${{secrets.OKTA_CLIENT_SECRET}}")
+          token=$(echo $response | jq -r '.access_token')
+          echo "BEARER_TOKEN_EINVOICING=${token}" >> $GITHUB_ENV
+
+      - name: Retrieve bearer token for A1099
+        id: get_bearer_token_a1099
+        run: |
+          response=$(curl -X POST ${{secrets.AI_SBX_URL}}/connect/token \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials&client_id=${{secrets.AI_CLIENT_ID_A1099}}&client_secret=${{secrets.AI_CLIENT_SECRET_A1099}}")
+          token=$(echo $response | jq -r '.access_token')
+          echo "BEARER_TOKEN_A1099=${token}" >> $GITHUB_ENV
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
