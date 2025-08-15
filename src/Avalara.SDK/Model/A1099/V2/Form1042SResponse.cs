@@ -95,7 +95,13 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum _1095C for value: 1095-C
             /// </summary>
             [EnumMember(Value = "1095-C")]
-            _1095C = 8
+            _1095C = 8,
+
+            /// <summary>
+            /// Enum _1099INT for value: 1099-INT
+            /// </summary>
+            [EnumMember(Value = "1099-INT")]
+            _1099INT = 9
         }
 
 

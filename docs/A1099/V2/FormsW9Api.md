@@ -45,7 +45,7 @@ namespace Example
             var apiInstance = new FormsW9Api(apiClient);
             var requestParameters = new CreateW9FormRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 479b3bdd-2b5c-48b3-b24c-b0ecbe0d07c5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = d8cc3501-afdd-4b9e-af90-85db9793cbbc;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.CreateW9FormRequest = new CreateW9FormRequest(); // CreateW9FormRequest | Form to be created (optional) 
 
@@ -131,7 +131,7 @@ namespace Example
             var requestParameters = new DeleteW9FormRequestSdk();
             requestParameters.Id = "id_example";  // string | ID of the form to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 7d79301a-ebfd-40a1-a1af-a9a1e44f8936;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 0013f0dd-e304-45c6-9f17-bd023626ba48;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -215,7 +215,7 @@ namespace Example
             var requestParameters = new GetW9FormRequestSdk();
             requestParameters.Id = "id_example";  // string | ID of the form
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = b4cc81aa-1d2e-4cef-aa68-705ea2aaf594;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = e76a4eb2-f5f0-4586-888a-c25443f75fc4;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -269,11 +269,11 @@ Name | Type | Description  | Notes
 
 <a name="listw9forms"></a>
 # **ListW9Forms**
-> PaginatedW9FormsModel ListW9Forms (ListW9FormsRequestSdk requestParameters)
+> PaginatedQueryResultModelW9FormBaseResponse ListW9Forms (ListW9FormsRequestSdk requestParameters)
 
 List W9/W4/W8 forms
 
-List W9/W4/W8 forms.
+List W9/W4/W8 forms. Filterable/Sortable fields are: \"companyId\", \"type\", \"displayName\", \"entryStatus\", \"email\", \"archived\" and \"referenceId\".
 
 ### Example
 ```csharp
@@ -299,18 +299,19 @@ namespace Example
             var apiInstance = new FormsW9Api(apiClient);
             var requestParameters = new ListW9FormsRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.Filter = "filter_example";  // string | A filter statement to identify specific records to retrieve. For more information on filtering, see <a href=\"https://developer.avalara.com/avatax/filtering-in-rest/\">Filtering in REST</a>. (optional) 
-            requestParameters.Top = 10;  // int? | If nonzero, return no more than this number of results. Used with skip to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records. (optional)  (default to 10)
-            requestParameters.Skip = 0;  // int? | If nonzero, skip this number of results before returning data. Used with top to provide pagination for large datasets. (optional)  (default to 0)
+            requestParameters.Filter = "filter_example";  // string | A filter statement to identify specific records to retrieve.  For more information on filtering, see <a href=\"https://developer.avalara.com/avatax/filtering-in-rest/\">Filtering in REST</a>. (optional) 
+            requestParameters.Top = 56;  // int? | If zero or greater than 1000, return at most 1000 results.  Otherwise, return this number of results.  Used with skip to provide pagination for large datasets. (optional) 
+            requestParameters.Skip = 56;  // int? | If nonzero, skip this number of results before returning data. Used with top to provide pagination for large datasets. (optional) 
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
-            requestParameters.Count = true;  // bool? | When true, returns a @recordSetCount in the result set (optional) 
-            requestParameters.XCorrelationId = 8afdb9ff-bb10-414e-bd81-5cb5175aad0c;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
+            requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
+            requestParameters.XCorrelationId = 8092ac9c-17d0-4ee8-a00e-804088e5ab81;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
             {
                 // List W9/W4/W8 forms
-                PaginatedW9FormsModel result = apiInstance.ListW9Forms(requestParameters);
+                PaginatedQueryResultModelW9FormBaseResponse result = apiInstance.ListW9Forms(requestParameters);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -329,17 +330,18 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AvalaraVersion** | **string**| API version | 
- **Filter** | **string**| A filter statement to identify specific records to retrieve. For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;. | [optional] 
- **Top** | **int?**| If nonzero, return no more than this number of results. Used with skip to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records. | [optional] [default to 10]
- **Skip** | **int?**| If nonzero, skip this number of results before returning data. Used with top to provide pagination for large datasets. | [optional] [default to 0]
+ **Filter** | **string**| A filter statement to identify specific records to retrieve.  For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;. | [optional] 
+ **Top** | **int?**| If zero or greater than 1000, return at most 1000 results.  Otherwise, return this number of results.  Used with skip to provide pagination for large datasets. | [optional] 
+ **Skip** | **int?**| If nonzero, skip this number of results before returning data. Used with top to provide pagination for large datasets. | [optional] 
  **OrderBy** | **string**| A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. | [optional] 
- **Count** | **bool?**| When true, returns a @recordSetCount in the result set | [optional] 
+ **Count** | **bool?**| If true, return the global count of elements in the collection. | [optional] 
+ **CountOnly** | **bool?**| If true, return ONLY the global count of elements in the collection.  It only applies when count&#x3D;true. | [optional] 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
 
 ### Return type
 
-[**PaginatedW9FormsModel**](PaginatedW9FormsModel.md)
+[**PaginatedQueryResultModelW9FormBaseResponse**](PaginatedQueryResultModelW9FormBaseResponse.md)
 
 ### Authorization
 
@@ -354,9 +356,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of forms |  -  |
 | **400** | Bad request (e.g., invalid sort key) |  -  |
 | **401** | Authentication failed |  -  |
+| **200** | List of forms |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -393,7 +395,7 @@ namespace Example
             var requestParameters = new SendW9FormEmailRequestSdk();
             requestParameters.Id = "id_example";  // string | The ID of the W9/W4/W8 form.
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 37d1fca1-1efa-454b-a3ff-94ec972b74b4;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 05ca3285-5ab1-43c0-88d7-f23c30428d54;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -478,7 +480,7 @@ namespace Example
             var requestParameters = new UpdateW9FormRequestSdk();
             requestParameters.Id = "id_example";  // string | ID of the form to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 8c37ab84-020e-452c-ad69-df89a9ac9cfa;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 87498441-c774-4e3a-864e-dd604bff0d41;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.IW9FormDataModelsOneOf = new IW9FormDataModelsOneOf(); // IW9FormDataModelsOneOf | Form to be updated (optional) 
 
@@ -565,7 +567,7 @@ namespace Example
             var requestParameters = new UploadW9FilesRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the form
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 2ce587b6-7523-41b2-8033-347329740bcb;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 453b7d64-1fd0-4ed3-ba3c-a1d9ca1d69e6;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.File = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // FileParameter |  (optional) 
 

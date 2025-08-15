@@ -84,7 +84,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Legal name, not DBA
         /// </summary>
         /// <value>Legal name, not DBA</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>

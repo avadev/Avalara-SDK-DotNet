@@ -153,7 +153,13 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum _1095C for value: 1095-C
             /// </summary>
             [EnumMember(Value = "1095-C")]
-            _1095C = 8
+            _1095C = 8,
+
+            /// <summary>
+            /// Enum _1099INT for value: 1099-INT
+            /// </summary>
+            [EnumMember(Value = "1099-INT")]
+            _1099INT = 9
         }
 
 
@@ -206,11 +212,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1095BRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Form1095BRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Form1095BRequest" /> class.
-        /// </summary>
         /// <param name="employeeFirstName">Employee&#39;s first name.</param>
         /// <param name="employeeMiddleName">Employee&#39;s middle name.</param>
         /// <param name="employeeLastName">Employee&#39;s last name.</param>
@@ -225,44 +226,27 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="recipientName">Recipient name.</param>
         /// <param name="tinType">Type of TIN (Tax ID Number). Will be one of:  * SSN  * EIN  * ITIN  * ATIN.</param>
         /// <param name="recipientSecondName">Recipient second name.</param>
-        /// <param name="address">Address (required).</param>
+        /// <param name="address">Address.</param>
         /// <param name="address2">Address line 2.</param>
-        /// <param name="city">City (required).</param>
+        /// <param name="city">City.</param>
         /// <param name="state">US state. Required if CountryCode is \&quot;US\&quot;..</param>
         /// <param name="zip">Zip/postal code.</param>
         /// <param name="email">Recipient email address.</param>
         /// <param name="accountNumber">Account number.</param>
         /// <param name="officeCode">Office code.</param>
         /// <param name="nonUsProvince">Foreign province.</param>
-        /// <param name="countryCode">Country code, as defined at https://www.irs.gov/e-file-providers/country-codes (required).</param>
+        /// <param name="countryCode">Country code, as defined at https://www.irs.gov/e-file-providers/country-codes.</param>
         /// <param name="federalEFile">Boolean indicating that federal e-filing should be scheduled for this form.</param>
         /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
         /// <param name="stateEFile">Boolean indicating that state e-filing should be scheduled for this form.</param>
         /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
         /// <param name="noTin">Indicates whether the recipient has no TIN.</param>
         /// <param name="secondTinNotice">Second TIN notice in three years.</param>
+        /// <param name="fatcaFilingRequirement">Fatca filing requirement.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
-        public Form1095BRequest(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), DateTime? employeeDateOfBirth = default(DateTime?), OriginOfHealthCoverageCodeEnum? originOfHealthCoverageCode = default(OriginOfHealthCoverageCodeEnum?), List<CoveredIndividualRequest> coveredIndividuals = default(List<CoveredIndividualRequest>), TypeEnum? type = default(TypeEnum?), string issuerId = default(string), string referenceId = default(string), string recipientTin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool? secondTinNotice = default(bool?), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
+        public Form1095BRequest(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), DateTime? employeeDateOfBirth = default(DateTime?), OriginOfHealthCoverageCodeEnum? originOfHealthCoverageCode = default(OriginOfHealthCoverageCodeEnum?), List<CoveredIndividualRequest> coveredIndividuals = default(List<CoveredIndividualRequest>), TypeEnum? type = default(TypeEnum?), string issuerId = default(string), string referenceId = default(string), string recipientTin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool? secondTinNotice = default(bool?), bool fatcaFilingRequirement = default(bool), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
         {
-            // to ensure "address" is required (not null)
-            if (address == null)
-            {
-                throw new ArgumentNullException("address is a required property for Form1095BRequest and cannot be null");
-            }
-            this.Address = address;
-            // to ensure "city" is required (not null)
-            if (city == null)
-            {
-                throw new ArgumentNullException("city is a required property for Form1095BRequest and cannot be null");
-            }
-            this.City = city;
-            // to ensure "countryCode" is required (not null)
-            if (countryCode == null)
-            {
-                throw new ArgumentNullException("countryCode is a required property for Form1095BRequest and cannot be null");
-            }
-            this.CountryCode = countryCode;
             this.EmployeeFirstName = employeeFirstName;
             this.EmployeeMiddleName = employeeMiddleName;
             this.EmployeeLastName = employeeLastName;
@@ -277,19 +261,23 @@ namespace Avalara.SDK.Model.A1099.V2
             this.RecipientName = recipientName;
             this.TinType = tinType;
             this.RecipientSecondName = recipientSecondName;
+            this.Address = address;
             this.Address2 = address2;
+            this.City = city;
             this.State = state;
             this.Zip = zip;
             this.Email = email;
             this.AccountNumber = accountNumber;
             this.OfficeCode = officeCode;
             this.NonUsProvince = nonUsProvince;
+            this.CountryCode = countryCode;
             this.FederalEFile = federalEFile;
             this.PostalMail = postalMail;
             this.StateEFile = stateEFile;
             this.TinMatch = tinMatch;
             this.NoTin = noTin;
             this.SecondTinNotice = secondTinNotice;
+            this.FatcaFilingRequirement = fatcaFilingRequirement;
             this.AddressVerification = addressVerification;
             this.StateAndLocalWithholding = stateAndLocalWithholding;
         }
@@ -354,7 +342,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Recipient Tax ID Number
         /// </summary>
         /// <value>Recipient Tax ID Number</value>
-        [DataMember(Name = "recipientTin", EmitDefaultValue = false)]
+        [DataMember(Name = "recipientTin", EmitDefaultValue = true)]
         public string RecipientTin { get; set; }
 
         /// <summary>
@@ -375,7 +363,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Address
         /// </summary>
         /// <value>Address</value>
-        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "address", EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
@@ -389,21 +377,21 @@ namespace Avalara.SDK.Model.A1099.V2
         /// City
         /// </summary>
         /// <value>City</value>
-        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "city", EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
         /// US state. Required if CountryCode is \&quot;US\&quot;.
         /// </summary>
         /// <value>US state. Required if CountryCode is \&quot;US\&quot;.</value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
         /// Zip/postal code
         /// </summary>
         /// <value>Zip/postal code</value>
-        [DataMember(Name = "zip", EmitDefaultValue = false)]
+        [DataMember(Name = "zip", EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
@@ -438,7 +426,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Country code, as defined at https://www.irs.gov/e-file-providers/country-codes
         /// </summary>
         /// <value>Country code, as defined at https://www.irs.gov/e-file-providers/country-codes</value>
-        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "countryCode", EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
         /// <summary>
@@ -482,6 +470,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Second TIN notice in three years</value>
         [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
         public bool? SecondTinNotice { get; set; }
+
+        /// <summary>
+        /// Fatca filing requirement
+        /// </summary>
+        /// <value>Fatca filing requirement</value>
+        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
+        public bool FatcaFilingRequirement { get; set; }
 
         /// <summary>
         /// Boolean indicating that address verification should be scheduled for this form
@@ -535,6 +530,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
             sb.Append("  NoTin: ").Append(NoTin).Append("\n");
             sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
+            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
             sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
             sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
             sb.Append("}\n");
@@ -557,24 +553,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Address (string) minLength
-            if (this.Address != null && this.Address.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for Address, length must be greater than 1.", new [] { "Address" });
-            }
-
-            // City (string) minLength
-            if (this.City != null && this.City.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for City, length must be greater than 1.", new [] { "City" });
-            }
-
-            // CountryCode (string) minLength
-            if (this.CountryCode != null && this.CountryCode.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CountryCode, length must be greater than 1.", new [] { "CountryCode" });
-            }
-
             yield break;
         }
     }

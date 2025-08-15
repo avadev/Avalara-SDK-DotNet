@@ -71,10 +71,34 @@ namespace Avalara.SDK.Model.A1099.V2
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Update1099Form200Response" /> class
+        /// with the <see cref="Form1095BResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of Form1095BResponse.</param>
+        public Update1099Form200Response(Form1095BResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Update1099Form200Response" /> class
         /// with the <see cref="Form1099DivResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of Form1099DivResponse.</param>
         public Update1099Form200Response(Form1099DivResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Update1099Form200Response" /> class
+        /// with the <see cref="Form1099IntResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of Form1099IntResponse.</param>
+        public Update1099Form200Response(Form1099IntResponse actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -117,6 +141,18 @@ namespace Avalara.SDK.Model.A1099.V2
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Update1099Form200Response" /> class
+        /// with the <see cref="Form1099RResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of Form1099RResponse.</param>
+        public Update1099Form200Response(Form1099RResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
 
         private Object _actualInstance;
 
@@ -135,7 +171,15 @@ namespace Avalara.SDK.Model.A1099.V2
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(Form1095BResponse) || value is Form1095BResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(Form1099DivResponse) || value is Form1099DivResponse)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(Form1099IntResponse) || value is Form1099IntResponse)
                 {
                     this._actualInstance = value;
                 }
@@ -151,13 +195,17 @@ namespace Avalara.SDK.Model.A1099.V2
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(Form1099RResponse) || value is Form1099RResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(FormResponseBase) || value is FormResponseBase)
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: Form1042SResponse, Form1099DivResponse, Form1099KResponse, Form1099MiscResponse, Form1099NecResponse, FormResponseBase");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Form1042SResponse, Form1095BResponse, Form1099DivResponse, Form1099IntResponse, Form1099KResponse, Form1099MiscResponse, Form1099NecResponse, Form1099RResponse, FormResponseBase");
                 }
             }
         }
@@ -183,6 +231,16 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
+        /// Get the actual instance of `Form1095BResponse`. If the actual instance is not `Form1095BResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of Form1095BResponse</returns>
+        public Form1095BResponse GetForm1095BResponse()
+        {
+            return (Form1095BResponse)this.ActualInstance;
+        }
+
+        /// <summary>
         /// Get the actual instance of `Form1099DivResponse`. If the actual instance is not `Form1099DivResponse`,
         /// the InvalidClassException will be thrown
         /// </summary>
@@ -190,6 +248,16 @@ namespace Avalara.SDK.Model.A1099.V2
         public Form1099DivResponse GetForm1099DivResponse()
         {
             return (Form1099DivResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `Form1099IntResponse`. If the actual instance is not `Form1099IntResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of Form1099IntResponse</returns>
+        public Form1099IntResponse GetForm1099IntResponse()
+        {
+            return (Form1099IntResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -220,6 +288,16 @@ namespace Avalara.SDK.Model.A1099.V2
         public Form1099NecResponse GetForm1099NecResponse()
         {
             return (Form1099NecResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `Form1099RResponse`. If the actual instance is not `Form1099RResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of Form1099RResponse</returns>
+        public Form1099RResponse GetForm1099RResponse()
+        {
+            return (Form1099RResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -283,6 +361,26 @@ namespace Avalara.SDK.Model.A1099.V2
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(Form1095BResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1095BResponse>(jsonString, Update1099Form200Response.SerializerSettings));
+                }
+                else
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1095BResponse>(jsonString, Update1099Form200Response.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("Form1095BResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1095BResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
                 if (typeof(Form1099DivResponse).GetProperty("AdditionalProperties") == null)
                 {
                     newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1099DivResponse>(jsonString, Update1099Form200Response.SerializerSettings));
@@ -298,6 +396,26 @@ namespace Avalara.SDK.Model.A1099.V2
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1099DivResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(Form1099IntResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1099IntResponse>(jsonString, Update1099Form200Response.SerializerSettings));
+                }
+                else
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1099IntResponse>(jsonString, Update1099Form200Response.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("Form1099IntResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1099IntResponse: {1}", jsonString, exception.ToString()));
             }
 
             try
@@ -358,6 +476,26 @@ namespace Avalara.SDK.Model.A1099.V2
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1099NecResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(Form1099RResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1099RResponse>(jsonString, Update1099Form200Response.SerializerSettings));
+                }
+                else
+                {
+                    newUpdate1099Form200Response = new Update1099Form200Response(JsonConvert.DeserializeObject<Form1099RResponse>(jsonString, Update1099Form200Response.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("Form1099RResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Form1099RResponse: {1}", jsonString, exception.ToString()));
             }
 
             try

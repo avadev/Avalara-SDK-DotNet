@@ -95,7 +95,13 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum _1095C for value: 1095-C
             /// </summary>
             [EnumMember(Value = "1095-C")]
-            _1095C = 8
+            _1095C = 8,
+
+            /// <summary>
+            /// Enum _1099INT for value: 1099-INT
+            /// </summary>
+            [EnumMember(Value = "1099-INT")]
+            _1099INT = 9
         }
 
 
@@ -155,6 +161,25 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1099DivResponse" /> class.
         /// </summary>
+        /// <param name="totalOrdinaryDividends">totalOrdinaryDividends.</param>
+        /// <param name="qualifiedDividends">qualifiedDividends.</param>
+        /// <param name="totalCapitalGainDistributions">totalCapitalGainDistributions.</param>
+        /// <param name="unrecapturedSection1250Gain">unrecapturedSection1250Gain.</param>
+        /// <param name="section1202Gain">section1202Gain.</param>
+        /// <param name="collectiblesGain">collectiblesGain.</param>
+        /// <param name="section897OrdinaryDividends">section897OrdinaryDividends.</param>
+        /// <param name="section897CapitalGain">section897CapitalGain.</param>
+        /// <param name="nondividendDistributions">nondividendDistributions.</param>
+        /// <param name="federalIncomeTaxWithheld">federalIncomeTaxWithheld.</param>
+        /// <param name="section199ADividends">section199ADividends.</param>
+        /// <param name="investmentExpenses">investmentExpenses.</param>
+        /// <param name="foreignTaxPaid">foreignTaxPaid.</param>
+        /// <param name="foreignCountryOrUSPossession">foreignCountryOrUSPossession.</param>
+        /// <param name="cashLiquidationDistributions">cashLiquidationDistributions.</param>
+        /// <param name="noncashLiquidationDistributions">noncashLiquidationDistributions.</param>
+        /// <param name="exemptInterestDividends">exemptInterestDividends.</param>
+        /// <param name="specifiedPrivateActivityBondInterestDividends">specifiedPrivateActivityBondInterestDividends.</param>
+        /// <param name="fatcaFilingRequirement">fatcaFilingRequirement.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
@@ -192,8 +217,27 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tinMatchStatus">tinMatchStatus.</param>
         /// <param name="addressVerificationStatus">addressVerificationStatus.</param>
         /// <param name="validationErrors">validationErrors.</param>
-        public Form1099DivResponse(DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholdingResponse stateAndLocalWithholding = default(StateAndLocalWithholdingResponse), TinTypeEnum? tinType = default(TinTypeEnum?), string id = default(string), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool secondTinNotice = default(bool), bool addressVerification = default(bool), StatusDetail federalEfileStatus = default(StatusDetail), StatusDetail eDeliveryStatus = default(StatusDetail), List<StateEfileStatusDetailResponse> stateEfileStatus = default(List<StateEfileStatusDetailResponse>), StatusDetail postalMailStatus = default(StatusDetail), StatusDetail tinMatchStatus = default(StatusDetail), StatusDetail addressVerificationStatus = default(StatusDetail), List<ValidationErrorResponse> validationErrors = default(List<ValidationErrorResponse>))
+        public Form1099DivResponse(double totalOrdinaryDividends = default(double), double qualifiedDividends = default(double), double totalCapitalGainDistributions = default(double), double unrecapturedSection1250Gain = default(double), double section1202Gain = default(double), double collectiblesGain = default(double), double section897OrdinaryDividends = default(double), double section897CapitalGain = default(double), double nondividendDistributions = default(double), double federalIncomeTaxWithheld = default(double), double section199ADividends = default(double), double investmentExpenses = default(double), double foreignTaxPaid = default(double), string foreignCountryOrUSPossession = default(string), double cashLiquidationDistributions = default(double), double noncashLiquidationDistributions = default(double), double exemptInterestDividends = default(double), double specifiedPrivateActivityBondInterestDividends = default(double), bool fatcaFilingRequirement = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholdingResponse stateAndLocalWithholding = default(StateAndLocalWithholdingResponse), TinTypeEnum? tinType = default(TinTypeEnum?), string id = default(string), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), string referenceId = default(string), string recipientName = default(string), string recipientTin = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool secondTinNotice = default(bool), bool addressVerification = default(bool), StatusDetail federalEfileStatus = default(StatusDetail), StatusDetail eDeliveryStatus = default(StatusDetail), List<StateEfileStatusDetailResponse> stateEfileStatus = default(List<StateEfileStatusDetailResponse>), StatusDetail postalMailStatus = default(StatusDetail), StatusDetail tinMatchStatus = default(StatusDetail), StatusDetail addressVerificationStatus = default(StatusDetail), List<ValidationErrorResponse> validationErrors = default(List<ValidationErrorResponse>))
         {
+            this.TotalOrdinaryDividends = totalOrdinaryDividends;
+            this.QualifiedDividends = qualifiedDividends;
+            this.TotalCapitalGainDistributions = totalCapitalGainDistributions;
+            this.UnrecapturedSection1250Gain = unrecapturedSection1250Gain;
+            this.Section1202Gain = section1202Gain;
+            this.CollectiblesGain = collectiblesGain;
+            this.Section897OrdinaryDividends = section897OrdinaryDividends;
+            this.Section897CapitalGain = section897CapitalGain;
+            this.NondividendDistributions = nondividendDistributions;
+            this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
+            this.Section199ADividends = section199ADividends;
+            this.InvestmentExpenses = investmentExpenses;
+            this.ForeignTaxPaid = foreignTaxPaid;
+            this.ForeignCountryOrUSPossession = foreignCountryOrUSPossession;
+            this.CashLiquidationDistributions = cashLiquidationDistributions;
+            this.NoncashLiquidationDistributions = noncashLiquidationDistributions;
+            this.ExemptInterestDividends = exemptInterestDividends;
+            this.SpecifiedPrivateActivityBondInterestDividends = specifiedPrivateActivityBondInterestDividends;
+            this.FatcaFilingRequirement = fatcaFilingRequirement;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.StateAndLocalWithholding = stateAndLocalWithholding;
@@ -232,6 +276,120 @@ namespace Avalara.SDK.Model.A1099.V2
             this.AddressVerificationStatus = addressVerificationStatus;
             this.ValidationErrors = validationErrors;
         }
+
+        /// <summary>
+        /// Gets or Sets TotalOrdinaryDividends
+        /// </summary>
+        [DataMember(Name = "totalOrdinaryDividends", EmitDefaultValue = false)]
+        public double TotalOrdinaryDividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets QualifiedDividends
+        /// </summary>
+        [DataMember(Name = "qualifiedDividends", EmitDefaultValue = false)]
+        public double QualifiedDividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalCapitalGainDistributions
+        /// </summary>
+        [DataMember(Name = "totalCapitalGainDistributions", EmitDefaultValue = false)]
+        public double TotalCapitalGainDistributions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UnrecapturedSection1250Gain
+        /// </summary>
+        [DataMember(Name = "unrecapturedSection1250Gain", EmitDefaultValue = false)]
+        public double UnrecapturedSection1250Gain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Section1202Gain
+        /// </summary>
+        [DataMember(Name = "section1202Gain", EmitDefaultValue = false)]
+        public double Section1202Gain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CollectiblesGain
+        /// </summary>
+        [DataMember(Name = "collectiblesGain", EmitDefaultValue = false)]
+        public double CollectiblesGain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Section897OrdinaryDividends
+        /// </summary>
+        [DataMember(Name = "section897OrdinaryDividends", EmitDefaultValue = false)]
+        public double Section897OrdinaryDividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Section897CapitalGain
+        /// </summary>
+        [DataMember(Name = "section897CapitalGain", EmitDefaultValue = false)]
+        public double Section897CapitalGain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NondividendDistributions
+        /// </summary>
+        [DataMember(Name = "nondividendDistributions", EmitDefaultValue = false)]
+        public double NondividendDistributions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FederalIncomeTaxWithheld
+        /// </summary>
+        [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = false)]
+        public double FederalIncomeTaxWithheld { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Section199ADividends
+        /// </summary>
+        [DataMember(Name = "section199ADividends", EmitDefaultValue = false)]
+        public double Section199ADividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InvestmentExpenses
+        /// </summary>
+        [DataMember(Name = "investmentExpenses", EmitDefaultValue = false)]
+        public double InvestmentExpenses { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ForeignTaxPaid
+        /// </summary>
+        [DataMember(Name = "foreignTaxPaid", EmitDefaultValue = false)]
+        public double ForeignTaxPaid { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ForeignCountryOrUSPossession
+        /// </summary>
+        [DataMember(Name = "foreignCountryOrUSPossession", EmitDefaultValue = false)]
+        public string ForeignCountryOrUSPossession { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CashLiquidationDistributions
+        /// </summary>
+        [DataMember(Name = "cashLiquidationDistributions", EmitDefaultValue = false)]
+        public double CashLiquidationDistributions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NoncashLiquidationDistributions
+        /// </summary>
+        [DataMember(Name = "noncashLiquidationDistributions", EmitDefaultValue = false)]
+        public double NoncashLiquidationDistributions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExemptInterestDividends
+        /// </summary>
+        [DataMember(Name = "exemptInterestDividends", EmitDefaultValue = false)]
+        public double ExemptInterestDividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SpecifiedPrivateActivityBondInterestDividends
+        /// </summary>
+        [DataMember(Name = "specifiedPrivateActivityBondInterestDividends", EmitDefaultValue = false)]
+        public double SpecifiedPrivateActivityBondInterestDividends { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FatcaFilingRequirement
+        /// </summary>
+        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
+        public bool FatcaFilingRequirement { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -457,6 +615,25 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Form1099DivResponse {\n");
+            sb.Append("  TotalOrdinaryDividends: ").Append(TotalOrdinaryDividends).Append("\n");
+            sb.Append("  QualifiedDividends: ").Append(QualifiedDividends).Append("\n");
+            sb.Append("  TotalCapitalGainDistributions: ").Append(TotalCapitalGainDistributions).Append("\n");
+            sb.Append("  UnrecapturedSection1250Gain: ").Append(UnrecapturedSection1250Gain).Append("\n");
+            sb.Append("  Section1202Gain: ").Append(Section1202Gain).Append("\n");
+            sb.Append("  CollectiblesGain: ").Append(CollectiblesGain).Append("\n");
+            sb.Append("  Section897OrdinaryDividends: ").Append(Section897OrdinaryDividends).Append("\n");
+            sb.Append("  Section897CapitalGain: ").Append(Section897CapitalGain).Append("\n");
+            sb.Append("  NondividendDistributions: ").Append(NondividendDistributions).Append("\n");
+            sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
+            sb.Append("  Section199ADividends: ").Append(Section199ADividends).Append("\n");
+            sb.Append("  InvestmentExpenses: ").Append(InvestmentExpenses).Append("\n");
+            sb.Append("  ForeignTaxPaid: ").Append(ForeignTaxPaid).Append("\n");
+            sb.Append("  ForeignCountryOrUSPossession: ").Append(ForeignCountryOrUSPossession).Append("\n");
+            sb.Append("  CashLiquidationDistributions: ").Append(CashLiquidationDistributions).Append("\n");
+            sb.Append("  NoncashLiquidationDistributions: ").Append(NoncashLiquidationDistributions).Append("\n");
+            sb.Append("  ExemptInterestDividends: ").Append(ExemptInterestDividends).Append("\n");
+            sb.Append("  SpecifiedPrivateActivityBondInterestDividends: ").Append(SpecifiedPrivateActivityBondInterestDividends).Append("\n");
+            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");

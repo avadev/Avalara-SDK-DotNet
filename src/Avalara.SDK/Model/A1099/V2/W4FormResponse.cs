@@ -31,6 +31,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = Avalara.SDK.Client.FileParameter;
 using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
@@ -41,7 +42,8 @@ namespace Avalara.SDK.Model.A1099.V2
     /// W4FormResponse
     /// </summary>
     [DataContract(Name = "W4FormResponse")]
-    public partial class W4FormResponse : IValidatableObject
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    public partial class W4FormResponse : W9FormBaseResponse, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="W4FormResponse" /> class.
@@ -66,7 +68,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="exemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
         /// <param name="officeCode">The office code associated with the form..</param>
         /// <param name="id">The unique identifier for the form..</param>
-        /// <param name="type">The form type..</param>
         /// <param name="entryStatus">The form status..</param>
         /// <param name="entryStatusDate">The timestamp for the latest status update..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
@@ -79,7 +80,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
-        public W4FormResponse(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), string id = default(string), string type = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        /// <param name="type">The type of the response object. (default to &quot;W4FormResponse&quot;).</param>
+        public W4FormResponse(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), string id = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W4FormResponse") : base(id, entryStatus, entryStatusDate, referenceId, companyId, displayName, email, archived, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
         {
             this.EmployeeFirstName = employeeFirstName;
             this.EmployeeMiddleName = employeeMiddleName;
@@ -100,20 +102,6 @@ namespace Avalara.SDK.Model.A1099.V2
             this.AdditionalWithheld = additionalWithheld;
             this.ExemptFromWithholding = exemptFromWithholding;
             this.OfficeCode = officeCode;
-            this.Id = id;
-            this.Type = type;
-            this.EntryStatus = entryStatus;
-            this.EntryStatusDate = entryStatusDate;
-            this.ReferenceId = referenceId;
-            this.CompanyId = companyId;
-            this.DisplayName = displayName;
-            this.Email = email;
-            this.Archived = archived;
-            this.Signature = signature;
-            this.SignedDate = signedDate;
-            this.EDeliveryConsentedAt = eDeliveryConsentedAt;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
@@ -269,104 +257,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string OfficeCode { get; set; }
 
         /// <summary>
-        /// The unique identifier for the form.
-        /// </summary>
-        /// <value>The unique identifier for the form.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// The form type.
-        /// </summary>
-        /// <value>The form type.</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// The form status.
-        /// </summary>
-        /// <value>The form status.</value>
-        [DataMember(Name = "entryStatus", EmitDefaultValue = false)]
-        public string EntryStatus { get; set; }
-
-        /// <summary>
-        /// The timestamp for the latest status update.
-        /// </summary>
-        /// <value>The timestamp for the latest status update.</value>
-        [DataMember(Name = "entryStatusDate", EmitDefaultValue = true)]
-        public DateTime? EntryStatusDate { get; set; }
-
-        /// <summary>
-        /// A reference identifier for the form.
-        /// </summary>
-        /// <value>A reference identifier for the form.</value>
-        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
-        public string ReferenceId { get; set; }
-
-        /// <summary>
-        /// The ID of the associated company.
-        /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", EmitDefaultValue = false)]
-        public string CompanyId { get; set; }
-
-        /// <summary>
-        /// The display name associated with the form.
-        /// </summary>
-        /// <value>The display name associated with the form.</value>
-        [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// The email address of the individual associated with the form.
-        /// </summary>
-        /// <value>The email address of the individual associated with the form.</value>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Indicates whether the form is archived.
-        /// </summary>
-        /// <value>Indicates whether the form is archived.</value>
-        [DataMember(Name = "archived", EmitDefaultValue = true)]
-        public bool Archived { get; set; }
-
-        /// <summary>
-        /// The signature of the form.
-        /// </summary>
-        /// <value>The signature of the form.</value>
-        [DataMember(Name = "signature", EmitDefaultValue = true)]
-        public string Signature { get; set; }
-
-        /// <summary>
-        /// The date the form was signed.
-        /// </summary>
-        /// <value>The date the form was signed.</value>
-        [DataMember(Name = "signedDate", EmitDefaultValue = true)]
-        public DateTime? SignedDate { get; set; }
-
-        /// <summary>
-        /// The date when e-delivery was consented.
-        /// </summary>
-        /// <value>The date when e-delivery was consented.</value>
-        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
-        public DateTime? EDeliveryConsentedAt { get; set; }
-
-        /// <summary>
-        /// The creation date of the form.
-        /// </summary>
-        /// <value>The creation date of the form.</value>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
-        /// The last updated date of the form.
-        /// </summary>
-        /// <value>The last updated date of the form.</value>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -374,6 +264,7 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class W4FormResponse {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  EmployeeFirstName: ").Append(EmployeeFirstName).Append("\n");
             sb.Append("  EmployeeMiddleName: ").Append(EmployeeMiddleName).Append("\n");
             sb.Append("  EmployeeLastName: ").Append(EmployeeLastName).Append("\n");
@@ -393,20 +284,6 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  AdditionalWithheld: ").Append(AdditionalWithheld).Append("\n");
             sb.Append("  ExemptFromWithholding: ").Append(ExemptFromWithholding).Append("\n");
             sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
-            sb.Append("  EntryStatusDate: ").Append(EntryStatusDate).Append("\n");
-            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
-            sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  Archived: ").Append(Archived).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
-            sb.Append("  SignedDate: ").Append(SignedDate).Append("\n");
-            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -415,7 +292,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -427,6 +304,20 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<ValidationResult> BaseValidate(ValidationContext validationContext)
+        {
+            foreach (var x in base.BaseValidate(validationContext))
+            {
+                yield return x;
+            }
             yield break;
         }
     }

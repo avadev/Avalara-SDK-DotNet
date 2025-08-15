@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **TotalEmployeeContributions** | **double?** | Total employee contributions | [optional] 
 **AmountAllocableToIrr** | **double?** | Amount allocable to IRR within 5 years | [optional] 
 **FirstYearDesignatedRothContrib** | **string** | First year of designated Roth contribution | [optional] 
-**FatcaRequirementIndicator** | **bool?** | FATCA filing requirement | [optional] 
 **DateOfPayment** | **string** | Date of payment | [optional] 
 **Id** | **string** | ID of the form | [readonly] 
 **Type** | **string** | Type of the form. Will be one of:  * 940  * 941  * 943  * 944  * 945  * 1042  * 1042-S  * 1095-B  * 1095-C  * 1097-BTC  * 1098  * 1098-C  * 1098-E  * 1098-Q  * 1098-T  * 3921  * 3922  * 5498  * 5498-ESA  * 5498-SA  * 1099-MISC  * 1099-A  * 1099-B  * 1099-C  * 1099-CAP  * 1099-DIV  * 1099-G  * 1099-INT  * 1099-K  * 1099-LS  * 1099-LTC  * 1099-NEC  * 1099-OID  * 1099-PATR  * 1099-Q  * 1099-R  * 1099-S  * 1099-SA  * T4A  * W-2  * W-2G  * 1099-HC | 
