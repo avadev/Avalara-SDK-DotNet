@@ -47,9 +47,11 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Initializes a new instance of the <see cref="Form1099ProccessResult" /> class.
         /// </summary>
         /// <param name="jobData">jobData.</param>
-        public Form1099ProccessResult(Data jobData = default(Data))
+        /// <param name="processedForms">processedForms.</param>
+        public Form1099ProccessResult(Data jobData = default(Data), List<Form1099ProccessResultProcessedFormsInner> processedForms = default(List<Form1099ProccessResultProcessedFormsInner>))
         {
             this.JobData = jobData;
+            this.ProcessedForms = processedForms;
         }
 
         /// <summary>
@@ -57,6 +59,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         [DataMember(Name = "jobData", EmitDefaultValue = false)]
         public Data JobData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProcessedForms
+        /// </summary>
+        [DataMember(Name = "processedForms", EmitDefaultValue = true)]
+        public List<Form1099ProccessResultProcessedFormsInner> ProcessedForms { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,6 +75,7 @@ namespace Avalara.SDK.Model.A1099.V2
             StringBuilder sb = new StringBuilder();
             sb.Append("class Form1099ProccessResult {\n");
             sb.Append("  JobData: ").Append(JobData).Append("\n");
+            sb.Append("  ProcessedForms: ").Append(ProcessedForms).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

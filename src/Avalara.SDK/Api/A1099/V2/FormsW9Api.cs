@@ -86,11 +86,11 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         public string? AvalaraVersion { get; set; } = "2.0";
         /// <summary>
-        /// A filter statement to identify specific records to retrieve. For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.
+        /// A filter statement to identify specific records to retrieve.  For more information on filtering, see &lt;a href&#x3D;\&quot;https://developer.avalara.com/avatax/filtering-in-rest/\&quot;&gt;Filtering in REST&lt;/a&gt;.
         /// </summary>
         public string Filter { get; set; }
         /// <summary>
-        /// If nonzero, return no more than this number of results. Used with skip to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+        /// If zero or greater than 1000, return at most 1000 results.  Otherwise, return this number of results.  Used with skip to provide pagination for large datasets.
         /// </summary>
         public int? Top { get; set; }
         /// <summary>
@@ -102,9 +102,13 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         public string OrderBy { get; set; }
         /// <summary>
-        /// When true, returns a @recordSetCount in the result set
+        /// If true, return the global count of elements in the collection.
         /// </summary>
         public bool? Count { get; set; }
+        /// <summary>
+        /// If true, return ONLY the global count of elements in the collection.  It only applies when count&#x3D;true.
+        /// </summary>
+        public bool? CountOnly { get; set; }
         /// <summary>
         /// Unique correlation Id in a GUID format
         /// </summary>
@@ -233,12 +237,12 @@ namespace Avalara.SDK.Api.A1099.V2
         /// List W9/W4/W8 forms
         /// </summary>
         /// <remarks>
-        /// List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>PaginatedW9FormsModel</returns>
-        PaginatedW9FormsModel ListW9Forms(ListW9FormsRequestSdk requestParameters);
+        /// <returns>PaginatedQueryResultModelW9FormBaseResponse</returns>
+        PaginatedQueryResultModelW9FormBaseResponse ListW9Forms(ListW9FormsRequestSdk requestParameters);
 
         /// <summary>
         /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form
@@ -322,13 +326,13 @@ namespace Avalara.SDK.Api.A1099.V2
         /// List W9/W4/W8 forms
         /// </summary>
         /// <remarks>
-        /// List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PaginatedW9FormsModel</returns>
-        System.Threading.Tasks.Task<PaginatedW9FormsModel> ListW9FormsAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of PaginatedQueryResultModelW9FormBaseResponse</returns>
+        System.Threading.Tasks.Task<PaginatedQueryResultModelW9FormBaseResponse> ListW9FormsAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form
@@ -831,24 +835,24 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List W9/W4/W8 forms List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>PaginatedW9FormsModel</returns>
-        public PaginatedW9FormsModel ListW9Forms(ListW9FormsRequestSdk requestParameters)
+        /// <returns>PaginatedQueryResultModelW9FormBaseResponse</returns>
+        public PaginatedQueryResultModelW9FormBaseResponse ListW9Forms(ListW9FormsRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<PaginatedW9FormsModel> localVarResponse = ListW9FormsWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<PaginatedQueryResultModelW9FormBaseResponse> localVarResponse = ListW9FormsWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List W9/W4/W8 forms List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of PaginatedW9FormsModel</returns>
-        private Avalara.SDK.Client.ApiResponse<PaginatedW9FormsModel> ListW9FormsWithHttpInfo(ListW9FormsRequestSdk requestParameters)
+        /// <returns>ApiResponse of PaginatedQueryResultModelW9FormBaseResponse</returns>
+        private Avalara.SDK.Client.ApiResponse<PaginatedQueryResultModelW9FormBaseResponse> ListW9FormsWithHttpInfo(ListW9FormsRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -892,6 +896,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "count", requestParameters.Count));
             }
+            if (requestParameters.CountOnly != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "countOnly", requestParameters.CountOnly));
+            }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
             {
@@ -903,7 +911,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<PaginatedW9FormsModel>("/w9/forms", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Get<PaginatedQueryResultModelW9FormBaseResponse>("/w9/forms", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -915,26 +923,26 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List W9/W4/W8 forms List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PaginatedW9FormsModel</returns>
-        public async System.Threading.Tasks.Task<PaginatedW9FormsModel> ListW9FormsAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of PaginatedQueryResultModelW9FormBaseResponse</returns>
+        public async System.Threading.Tasks.Task<PaginatedQueryResultModelW9FormBaseResponse> ListW9FormsAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<PaginatedW9FormsModel> localVarResponse = await ListW9FormsWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<PaginatedQueryResultModelW9FormBaseResponse> localVarResponse = await ListW9FormsWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List W9/W4/W8 forms List W9/W4/W8 forms.
+        /// List W9/W4/W8 forms List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PaginatedW9FormsModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<PaginatedW9FormsModel>> ListW9FormsWithHttpInfoAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (PaginatedQueryResultModelW9FormBaseResponse)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<PaginatedQueryResultModelW9FormBaseResponse>> ListW9FormsWithHttpInfoAsync(ListW9FormsRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -980,6 +988,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "count", requestParameters.Count));
             }
+            if (requestParameters.CountOnly != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "countOnly", requestParameters.CountOnly));
+            }
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
             {
@@ -991,7 +1003,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<PaginatedW9FormsModel>("/w9/forms", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<PaginatedQueryResultModelW9FormBaseResponse>("/w9/forms", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1453,7 +1465,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.8.1";
+            this.Client.SdkVersion = "25.8.2";
         }
         
     }

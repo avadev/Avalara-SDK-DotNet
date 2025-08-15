@@ -119,16 +119,16 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="recipientName">Recipient name.</param>
         /// <param name="tinType">Type of TIN (Tax ID Number). Will be one of:  * SSN  * EIN  * ITIN  * ATIN.</param>
         /// <param name="recipientSecondName">Recipient second name.</param>
-        /// <param name="address">Address (required).</param>
+        /// <param name="address">Address.</param>
         /// <param name="address2">Address line 2.</param>
-        /// <param name="city">City (required).</param>
+        /// <param name="city">City.</param>
         /// <param name="state">US state. Required if CountryCode is \&quot;US\&quot;..</param>
         /// <param name="zip">Zip/postal code.</param>
         /// <param name="email">Recipient email address.</param>
         /// <param name="accountNumber">Account number.</param>
         /// <param name="officeCode">Office code.</param>
         /// <param name="nonUsProvince">Foreign province.</param>
-        /// <param name="countryCode">Country code, as defined at https://www.irs.gov/e-file-providers/country-codes (required).</param>
+        /// <param name="countryCode">Country code, as defined at https://www.irs.gov/e-file-providers/country-codes.</param>
         /// <param name="federalEFile">Boolean indicating that federal e-filing should be scheduled for this form.</param>
         /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
         /// <param name="stateEFile">Boolean indicating that state e-filing should be scheduled for this form.</param>
@@ -137,27 +137,9 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="secondTinNotice">Second TIN notice in three years.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
-        public Form1099DivListItem(string totalOrdinaryDividends = default(string), string qualifiedDividends = default(string), string totalCapitalGainDistributions = default(string), string unrecapturedSection1250Gain = default(string), string section1202Gain = default(string), string collectiblesGain = default(string), string section897OrdinaryDividends = default(string), string section897CapitalGain = default(string), string nondividendDistributions = default(string), string federalIncomeTaxWithheld = default(string), string section199ADividends = default(string), string investmentExpenses = default(string), string foreignTaxPaid = default(string), string foreignCountryOrUSPossession = default(string), string cashLiquidationDistributions = default(string), string noncashLiquidationDistributions = default(string), string exemptInterestDividends = default(string), string specifiedPrivateActivityBondInterestDividends = default(string), bool? fatcaFilingRequirement = default(bool?), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), string issuerId = default(string), string referenceId = default(string), string recipientTin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool? secondTinNotice = default(bool?), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
+        public Form1099DivListItem(double? totalOrdinaryDividends = default(double?), double? qualifiedDividends = default(double?), double? totalCapitalGainDistributions = default(double?), double? unrecapturedSection1250Gain = default(double?), double? section1202Gain = default(double?), double? collectiblesGain = default(double?), double? section897OrdinaryDividends = default(double?), double? section897CapitalGain = default(double?), double? nondividendDistributions = default(double?), double? federalIncomeTaxWithheld = default(double?), double? section199ADividends = default(double?), double? investmentExpenses = default(double?), double? foreignTaxPaid = default(double?), string foreignCountryOrUSPossession = default(string), double? cashLiquidationDistributions = default(double?), double? noncashLiquidationDistributions = default(double?), double? exemptInterestDividends = default(double?), double? specifiedPrivateActivityBondInterestDividends = default(double?), bool? fatcaFilingRequirement = default(bool?), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), string issuerId = default(string), string referenceId = default(string), string recipientTin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), bool federalEFile = default(bool), bool postalMail = default(bool), bool stateEFile = default(bool), bool tinMatch = default(bool), bool noTin = default(bool), bool? secondTinNotice = default(bool?), bool addressVerification = default(bool), StateAndLocalWithholdingRequest stateAndLocalWithholding = default(StateAndLocalWithholdingRequest))
         {
             this.TaxYear = taxYear;
-            // to ensure "address" is required (not null)
-            if (address == null)
-            {
-                throw new ArgumentNullException("address is a required property for Form1099DivListItem and cannot be null");
-            }
-            this.Address = address;
-            // to ensure "city" is required (not null)
-            if (city == null)
-            {
-                throw new ArgumentNullException("city is a required property for Form1099DivListItem and cannot be null");
-            }
-            this.City = city;
-            // to ensure "countryCode" is required (not null)
-            if (countryCode == null)
-            {
-                throw new ArgumentNullException("countryCode is a required property for Form1099DivListItem and cannot be null");
-            }
-            this.CountryCode = countryCode;
             this.TotalOrdinaryDividends = totalOrdinaryDividends;
             this.QualifiedDividends = qualifiedDividends;
             this.TotalCapitalGainDistributions = totalCapitalGainDistributions;
@@ -185,13 +167,16 @@ namespace Avalara.SDK.Model.A1099.V2
             this.RecipientName = recipientName;
             this.TinType = tinType;
             this.RecipientSecondName = recipientSecondName;
+            this.Address = address;
             this.Address2 = address2;
+            this.City = city;
             this.State = state;
             this.Zip = zip;
             this.Email = email;
             this.AccountNumber = accountNumber;
             this.OfficeCode = officeCode;
             this.NonUsProvince = nonUsProvince;
+            this.CountryCode = countryCode;
             this.FederalEFile = federalEFile;
             this.PostalMail = postalMail;
             this.StateEFile = stateEFile;
@@ -207,91 +192,91 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Total ordinary dividends</value>
         [DataMember(Name = "totalOrdinaryDividends", EmitDefaultValue = true)]
-        public string TotalOrdinaryDividends { get; set; }
+        public double? TotalOrdinaryDividends { get; set; }
 
         /// <summary>
         /// Qualified dividends
         /// </summary>
         /// <value>Qualified dividends</value>
         [DataMember(Name = "qualifiedDividends", EmitDefaultValue = true)]
-        public string QualifiedDividends { get; set; }
+        public double? QualifiedDividends { get; set; }
 
         /// <summary>
         /// Total capital gain distributions
         /// </summary>
         /// <value>Total capital gain distributions</value>
         [DataMember(Name = "totalCapitalGainDistributions", EmitDefaultValue = true)]
-        public string TotalCapitalGainDistributions { get; set; }
+        public double? TotalCapitalGainDistributions { get; set; }
 
         /// <summary>
         /// Unrecaptured Section 1250 gain
         /// </summary>
         /// <value>Unrecaptured Section 1250 gain</value>
         [DataMember(Name = "unrecapturedSection1250Gain", EmitDefaultValue = true)]
-        public string UnrecapturedSection1250Gain { get; set; }
+        public double? UnrecapturedSection1250Gain { get; set; }
 
         /// <summary>
         /// Section 1202 gain
         /// </summary>
         /// <value>Section 1202 gain</value>
         [DataMember(Name = "section1202Gain", EmitDefaultValue = true)]
-        public string Section1202Gain { get; set; }
+        public double? Section1202Gain { get; set; }
 
         /// <summary>
         /// Collectibles (28%) gain
         /// </summary>
         /// <value>Collectibles (28%) gain</value>
         [DataMember(Name = "collectiblesGain", EmitDefaultValue = true)]
-        public string CollectiblesGain { get; set; }
+        public double? CollectiblesGain { get; set; }
 
         /// <summary>
         /// Section 897 ordinary dividends
         /// </summary>
         /// <value>Section 897 ordinary dividends</value>
         [DataMember(Name = "section897OrdinaryDividends", EmitDefaultValue = true)]
-        public string Section897OrdinaryDividends { get; set; }
+        public double? Section897OrdinaryDividends { get; set; }
 
         /// <summary>
         /// Section 897 capital gain
         /// </summary>
         /// <value>Section 897 capital gain</value>
         [DataMember(Name = "section897CapitalGain", EmitDefaultValue = true)]
-        public string Section897CapitalGain { get; set; }
+        public double? Section897CapitalGain { get; set; }
 
         /// <summary>
         /// Nondividend distributions
         /// </summary>
         /// <value>Nondividend distributions</value>
         [DataMember(Name = "nondividendDistributions", EmitDefaultValue = true)]
-        public string NondividendDistributions { get; set; }
+        public double? NondividendDistributions { get; set; }
 
         /// <summary>
         /// Federal income tax withheld
         /// </summary>
         /// <value>Federal income tax withheld</value>
         [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
-        public string FederalIncomeTaxWithheld { get; set; }
+        public double? FederalIncomeTaxWithheld { get; set; }
 
         /// <summary>
         /// Section 199A dividends
         /// </summary>
         /// <value>Section 199A dividends</value>
         [DataMember(Name = "section199ADividends", EmitDefaultValue = true)]
-        public string Section199ADividends { get; set; }
+        public double? Section199ADividends { get; set; }
 
         /// <summary>
         /// Investment expenses
         /// </summary>
         /// <value>Investment expenses</value>
         [DataMember(Name = "investmentExpenses", EmitDefaultValue = true)]
-        public string InvestmentExpenses { get; set; }
+        public double? InvestmentExpenses { get; set; }
 
         /// <summary>
         /// Foreign tax paid
         /// </summary>
         /// <value>Foreign tax paid</value>
         [DataMember(Name = "foreignTaxPaid", EmitDefaultValue = true)]
-        public string ForeignTaxPaid { get; set; }
+        public double? ForeignTaxPaid { get; set; }
 
         /// <summary>
         /// Foreign country or U.S. possession
@@ -305,28 +290,28 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Cash liquidation distributions</value>
         [DataMember(Name = "cashLiquidationDistributions", EmitDefaultValue = true)]
-        public string CashLiquidationDistributions { get; set; }
+        public double? CashLiquidationDistributions { get; set; }
 
         /// <summary>
         /// Noncash liquidation distributions
         /// </summary>
         /// <value>Noncash liquidation distributions</value>
         [DataMember(Name = "noncashLiquidationDistributions", EmitDefaultValue = true)]
-        public string NoncashLiquidationDistributions { get; set; }
+        public double? NoncashLiquidationDistributions { get; set; }
 
         /// <summary>
         /// Exempt-interest dividends
         /// </summary>
         /// <value>Exempt-interest dividends</value>
         [DataMember(Name = "exemptInterestDividends", EmitDefaultValue = true)]
-        public string ExemptInterestDividends { get; set; }
+        public double? ExemptInterestDividends { get; set; }
 
         /// <summary>
         /// Specified private activity bond interest dividends
         /// </summary>
         /// <value>Specified private activity bond interest dividends</value>
         [DataMember(Name = "specifiedPrivateActivityBondInterestDividends", EmitDefaultValue = true)]
-        public string SpecifiedPrivateActivityBondInterestDividends { get; set; }
+        public double? SpecifiedPrivateActivityBondInterestDividends { get; set; }
 
         /// <summary>
         /// FATCA filing requirement
@@ -339,14 +324,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Issuer Reference ID. One of &#x60;issuerReferenceId&#x60; or &#x60;issuerTin&#x60; is required.
         /// </summary>
         /// <value>Issuer Reference ID. One of &#x60;issuerReferenceId&#x60; or &#x60;issuerTin&#x60; is required.</value>
-        [DataMember(Name = "issuerReferenceId", EmitDefaultValue = false)]
+        [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
         public string IssuerReferenceId { get; set; }
 
         /// <summary>
         /// Issuer TIN. One of &#x60;issuerReferenceId&#x60; or &#x60;issuerTin&#x60; is required.
         /// </summary>
         /// <value>Issuer TIN. One of &#x60;issuerReferenceId&#x60; or &#x60;issuerTin&#x60; is required.</value>
-        [DataMember(Name = "issuerTin", EmitDefaultValue = false)]
+        [DataMember(Name = "issuerTin", EmitDefaultValue = true)]
         public string IssuerTin { get; set; }
 
         /// <summary>
@@ -374,7 +359,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Recipient Tax ID Number
         /// </summary>
         /// <value>Recipient Tax ID Number</value>
-        [DataMember(Name = "recipientTin", EmitDefaultValue = false)]
+        [DataMember(Name = "recipientTin", EmitDefaultValue = true)]
         public string RecipientTin { get; set; }
 
         /// <summary>
@@ -395,7 +380,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Address
         /// </summary>
         /// <value>Address</value>
-        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "address", EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
@@ -409,21 +394,21 @@ namespace Avalara.SDK.Model.A1099.V2
         /// City
         /// </summary>
         /// <value>City</value>
-        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "city", EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
         /// US state. Required if CountryCode is \&quot;US\&quot;.
         /// </summary>
         /// <value>US state. Required if CountryCode is \&quot;US\&quot;.</value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
         /// Zip/postal code
         /// </summary>
         /// <value>Zip/postal code</value>
-        [DataMember(Name = "zip", EmitDefaultValue = false)]
+        [DataMember(Name = "zip", EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
@@ -458,7 +443,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Country code, as defined at https://www.irs.gov/e-file-providers/country-codes
         /// </summary>
         /// <value>Country code, as defined at https://www.irs.gov/e-file-providers/country-codes</value>
-        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "countryCode", EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
         /// <summary>
@@ -591,24 +576,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Address (string) minLength
-            if (this.Address != null && this.Address.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for Address, length must be greater than 1.", new [] { "Address" });
-            }
-
-            // City (string) minLength
-            if (this.City != null && this.City.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for City, length must be greater than 1.", new [] { "City" });
-            }
-
-            // CountryCode (string) minLength
-            if (this.CountryCode != null && this.CountryCode.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CountryCode, length must be greater than 1.", new [] { "CountryCode" });
-            }
-
             yield break;
         }
     }

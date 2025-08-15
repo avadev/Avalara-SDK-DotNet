@@ -69,7 +69,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="totalEmployeeContributions">Total employee contributions.</param>
         /// <param name="amountAllocableToIrr">Amount allocable to IRR within 5 years.</param>
         /// <param name="firstYearDesignatedRothContrib">First year of designated Roth contribution.</param>
-        /// <param name="fatcaRequirementIndicator">FATCA filing requirement.</param>
         /// <param name="dateOfPayment">Date of payment.</param>
         /// <param name="type">Type of the form. Will be one of:  * 940  * 941  * 943  * 944  * 945  * 1042  * 1042-S  * 1095-B  * 1095-C  * 1097-BTC  * 1098  * 1098-C  * 1098-E  * 1098-Q  * 1098-T  * 3921  * 3922  * 5498  * 5498-ESA  * 5498-SA  * 1099-MISC  * 1099-A  * 1099-B  * 1099-C  * 1099-CAP  * 1099-DIV  * 1099-G  * 1099-INT  * 1099-K  * 1099-LS  * 1099-LTC  * 1099-NEC  * 1099-OID  * 1099-PATR  * 1099-Q  * 1099-R  * 1099-S  * 1099-SA  * T4A  * W-2  * W-2G  * 1099-HC (required).</param>
         /// <param name="issuerId">Issuer ID (required).</param>
@@ -100,7 +99,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office Code.</param>
         /// <param name="fatcaFilingRequirement">FATCA filing requirement.</param>
         /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        public Form1099RListItemResponse(double? grossDistributions = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionIndicator = default(bool?), double? capitalGain = default(double?), double? fedIncomeTaxWithheld = default(double?), double? employeeContributions = default(double?), double? netUnrealizedAppreciation = default(double?), string distributionCodeRequired = default(string), string distributionCodeOptional = default(string), bool? iraSepSimpleIndicator = default(bool?), double? totalIraSepSimpleDistribution = default(double?), double? other = default(double?), string otherPercent = default(string), string percentageTotalDistribution = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrr = default(double?), string firstYearDesignatedRothContrib = default(string), bool? fatcaRequirementIndicator = default(bool?), string dateOfPayment = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), bool stateEfile = default(bool), bool postalMail = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool), string referenceId = default(string), string email = default(string), string tinType = default(string), string tin = default(string), bool noTin = default(bool), bool? secondTinNotice = default(bool?), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string nonUsProvince = default(string), string countryCode = default(string), string accountNumber = default(string), string officeCode = default(string), bool? fatcaFilingRequirement = default(bool?), StateAndLocalWithholdingResponse stateAndLocalWithholding = default(StateAndLocalWithholdingResponse))
+        public Form1099RListItemResponse(double? grossDistributions = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionIndicator = default(bool?), double? capitalGain = default(double?), double? fedIncomeTaxWithheld = default(double?), double? employeeContributions = default(double?), double? netUnrealizedAppreciation = default(double?), string distributionCodeRequired = default(string), string distributionCodeOptional = default(string), bool? iraSepSimpleIndicator = default(bool?), double? totalIraSepSimpleDistribution = default(double?), double? other = default(double?), string otherPercent = default(string), string percentageTotalDistribution = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrr = default(double?), string firstYearDesignatedRothContrib = default(string), string dateOfPayment = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), bool stateEfile = default(bool), bool postalMail = default(bool), bool tinMatch = default(bool), bool addressVerification = default(bool), string referenceId = default(string), string email = default(string), string tinType = default(string), string tin = default(string), bool noTin = default(bool), bool? secondTinNotice = default(bool?), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string nonUsProvince = default(string), string countryCode = default(string), string accountNumber = default(string), string officeCode = default(string), bool? fatcaFilingRequirement = default(bool?), StateAndLocalWithholdingResponse stateAndLocalWithholding = default(StateAndLocalWithholdingResponse))
         {
             // to ensure "type" is required (not null)
             if (type == null)
@@ -132,7 +131,6 @@ namespace Avalara.SDK.Model.A1099.V2
             this.TotalEmployeeContributions = totalEmployeeContributions;
             this.AmountAllocableToIrr = amountAllocableToIrr;
             this.FirstYearDesignatedRothContrib = firstYearDesignatedRothContrib;
-            this.FatcaRequirementIndicator = fatcaRequirementIndicator;
             this.DateOfPayment = dateOfPayment;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
@@ -285,13 +283,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>First year of designated Roth contribution</value>
         [DataMember(Name = "firstYearDesignatedRothContrib", EmitDefaultValue = true)]
         public string FirstYearDesignatedRothContrib { get; set; }
-
-        /// <summary>
-        /// FATCA filing requirement
-        /// </summary>
-        /// <value>FATCA filing requirement</value>
-        [DataMember(Name = "fatcaRequirementIndicator", EmitDefaultValue = true)]
-        public bool? FatcaRequirementIndicator { get; set; }
 
         /// <summary>
         /// Date of payment
@@ -639,7 +630,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Creation time
         /// </summary>
         /// <value>Creation time</value>
-        /// <example>2025-07-31T02:07:40.939073500Z</example>
+        /// <example>2025-08-15T15:39:30.279309800Z</example>
         [DataMember(Name = "createdAt", EmitDefaultValue = false)]
         public DateTime CreatedAt { get; private set; }
 
@@ -655,7 +646,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Update time
         /// </summary>
         /// <value>Update time</value>
-        /// <example>2025-07-31T02:07:40.939074300Z</example>
+        /// <example>2025-08-15T15:39:30.279310500Z</example>
         [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
         public DateTime UpdatedAt { get; private set; }
 
@@ -699,7 +690,6 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  TotalEmployeeContributions: ").Append(TotalEmployeeContributions).Append("\n");
             sb.Append("  AmountAllocableToIrr: ").Append(AmountAllocableToIrr).Append("\n");
             sb.Append("  FirstYearDesignatedRothContrib: ").Append(FirstYearDesignatedRothContrib).Append("\n");
-            sb.Append("  FatcaRequirementIndicator: ").Append(FatcaRequirementIndicator).Append("\n");
             sb.Append("  DateOfPayment: ").Append(DateOfPayment).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");

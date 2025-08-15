@@ -8,7 +8,7 @@
  *
  * Avalara 1099 & W-9 API Definition
  *
- * ## 🔐 Authentication  Use **username/password** or generate a **license key** from: *Avalara Portal → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## 🔐 Authentication  Generate a **license key** from: *[Avalara Portal](https://www.avalara.com/us/en/signin.html) → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -51,15 +51,15 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="otherIncome">otherIncome.</param>
         /// <param name="fedIncomeTaxWithheld">fedIncomeTaxWithheld.</param>
         /// <param name="fishingBoatProceeds">fishingBoatProceeds.</param>
-        /// <param name="medicalAndHealthCare">medicalAndHealthCare.</param>
-        /// <param name="nonemployeeCompensation">nonemployeeCompensation.</param>
+        /// <param name="medicalAndHealthCarePayments">medicalAndHealthCarePayments.</param>
         /// <param name="substitutePayments">substitutePayments.</param>
         /// <param name="directSalesIndicator">directSalesIndicator.</param>
         /// <param name="cropInsuranceProceeds">cropInsuranceProceeds.</param>
-        /// <param name="excessGoldenParachute">excessGoldenParachute.</param>
-        /// <param name="grossAmountPaidAttorney">grossAmountPaidAttorney.</param>
+        /// <param name="excessGoldenParachutePayments">excessGoldenParachutePayments.</param>
+        /// <param name="grossProceedsPaidToAttorney">grossProceedsPaidToAttorney.</param>
+        /// <param name="fishPurchasedForResale">fishPurchasedForResale.</param>
         /// <param name="section409ADeferrals">section409ADeferrals.</param>
-        /// <param name="section409AIncome">section409AIncome.</param>
+        /// <param name="nonqualifiedDeferredCompensation">nonqualifiedDeferredCompensation.</param>
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
         /// <param name="issuerId">issuerId.</param>
@@ -76,10 +76,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tinMatchStatus">tinMatchStatus.</param>
         /// <param name="addressVerification">addressVerification.</param>
         /// <param name="addressVerificationStatus">addressVerificationStatus.</param>
+        /// <param name="eDeliveryStatus">eDeliveryStatus.</param>
         /// <param name="referenceId">referenceId.</param>
         /// <param name="email">email.</param>
         /// <param name="tinType">tinType.</param>
+        /// <param name="fatcaFilingRequirement">fatcaFilingRequirement.</param>
         /// <param name="tin">tin.</param>
+        /// <param name="noTin">noTin.</param>
+        /// <param name="secondTinNotice">secondTinNotice.</param>
         /// <param name="recipientName">recipientName.</param>
         /// <param name="recipientSecondName">recipientSecondName.</param>
         /// <param name="address">address.</param>
@@ -87,28 +91,30 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="city">city.</param>
         /// <param name="state">state.</param>
         /// <param name="zip">zip.</param>
-        /// <param name="foreignProvince">foreignProvince.</param>
+        /// <param name="nonUsProvince">nonUsProvince.</param>
         /// <param name="countryCode">countryCode.</param>
+        /// <param name="accountNumber">accountNumber.</param>
+        /// <param name="officeCode">officeCode.</param>
         /// <param name="validationErrors">validationErrors.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        public Form1099Misc(double? rents = default(double?), double? royalties = default(double?), double? otherIncome = default(double?), double? fedIncomeTaxWithheld = default(double?), double? fishingBoatProceeds = default(double?), double? medicalAndHealthCare = default(double?), double? nonemployeeCompensation = default(double?), double? substitutePayments = default(double?), bool directSalesIndicator = default(bool), double? cropInsuranceProceeds = default(double?), double? excessGoldenParachute = default(double?), double? grossAmountPaidAttorney = default(double?), double? section409ADeferrals = default(double?), double? section409AIncome = default(double?), string id = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), Form1099StatusDetail federalEfileStatus = default(Form1099StatusDetail), bool stateEfile = default(bool), List<StateEfileStatusDetail> stateEfileStatus = default(List<StateEfileStatusDetail>), bool postalMail = default(bool), Form1099StatusDetail postalMailStatus = default(Form1099StatusDetail), bool tinMatch = default(bool), Form1099StatusDetail tinMatchStatus = default(Form1099StatusDetail), bool addressVerification = default(bool), Form1099StatusDetail addressVerificationStatus = default(Form1099StatusDetail), string referenceId = default(string), string email = default(string), string tinType = default(string), string tin = default(string), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string countryCode = default(string), List<ValidationError> validationErrors = default(List<ValidationError>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
+        public Form1099Misc(double? rents = default(double?), double? royalties = default(double?), double? otherIncome = default(double?), double? fedIncomeTaxWithheld = default(double?), double? fishingBoatProceeds = default(double?), double? medicalAndHealthCarePayments = default(double?), double? substitutePayments = default(double?), bool directSalesIndicator = default(bool), double? cropInsuranceProceeds = default(double?), double? excessGoldenParachutePayments = default(double?), double? grossProceedsPaidToAttorney = default(double?), double? fishPurchasedForResale = default(double?), double? section409ADeferrals = default(double?), double? nonqualifiedDeferredCompensation = default(double?), string id = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), Form1099StatusDetail federalEfileStatus = default(Form1099StatusDetail), bool stateEfile = default(bool), List<StateEfileStatusDetail> stateEfileStatus = default(List<StateEfileStatusDetail>), bool postalMail = default(bool), Form1099StatusDetail postalMailStatus = default(Form1099StatusDetail), bool tinMatch = default(bool), Form1099StatusDetail tinMatchStatus = default(Form1099StatusDetail), bool addressVerification = default(bool), Form1099StatusDetail addressVerificationStatus = default(Form1099StatusDetail), Form1099StatusDetail eDeliveryStatus = default(Form1099StatusDetail), string referenceId = default(string), string email = default(string), string tinType = default(string), bool? fatcaFilingRequirement = default(bool?), string tin = default(string), bool noTin = default(bool), bool? secondTinNotice = default(bool?), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string nonUsProvince = default(string), string countryCode = default(string), string accountNumber = default(string), string officeCode = default(string), List<ValidationError> validationErrors = default(List<ValidationError>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
         {
             this.Rents = rents;
             this.Royalties = royalties;
             this.OtherIncome = otherIncome;
             this.FedIncomeTaxWithheld = fedIncomeTaxWithheld;
             this.FishingBoatProceeds = fishingBoatProceeds;
-            this.MedicalAndHealthCare = medicalAndHealthCare;
-            this.NonemployeeCompensation = nonemployeeCompensation;
+            this.MedicalAndHealthCarePayments = medicalAndHealthCarePayments;
             this.SubstitutePayments = substitutePayments;
             this.DirectSalesIndicator = directSalesIndicator;
             this.CropInsuranceProceeds = cropInsuranceProceeds;
-            this.ExcessGoldenParachute = excessGoldenParachute;
-            this.GrossAmountPaidAttorney = grossAmountPaidAttorney;
+            this.ExcessGoldenParachutePayments = excessGoldenParachutePayments;
+            this.GrossProceedsPaidToAttorney = grossProceedsPaidToAttorney;
+            this.FishPurchasedForResale = fishPurchasedForResale;
             this.Section409ADeferrals = section409ADeferrals;
-            this.Section409AIncome = section409AIncome;
+            this.NonqualifiedDeferredCompensation = nonqualifiedDeferredCompensation;
             this.Id = id;
             this.Type = type;
             this.IssuerId = issuerId;
@@ -125,10 +131,14 @@ namespace Avalara.SDK.Model.A1099.V2
             this.TinMatchStatus = tinMatchStatus;
             this.AddressVerification = addressVerification;
             this.AddressVerificationStatus = addressVerificationStatus;
+            this.EDeliveryStatus = eDeliveryStatus;
             this.ReferenceId = referenceId;
             this.Email = email;
             this.TinType = tinType;
+            this.FatcaFilingRequirement = fatcaFilingRequirement;
             this.Tin = tin;
+            this.NoTin = noTin;
+            this.SecondTinNotice = secondTinNotice;
             this.RecipientName = recipientName;
             this.RecipientSecondName = recipientSecondName;
             this.Address = address;
@@ -136,8 +146,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.City = city;
             this.State = state;
             this.Zip = zip;
-            this.ForeignProvince = foreignProvince;
+            this.NonUsProvince = nonUsProvince;
             this.CountryCode = countryCode;
+            this.AccountNumber = accountNumber;
+            this.OfficeCode = officeCode;
             this.ValidationErrors = validationErrors;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
@@ -175,16 +187,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? FishingBoatProceeds { get; set; }
 
         /// <summary>
-        /// Gets or Sets MedicalAndHealthCare
+        /// Gets or Sets MedicalAndHealthCarePayments
         /// </summary>
-        [DataMember(Name = "medicalAndHealthCare", EmitDefaultValue = true)]
-        public double? MedicalAndHealthCare { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NonemployeeCompensation
-        /// </summary>
-        [DataMember(Name = "nonemployeeCompensation", EmitDefaultValue = true)]
-        public double? NonemployeeCompensation { get; set; }
+        [DataMember(Name = "medicalAndHealthCarePayments", EmitDefaultValue = true)]
+        public double? MedicalAndHealthCarePayments { get; set; }
 
         /// <summary>
         /// Gets or Sets SubstitutePayments
@@ -205,16 +211,22 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? CropInsuranceProceeds { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExcessGoldenParachute
+        /// Gets or Sets ExcessGoldenParachutePayments
         /// </summary>
-        [DataMember(Name = "excessGoldenParachute", EmitDefaultValue = true)]
-        public double? ExcessGoldenParachute { get; set; }
+        [DataMember(Name = "excessGoldenParachutePayments", EmitDefaultValue = true)]
+        public double? ExcessGoldenParachutePayments { get; set; }
 
         /// <summary>
-        /// Gets or Sets GrossAmountPaidAttorney
+        /// Gets or Sets GrossProceedsPaidToAttorney
         /// </summary>
-        [DataMember(Name = "grossAmountPaidAttorney", EmitDefaultValue = true)]
-        public double? GrossAmountPaidAttorney { get; set; }
+        [DataMember(Name = "grossProceedsPaidToAttorney", EmitDefaultValue = true)]
+        public double? GrossProceedsPaidToAttorney { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FishPurchasedForResale
+        /// </summary>
+        [DataMember(Name = "fishPurchasedForResale", EmitDefaultValue = true)]
+        public double? FishPurchasedForResale { get; set; }
 
         /// <summary>
         /// Gets or Sets Section409ADeferrals
@@ -223,10 +235,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? Section409ADeferrals { get; set; }
 
         /// <summary>
-        /// Gets or Sets Section409AIncome
+        /// Gets or Sets NonqualifiedDeferredCompensation
         /// </summary>
-        [DataMember(Name = "section409AIncome", EmitDefaultValue = true)]
-        public double? Section409AIncome { get; set; }
+        [DataMember(Name = "nonqualifiedDeferredCompensation", EmitDefaultValue = true)]
+        public double? NonqualifiedDeferredCompensation { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -325,6 +337,12 @@ namespace Avalara.SDK.Model.A1099.V2
         public Form1099StatusDetail AddressVerificationStatus { get; set; }
 
         /// <summary>
+        /// Gets or Sets EDeliveryStatus
+        /// </summary>
+        [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail EDeliveryStatus { get; set; }
+
+        /// <summary>
         /// Gets or Sets ReferenceId
         /// </summary>
         [DataMember(Name = "referenceId", EmitDefaultValue = true)]
@@ -343,10 +361,28 @@ namespace Avalara.SDK.Model.A1099.V2
         public string TinType { get; set; }
 
         /// <summary>
+        /// Gets or Sets FatcaFilingRequirement
+        /// </summary>
+        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
+        public bool? FatcaFilingRequirement { get; set; }
+
+        /// <summary>
         /// Gets or Sets Tin
         /// </summary>
         [DataMember(Name = "tin", EmitDefaultValue = true)]
         public string Tin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NoTin
+        /// </summary>
+        [DataMember(Name = "noTin", EmitDefaultValue = true)]
+        public bool NoTin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecondTinNotice
+        /// </summary>
+        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
+        public bool? SecondTinNotice { get; set; }
 
         /// <summary>
         /// Gets or Sets RecipientName
@@ -391,16 +427,28 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Zip { get; set; }
 
         /// <summary>
-        /// Gets or Sets ForeignProvince
+        /// Gets or Sets NonUsProvince
         /// </summary>
-        [DataMember(Name = "foreignProvince", EmitDefaultValue = true)]
-        public string ForeignProvince { get; set; }
+        [DataMember(Name = "nonUsProvince", EmitDefaultValue = true)]
+        public string NonUsProvince { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryCode
         /// </summary>
         [DataMember(Name = "countryCode", EmitDefaultValue = true)]
         public string CountryCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccountNumber
+        /// </summary>
+        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OfficeCode
+        /// </summary>
+        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
+        public string OfficeCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ValidationErrors
@@ -439,15 +487,15 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  OtherIncome: ").Append(OtherIncome).Append("\n");
             sb.Append("  FedIncomeTaxWithheld: ").Append(FedIncomeTaxWithheld).Append("\n");
             sb.Append("  FishingBoatProceeds: ").Append(FishingBoatProceeds).Append("\n");
-            sb.Append("  MedicalAndHealthCare: ").Append(MedicalAndHealthCare).Append("\n");
-            sb.Append("  NonemployeeCompensation: ").Append(NonemployeeCompensation).Append("\n");
+            sb.Append("  MedicalAndHealthCarePayments: ").Append(MedicalAndHealthCarePayments).Append("\n");
             sb.Append("  SubstitutePayments: ").Append(SubstitutePayments).Append("\n");
             sb.Append("  DirectSalesIndicator: ").Append(DirectSalesIndicator).Append("\n");
             sb.Append("  CropInsuranceProceeds: ").Append(CropInsuranceProceeds).Append("\n");
-            sb.Append("  ExcessGoldenParachute: ").Append(ExcessGoldenParachute).Append("\n");
-            sb.Append("  GrossAmountPaidAttorney: ").Append(GrossAmountPaidAttorney).Append("\n");
+            sb.Append("  ExcessGoldenParachutePayments: ").Append(ExcessGoldenParachutePayments).Append("\n");
+            sb.Append("  GrossProceedsPaidToAttorney: ").Append(GrossProceedsPaidToAttorney).Append("\n");
+            sb.Append("  FishPurchasedForResale: ").Append(FishPurchasedForResale).Append("\n");
             sb.Append("  Section409ADeferrals: ").Append(Section409ADeferrals).Append("\n");
-            sb.Append("  Section409AIncome: ").Append(Section409AIncome).Append("\n");
+            sb.Append("  NonqualifiedDeferredCompensation: ").Append(NonqualifiedDeferredCompensation).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");
@@ -464,10 +512,14 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  TinMatchStatus: ").Append(TinMatchStatus).Append("\n");
             sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
             sb.Append("  AddressVerificationStatus: ").Append(AddressVerificationStatus).Append("\n");
+            sb.Append("  EDeliveryStatus: ").Append(EDeliveryStatus).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  TinType: ").Append(TinType).Append("\n");
+            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
+            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
+            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
             sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
@@ -475,8 +527,10 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
-            sb.Append("  ForeignProvince: ").Append(ForeignProvince).Append("\n");
+            sb.Append("  NonUsProvince: ").Append(NonUsProvince).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");

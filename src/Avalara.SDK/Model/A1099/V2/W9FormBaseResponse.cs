@@ -31,6 +31,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = Avalara.SDK.Client.FileParameter;
 using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
@@ -41,13 +42,18 @@ namespace Avalara.SDK.Model.A1099.V2
     /// W9FormBaseResponse
     /// </summary>
     [DataContract(Name = "W9FormBaseResponse")]
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(W4FormResponse), "W4FormResponse")]
+    [JsonSubtypes.KnownSubType(typeof(W8BenEFormResponse), "W8BenEFormResponse")]
+    [JsonSubtypes.KnownSubType(typeof(W8BenFormResponse), "W8BenFormResponse")]
+    [JsonSubtypes.KnownSubType(typeof(W8ImyFormResponse), "W8ImyFormResponse")]
+    [JsonSubtypes.KnownSubType(typeof(W9FormResponse), "W9FormResponse")]
     public partial class W9FormBaseResponse : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="W9FormBaseResponse" /> class.
         /// </summary>
         /// <param name="id">The unique identifier for the form..</param>
-        /// <param name="type">The form type..</param>
         /// <param name="entryStatus">The form status..</param>
         /// <param name="entryStatusDate">The timestamp for the latest status update..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
@@ -60,10 +66,10 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
-        public W9FormBaseResponse(string id = default(string), string type = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        /// <param name="type">The type of the response object..</param>
+        public W9FormBaseResponse(string id = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = default(string))
         {
             this.Id = id;
-            this.Type = type;
             this.EntryStatus = entryStatus;
             this.EntryStatusDate = entryStatusDate;
             this.ReferenceId = referenceId;
@@ -76,6 +82,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
+            this.Type = type;
         }
 
         /// <summary>
@@ -84,13 +91,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The unique identifier for the form.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// The form type.
-        /// </summary>
-        /// <value>The form type.</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
 
         /// <summary>
         /// The form status.
@@ -177,6 +177,13 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// The type of the response object.
+        /// </summary>
+        /// <value>The type of the response object.</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public string Type { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -185,7 +192,6 @@ namespace Avalara.SDK.Model.A1099.V2
             StringBuilder sb = new StringBuilder();
             sb.Append("class W9FormBaseResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
             sb.Append("  EntryStatusDate: ").Append(EntryStatusDate).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
@@ -198,6 +204,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -217,6 +224,16 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            return this.BaseValidate(validationContext);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        protected IEnumerable<ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }
