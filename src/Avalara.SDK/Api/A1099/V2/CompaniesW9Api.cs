@@ -30,7 +30,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The company to create
         /// </summary>
-        public CompanyCreateUpdateRequestModel CompanyCreateUpdateRequestModel { get; set; }
+        public CreateCompanyRequest CreateCompanyRequest { get; set; }
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The updated company data
         /// </summary>
-        public CompanyCreateUpdateRequestModel CompanyCreateUpdateRequestModel { get; set; }
+        public CreateCompanyRequest CreateCompanyRequest { get; set; }
     }
 
 
@@ -160,8 +160,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>CompanyResponseModel</returns>
-        CompanyResponseModel CreateCompany(CreateCompanyRequestSdk requestParameters);
+        /// <returns>CompanyResponse</returns>
+        CompanyResponse CreateCompany(CreateCompanyRequestSdk requestParameters);
 
         /// <summary>
         /// Delete a company
@@ -204,8 +204,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>CompanyResponseModel</returns>
-        CompanyResponseModel UpdateCompany(UpdateCompanyRequestSdk requestParameters);
+        /// <returns>CompanyResponse</returns>
+        CompanyResponse UpdateCompany(UpdateCompanyRequestSdk requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -225,8 +225,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CompanyResponseModel</returns>
-        System.Threading.Tasks.Task<CompanyResponseModel> CreateCompanyAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CompanyResponse</returns>
+        System.Threading.Tasks.Task<CompanyResponse> CreateCompanyAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a company
@@ -273,8 +273,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CompanyResponseModel</returns>
-        System.Threading.Tasks.Task<CompanyResponseModel> UpdateCompanyAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CompanyResponse</returns>
+        System.Threading.Tasks.Task<CompanyResponse> UpdateCompanyAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -323,10 +323,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>CompanyResponseModel</returns>
-        public CompanyResponseModel CreateCompany(CreateCompanyRequestSdk requestParameters)
+        /// <returns>CompanyResponse</returns>
+        public CompanyResponse CreateCompany(CreateCompanyRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<CompanyResponseModel> localVarResponse = CreateCompanyWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<CompanyResponse> localVarResponse = CreateCompanyWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -335,8 +335,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of CompanyResponseModel</returns>
-        private Avalara.SDK.Client.ApiResponse<CompanyResponseModel> CreateCompanyWithHttpInfo(CreateCompanyRequestSdk requestParameters)
+        /// <returns>ApiResponse of CompanyResponse</returns>
+        private Avalara.SDK.Client.ApiResponse<CompanyResponse> CreateCompanyWithHttpInfo(CreateCompanyRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -361,7 +361,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
@@ -372,10 +372,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
+            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CompanyResponseModel>("/w9/companies", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Post<CompanyResponse>("/w9/companies", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -392,10 +392,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CompanyResponseModel</returns>
-        public async System.Threading.Tasks.Task<CompanyResponseModel> CreateCompanyAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CompanyResponse</returns>
+        public async System.Threading.Tasks.Task<CompanyResponse> CreateCompanyAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<CompanyResponseModel> localVarResponse = await CreateCompanyWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<CompanyResponse> localVarResponse = await CreateCompanyWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -405,8 +405,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CompanyResponseModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyResponseModel>> CreateCompanyWithHttpInfoAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CompanyResponse)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyResponse>> CreateCompanyWithHttpInfoAsync(CreateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -433,7 +433,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
@@ -444,10 +444,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
+            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
 
             // make the HTTP request
-			var localVarResponse = await this.Client.PostAsync<CompanyResponseModel>("/w9/companies", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PostAsync<CompanyResponse>("/w9/companies", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -501,7 +501,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -573,7 +573,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -638,7 +638,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (requestParameters.Filter != null)
             {
@@ -730,7 +730,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (requestParameters.Filter != null)
             {
@@ -822,7 +822,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -895,7 +895,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -925,10 +925,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>CompanyResponseModel</returns>
-        public CompanyResponseModel UpdateCompany(UpdateCompanyRequestSdk requestParameters)
+        /// <returns>CompanyResponse</returns>
+        public CompanyResponse UpdateCompany(UpdateCompanyRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<CompanyResponseModel> localVarResponse = UpdateCompanyWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<CompanyResponse> localVarResponse = UpdateCompanyWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -937,8 +937,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of CompanyResponseModel</returns>
-        private Avalara.SDK.Client.ApiResponse<CompanyResponseModel> UpdateCompanyWithHttpInfo(UpdateCompanyRequestSdk requestParameters)
+        /// <returns>ApiResponse of CompanyResponse</returns>
+        private Avalara.SDK.Client.ApiResponse<CompanyResponse> UpdateCompanyWithHttpInfo(UpdateCompanyRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -967,7 +967,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -979,10 +979,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
+            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<CompanyResponseModel>("/w9/companies/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Put<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -999,10 +999,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CompanyResponseModel</returns>
-        public async System.Threading.Tasks.Task<CompanyResponseModel> UpdateCompanyAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CompanyResponse</returns>
+        public async System.Threading.Tasks.Task<CompanyResponse> UpdateCompanyAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<CompanyResponseModel> localVarResponse = await UpdateCompanyWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<CompanyResponse> localVarResponse = await UpdateCompanyWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1012,8 +1012,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CompanyResponseModel)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyResponseModel>> UpdateCompanyWithHttpInfoAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CompanyResponse)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CompanyResponse>> UpdateCompanyWithHttpInfoAsync(UpdateCompanyRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1044,7 +1044,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1056,10 +1056,10 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CompanyCreateUpdateRequestModel;
+            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
 
             // make the HTTP request
-			var localVarResponse = await this.Client.PutAsync<CompanyResponseModel>("/w9/companies/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PutAsync<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1079,7 +1079,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.8.2";
+            this.Client.SdkVersion = "25.8.3";
         }
         
     }

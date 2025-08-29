@@ -101,6 +101,11 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W4FormRequest" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected W4FormRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="W4FormRequest" /> class.
+        /// </summary>
         /// <param name="employeeFirstName">The first name of the employee..</param>
         /// <param name="employeeMiddleName">The middle name of the employee..</param>
         /// <param name="employeeLastName">The last name of the employee..</param>
@@ -120,13 +125,19 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="additionalWithheld">The additional amount withheld..</param>
         /// <param name="exemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
         /// <param name="officeCode">The office code associated with the form..</param>
-        /// <param name="companyId">The ID of the associated company..</param>
-        /// <param name="referenceId">A reference identifier for the form..</param>
-        /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        public W4FormRequest(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
+        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="referenceId">A reference identifier for the form..</param>
+        /// <param name="email">The email address of the individual associated with the form..</param>
+        public W4FormRequest(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
+            // to ensure "companyId" is required (not null)
+            if (companyId == null)
+            {
+                throw new ArgumentNullException("companyId is a required property for W4FormRequest and cannot be null");
+            }
+            this.CompanyId = companyId;
             this.EmployeeFirstName = employeeFirstName;
             this.EmployeeMiddleName = employeeMiddleName;
             this.EmployeeLastName = employeeLastName;
@@ -146,11 +157,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.AdditionalWithheld = additionalWithheld;
             this.ExemptFromWithholding = exemptFromWithholding;
             this.OfficeCode = officeCode;
-            this.CompanyId = companyId;
-            this.ReferenceId = referenceId;
-            this.Email = email;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.ReferenceId = referenceId;
+            this.Email = email;
         }
 
         /// <summary>
@@ -287,10 +297,24 @@ namespace Avalara.SDK.Model.A1099.V2
         public string OfficeCode { get; set; }
 
         /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
+
+        /// <summary>
         /// The ID of the associated company.
         /// </summary>
         /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", EmitDefaultValue = false)]
+        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -306,20 +330,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The email address of the individual associated with the form.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
-
-        /// <summary>
-        /// The date when e-delivery was consented.
-        /// </summary>
-        /// <value>The date when e-delivery was consented.</value>
-        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
-        public DateTime? EDeliveryConsentedAt { get; set; }
-
-        /// <summary>
-        /// The signature of the form.
-        /// </summary>
-        /// <value>The signature of the form.</value>
-        [DataMember(Name = "signature", EmitDefaultValue = true)]
-        public string Signature { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -349,11 +359,11 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  AdditionalWithheld: ").Append(AdditionalWithheld).Append("\n");
             sb.Append("  ExemptFromWithholding: ").Append(ExemptFromWithholding).Append("\n");
             sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -374,6 +384,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // CompanyId (string) minLength
+            if (this.CompanyId != null && this.CompanyId.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
+            }
+
             yield break;
         }
     }

@@ -101,25 +101,49 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W9FormBaseRequest" /> class.
         /// </summary>
-        /// <param name="companyId">The ID of the associated company..</param>
-        /// <param name="referenceId">A reference identifier for the form..</param>
-        /// <param name="email">The email address of the individual associated with the form..</param>
+        [JsonConstructorAttribute]
+        protected W9FormBaseRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="W9FormBaseRequest" /> class.
+        /// </summary>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        public W9FormBaseRequest(string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
+        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="referenceId">A reference identifier for the form..</param>
+        /// <param name="email">The email address of the individual associated with the form..</param>
+        public W9FormBaseRequest(DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
+            // to ensure "companyId" is required (not null)
+            if (companyId == null)
+            {
+                throw new ArgumentNullException("companyId is a required property for W9FormBaseRequest and cannot be null");
+            }
             this.CompanyId = companyId;
-            this.ReferenceId = referenceId;
-            this.Email = email;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.ReferenceId = referenceId;
+            this.Email = email;
         }
+
+        /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
 
         /// <summary>
         /// The ID of the associated company.
         /// </summary>
         /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", EmitDefaultValue = false)]
+        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -137,20 +161,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Email { get; set; }
 
         /// <summary>
-        /// The date when e-delivery was consented.
-        /// </summary>
-        /// <value>The date when e-delivery was consented.</value>
-        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
-        public DateTime? EDeliveryConsentedAt { get; set; }
-
-        /// <summary>
-        /// The signature of the form.
-        /// </summary>
-        /// <value>The signature of the form.</value>
-        [DataMember(Name = "signature", EmitDefaultValue = true)]
-        public string Signature { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -158,12 +168,12 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class W9FormBaseRequest {\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -184,6 +194,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // CompanyId (string) minLength
+            if (this.CompanyId != null && this.CompanyId.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
+            }
+
             yield break;
         }
     }

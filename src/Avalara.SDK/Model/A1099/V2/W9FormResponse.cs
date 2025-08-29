@@ -68,20 +68,20 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="is1099able">Indicates whether the individual or entity should be issued a 1099 form..</param>
         /// <param name="tinMatchStatus">The TIN Match status from IRS..</param>
         /// <param name="id">The unique identifier for the form..</param>
-        /// <param name="entryStatus">The form status..</param>
-        /// <param name="entryStatusDate">The timestamp for the latest status update..</param>
+        /// <param name="entryStatus">The entry status information for the form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="companyId">The ID of the associated company..</param>
         /// <param name="displayName">The display name associated with the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="archived">Indicates whether the form is archived..</param>
+        /// <param name="ancestorId">Form ID of previous version..</param>
         /// <param name="signature">The signature of the form..</param>
         /// <param name="signedDate">The date the form was signed..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
         /// <param name="type">The type of the response object. (default to &quot;W9FormResponse&quot;).</param>
-        public W9FormResponse(string name = default(string), string businessName = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), TinMatchStatusResponse tinMatchStatus = default(TinMatchStatusResponse), string id = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W9FormResponse") : base(id, entryStatus, entryStatusDate, referenceId, companyId, displayName, email, archived, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
+        public W9FormResponse(string name = default(string), string businessName = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), TinMatchStatusResponse tinMatchStatus = default(TinMatchStatusResponse), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W9FormResponse") : base(id, entryStatus, referenceId, companyId, displayName, email, archived, ancestorId, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
         {
             this.Name = name;
             this.BusinessName = businessName;

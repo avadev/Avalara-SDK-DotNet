@@ -46,143 +46,193 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="IssuerCommand" /> class.
         /// </summary>
-        /// <param name="name">Legal name, not DBA.</param>
-        /// <param name="nameDba">Optional DBA name or continuation of a long legal name.</param>
-        /// <param name="tin">Tax identification number.</param>
-        /// <param name="referenceId">Optional identifier for your reference, never shown to any agency or recipient.  We will also prefix download filenames with this value, if present.  Can only include letters, numbers, dashes, underscores and spaces..</param>
-        /// <param name="telephone">Telephone number.</param>
-        /// <param name="taxYear">Tax year.</param>
-        /// <param name="countryCode">If there is a transfer agent, use the shipping address of the transfer agent..</param>
-        /// <param name="email">Email address.</param>
-        /// <param name="address">Address.</param>
-        /// <param name="city">City.</param>
-        /// <param name="state">State.</param>
-        /// <param name="zip">Zip code.</param>
-        /// <param name="foreignProvince">Foreign province.</param>
-        /// <param name="transferAgentName">Transfer Agent&#39;s Name.</param>
-        /// <param name="lastFiling">Last year of filing for this payer.</param>
-        public IssuerCommand(string name = default(string), string nameDba = default(string), string tin = default(string), string referenceId = default(string), string telephone = default(string), int taxYear = default(int), string countryCode = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string transferAgentName = default(string), bool? lastFiling = default(bool?))
+        [JsonConstructorAttribute]
+        protected IssuerCommand() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IssuerCommand" /> class.
+        /// </summary>
+        /// <param name="name">Legal name. Not the DBA name. (required).</param>
+        /// <param name="dbaName">Doing Business As (DBA) name or continuation of a long legal name. Use either this or &#39;transferAgentName&#39;..</param>
+        /// <param name="tin">Federal Tax Identification Number (TIN)..</param>
+        /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient. If present, it will prefix download filenames. Allowed characters: letters, numbers, dashes, underscores, and spaces..</param>
+        /// <param name="telephone">Contact phone number (must contain at least 10 digits, max 15 characters). For recipient inquiries. (required).</param>
+        /// <param name="taxYear">Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. (required).</param>
+        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address..</param>
+        /// <param name="email">Contact email address. For recipient inquiries. (required).</param>
+        /// <param name="address">Address. (required).</param>
+        /// <param name="city">City. (required).</param>
+        /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses). (required).</param>
+        /// <param name="zip">ZIP/postal code. (required).</param>
+        /// <param name="foreignProvince">Province or region for non-US/CA addresses..</param>
+        /// <param name="transferAgentName">Name of the transfer agent, if applicable — optional; use either this or &#39;dbaName&#39;..</param>
+        /// <param name="lastFiling">Indicates if this is the issuer&#39;s final year filing. (required).</param>
+        public IssuerCommand(string name = default(string), string dbaName = default(string), string tin = default(string), string referenceId = default(string), string telephone = default(string), int? taxYear = default(int?), string countryCode = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string transferAgentName = default(string), bool? lastFiling = default(bool?))
         {
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for IssuerCommand and cannot be null");
+            }
             this.Name = name;
-            this.NameDba = nameDba;
+            // to ensure "telephone" is required (not null)
+            if (telephone == null)
+            {
+                throw new ArgumentNullException("telephone is a required property for IssuerCommand and cannot be null");
+            }
+            this.Telephone = telephone;
+            // to ensure "taxYear" is required (not null)
+            if (taxYear == null)
+            {
+                throw new ArgumentNullException("taxYear is a required property for IssuerCommand and cannot be null");
+            }
+            this.TaxYear = taxYear;
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new ArgumentNullException("email is a required property for IssuerCommand and cannot be null");
+            }
+            this.Email = email;
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for IssuerCommand and cannot be null");
+            }
+            this.Address = address;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for IssuerCommand and cannot be null");
+            }
+            this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for IssuerCommand and cannot be null");
+            }
+            this.State = state;
+            // to ensure "zip" is required (not null)
+            if (zip == null)
+            {
+                throw new ArgumentNullException("zip is a required property for IssuerCommand and cannot be null");
+            }
+            this.Zip = zip;
+            // to ensure "lastFiling" is required (not null)
+            if (lastFiling == null)
+            {
+                throw new ArgumentNullException("lastFiling is a required property for IssuerCommand and cannot be null");
+            }
+            this.LastFiling = lastFiling;
+            this.DbaName = dbaName;
             this.Tin = tin;
             this.ReferenceId = referenceId;
-            this.Telephone = telephone;
-            this.TaxYear = taxYear;
             this.CountryCode = countryCode;
-            this.Email = email;
-            this.Address = address;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
             this.ForeignProvince = foreignProvince;
             this.TransferAgentName = transferAgentName;
-            this.LastFiling = lastFiling;
         }
 
         /// <summary>
-        /// Legal name, not DBA
+        /// Legal name. Not the DBA name.
         /// </summary>
-        /// <value>Legal name, not DBA</value>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
+        /// <value>Legal name. Not the DBA name.</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Optional DBA name or continuation of a long legal name
+        /// Doing Business As (DBA) name or continuation of a long legal name. Use either this or &#39;transferAgentName&#39;.
         /// </summary>
-        /// <value>Optional DBA name or continuation of a long legal name</value>
-        [DataMember(Name = "nameDba", EmitDefaultValue = true)]
-        public string NameDba { get; set; }
+        /// <value>Doing Business As (DBA) name or continuation of a long legal name. Use either this or &#39;transferAgentName&#39;.</value>
+        [DataMember(Name = "dbaName", EmitDefaultValue = true)]
+        public string DbaName { get; set; }
 
         /// <summary>
-        /// Tax identification number
+        /// Federal Tax Identification Number (TIN).
         /// </summary>
-        /// <value>Tax identification number</value>
+        /// <value>Federal Tax Identification Number (TIN).</value>
         [DataMember(Name = "tin", EmitDefaultValue = true)]
         public string Tin { get; set; }
 
         /// <summary>
-        /// Optional identifier for your reference, never shown to any agency or recipient.  We will also prefix download filenames with this value, if present.  Can only include letters, numbers, dashes, underscores and spaces.
+        /// Internal reference ID. Never shown to any agency or recipient. If present, it will prefix download filenames. Allowed characters: letters, numbers, dashes, underscores, and spaces.
         /// </summary>
-        /// <value>Optional identifier for your reference, never shown to any agency or recipient.  We will also prefix download filenames with this value, if present.  Can only include letters, numbers, dashes, underscores and spaces.</value>
+        /// <value>Internal reference ID. Never shown to any agency or recipient. If present, it will prefix download filenames. Allowed characters: letters, numbers, dashes, underscores, and spaces.</value>
         [DataMember(Name = "referenceId", EmitDefaultValue = true)]
         public string ReferenceId { get; set; }
 
         /// <summary>
-        /// Telephone number
+        /// Contact phone number (must contain at least 10 digits, max 15 characters). For recipient inquiries.
         /// </summary>
-        /// <value>Telephone number</value>
-        [DataMember(Name = "telephone", EmitDefaultValue = true)]
+        /// <value>Contact phone number (must contain at least 10 digits, max 15 characters). For recipient inquiries.</value>
+        [DataMember(Name = "telephone", IsRequired = true, EmitDefaultValue = true)]
         public string Telephone { get; set; }
 
         /// <summary>
-        /// Tax year
+        /// Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4.
         /// </summary>
-        /// <value>Tax year</value>
-        [DataMember(Name = "taxYear", EmitDefaultValue = false)]
-        public int TaxYear { get; set; }
+        /// <value>Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4.</value>
+        [DataMember(Name = "taxYear", IsRequired = true, EmitDefaultValue = true)]
+        public int? TaxYear { get; set; }
 
         /// <summary>
-        /// If there is a transfer agent, use the shipping address of the transfer agent.
+        /// Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address.
         /// </summary>
-        /// <value>If there is a transfer agent, use the shipping address of the transfer agent.</value>
+        /// <value>Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Email address
+        /// Contact email address. For recipient inquiries.
         /// </summary>
-        /// <value>Email address</value>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
+        /// <value>Contact email address. For recipient inquiries.</value>
+        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Address
+        /// Address.
         /// </summary>
-        /// <value>Address</value>
-        [DataMember(Name = "address", EmitDefaultValue = true)]
+        /// <value>Address.</value>
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
-        /// City
+        /// City.
         /// </summary>
-        /// <value>City</value>
-        [DataMember(Name = "city", EmitDefaultValue = true)]
+        /// <value>City.</value>
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
-        /// State
+        /// Two-letter US state or Canadian province code (required for US/CA addresses).
         /// </summary>
-        /// <value>State</value>
-        [DataMember(Name = "state", EmitDefaultValue = true)]
+        /// <value>Two-letter US state or Canadian province code (required for US/CA addresses).</value>
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// Zip code
+        /// ZIP/postal code.
         /// </summary>
-        /// <value>Zip code</value>
-        [DataMember(Name = "zip", EmitDefaultValue = true)]
+        /// <value>ZIP/postal code.</value>
+        [DataMember(Name = "zip", IsRequired = true, EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
-        /// Foreign province
+        /// Province or region for non-US/CA addresses.
         /// </summary>
-        /// <value>Foreign province</value>
+        /// <value>Province or region for non-US/CA addresses.</value>
         [DataMember(Name = "foreignProvince", EmitDefaultValue = true)]
         public string ForeignProvince { get; set; }
 
         /// <summary>
-        /// Transfer Agent&#39;s Name
+        /// Name of the transfer agent, if applicable — optional; use either this or &#39;dbaName&#39;.
         /// </summary>
-        /// <value>Transfer Agent&#39;s Name</value>
+        /// <value>Name of the transfer agent, if applicable — optional; use either this or &#39;dbaName&#39;.</value>
         [DataMember(Name = "transferAgentName", EmitDefaultValue = true)]
         public string TransferAgentName { get; set; }
 
         /// <summary>
-        /// Last year of filing for this payer
+        /// Indicates if this is the issuer&#39;s final year filing.
         /// </summary>
-        /// <value>Last year of filing for this payer</value>
-        [DataMember(Name = "lastFiling", EmitDefaultValue = true)]
+        /// <value>Indicates if this is the issuer&#39;s final year filing.</value>
+        [DataMember(Name = "lastFiling", IsRequired = true, EmitDefaultValue = true)]
         public bool? LastFiling { get; set; }
 
         /// <summary>
@@ -194,7 +244,7 @@ namespace Avalara.SDK.Model.A1099.V2
             StringBuilder sb = new StringBuilder();
             sb.Append("class IssuerCommand {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  NameDba: ").Append(NameDba).Append("\n");
+            sb.Append("  DbaName: ").Append(DbaName).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Telephone: ").Append(Telephone).Append("\n");

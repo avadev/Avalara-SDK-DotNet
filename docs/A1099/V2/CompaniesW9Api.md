@@ -1,6 +1,6 @@
 # Avalara.SDK.Api.A1099.V2.CompaniesW9Api
 
-All URIs are relative to *https://api-ava1099.eta.sbx.us-east-1.aws.avalara.io/avalara1099*
+All URIs are relative to *https://api.sbx.avalara.com/avalara1099*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createcompany"></a>
 # **CreateCompany**
-> CompanyResponseModel CreateCompany (CreateCompanyRequestSdk requestParameters)
+> CompanyResponse CreateCompany (CreateCompanyRequestSdk requestParameters)
 
 Create a company
 
@@ -43,14 +43,14 @@ namespace Example
             var apiInstance = new CompaniesW9Api(apiClient);
             var requestParameters = new CreateCompanyRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 5ba3a8b6-bf05-4aaa-b8cb-d06c7cfea0f7;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 8e57d48c-bb4e-4088-9beb-bf2323243c9f;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CompanyCreateUpdateRequestModel = new CompanyCreateUpdateRequestModel(); // CompanyCreateUpdateRequestModel | The company to create (optional) 
+            requestParameters.CreateCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | The company to create (optional) 
 
             try
             {
                 // Create a company
-                CompanyResponseModel result = apiInstance.CreateCompany(requestParameters);
+                CompanyResponse result = apiInstance.CreateCompany(requestParameters);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -71,11 +71,11 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CompanyCreateUpdateRequestModel** | [**CompanyCreateUpdateRequestModel**](CompanyCreateUpdateRequestModel.md)| The company to create | [optional] 
+ **CreateCompanyRequest** | [**CreateCompanyRequest**](CreateCompanyRequest.md)| The company to create | [optional] 
 
 ### Return type
 
-[**CompanyResponseModel**](CompanyResponseModel.md)
+[**CompanyResponse**](CompanyResponse.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ namespace Example
             var requestParameters = new DeleteCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The company to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 07a8ecdb-0465-469d-8bff-49fce135d5e4;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 3e231f13-24a7-49dc-a92e-1e04f5d7ca28;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -220,7 +220,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = f047fdc5-a6e4-4290-8c5c-d4da96ad0699;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 0b03049b-b1d4-4b5c-83df-dba2d815fce0;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -312,7 +312,7 @@ namespace Example
             var requestParameters = new GetCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the company
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 3f7b5971-06e7-4459-84af-61db7fdcb027;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = b5657869-263a-424d-81ed-4f845a37bf20;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 <a name="updatecompany"></a>
 # **UpdateCompany**
-> CompanyResponseModel UpdateCompany (UpdateCompanyRequestSdk requestParameters)
+> CompanyResponse UpdateCompany (UpdateCompanyRequestSdk requestParameters)
 
 Update a company
 
@@ -399,14 +399,14 @@ namespace Example
             var requestParameters = new UpdateCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The ID of the company to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 1cd32062-b0bc-46a0-8311-a973b8fb3d56;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = e0cf793c-bc52-406b-9bdf-15b8e91e2ce8;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CompanyCreateUpdateRequestModel = new CompanyCreateUpdateRequestModel(); // CompanyCreateUpdateRequestModel | The updated company data (optional) 
+            requestParameters.CreateCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | The updated company data (optional) 
 
             try
             {
                 // Update a company
-                CompanyResponseModel result = apiInstance.UpdateCompany(requestParameters);
+                CompanyResponse result = apiInstance.UpdateCompany(requestParameters);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -428,11 +428,11 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CompanyCreateUpdateRequestModel** | [**CompanyCreateUpdateRequestModel**](CompanyCreateUpdateRequestModel.md)| The updated company data | [optional] 
+ **CreateCompanyRequest** | [**CreateCompanyRequest**](CreateCompanyRequest.md)| The updated company data | [optional] 
 
 ### Return type
 
-[**CompanyResponseModel**](CompanyResponseModel.md)
+[**CompanyResponse**](CompanyResponse.md)
 
 ### Authorization
 

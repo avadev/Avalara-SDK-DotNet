@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// PrimaryWithholdingAgent
+    /// Primary withholding agent information for tax forms
     /// </summary>
     [DataContract(Name = "PrimaryWithholdingAgent")]
     public partial class PrimaryWithholdingAgent : IValidatableObject
@@ -46,25 +46,42 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="PrimaryWithholdingAgent" /> class.
         /// </summary>
-        /// <param name="primaryWithholdingAgentName">primaryWithholdingAgentName.</param>
-        /// <param name="primaryWithholdingAgentEin">primaryWithholdingAgentEin.</param>
-        public PrimaryWithholdingAgent(string primaryWithholdingAgentName = default(string), string primaryWithholdingAgentEin = default(string))
+        [JsonConstructorAttribute]
+        protected PrimaryWithholdingAgent() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PrimaryWithholdingAgent" /> class.
+        /// </summary>
+        /// <param name="name">Name of the primary withholding agent (required).</param>
+        /// <param name="ein">EIN (Employer Identification Number) of the primary withholding agent. (required).</param>
+        public PrimaryWithholdingAgent(string name = default(string), string ein = default(string))
         {
-            this.PrimaryWithholdingAgentName = primaryWithholdingAgentName;
-            this.PrimaryWithholdingAgentEin = primaryWithholdingAgentEin;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for PrimaryWithholdingAgent and cannot be null");
+            }
+            this.Name = name;
+            // to ensure "ein" is required (not null)
+            if (ein == null)
+            {
+                throw new ArgumentNullException("ein is a required property for PrimaryWithholdingAgent and cannot be null");
+            }
+            this.Ein = ein;
         }
 
         /// <summary>
-        /// Gets or Sets PrimaryWithholdingAgentName
+        /// Name of the primary withholding agent
         /// </summary>
-        [DataMember(Name = "primaryWithholdingAgentName", EmitDefaultValue = true)]
-        public string PrimaryWithholdingAgentName { get; set; }
+        /// <value>Name of the primary withholding agent</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrimaryWithholdingAgentEin
+        /// EIN (Employer Identification Number) of the primary withholding agent.
         /// </summary>
-        [DataMember(Name = "primaryWithholdingAgentEin", EmitDefaultValue = true)]
-        public string PrimaryWithholdingAgentEin { get; set; }
+        /// <value>EIN (Employer Identification Number) of the primary withholding agent.</value>
+        [DataMember(Name = "ein", IsRequired = true, EmitDefaultValue = true)]
+        public string Ein { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,8 +91,8 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PrimaryWithholdingAgent {\n");
-            sb.Append("  PrimaryWithholdingAgentName: ").Append(PrimaryWithholdingAgentName).Append("\n");
-            sb.Append("  PrimaryWithholdingAgentEin: ").Append(PrimaryWithholdingAgentEin).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Ein: ").Append(Ein).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

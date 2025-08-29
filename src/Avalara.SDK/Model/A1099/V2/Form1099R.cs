@@ -38,482 +38,739 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form1099R
+    /// Form 1099-R: Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc.
     /// </summary>
     [DataContract(Name = "Form1099R")]
     public partial class Form1099R : IValidatableObject
     {
         /// <summary>
+        /// Form type
+        /// </summary>
+        /// <value>Form type</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum _1099NEC for value: 1099-NEC
+            /// </summary>
+            [EnumMember(Value = "1099-NEC")]
+            _1099NEC = 1,
+
+            /// <summary>
+            /// Enum _1099MISC for value: 1099-MISC
+            /// </summary>
+            [EnumMember(Value = "1099-MISC")]
+            _1099MISC = 2,
+
+            /// <summary>
+            /// Enum _1099DIV for value: 1099-DIV
+            /// </summary>
+            [EnumMember(Value = "1099-DIV")]
+            _1099DIV = 3,
+
+            /// <summary>
+            /// Enum _1099R for value: 1099-R
+            /// </summary>
+            [EnumMember(Value = "1099-R")]
+            _1099R = 4,
+
+            /// <summary>
+            /// Enum _1099K for value: 1099-K
+            /// </summary>
+            [EnumMember(Value = "1099-K")]
+            _1099K = 5,
+
+            /// <summary>
+            /// Enum _1095B for value: 1095-B
+            /// </summary>
+            [EnumMember(Value = "1095-B")]
+            _1095B = 6,
+
+            /// <summary>
+            /// Enum _1042S for value: 1042-S
+            /// </summary>
+            [EnumMember(Value = "1042-S")]
+            _1042S = 7,
+
+            /// <summary>
+            /// Enum _1095C for value: 1095-C
+            /// </summary>
+            [EnumMember(Value = "1095-C")]
+            _1095C = 8,
+
+            /// <summary>
+            /// Enum _1099INT for value: 1099-INT
+            /// </summary>
+            [EnumMember(Value = "1099-INT")]
+            _1099INT = 9
+        }
+
+
+        /// <summary>
+        /// Form type
+        /// </summary>
+        /// <value>Form type</value>
+        /// <example>1099-NEC</example>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+        public TypeEnum Type { get; set; }
+        /// <summary>
+        /// Type of TIN (Tax ID Number)
+        /// </summary>
+        /// <value>Type of TIN (Tax ID Number)</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TinTypeEnum
+        {
+            /// <summary>
+            /// Enum Empty for value: Empty
+            /// </summary>
+            [EnumMember(Value = "Empty")]
+            Empty = 1,
+
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 2,
+
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 3,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 4,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 5
+        }
+
+
+        /// <summary>
+        /// Type of TIN (Tax ID Number)
+        /// </summary>
+        /// <value>Type of TIN (Tax ID Number)</value>
+        [DataMember(Name = "tinType", EmitDefaultValue = true)]
+        public TinTypeEnum? TinType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Form1099R" /> class.
         /// </summary>
-        /// <param name="grossDistributions">grossDistributions.</param>
-        /// <param name="taxableAmount">taxableAmount.</param>
-        /// <param name="taxableAmountNotDetermined">taxableAmountNotDetermined.</param>
-        /// <param name="totalDistributionIndicator">totalDistributionIndicator.</param>
-        /// <param name="capitalGain">capitalGain.</param>
-        /// <param name="fedIncomeTaxWithheld">fedIncomeTaxWithheld.</param>
-        /// <param name="employeeContributions">employeeContributions.</param>
-        /// <param name="netUnrealizedAppreciation">netUnrealizedAppreciation.</param>
-        /// <param name="distributionCodeRequired">distributionCodeRequired.</param>
-        /// <param name="distributionCodeOptional">distributionCodeOptional.</param>
-        /// <param name="iraSepSimpleIndicator">iraSepSimpleIndicator.</param>
-        /// <param name="totalIraSepSimpleDistribution">totalIraSepSimpleDistribution.</param>
-        /// <param name="other">other.</param>
-        /// <param name="otherPercent">otherPercent.</param>
-        /// <param name="percentageTotalDistribution">percentageTotalDistribution.</param>
-        /// <param name="totalEmployeeContributions">totalEmployeeContributions.</param>
-        /// <param name="amountAllocableToIrr">amountAllocableToIrr.</param>
-        /// <param name="firstYearDesignatedRothContrib">firstYearDesignatedRothContrib.</param>
-        /// <param name="dateOfPayment">dateOfPayment.</param>
-        /// <param name="id">id.</param>
-        /// <param name="type">type.</param>
-        /// <param name="issuerId">issuerId.</param>
-        /// <param name="issuerReferenceId">issuerReferenceId.</param>
-        /// <param name="issuerTin">issuerTin.</param>
-        /// <param name="taxYear">taxYear.</param>
-        /// <param name="federalEfile">federalEfile.</param>
-        /// <param name="federalEfileStatus">federalEfileStatus.</param>
-        /// <param name="stateEfile">stateEfile.</param>
-        /// <param name="stateEfileStatus">stateEfileStatus.</param>
-        /// <param name="postalMail">postalMail.</param>
-        /// <param name="postalMailStatus">postalMailStatus.</param>
-        /// <param name="tinMatch">tinMatch.</param>
-        /// <param name="tinMatchStatus">tinMatchStatus.</param>
-        /// <param name="addressVerification">addressVerification.</param>
-        /// <param name="addressVerificationStatus">addressVerificationStatus.</param>
-        /// <param name="eDeliveryStatus">eDeliveryStatus.</param>
-        /// <param name="referenceId">referenceId.</param>
-        /// <param name="email">email.</param>
-        /// <param name="tinType">tinType.</param>
-        /// <param name="fatcaFilingRequirement">fatcaFilingRequirement.</param>
-        /// <param name="tin">tin.</param>
-        /// <param name="noTin">noTin.</param>
-        /// <param name="secondTinNotice">secondTinNotice.</param>
-        /// <param name="recipientName">recipientName.</param>
-        /// <param name="recipientSecondName">recipientSecondName.</param>
-        /// <param name="address">address.</param>
-        /// <param name="address2">address2.</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">state.</param>
-        /// <param name="zip">zip.</param>
-        /// <param name="nonUsProvince">nonUsProvince.</param>
-        /// <param name="countryCode">countryCode.</param>
-        /// <param name="accountNumber">accountNumber.</param>
-        /// <param name="officeCode">officeCode.</param>
-        /// <param name="validationErrors">validationErrors.</param>
-        /// <param name="createdAt">createdAt.</param>
-        /// <param name="updatedAt">updatedAt.</param>
-        /// <param name="stateAndLocalWithholding">stateAndLocalWithholding.</param>
-        public Form1099R(double? grossDistributions = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionIndicator = default(bool?), double? capitalGain = default(double?), double? fedIncomeTaxWithheld = default(double?), double? employeeContributions = default(double?), double? netUnrealizedAppreciation = default(double?), string distributionCodeRequired = default(string), string distributionCodeOptional = default(string), bool? iraSepSimpleIndicator = default(bool?), double? totalIraSepSimpleDistribution = default(double?), double? other = default(double?), string otherPercent = default(string), string percentageTotalDistribution = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrr = default(double?), string firstYearDesignatedRothContrib = default(string), string dateOfPayment = default(string), string id = default(string), string type = default(string), int issuerId = default(int), string issuerReferenceId = default(string), string issuerTin = default(string), int taxYear = default(int), bool federalEfile = default(bool), Form1099StatusDetail federalEfileStatus = default(Form1099StatusDetail), bool stateEfile = default(bool), List<StateEfileStatusDetail> stateEfileStatus = default(List<StateEfileStatusDetail>), bool postalMail = default(bool), Form1099StatusDetail postalMailStatus = default(Form1099StatusDetail), bool tinMatch = default(bool), Form1099StatusDetail tinMatchStatus = default(Form1099StatusDetail), bool addressVerification = default(bool), Form1099StatusDetail addressVerificationStatus = default(Form1099StatusDetail), Form1099StatusDetail eDeliveryStatus = default(Form1099StatusDetail), string referenceId = default(string), string email = default(string), string tinType = default(string), bool? fatcaFilingRequirement = default(bool?), string tin = default(string), bool noTin = default(bool), bool? secondTinNotice = default(bool?), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string nonUsProvince = default(string), string countryCode = default(string), string accountNumber = default(string), string officeCode = default(string), List<ValidationError> validationErrors = default(List<ValidationError>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
+        [JsonConstructorAttribute]
+        protected Form1099R() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1099R" /> class.
+        /// </summary>
+        /// <param name="grossDistribution">Gross distribution.</param>
+        /// <param name="taxableAmount">Taxable amount.</param>
+        /// <param name="taxableAmountNotDetermined">Taxable amount not determined.</param>
+        /// <param name="totalDistributionDetermined">Total distribution.</param>
+        /// <param name="capitalGain">Capital gain (included in Box 2a).</param>
+        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
+        /// <param name="employeeContributionsOrDesignatedRothOrInsurancePremiums">Employee contributions/Designated Roth contributions or insurance premiums.</param>
+        /// <param name="netUnrealizedAppreciationInEmployerSecurities">Net unrealized appreciation in employer&#39;s securities.</param>
+        /// <param name="distributionCode">Distribution code.</param>
+        /// <param name="secondDistributionCode">Second distribution code.</param>
+        /// <param name="iraSepSimple">IRA/SEP/SIMPLE.</param>
+        /// <param name="traditionalIraSepSimpleOrRothConversionAmount">Traditional IRA/SEP/SIMPLE or Roth conversion amount.</param>
+        /// <param name="otherAmount">Other amount.</param>
+        /// <param name="otherPercentage">Other percentage.</param>
+        /// <param name="totalDistributionPercentage">Total distribution percentage.</param>
+        /// <param name="totalEmployeeContributions">Total employee contributions.</param>
+        /// <param name="amountAllocableToIrrWithin5Years">Amount allocable to IRR within 5 years.</param>
+        /// <param name="firstYearOfDesignatedRothContribution">First year of designated Roth contribution.</param>
+        /// <param name="dateOfPayment">Date of payment.</param>
+        /// <param name="fatcaFilingRequirement">FATCA filing requirement.</param>
+        /// <param name="type">Form type (required).</param>
+        /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
+        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms.</param>
+        /// <param name="issuerTin">Issuer TIN - readonly.</param>
+        /// <param name="taxYear">Tax Year - only required when creating forms.</param>
+        /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
+        /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
+        /// <param name="recipientName">Recipient name (required).</param>
+        /// <param name="tinType">Type of TIN (Tax ID Number).</param>
+        /// <param name="recipientSecondName">Recipient second name.</param>
+        /// <param name="address">Address. (required).</param>
+        /// <param name="address2">Address line 2..</param>
+        /// <param name="city">City. (required).</param>
+        /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses)..</param>
+        /// <param name="zip">ZIP/postal code..</param>
+        /// <param name="email">Recipient&#39;s Contact email address..</param>
+        /// <param name="accountNumber">Account number.</param>
+        /// <param name="officeCode">Office code.</param>
+        /// <param name="nonUsProvince">Province or region for non-US/CA addresses..</param>
+        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
+        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled for this form.</param>
+        /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
+        /// <param name="stateEfileDate">Date when state e-filing should be scheduled for this form.</param>
+        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled for this form.</param>
+        /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
+        /// <param name="noTin">No TIN indicator.</param>
+        /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
+        /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
+        /// <param name="secondTinNotice">Second TIN notice.</param>
+        public Form1099R(double? grossDistribution = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionDetermined = default(bool?), double? capitalGain = default(double?), double? federalIncomeTaxWithheld = default(double?), double? employeeContributionsOrDesignatedRothOrInsurancePremiums = default(double?), double? netUnrealizedAppreciationInEmployerSecurities = default(double?), string distributionCode = default(string), string secondDistributionCode = default(string), bool? iraSepSimple = default(bool?), double? traditionalIraSepSimpleOrRothConversionAmount = default(double?), double? otherAmount = default(double?), string otherPercentage = default(string), string totalDistributionPercentage = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrrWithin5Years = default(double?), string firstYearOfDesignatedRothContribution = default(string), DateTime? dateOfPayment = default(DateTime?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool secondTinNotice = default(bool))
         {
-            this.GrossDistributions = grossDistributions;
+            this.Type = type;
+            // to ensure "recipientName" is required (not null)
+            if (recipientName == null)
+            {
+                throw new ArgumentNullException("recipientName is a required property for Form1099R and cannot be null");
+            }
+            this.RecipientName = recipientName;
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for Form1099R and cannot be null");
+            }
+            this.Address = address;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for Form1099R and cannot be null");
+            }
+            this.City = city;
+            // to ensure "countryCode" is required (not null)
+            if (countryCode == null)
+            {
+                throw new ArgumentNullException("countryCode is a required property for Form1099R and cannot be null");
+            }
+            this.CountryCode = countryCode;
+            this.GrossDistribution = grossDistribution;
             this.TaxableAmount = taxableAmount;
             this.TaxableAmountNotDetermined = taxableAmountNotDetermined;
-            this.TotalDistributionIndicator = totalDistributionIndicator;
+            this.TotalDistributionDetermined = totalDistributionDetermined;
             this.CapitalGain = capitalGain;
-            this.FedIncomeTaxWithheld = fedIncomeTaxWithheld;
-            this.EmployeeContributions = employeeContributions;
-            this.NetUnrealizedAppreciation = netUnrealizedAppreciation;
-            this.DistributionCodeRequired = distributionCodeRequired;
-            this.DistributionCodeOptional = distributionCodeOptional;
-            this.IraSepSimpleIndicator = iraSepSimpleIndicator;
-            this.TotalIraSepSimpleDistribution = totalIraSepSimpleDistribution;
-            this.Other = other;
-            this.OtherPercent = otherPercent;
-            this.PercentageTotalDistribution = percentageTotalDistribution;
+            this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
+            this.EmployeeContributionsOrDesignatedRothOrInsurancePremiums = employeeContributionsOrDesignatedRothOrInsurancePremiums;
+            this.NetUnrealizedAppreciationInEmployerSecurities = netUnrealizedAppreciationInEmployerSecurities;
+            this.DistributionCode = distributionCode;
+            this.SecondDistributionCode = secondDistributionCode;
+            this.IraSepSimple = iraSepSimple;
+            this.TraditionalIraSepSimpleOrRothConversionAmount = traditionalIraSepSimpleOrRothConversionAmount;
+            this.OtherAmount = otherAmount;
+            this.OtherPercentage = otherPercentage;
+            this.TotalDistributionPercentage = totalDistributionPercentage;
             this.TotalEmployeeContributions = totalEmployeeContributions;
-            this.AmountAllocableToIrr = amountAllocableToIrr;
-            this.FirstYearDesignatedRothContrib = firstYearDesignatedRothContrib;
+            this.AmountAllocableToIrrWithin5Years = amountAllocableToIrrWithin5Years;
+            this.FirstYearOfDesignatedRothContribution = firstYearOfDesignatedRothContribution;
             this.DateOfPayment = dateOfPayment;
-            this.Id = id;
-            this.Type = type;
+            this.FatcaFilingRequirement = fatcaFilingRequirement;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
             this.TaxYear = taxYear;
-            this.FederalEfile = federalEfile;
-            this.FederalEfileStatus = federalEfileStatus;
-            this.StateEfile = stateEfile;
-            this.StateEfileStatus = stateEfileStatus;
-            this.PostalMail = postalMail;
-            this.PostalMailStatus = postalMailStatus;
-            this.TinMatch = tinMatch;
-            this.TinMatchStatus = tinMatchStatus;
-            this.AddressVerification = addressVerification;
-            this.AddressVerificationStatus = addressVerificationStatus;
-            this.EDeliveryStatus = eDeliveryStatus;
             this.ReferenceId = referenceId;
-            this.Email = email;
-            this.TinType = tinType;
-            this.FatcaFilingRequirement = fatcaFilingRequirement;
             this.Tin = tin;
-            this.NoTin = noTin;
-            this.SecondTinNotice = secondTinNotice;
-            this.RecipientName = recipientName;
+            this.TinType = tinType;
             this.RecipientSecondName = recipientSecondName;
-            this.Address = address;
             this.Address2 = address2;
-            this.City = city;
             this.State = state;
             this.Zip = zip;
-            this.NonUsProvince = nonUsProvince;
-            this.CountryCode = countryCode;
+            this.Email = email;
             this.AccountNumber = accountNumber;
             this.OfficeCode = officeCode;
-            this.ValidationErrors = validationErrors;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
+            this.NonUsProvince = nonUsProvince;
+            this.FederalEfileDate = federalEfileDate;
+            this.PostalMail = postalMail;
+            this.StateEfileDate = stateEfileDate;
+            this.RecipientEdeliveryDate = recipientEdeliveryDate;
+            this.TinMatch = tinMatch;
+            this.NoTin = noTin;
+            this.AddressVerification = addressVerification;
             this.StateAndLocalWithholding = stateAndLocalWithholding;
+            this.SecondTinNotice = secondTinNotice;
         }
 
         /// <summary>
-        /// Gets or Sets GrossDistributions
+        /// Gross distribution
         /// </summary>
-        [DataMember(Name = "grossDistributions", EmitDefaultValue = true)]
-        public double? GrossDistributions { get; set; }
+        /// <value>Gross distribution</value>
+        [DataMember(Name = "grossDistribution", EmitDefaultValue = true)]
+        public double? GrossDistribution { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxableAmount
+        /// Taxable amount
         /// </summary>
+        /// <value>Taxable amount</value>
         [DataMember(Name = "taxableAmount", EmitDefaultValue = true)]
         public double? TaxableAmount { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxableAmountNotDetermined
+        /// Taxable amount not determined
         /// </summary>
+        /// <value>Taxable amount not determined</value>
         [DataMember(Name = "taxableAmountNotDetermined", EmitDefaultValue = true)]
         public bool? TaxableAmountNotDetermined { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalDistributionIndicator
+        /// Total distribution
         /// </summary>
-        [DataMember(Name = "totalDistributionIndicator", EmitDefaultValue = true)]
-        public bool? TotalDistributionIndicator { get; set; }
+        /// <value>Total distribution</value>
+        [DataMember(Name = "totalDistributionDetermined", EmitDefaultValue = true)]
+        public bool? TotalDistributionDetermined { get; set; }
 
         /// <summary>
-        /// Gets or Sets CapitalGain
+        /// Capital gain (included in Box 2a)
         /// </summary>
+        /// <value>Capital gain (included in Box 2a)</value>
         [DataMember(Name = "capitalGain", EmitDefaultValue = true)]
         public double? CapitalGain { get; set; }
 
         /// <summary>
-        /// Gets or Sets FedIncomeTaxWithheld
+        /// Federal income tax withheld
         /// </summary>
-        [DataMember(Name = "fedIncomeTaxWithheld", EmitDefaultValue = true)]
-        public double? FedIncomeTaxWithheld { get; set; }
+        /// <value>Federal income tax withheld</value>
+        [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
+        public double? FederalIncomeTaxWithheld { get; set; }
 
         /// <summary>
-        /// Gets or Sets EmployeeContributions
+        /// Employee contributions/Designated Roth contributions or insurance premiums
         /// </summary>
-        [DataMember(Name = "employeeContributions", EmitDefaultValue = true)]
-        public double? EmployeeContributions { get; set; }
+        /// <value>Employee contributions/Designated Roth contributions or insurance premiums</value>
+        [DataMember(Name = "employeeContributionsOrDesignatedRothOrInsurancePremiums", EmitDefaultValue = true)]
+        public double? EmployeeContributionsOrDesignatedRothOrInsurancePremiums { get; set; }
 
         /// <summary>
-        /// Gets or Sets NetUnrealizedAppreciation
+        /// Net unrealized appreciation in employer&#39;s securities
         /// </summary>
-        [DataMember(Name = "netUnrealizedAppreciation", EmitDefaultValue = true)]
-        public double? NetUnrealizedAppreciation { get; set; }
+        /// <value>Net unrealized appreciation in employer&#39;s securities</value>
+        [DataMember(Name = "netUnrealizedAppreciationInEmployerSecurities", EmitDefaultValue = true)]
+        public double? NetUnrealizedAppreciationInEmployerSecurities { get; set; }
 
         /// <summary>
-        /// Gets or Sets DistributionCodeRequired
+        /// Distribution code
         /// </summary>
-        [DataMember(Name = "distributionCodeRequired", EmitDefaultValue = true)]
-        public string DistributionCodeRequired { get; set; }
+        /// <value>Distribution code</value>
+        [DataMember(Name = "distributionCode", EmitDefaultValue = true)]
+        public string DistributionCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets DistributionCodeOptional
+        /// Second distribution code
         /// </summary>
-        [DataMember(Name = "distributionCodeOptional", EmitDefaultValue = true)]
-        public string DistributionCodeOptional { get; set; }
+        /// <value>Second distribution code</value>
+        [DataMember(Name = "secondDistributionCode", EmitDefaultValue = true)]
+        public string SecondDistributionCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets IraSepSimpleIndicator
+        /// IRA/SEP/SIMPLE
         /// </summary>
-        [DataMember(Name = "iraSepSimpleIndicator", EmitDefaultValue = true)]
-        public bool? IraSepSimpleIndicator { get; set; }
+        /// <value>IRA/SEP/SIMPLE</value>
+        [DataMember(Name = "iraSepSimple", EmitDefaultValue = true)]
+        public bool? IraSepSimple { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalIraSepSimpleDistribution
+        /// Traditional IRA/SEP/SIMPLE or Roth conversion amount
         /// </summary>
-        [DataMember(Name = "totalIraSepSimpleDistribution", EmitDefaultValue = true)]
-        public double? TotalIraSepSimpleDistribution { get; set; }
+        /// <value>Traditional IRA/SEP/SIMPLE or Roth conversion amount</value>
+        [DataMember(Name = "traditionalIraSepSimpleOrRothConversionAmount", EmitDefaultValue = true)]
+        public double? TraditionalIraSepSimpleOrRothConversionAmount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Other
+        /// Other amount
         /// </summary>
-        [DataMember(Name = "other", EmitDefaultValue = true)]
-        public double? Other { get; set; }
+        /// <value>Other amount</value>
+        [DataMember(Name = "otherAmount", EmitDefaultValue = true)]
+        public double? OtherAmount { get; set; }
 
         /// <summary>
-        /// Gets or Sets OtherPercent
+        /// Other percentage
         /// </summary>
-        [DataMember(Name = "otherPercent", EmitDefaultValue = true)]
-        public string OtherPercent { get; set; }
+        /// <value>Other percentage</value>
+        [DataMember(Name = "otherPercentage", EmitDefaultValue = true)]
+        public string OtherPercentage { get; set; }
 
         /// <summary>
-        /// Gets or Sets PercentageTotalDistribution
+        /// Total distribution percentage
         /// </summary>
-        [DataMember(Name = "percentageTotalDistribution", EmitDefaultValue = true)]
-        public string PercentageTotalDistribution { get; set; }
+        /// <value>Total distribution percentage</value>
+        [DataMember(Name = "totalDistributionPercentage", EmitDefaultValue = true)]
+        public string TotalDistributionPercentage { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalEmployeeContributions
+        /// Total employee contributions
         /// </summary>
+        /// <value>Total employee contributions</value>
         [DataMember(Name = "totalEmployeeContributions", EmitDefaultValue = true)]
         public double? TotalEmployeeContributions { get; set; }
 
         /// <summary>
-        /// Gets or Sets AmountAllocableToIrr
+        /// Amount allocable to IRR within 5 years
         /// </summary>
-        [DataMember(Name = "amountAllocableToIrr", EmitDefaultValue = true)]
-        public double? AmountAllocableToIrr { get; set; }
+        /// <value>Amount allocable to IRR within 5 years</value>
+        [DataMember(Name = "amountAllocableToIrrWithin5Years", EmitDefaultValue = true)]
+        public double? AmountAllocableToIrrWithin5Years { get; set; }
 
         /// <summary>
-        /// Gets or Sets FirstYearDesignatedRothContrib
+        /// First year of designated Roth contribution
         /// </summary>
-        [DataMember(Name = "firstYearDesignatedRothContrib", EmitDefaultValue = true)]
-        public string FirstYearDesignatedRothContrib { get; set; }
+        /// <value>First year of designated Roth contribution</value>
+        [DataMember(Name = "firstYearOfDesignatedRothContribution", EmitDefaultValue = true)]
+        public string FirstYearOfDesignatedRothContribution { get; set; }
 
         /// <summary>
-        /// Gets or Sets DateOfPayment
+        /// Date of payment
         /// </summary>
+        /// <value>Date of payment</value>
         [DataMember(Name = "dateOfPayment", EmitDefaultValue = true)]
-        public string DateOfPayment { get; set; }
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? DateOfPayment { get; set; }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// FATCA filing requirement
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IssuerId
-        /// </summary>
-        [DataMember(Name = "issuerId", EmitDefaultValue = false)]
-        public int IssuerId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IssuerReferenceId
-        /// </summary>
-        [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
-        public string IssuerReferenceId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IssuerTin
-        /// </summary>
-        [DataMember(Name = "issuerTin", EmitDefaultValue = true)]
-        public string IssuerTin { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TaxYear
-        /// </summary>
-        [DataMember(Name = "taxYear", EmitDefaultValue = false)]
-        public int TaxYear { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FederalEfile
-        /// </summary>
-        [DataMember(Name = "federalEfile", EmitDefaultValue = true)]
-        public bool FederalEfile { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FederalEfileStatus
-        /// </summary>
-        [DataMember(Name = "federalEfileStatus", EmitDefaultValue = false)]
-        public Form1099StatusDetail FederalEfileStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StateEfile
-        /// </summary>
-        [DataMember(Name = "stateEfile", EmitDefaultValue = true)]
-        public bool StateEfile { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StateEfileStatus
-        /// </summary>
-        [DataMember(Name = "stateEfileStatus", EmitDefaultValue = true)]
-        public List<StateEfileStatusDetail> StateEfileStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PostalMail
-        /// </summary>
-        [DataMember(Name = "postalMail", EmitDefaultValue = true)]
-        public bool PostalMail { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PostalMailStatus
-        /// </summary>
-        [DataMember(Name = "postalMailStatus", EmitDefaultValue = true)]
-        public Form1099StatusDetail PostalMailStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TinMatch
-        /// </summary>
-        [DataMember(Name = "tinMatch", EmitDefaultValue = true)]
-        public bool TinMatch { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TinMatchStatus
-        /// </summary>
-        [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
-        public Form1099StatusDetail TinMatchStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AddressVerification
-        /// </summary>
-        [DataMember(Name = "addressVerification", EmitDefaultValue = true)]
-        public bool AddressVerification { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AddressVerificationStatus
-        /// </summary>
-        [DataMember(Name = "addressVerificationStatus", EmitDefaultValue = true)]
-        public Form1099StatusDetail AddressVerificationStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EDeliveryStatus
-        /// </summary>
-        [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
-        public Form1099StatusDetail EDeliveryStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReferenceId
-        /// </summary>
-        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
-        public string ReferenceId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TinType
-        /// </summary>
-        [DataMember(Name = "tinType", EmitDefaultValue = true)]
-        public string TinType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FatcaFilingRequirement
-        /// </summary>
+        /// <value>FATCA filing requirement</value>
         [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
         public bool? FatcaFilingRequirement { get; set; }
 
         /// <summary>
-        /// Gets or Sets Tin
+        /// Form ID. Unique identifier set when the record is created.
         /// </summary>
+        /// <value>Form ID. Unique identifier set when the record is created.</value>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Issuer ID - only required when creating forms
+        /// </summary>
+        /// <value>Issuer ID - only required when creating forms</value>
+        [DataMember(Name = "issuerId", EmitDefaultValue = true)]
+        public string IssuerId { get; set; }
+
+        /// <summary>
+        /// Issuer Reference ID - only required when creating forms
+        /// </summary>
+        /// <value>Issuer Reference ID - only required when creating forms</value>
+        [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
+        public string IssuerReferenceId { get; set; }
+
+        /// <summary>
+        /// Issuer TIN - readonly
+        /// </summary>
+        /// <value>Issuer TIN - readonly</value>
+        [DataMember(Name = "issuerTin", EmitDefaultValue = true)]
+        public string IssuerTin { get; set; }
+
+        /// <summary>
+        /// Tax Year - only required when creating forms
+        /// </summary>
+        /// <value>Tax Year - only required when creating forms</value>
+        [DataMember(Name = "taxYear", EmitDefaultValue = true)]
+        public int? TaxYear { get; set; }
+
+        /// <summary>
+        /// Internal reference ID. Never shown to any agency or recipient.
+        /// </summary>
+        /// <value>Internal reference ID. Never shown to any agency or recipient.</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// Recipient&#39;s Federal Tax Identification Number (TIN).
+        /// </summary>
+        /// <value>Recipient&#39;s Federal Tax Identification Number (TIN).</value>
         [DataMember(Name = "tin", EmitDefaultValue = true)]
         public string Tin { get; set; }
 
         /// <summary>
-        /// Gets or Sets NoTin
+        /// Recipient name
         /// </summary>
-        [DataMember(Name = "noTin", EmitDefaultValue = true)]
-        public bool NoTin { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecondTinNotice
-        /// </summary>
-        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
-        public bool? SecondTinNotice { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RecipientName
-        /// </summary>
-        [DataMember(Name = "recipientName", EmitDefaultValue = true)]
+        /// <value>Recipient name</value>
+        [DataMember(Name = "recipientName", IsRequired = true, EmitDefaultValue = true)]
         public string RecipientName { get; set; }
 
         /// <summary>
-        /// Gets or Sets RecipientSecondName
+        /// Recipient second name
         /// </summary>
+        /// <value>Recipient second name</value>
         [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
         public string RecipientSecondName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// Address.
         /// </summary>
-        [DataMember(Name = "address", EmitDefaultValue = true)]
+        /// <value>Address.</value>
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets Address2
+        /// Address line 2.
         /// </summary>
+        /// <value>Address line 2.</value>
         [DataMember(Name = "address2", EmitDefaultValue = true)]
         public string Address2 { get; set; }
 
         /// <summary>
-        /// Gets or Sets City
+        /// City.
         /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = true)]
+        /// <value>City.</value>
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or Sets State
+        /// Two-letter US state or Canadian province code (required for US/CA addresses).
         /// </summary>
+        /// <value>Two-letter US state or Canadian province code (required for US/CA addresses).</value>
         [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or Sets Zip
+        /// ZIP/postal code.
         /// </summary>
+        /// <value>ZIP/postal code.</value>
         [DataMember(Name = "zip", EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
-        /// Gets or Sets NonUsProvince
+        /// Recipient&#39;s Contact email address.
         /// </summary>
-        [DataMember(Name = "nonUsProvince", EmitDefaultValue = true)]
-        public string NonUsProvince { get; set; }
+        /// <value>Recipient&#39;s Contact email address.</value>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets CountryCode
+        /// Account number
         /// </summary>
-        [DataMember(Name = "countryCode", EmitDefaultValue = true)]
-        public string CountryCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AccountNumber
-        /// </summary>
+        /// <value>Account number</value>
         [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
         public string AccountNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets OfficeCode
+        /// Office code
         /// </summary>
+        /// <value>Office code</value>
         [DataMember(Name = "officeCode", EmitDefaultValue = true)]
         public string OfficeCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets ValidationErrors
+        /// Province or region for non-US/CA addresses.
         /// </summary>
-        [DataMember(Name = "validationErrors", EmitDefaultValue = true)]
-        public List<ValidationError> ValidationErrors { get; set; }
+        /// <value>Province or region for non-US/CA addresses.</value>
+        [DataMember(Name = "nonUsProvince", EmitDefaultValue = true)]
+        public string NonUsProvince { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.
         /// </summary>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
+        /// <value>Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.</value>
+        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
+        public string CountryCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets UpdatedAt
+        /// Date when federal e-filing should be scheduled for this form
         /// </summary>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
+        /// <value>Date when federal e-filing should be scheduled for this form</value>
+        [DataMember(Name = "federalEfileDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? FederalEfileDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets StateAndLocalWithholding
+        /// Boolean indicating that postal mailing to the recipient should be scheduled for this form
         /// </summary>
+        /// <value>Boolean indicating that postal mailing to the recipient should be scheduled for this form</value>
+        [DataMember(Name = "postalMail", EmitDefaultValue = true)]
+        public bool? PostalMail { get; set; }
+
+        /// <summary>
+        /// Date when state e-filing should be scheduled for this form
+        /// </summary>
+        /// <value>Date when state e-filing should be scheduled for this form</value>
+        [DataMember(Name = "stateEfileDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? StateEfileDate { get; set; }
+
+        /// <summary>
+        /// Date when recipient e-delivery should be scheduled for this form
+        /// </summary>
+        /// <value>Date when recipient e-delivery should be scheduled for this form</value>
+        [DataMember(Name = "recipientEdeliveryDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? RecipientEdeliveryDate { get; set; }
+
+        /// <summary>
+        /// Boolean indicating that TIN Matching should be scheduled for this form
+        /// </summary>
+        /// <value>Boolean indicating that TIN Matching should be scheduled for this form</value>
+        [DataMember(Name = "tinMatch", EmitDefaultValue = true)]
+        public bool? TinMatch { get; set; }
+
+        /// <summary>
+        /// No TIN indicator
+        /// </summary>
+        /// <value>No TIN indicator</value>
+        [DataMember(Name = "noTin", EmitDefaultValue = true)]
+        public bool? NoTin { get; set; }
+
+        /// <summary>
+        /// Boolean indicating that address verification should be scheduled for this form
+        /// </summary>
+        /// <value>Boolean indicating that address verification should be scheduled for this form</value>
+        [DataMember(Name = "addressVerification", EmitDefaultValue = true)]
+        public bool? AddressVerification { get; set; }
+
+        /// <summary>
+        /// State and local withholding information
+        /// </summary>
+        /// <value>State and local withholding information</value>
         [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = true)]
         public StateAndLocalWithholding StateAndLocalWithholding { get; set; }
 
+        /// <summary>
+        /// Second TIN notice
+        /// </summary>
+        /// <value>Second TIN notice</value>
+        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
+        public bool SecondTinNotice { get; set; }
+
+        /// <summary>
+        /// Federal e-file status
+        /// </summary>
+        /// <value>Federal e-file status</value>
+        [DataMember(Name = "federalEfileStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail FederalEfileStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as FederalEfileStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFederalEfileStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// State e-file status
+        /// </summary>
+        /// <value>State e-file status</value>
+        [DataMember(Name = "stateEfileStatus", EmitDefaultValue = true)]
+        public List<StateEfileStatusDetail> StateEfileStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as StateEfileStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStateEfileStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Postal mail to recipient status
+        /// </summary>
+        /// <value>Postal mail to recipient status</value>
+        [DataMember(Name = "postalMailStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail PostalMailStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as PostalMailStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePostalMailStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// TIN Match status
+        /// </summary>
+        /// <value>TIN Match status</value>
+        [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail TinMatchStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as TinMatchStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTinMatchStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Address verification status
+        /// </summary>
+        /// <value>Address verification status</value>
+        [DataMember(Name = "addressVerificationStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail AddressVerificationStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as AddressVerificationStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressVerificationStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// EDelivery status
+        /// </summary>
+        /// <value>EDelivery status</value>
+        [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail EDeliveryStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as EDeliveryStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEDeliveryStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Validation errors
+        /// </summary>
+        /// <value>Validation errors</value>
+        [DataMember(Name = "validationErrors", EmitDefaultValue = true)]
+        public List<ValidationError> ValidationErrors { get; private set; }
+
+        /// <summary>
+        /// Returns false as ValidationErrors should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeValidationErrors()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Date time when the record was created.
+        /// </summary>
+        /// <value>Date time when the record was created.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedAt()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Date time when the record was last updated.
+        /// </summary>
+        /// <value>Date time when the record was last updated.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as UpdatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUpdatedAt()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -522,64 +779,65 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Form1099R {\n");
-            sb.Append("  GrossDistributions: ").Append(GrossDistributions).Append("\n");
+            sb.Append("  GrossDistribution: ").Append(GrossDistribution).Append("\n");
             sb.Append("  TaxableAmount: ").Append(TaxableAmount).Append("\n");
             sb.Append("  TaxableAmountNotDetermined: ").Append(TaxableAmountNotDetermined).Append("\n");
-            sb.Append("  TotalDistributionIndicator: ").Append(TotalDistributionIndicator).Append("\n");
+            sb.Append("  TotalDistributionDetermined: ").Append(TotalDistributionDetermined).Append("\n");
             sb.Append("  CapitalGain: ").Append(CapitalGain).Append("\n");
-            sb.Append("  FedIncomeTaxWithheld: ").Append(FedIncomeTaxWithheld).Append("\n");
-            sb.Append("  EmployeeContributions: ").Append(EmployeeContributions).Append("\n");
-            sb.Append("  NetUnrealizedAppreciation: ").Append(NetUnrealizedAppreciation).Append("\n");
-            sb.Append("  DistributionCodeRequired: ").Append(DistributionCodeRequired).Append("\n");
-            sb.Append("  DistributionCodeOptional: ").Append(DistributionCodeOptional).Append("\n");
-            sb.Append("  IraSepSimpleIndicator: ").Append(IraSepSimpleIndicator).Append("\n");
-            sb.Append("  TotalIraSepSimpleDistribution: ").Append(TotalIraSepSimpleDistribution).Append("\n");
-            sb.Append("  Other: ").Append(Other).Append("\n");
-            sb.Append("  OtherPercent: ").Append(OtherPercent).Append("\n");
-            sb.Append("  PercentageTotalDistribution: ").Append(PercentageTotalDistribution).Append("\n");
+            sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
+            sb.Append("  EmployeeContributionsOrDesignatedRothOrInsurancePremiums: ").Append(EmployeeContributionsOrDesignatedRothOrInsurancePremiums).Append("\n");
+            sb.Append("  NetUnrealizedAppreciationInEmployerSecurities: ").Append(NetUnrealizedAppreciationInEmployerSecurities).Append("\n");
+            sb.Append("  DistributionCode: ").Append(DistributionCode).Append("\n");
+            sb.Append("  SecondDistributionCode: ").Append(SecondDistributionCode).Append("\n");
+            sb.Append("  IraSepSimple: ").Append(IraSepSimple).Append("\n");
+            sb.Append("  TraditionalIraSepSimpleOrRothConversionAmount: ").Append(TraditionalIraSepSimpleOrRothConversionAmount).Append("\n");
+            sb.Append("  OtherAmount: ").Append(OtherAmount).Append("\n");
+            sb.Append("  OtherPercentage: ").Append(OtherPercentage).Append("\n");
+            sb.Append("  TotalDistributionPercentage: ").Append(TotalDistributionPercentage).Append("\n");
             sb.Append("  TotalEmployeeContributions: ").Append(TotalEmployeeContributions).Append("\n");
-            sb.Append("  AmountAllocableToIrr: ").Append(AmountAllocableToIrr).Append("\n");
-            sb.Append("  FirstYearDesignatedRothContrib: ").Append(FirstYearDesignatedRothContrib).Append("\n");
+            sb.Append("  AmountAllocableToIrrWithin5Years: ").Append(AmountAllocableToIrrWithin5Years).Append("\n");
+            sb.Append("  FirstYearOfDesignatedRothContribution: ").Append(FirstYearOfDesignatedRothContribution).Append("\n");
             sb.Append("  DateOfPayment: ").Append(DateOfPayment).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");
             sb.Append("  IssuerReferenceId: ").Append(IssuerReferenceId).Append("\n");
             sb.Append("  IssuerTin: ").Append(IssuerTin).Append("\n");
             sb.Append("  TaxYear: ").Append(TaxYear).Append("\n");
-            sb.Append("  FederalEfile: ").Append(FederalEfile).Append("\n");
-            sb.Append("  FederalEfileStatus: ").Append(FederalEfileStatus).Append("\n");
-            sb.Append("  StateEfile: ").Append(StateEfile).Append("\n");
-            sb.Append("  StateEfileStatus: ").Append(StateEfileStatus).Append("\n");
-            sb.Append("  PostalMail: ").Append(PostalMail).Append("\n");
-            sb.Append("  PostalMailStatus: ").Append(PostalMailStatus).Append("\n");
-            sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
-            sb.Append("  TinMatchStatus: ").Append(TinMatchStatus).Append("\n");
-            sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
-            sb.Append("  AddressVerificationStatus: ").Append(AddressVerificationStatus).Append("\n");
-            sb.Append("  EDeliveryStatus: ").Append(EDeliveryStatus).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  TinType: ").Append(TinType).Append("\n");
-            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
-            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
-            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
+            sb.Append("  TinType: ").Append(TinType).Append("\n");
             sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
-            sb.Append("  NonUsProvince: ").Append(NonUsProvince).Append("\n");
-            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
             sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
+            sb.Append("  NonUsProvince: ").Append(NonUsProvince).Append("\n");
+            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  FederalEfileDate: ").Append(FederalEfileDate).Append("\n");
+            sb.Append("  PostalMail: ").Append(PostalMail).Append("\n");
+            sb.Append("  StateEfileDate: ").Append(StateEfileDate).Append("\n");
+            sb.Append("  RecipientEdeliveryDate: ").Append(RecipientEdeliveryDate).Append("\n");
+            sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
+            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
+            sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
+            sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
+            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
+            sb.Append("  FederalEfileStatus: ").Append(FederalEfileStatus).Append("\n");
+            sb.Append("  StateEfileStatus: ").Append(StateEfileStatus).Append("\n");
+            sb.Append("  PostalMailStatus: ").Append(PostalMailStatus).Append("\n");
+            sb.Append("  TinMatchStatus: ").Append(TinMatchStatus).Append("\n");
+            sb.Append("  AddressVerificationStatus: ").Append(AddressVerificationStatus).Append("\n");
+            sb.Append("  EDeliveryStatus: ").Append(EDeliveryStatus).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
