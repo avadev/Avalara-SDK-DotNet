@@ -12,6 +12,28 @@ using Avalara.SDK.Model.A1099.V2;
 namespace Avalara.SDK.Api.A1099.V2
 {
     /// <summary>
+    /// Represents the Request object for the CreateAndSendW9FormEmail API
+    /// </summary>
+    public class CreateAndSendW9FormEmailRequestSdk {
+        /// <summary>
+        /// API version
+        /// </summary>
+        public string? AvalaraVersion { get; set; } = "2.0";
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+        /// <summary>
+        /// Form to be created
+        /// </summary>
+        public CreateAndSendW9FormEmailRequest CreateAndSendW9FormEmailRequest { get; set; }
+    }
+
+    /// <summary>
     /// Represents the Request object for the CreateW9Form API
     /// </summary>
     public class CreateW9FormRequestSdk {
@@ -201,6 +223,17 @@ namespace Avalara.SDK.Api.A1099.V2
     {
         #region Synchronous Operations
         /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request
+        /// </summary>
+        /// <remarks>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>CreateW9Form201Response</returns>
+        CreateW9Form201Response CreateAndSendW9FormEmail(CreateAndSendW9FormEmailRequestSdk requestParameters);
+
+        /// <summary>
         /// Create a W9/W4/W8 form
         /// </summary>
         /// <remarks>
@@ -248,12 +281,12 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form
         /// </summary>
         /// <remarks>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IW9FormDataModelsOneOf</returns>
-        IW9FormDataModelsOneOf SendW9FormEmail(SendW9FormEmailRequestSdk requestParameters);
+        /// <returns>CreateW9Form201Response</returns>
+        CreateW9Form201Response SendW9FormEmail(SendW9FormEmailRequestSdk requestParameters);
 
         /// <summary>
         /// Update a W9/W4/W8 form
@@ -286,6 +319,18 @@ namespace Avalara.SDK.Api.A1099.V2
     public interface IFormsW9ApiAsync 
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request
+        /// </summary>
+        /// <remarks>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateW9Form201Response</returns>
+        System.Threading.Tasks.Task<CreateW9Form201Response> CreateAndSendW9FormEmailAsync(CreateAndSendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
         /// <summary>
         /// Create a W9/W4/W8 form
         /// </summary>
@@ -338,13 +383,13 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form
         /// </summary>
         /// <remarks>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IW9FormDataModelsOneOf</returns>
-        System.Threading.Tasks.Task<IW9FormDataModelsOneOf> SendW9FormEmailAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateW9Form201Response</returns>
+        System.Threading.Tasks.Task<CreateW9Form201Response> SendW9FormEmailAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a W9/W4/W8 form
@@ -413,6 +458,146 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>CreateW9Form201Response</returns>
+        public CreateW9Form201Response CreateAndSendW9FormEmail(CreateAndSendW9FormEmailRequestSdk requestParameters)
+        {
+            Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> localVarResponse = CreateAndSendW9FormEmailWithHttpInfo(requestParameters);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>ApiResponse of CreateW9Form201Response</returns>
+        private Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> CreateAndSendW9FormEmailWithHttpInfo(CreateAndSendW9FormEmailRequestSdk requestParameters)
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->CreateAndSendW9FormEmail");
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+            localVarRequestOptions.Data = requestParameters.CreateAndSendW9FormEmailRequest;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateW9Form201Response>("/w9/forms/$create-and-send-email", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAndSendW9FormEmail", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateW9Form201Response</returns>
+        public async System.Threading.Tasks.Task<CreateW9Form201Response> CreateAndSendW9FormEmailAsync(CreateAndSendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> localVarResponse = await CreateAndSendW9FormEmailWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a minimal W9/W4/W8 form and sends the e-mail request Create a minimal W9/W4/W8 form and sends the e-mail request.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateW9Form201Response)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CreateW9Form201Response>> CreateAndSendW9FormEmailWithHttpInfoAsync(CreateAndSendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'requestParameters.AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->CreateAndSendW9FormEmail");
+
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+            localVarRequestOptions.Data = requestParameters.CreateAndSendW9FormEmailRequest;
+
+            // make the HTTP request
+			var localVarResponse = await this.Client.PostAsync<CreateW9Form201Response>("/w9/forms/$create-and-send-email", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAndSendW9FormEmail", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Create a W9/W4/W8 form Create a W9/W4/W8 form.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
@@ -455,7 +640,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
@@ -527,7 +712,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationId != null)
@@ -595,7 +780,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -667,7 +852,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -736,7 +921,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -809,7 +994,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -874,7 +1059,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (requestParameters.Filter != null)
             {
@@ -966,7 +1151,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (requestParameters.Filter != null)
             {
@@ -1015,24 +1200,24 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IW9FormDataModelsOneOf</returns>
-        public IW9FormDataModelsOneOf SendW9FormEmail(SendW9FormEmailRequestSdk requestParameters)
+        /// <returns>CreateW9Form201Response</returns>
+        public CreateW9Form201Response SendW9FormEmail(SendW9FormEmailRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<IW9FormDataModelsOneOf> localVarResponse = SendW9FormEmailWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> localVarResponse = SendW9FormEmailWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of IW9FormDataModelsOneOf</returns>
-        private Avalara.SDK.Client.ApiResponse<IW9FormDataModelsOneOf> SendW9FormEmailWithHttpInfo(SendW9FormEmailRequestSdk requestParameters)
+        /// <returns>ApiResponse of CreateW9Form201Response</returns>
+        private Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> SendW9FormEmailWithHttpInfo(SendW9FormEmailRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1058,7 +1243,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1072,7 +1257,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IW9FormDataModelsOneOf>("/w9/forms/{id}/$send-email", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Post<CreateW9Form201Response>("/w9/forms/{id}/$send-email", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -1084,26 +1269,26 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IW9FormDataModelsOneOf</returns>
-        public async System.Threading.Tasks.Task<IW9FormDataModelsOneOf> SendW9FormEmailAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateW9Form201Response</returns>
+        public async System.Threading.Tasks.Task<CreateW9Form201Response> SendW9FormEmailAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<IW9FormDataModelsOneOf> localVarResponse = await SendW9FormEmailWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<CreateW9Form201Response> localVarResponse = await SendW9FormEmailWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.
+        /// Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form Send an email to the vendor/payee requesting they fill out a W9/W4/W8 form.   If the form is not in &#39;Requested&#39; status, it will either use an existing descendant form   in &#39;Requested&#39; status or create a new minimal form and send the email request.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IW9FormDataModelsOneOf)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IW9FormDataModelsOneOf>> SendW9FormEmailWithHttpInfoAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateW9Form201Response)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<CreateW9Form201Response>> SendW9FormEmailWithHttpInfoAsync(SendW9FormEmailRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1131,7 +1316,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1145,7 +1330,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.PostAsync<IW9FormDataModelsOneOf>("/w9/forms/{id}/$send-email", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PostAsync<CreateW9Form201Response>("/w9/forms/{id}/$send-email", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1203,7 +1388,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1280,7 +1465,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1350,7 +1535,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1427,7 +1612,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -1465,7 +1650,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.8.2";
+            this.Client.SdkVersion = "25.8.3";
         }
         
     }

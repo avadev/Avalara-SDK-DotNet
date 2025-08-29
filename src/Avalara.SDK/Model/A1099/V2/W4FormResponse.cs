@@ -68,20 +68,20 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="exemptFromWithholding">Indicates whether the employee is exempt from withholding..</param>
         /// <param name="officeCode">The office code associated with the form..</param>
         /// <param name="id">The unique identifier for the form..</param>
-        /// <param name="entryStatus">The form status..</param>
-        /// <param name="entryStatusDate">The timestamp for the latest status update..</param>
+        /// <param name="entryStatus">The entry status information for the form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="companyId">The ID of the associated company..</param>
         /// <param name="displayName">The display name associated with the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="archived">Indicates whether the form is archived..</param>
+        /// <param name="ancestorId">Form ID of previous version..</param>
         /// <param name="signature">The signature of the form..</param>
         /// <param name="signedDate">The date the form was signed..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
         /// <param name="type">The type of the response object. (default to &quot;W4FormResponse&quot;).</param>
-        public W4FormResponse(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), string id = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W4FormResponse") : base(id, entryStatus, entryStatusDate, referenceId, companyId, displayName, email, archived, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
+        public W4FormResponse(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W4FormResponse") : base(id, entryStatus, referenceId, companyId, displayName, email, archived, ancestorId, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
         {
             this.EmployeeFirstName = employeeFirstName;
             this.EmployeeMiddleName = employeeMiddleName;

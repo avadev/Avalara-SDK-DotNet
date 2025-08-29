@@ -46,8 +46,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationError" /> class.
         /// </summary>
-        /// <param name="field">field.</param>
-        /// <param name="errors">errors.</param>
+        /// <param name="field">The field containing the error.</param>
+        /// <param name="errors">The list of error messages.</param>
         public ValidationError(string field = default(string), List<string> errors = default(List<string>))
         {
             this.Field = field;
@@ -55,14 +55,16 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gets or Sets Field
+        /// The field containing the error
         /// </summary>
+        /// <value>The field containing the error</value>
         [DataMember(Name = "field", EmitDefaultValue = true)]
         public string Field { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// The list of error messages
         /// </summary>
+        /// <value>The list of error messages</value>
         [DataMember(Name = "errors", EmitDefaultValue = true)]
         public List<string> Errors { get; set; }
 

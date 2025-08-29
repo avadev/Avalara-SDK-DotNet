@@ -38,7 +38,7 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// IntermediaryOrFlowThrough
+    /// Intermediary or flow-through entity information for tax forms
     /// </summary>
     [DataContract(Name = "IntermediaryOrFlowThrough")]
     public partial class IntermediaryOrFlowThrough : IValidatableObject
@@ -46,17 +46,17 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="IntermediaryOrFlowThrough" /> class.
         /// </summary>
-        /// <param name="ein">ein.</param>
-        /// <param name="chap3StatusCode">chap3StatusCode.</param>
-        /// <param name="chap4StatusCode">chap4StatusCode.</param>
-        /// <param name="name">name.</param>
-        /// <param name="giin">giin.</param>
-        /// <param name="countryCode">countryCode.</param>
-        /// <param name="foreignTin">foreignTin.</param>
-        /// <param name="address">address.</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">state.</param>
-        /// <param name="zip">zip.</param>
+        /// <param name="ein">EIN (Employer Identification Number) of the intermediary or flow-through entity.</param>
+        /// <param name="chap3StatusCode">Chapter 3 status code for the intermediary or flow-through entity.</param>
+        /// <param name="chap4StatusCode">Chapter 4 status code for the intermediary or flow-through entity.</param>
+        /// <param name="name">Name of the intermediary or flow-through entity.</param>
+        /// <param name="giin">GIIN (Global Intermediary Identification Number) of the intermediary or flow-through entity.</param>
+        /// <param name="countryCode">Country code for the intermediary or flow-through entity.</param>
+        /// <param name="foreignTin">Foreign TIN of the intermediary or flow-through entity.</param>
+        /// <param name="address">Address of the intermediary or flow-through entity.</param>
+        /// <param name="city">City of the intermediary or flow-through entity.</param>
+        /// <param name="state">State of the intermediary or flow-through entity.</param>
+        /// <param name="zip">Zip code of the intermediary or flow-through entity.</param>
         public IntermediaryOrFlowThrough(string ein = default(string), string chap3StatusCode = default(string), string chap4StatusCode = default(string), string name = default(string), string giin = default(string), string countryCode = default(string), string foreignTin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string))
         {
             this.Ein = ein;
@@ -73,68 +73,79 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gets or Sets Ein
+        /// EIN (Employer Identification Number) of the intermediary or flow-through entity
         /// </summary>
+        /// <value>EIN (Employer Identification Number) of the intermediary or flow-through entity</value>
         [DataMember(Name = "ein", EmitDefaultValue = true)]
         public string Ein { get; set; }
 
         /// <summary>
-        /// Gets or Sets Chap3StatusCode
+        /// Chapter 3 status code for the intermediary or flow-through entity
         /// </summary>
+        /// <value>Chapter 3 status code for the intermediary or flow-through entity</value>
         [DataMember(Name = "chap3StatusCode", EmitDefaultValue = true)]
         public string Chap3StatusCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets Chap4StatusCode
+        /// Chapter 4 status code for the intermediary or flow-through entity
         /// </summary>
+        /// <value>Chapter 4 status code for the intermediary or flow-through entity</value>
         [DataMember(Name = "chap4StatusCode", EmitDefaultValue = true)]
         public string Chap4StatusCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Name of the intermediary or flow-through entity
         /// </summary>
+        /// <value>Name of the intermediary or flow-through entity</value>
         [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Giin
+        /// GIIN (Global Intermediary Identification Number) of the intermediary or flow-through entity
         /// </summary>
+        /// <value>GIIN (Global Intermediary Identification Number) of the intermediary or flow-through entity</value>
         [DataMember(Name = "giin", EmitDefaultValue = true)]
         public string Giin { get; set; }
 
         /// <summary>
-        /// Gets or Sets CountryCode
+        /// Country code for the intermediary or flow-through entity
         /// </summary>
+        /// <value>Country code for the intermediary or flow-through entity</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets ForeignTin
+        /// Foreign TIN of the intermediary or flow-through entity
         /// </summary>
+        /// <value>Foreign TIN of the intermediary or flow-through entity</value>
         [DataMember(Name = "foreignTin", EmitDefaultValue = true)]
         public string ForeignTin { get; set; }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// Address of the intermediary or flow-through entity
         /// </summary>
+        /// <value>Address of the intermediary or flow-through entity</value>
         [DataMember(Name = "address", EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets City
+        /// City of the intermediary or flow-through entity
         /// </summary>
+        /// <value>City of the intermediary or flow-through entity</value>
         [DataMember(Name = "city", EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or Sets State
+        /// State of the intermediary or flow-through entity
         /// </summary>
+        /// <value>State of the intermediary or flow-through entity</value>
         [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or Sets Zip
+        /// Zip code of the intermediary or flow-through entity
         /// </summary>
+        /// <value>Zip code of the intermediary or flow-through entity</value>
         [DataMember(Name = "zip", EmitDefaultValue = true)]
         public string Zip { get; set; }
 

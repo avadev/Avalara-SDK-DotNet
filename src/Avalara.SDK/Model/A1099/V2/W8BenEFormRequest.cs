@@ -101,6 +101,11 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W8BenEFormRequest" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected W8BenEFormRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="W8BenEFormRequest" /> class.
+        /// </summary>
         /// <param name="name">The name of the individual or entity associated with the form..</param>
         /// <param name="citizenshipCountry">The country of citizenship..</param>
         /// <param name="disregardedEntity">The name of the disregarded entity receiving the payment (if applicable)..</param>
@@ -196,13 +201,19 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="substantialUsOwners">The list of substantial U.S. owners of passive NFFE..</param>
         /// <param name="signerName">The name of the signer..</param>
         /// <param name="capacityToSignCertification">Certifies signer has the capacity to sign for the beneficial owner..</param>
-        /// <param name="companyId">The ID of the associated company..</param>
-        /// <param name="referenceId">A reference identifier for the form..</param>
-        /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        public W8BenEFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool? makingTreatyClaim = default(bool?), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), string giin = default(string), bool? foreignTinNotRequired = default(bool?), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? treatyCountryCertification = default(bool?), string treatyCountry = default(string), bool? benefitLimitationCertification = default(bool?), string benefitLimitation = default(string), bool? qualifiedResidentStatusCertification = default(bool?), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? ownerDocumentedFfiTrustBeneficiariesCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? nonCommercialFinancialActivityCertification = default(bool?), bool? internationOrganizationCertification = default(bool?), bool? intergovernmentalOrganizationCertification = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? section501COrganizationCertification = default(bool?), DateTime? determinationLetterDate = default(DateTime?), bool? nonprofitOrganizationCertification = default(bool?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? passiveNffeNoSubstantialUsOwnersCertification = default(bool?), bool? passiveNffeSubstantialUsOwnersProvidedCertification = default(bool?), bool? exceptedInterAffiliateFfiCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerRequest> substantialUsOwners = default(List<SubstantialUsOwnerRequest>), string signerName = default(string), bool? capacityToSignCertification = default(bool?), string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
+        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="referenceId">A reference identifier for the form..</param>
+        /// <param name="email">The email address of the individual associated with the form..</param>
+        public W8BenEFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool? makingTreatyClaim = default(bool?), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), string giin = default(string), bool? foreignTinNotRequired = default(bool?), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? treatyCountryCertification = default(bool?), string treatyCountry = default(string), bool? benefitLimitationCertification = default(bool?), string benefitLimitation = default(string), bool? qualifiedResidentStatusCertification = default(bool?), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? ownerDocumentedFfiTrustBeneficiariesCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? nonCommercialFinancialActivityCertification = default(bool?), bool? internationOrganizationCertification = default(bool?), bool? intergovernmentalOrganizationCertification = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? section501COrganizationCertification = default(bool?), DateTime? determinationLetterDate = default(DateTime?), bool? nonprofitOrganizationCertification = default(bool?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? passiveNffeNoSubstantialUsOwnersCertification = default(bool?), bool? passiveNffeSubstantialUsOwnersProvidedCertification = default(bool?), bool? exceptedInterAffiliateFfiCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerRequest> substantialUsOwners = default(List<SubstantialUsOwnerRequest>), string signerName = default(string), bool? capacityToSignCertification = default(bool?), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
+            // to ensure "companyId" is required (not null)
+            if (companyId == null)
+            {
+                throw new ArgumentNullException("companyId is a required property for W8BenEFormRequest and cannot be null");
+            }
+            this.CompanyId = companyId;
             this.Name = name;
             this.CitizenshipCountry = citizenshipCountry;
             this.DisregardedEntity = disregardedEntity;
@@ -298,11 +309,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.SubstantialUsOwners = substantialUsOwners;
             this.SignerName = signerName;
             this.CapacityToSignCertification = capacityToSignCertification;
-            this.CompanyId = companyId;
-            this.ReferenceId = referenceId;
-            this.Email = email;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.ReferenceId = referenceId;
+            this.Email = email;
         }
 
         /// <summary>
@@ -974,10 +984,24 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? CapacityToSignCertification { get; set; }
 
         /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
+
+        /// <summary>
         /// The ID of the associated company.
         /// </summary>
         /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", EmitDefaultValue = false)]
+        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -993,20 +1017,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The email address of the individual associated with the form.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
-
-        /// <summary>
-        /// The date when e-delivery was consented.
-        /// </summary>
-        /// <value>The date when e-delivery was consented.</value>
-        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
-        public DateTime? EDeliveryConsentedAt { get; set; }
-
-        /// <summary>
-        /// The signature of the form.
-        /// </summary>
-        /// <value>The signature of the form.</value>
-        [DataMember(Name = "signature", EmitDefaultValue = true)]
-        public string Signature { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -1112,11 +1122,11 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  SubstantialUsOwners: ").Append(SubstantialUsOwners).Append("\n");
             sb.Append("  SignerName: ").Append(SignerName).Append("\n");
             sb.Append("  CapacityToSignCertification: ").Append(CapacityToSignCertification).Append("\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -1137,6 +1147,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // CompanyId (string) minLength
+            if (this.CompanyId != null && this.CompanyId.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
+            }
+
             yield break;
         }
     }

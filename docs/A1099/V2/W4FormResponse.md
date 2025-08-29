@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique identifier for the form. | [optional] 
-**EntryStatus** | **string** | The form status. | [optional] 
-**EntryStatusDate** | **DateTime?** | The timestamp for the latest status update. | [optional] 
+**EntryStatus** | [**EntryStatusResponse**](EntryStatusResponse.md) | The entry status information for the form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **CompanyId** | **string** | The ID of the associated company. | [optional] 
 **DisplayName** | **string** | The display name associated with the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
 **Archived** | **bool** | Indicates whether the form is archived. | [optional] 
+**AncestorId** | **string** | Form ID of previous version. | [optional] 
 **Signature** | **string** | The signature of the form. | [optional] 
 **SignedDate** | **DateTime?** | The date the form was signed. | [optional] 
 **EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 

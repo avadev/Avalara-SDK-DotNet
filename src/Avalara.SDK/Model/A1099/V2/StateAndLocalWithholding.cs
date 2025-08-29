@@ -46,14 +46,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="StateAndLocalWithholding" /> class.
         /// </summary>
-        /// <param name="stateTaxWithheld">stateTaxWithheld.</param>
-        /// <param name="state">state.</param>
-        /// <param name="stateIdNumber">stateIdNumber.</param>
-        /// <param name="stateIncome">stateIncome.</param>
-        /// <param name="localTaxWithheld">localTaxWithheld.</param>
-        /// <param name="locality">locality.</param>
-        /// <param name="localityIdNumber">localityIdNumber.</param>
-        /// <param name="localIncome">localIncome.</param>
+        /// <param name="stateTaxWithheld">Amount of state tax that was withheld.</param>
+        /// <param name="state">US state.</param>
+        /// <param name="stateIdNumber">State ID number of the entity issuing the form.</param>
+        /// <param name="stateIncome">Amount of state income.</param>
+        /// <param name="localTaxWithheld">Amount of local tax that was withheld.</param>
+        /// <param name="locality">Locality name.</param>
+        /// <param name="localityIdNumber">Locality ID number of the entity issuing the form.</param>
+        /// <param name="localIncome">Amount of local income.</param>
         public StateAndLocalWithholding(double? stateTaxWithheld = default(double?), string state = default(string), string stateIdNumber = default(string), double? stateIncome = default(double?), double? localTaxWithheld = default(double?), string locality = default(string), string localityIdNumber = default(string), double? localIncome = default(double?))
         {
             this.StateTaxWithheld = stateTaxWithheld;
@@ -67,50 +67,58 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gets or Sets StateTaxWithheld
+        /// Amount of state tax that was withheld
         /// </summary>
+        /// <value>Amount of state tax that was withheld</value>
         [DataMember(Name = "stateTaxWithheld", EmitDefaultValue = true)]
         public double? StateTaxWithheld { get; set; }
 
         /// <summary>
-        /// Gets or Sets State
+        /// US state
         /// </summary>
+        /// <value>US state</value>
         [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or Sets StateIdNumber
+        /// State ID number of the entity issuing the form
         /// </summary>
+        /// <value>State ID number of the entity issuing the form</value>
         [DataMember(Name = "stateIdNumber", EmitDefaultValue = true)]
         public string StateIdNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets StateIncome
+        /// Amount of state income
         /// </summary>
+        /// <value>Amount of state income</value>
         [DataMember(Name = "stateIncome", EmitDefaultValue = true)]
         public double? StateIncome { get; set; }
 
         /// <summary>
-        /// Gets or Sets LocalTaxWithheld
+        /// Amount of local tax that was withheld
         /// </summary>
+        /// <value>Amount of local tax that was withheld</value>
         [DataMember(Name = "localTaxWithheld", EmitDefaultValue = true)]
         public double? LocalTaxWithheld { get; set; }
 
         /// <summary>
-        /// Gets or Sets Locality
+        /// Locality name
         /// </summary>
+        /// <value>Locality name</value>
         [DataMember(Name = "locality", EmitDefaultValue = true)]
         public string Locality { get; set; }
 
         /// <summary>
-        /// Gets or Sets LocalityIdNumber
+        /// Locality ID number of the entity issuing the form
         /// </summary>
+        /// <value>Locality ID number of the entity issuing the form</value>
         [DataMember(Name = "localityIdNumber", EmitDefaultValue = true)]
         public string LocalityIdNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets LocalIncome
+        /// Amount of local income
         /// </summary>
+        /// <value>Amount of local income</value>
         [DataMember(Name = "localIncome", EmitDefaultValue = true)]
         public double? LocalIncome { get; set; }
 
