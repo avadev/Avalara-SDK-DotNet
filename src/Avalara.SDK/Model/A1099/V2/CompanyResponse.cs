@@ -46,169 +46,234 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyResponse" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="referenceId">referenceId.</param>
-        /// <param name="groupName">groupName.</param>
-        /// <param name="name">name.</param>
-        /// <param name="dbaName">dbaName.</param>
-        /// <param name="address">address.</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">state.</param>
-        /// <param name="foreignProvince">foreignProvince.</param>
-        /// <param name="zip">zip.</param>
-        /// <param name="countryCode">countryCode.</param>
-        /// <param name="email">email.</param>
-        /// <param name="telephone">telephone.</param>
-        /// <param name="tin">tin.</param>
-        /// <param name="doTinMatch">doTinMatch.</param>
-        /// <param name="resendRequests">resendRequests.</param>
-        /// <param name="resendIntervalDays">resendIntervalDays.</param>
-        /// <param name="maxReminderAttempts">maxReminderAttempts.</param>
-        /// <param name="createdAt">createdAt.</param>
-        /// <param name="updatedAt">updatedAt.</param>
-        public CompanyResponse(string id = default(string), string referenceId = default(string), string groupName = default(string), string name = default(string), string dbaName = default(string), string address = default(string), string city = default(string), string state = default(string), string foreignProvince = default(string), string zip = default(string), string countryCode = default(string), string email = default(string), string telephone = default(string), string tin = default(string), bool? doTinMatch = default(bool?), bool? resendRequests = default(bool?), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
+        [JsonConstructorAttribute]
+        protected CompanyResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompanyResponse" /> class.
+        /// </summary>
+        /// <param name="id">Unique identifier set when the record is created..</param>
+        /// <param name="createdAt">Date time when the record was created..</param>
+        /// <param name="updatedAt">Date time when the record was last updated..</param>
+        /// <param name="name">Legal name. Not the DBA name. (required).</param>
+        /// <param name="dbaName">Doing Business As (DBA) name or continuation of a long legal name..</param>
+        /// <param name="email">Contact email address. For inquiries by vendors/employees. (required).</param>
+        /// <param name="address">Address. (required).</param>
+        /// <param name="city">City. (required).</param>
+        /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses)..</param>
+        /// <param name="zip">ZIP/postal code. (required).</param>
+        /// <param name="telephone">Contact phone number (must contain at least 10 digits, max 15 characters). (required).</param>
+        /// <param name="tin">Federal Tax Identification Number (TIN). EIN/Tax ID (required for US companies). (required).</param>
+        /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
+        /// <param name="doTinMatch">Indicates whether the company authorizes IRS TIN matching..</param>
+        /// <param name="groupName">Group name for organizing companies (creates or finds group by name)..</param>
+        /// <param name="foreignProvince">Province or region for non-US/CA addresses..</param>
+        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
+        /// <param name="resendRequests">Boolean to enable automatic reminder emails (default: false)..</param>
+        /// <param name="resendIntervalDays">Days between reminder emails (7-365, required if resendRequests is true)..</param>
+        /// <param name="maxReminderAttempts">Maximum number of reminder attempts (1-52, required if resendRequests is true)..</param>
+        public CompanyResponse(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string name = default(string), string dbaName = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string referenceId = default(string), bool? doTinMatch = default(bool?), string groupName = default(string), string foreignProvince = default(string), string countryCode = default(string), bool? resendRequests = default(bool?), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?))
         {
-            this.Id = id;
-            this.ReferenceId = referenceId;
-            this.GroupName = groupName;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for CompanyResponse and cannot be null");
+            }
             this.Name = name;
-            this.DbaName = dbaName;
-            this.Address = address;
-            this.City = city;
-            this.State = state;
-            this.ForeignProvince = foreignProvince;
-            this.Zip = zip;
-            this.CountryCode = countryCode;
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new ArgumentNullException("email is a required property for CompanyResponse and cannot be null");
+            }
             this.Email = email;
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for CompanyResponse and cannot be null");
+            }
+            this.Address = address;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for CompanyResponse and cannot be null");
+            }
+            this.City = city;
+            // to ensure "zip" is required (not null)
+            if (zip == null)
+            {
+                throw new ArgumentNullException("zip is a required property for CompanyResponse and cannot be null");
+            }
+            this.Zip = zip;
+            // to ensure "telephone" is required (not null)
+            if (telephone == null)
+            {
+                throw new ArgumentNullException("telephone is a required property for CompanyResponse and cannot be null");
+            }
             this.Telephone = telephone;
+            // to ensure "tin" is required (not null)
+            if (tin == null)
+            {
+                throw new ArgumentNullException("tin is a required property for CompanyResponse and cannot be null");
+            }
             this.Tin = tin;
+            // to ensure "countryCode" is required (not null)
+            if (countryCode == null)
+            {
+                throw new ArgumentNullException("countryCode is a required property for CompanyResponse and cannot be null");
+            }
+            this.CountryCode = countryCode;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+            this.DbaName = dbaName;
+            this.State = state;
+            this.ReferenceId = referenceId;
             this.DoTinMatch = doTinMatch;
+            this.GroupName = groupName;
+            this.ForeignProvince = foreignProvince;
             this.ResendRequests = resendRequests;
             this.ResendIntervalDays = resendIntervalDays;
             this.MaxReminderAttempts = maxReminderAttempts;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Unique identifier set when the record is created.
         /// </summary>
+        /// <value>Unique identifier set when the record is created.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets ReferenceId
+        /// Date time when the record was created.
         /// </summary>
-        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
-        public string ReferenceId { get; set; }
+        /// <value>Date time when the record was created.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupName
+        /// Date time when the record was last updated.
         /// </summary>
-        [DataMember(Name = "groupName", EmitDefaultValue = true)]
-        public string GroupName { get; set; }
+        /// <value>Date time when the record was last updated.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Legal name. Not the DBA name.
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
+        /// <value>Legal name. Not the DBA name.</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets DbaName
+        /// Doing Business As (DBA) name or continuation of a long legal name.
         /// </summary>
+        /// <value>Doing Business As (DBA) name or continuation of a long legal name.</value>
         [DataMember(Name = "dbaName", EmitDefaultValue = true)]
         public string DbaName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// Contact email address. For inquiries by vendors/employees.
         /// </summary>
-        [DataMember(Name = "address", EmitDefaultValue = true)]
+        /// <value>Contact email address. For inquiries by vendors/employees.</value>
+        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Address.
+        /// </summary>
+        /// <value>Address.</value>
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets City
+        /// City.
         /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = true)]
+        /// <value>City.</value>
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or Sets State
+        /// Two-letter US state or Canadian province code (required for US/CA addresses).
         /// </summary>
+        /// <value>Two-letter US state or Canadian province code (required for US/CA addresses).</value>
         [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or Sets ForeignProvince
+        /// ZIP/postal code.
         /// </summary>
-        [DataMember(Name = "foreignProvince", EmitDefaultValue = true)]
-        public string ForeignProvince { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Zip
-        /// </summary>
-        [DataMember(Name = "zip", EmitDefaultValue = true)]
+        /// <value>ZIP/postal code.</value>
+        [DataMember(Name = "zip", IsRequired = true, EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
-        /// Gets or Sets CountryCode
+        /// Contact phone number (must contain at least 10 digits, max 15 characters).
         /// </summary>
-        [DataMember(Name = "countryCode", EmitDefaultValue = true)]
-        public string CountryCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Telephone
-        /// </summary>
-        [DataMember(Name = "telephone", EmitDefaultValue = true)]
+        /// <value>Contact phone number (must contain at least 10 digits, max 15 characters).</value>
+        [DataMember(Name = "telephone", IsRequired = true, EmitDefaultValue = true)]
         public string Telephone { get; set; }
 
         /// <summary>
-        /// Gets or Sets Tin
+        /// Federal Tax Identification Number (TIN). EIN/Tax ID (required for US companies).
         /// </summary>
-        [DataMember(Name = "tin", EmitDefaultValue = true)]
+        /// <value>Federal Tax Identification Number (TIN). EIN/Tax ID (required for US companies).</value>
+        [DataMember(Name = "tin", IsRequired = true, EmitDefaultValue = true)]
         public string Tin { get; set; }
 
         /// <summary>
-        /// Gets or Sets DoTinMatch
+        /// Internal reference ID. Never shown to any agency or recipient.
         /// </summary>
+        /// <value>Internal reference ID. Never shown to any agency or recipient.</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// Indicates whether the company authorizes IRS TIN matching.
+        /// </summary>
+        /// <value>Indicates whether the company authorizes IRS TIN matching.</value>
         [DataMember(Name = "doTinMatch", EmitDefaultValue = true)]
         public bool? DoTinMatch { get; set; }
 
         /// <summary>
-        /// Gets or Sets ResendRequests
+        /// Group name for organizing companies (creates or finds group by name).
         /// </summary>
+        /// <value>Group name for organizing companies (creates or finds group by name).</value>
+        [DataMember(Name = "groupName", EmitDefaultValue = true)]
+        public string GroupName { get; set; }
+
+        /// <summary>
+        /// Province or region for non-US/CA addresses.
+        /// </summary>
+        /// <value>Province or region for non-US/CA addresses.</value>
+        [DataMember(Name = "foreignProvince", EmitDefaultValue = true)]
+        public string ForeignProvince { get; set; }
+
+        /// <summary>
+        /// Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.
+        /// </summary>
+        /// <value>Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.</value>
+        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
+        public string CountryCode { get; set; }
+
+        /// <summary>
+        /// Boolean to enable automatic reminder emails (default: false).
+        /// </summary>
+        /// <value>Boolean to enable automatic reminder emails (default: false).</value>
         [DataMember(Name = "resendRequests", EmitDefaultValue = true)]
         public bool? ResendRequests { get; set; }
 
         /// <summary>
-        /// Gets or Sets ResendIntervalDays
+        /// Days between reminder emails (7-365, required if resendRequests is true).
         /// </summary>
+        /// <value>Days between reminder emails (7-365, required if resendRequests is true).</value>
         [DataMember(Name = "resendIntervalDays", EmitDefaultValue = true)]
         public int? ResendIntervalDays { get; set; }
 
         /// <summary>
-        /// Gets or Sets MaxReminderAttempts
+        /// Maximum number of reminder attempts (1-52, required if resendRequests is true).
         /// </summary>
+        /// <value>Maximum number of reminder attempts (1-52, required if resendRequests is true).</value>
         [DataMember(Name = "maxReminderAttempts", EmitDefaultValue = true)]
         public int? MaxReminderAttempts { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", EmitDefaultValue = true)]
-        public DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UpdatedAt
-        /// </summary>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
-        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -219,25 +284,25 @@ namespace Avalara.SDK.Model.A1099.V2
             StringBuilder sb = new StringBuilder();
             sb.Append("class CompanyResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
-            sb.Append("  GroupName: ").Append(GroupName).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DbaName: ").Append(DbaName).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ForeignProvince: ").Append(ForeignProvince).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
-            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Telephone: ").Append(Telephone).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  DoTinMatch: ").Append(DoTinMatch).Append("\n");
+            sb.Append("  GroupName: ").Append(GroupName).Append("\n");
+            sb.Append("  ForeignProvince: ").Append(ForeignProvince).Append("\n");
+            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  ResendRequests: ").Append(ResendRequests).Append("\n");
             sb.Append("  ResendIntervalDays: ").Append(ResendIntervalDays).Append("\n");
             sb.Append("  MaxReminderAttempts: ").Append(MaxReminderAttempts).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -100,11 +100,11 @@ Name | Type | Description | Notes
 **SubstantialUsOwners** | [**List&lt;SubstantialUsOwnerRequest&gt;**](SubstantialUsOwnerRequest.md) | The list of substantial U.S. owners of passive NFFE. | [optional] 
 **SignerName** | **string** | The name of the signer. | [optional] 
 **CapacityToSignCertification** | **bool?** | Certifies signer has the capacity to sign for the beneficial owner. | [optional] 
-**CompanyId** | **string** | The ID of the associated company. | [optional] 
-**ReferenceId** | **string** | A reference identifier for the form. | [optional] 
-**Email** | **string** | The email address of the individual associated with the form. | [optional] 
 **EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
 **Signature** | **string** | The signature of the form. | [optional] 
+**CompanyId** | **string** | The ID of the associated company. | 
+**ReferenceId** | **string** | A reference identifier for the form. | [optional] 
+**Email** | **string** | The email address of the individual associated with the form. | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

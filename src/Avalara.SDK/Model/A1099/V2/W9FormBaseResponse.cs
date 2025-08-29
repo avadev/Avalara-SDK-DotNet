@@ -54,29 +54,29 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Initializes a new instance of the <see cref="W9FormBaseResponse" /> class.
         /// </summary>
         /// <param name="id">The unique identifier for the form..</param>
-        /// <param name="entryStatus">The form status..</param>
-        /// <param name="entryStatusDate">The timestamp for the latest status update..</param>
+        /// <param name="entryStatus">The entry status information for the form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="companyId">The ID of the associated company..</param>
         /// <param name="displayName">The display name associated with the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="archived">Indicates whether the form is archived..</param>
+        /// <param name="ancestorId">Form ID of previous version..</param>
         /// <param name="signature">The signature of the form..</param>
         /// <param name="signedDate">The date the form was signed..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
         /// <param name="type">The type of the response object..</param>
-        public W9FormBaseResponse(string id = default(string), string entryStatus = default(string), DateTime? entryStatusDate = default(DateTime?), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = default(string))
+        public W9FormBaseResponse(string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = default(string))
         {
             this.Id = id;
             this.EntryStatus = entryStatus;
-            this.EntryStatusDate = entryStatusDate;
             this.ReferenceId = referenceId;
             this.CompanyId = companyId;
             this.DisplayName = displayName;
             this.Email = email;
             this.Archived = archived;
+            this.AncestorId = ancestorId;
             this.Signature = signature;
             this.SignedDate = signedDate;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
@@ -93,18 +93,11 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Id { get; set; }
 
         /// <summary>
-        /// The form status.
+        /// The entry status information for the form.
         /// </summary>
-        /// <value>The form status.</value>
+        /// <value>The entry status information for the form.</value>
         [DataMember(Name = "entryStatus", EmitDefaultValue = false)]
-        public string EntryStatus { get; set; }
-
-        /// <summary>
-        /// The timestamp for the latest status update.
-        /// </summary>
-        /// <value>The timestamp for the latest status update.</value>
-        [DataMember(Name = "entryStatusDate", EmitDefaultValue = true)]
-        public DateTime? EntryStatusDate { get; set; }
+        public EntryStatusResponse EntryStatus { get; set; }
 
         /// <summary>
         /// A reference identifier for the form.
@@ -140,6 +133,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Indicates whether the form is archived.</value>
         [DataMember(Name = "archived", EmitDefaultValue = true)]
         public bool Archived { get; set; }
+
+        /// <summary>
+        /// Form ID of previous version.
+        /// </summary>
+        /// <value>Form ID of previous version.</value>
+        [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
+        public string AncestorId { get; set; }
 
         /// <summary>
         /// The signature of the form.
@@ -193,12 +193,12 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class W9FormBaseResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
-            sb.Append("  EntryStatusDate: ").Append(EntryStatusDate).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Archived: ").Append(Archived).Append("\n");
+            sb.Append("  AncestorId: ").Append(AncestorId).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  SignedDate: ").Append(SignedDate).Append("\n");
             sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
