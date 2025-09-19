@@ -96,7 +96,7 @@ namespace Avalara.SDK.Client
 
         public async Task<T> Deserialize<T>(HttpResponseMessage response)
         {
-            var result = (T) await Deserialize(response, typeof(T));
+            var result = (T)await Deserialize(response, typeof(T));
             return result;
         }
 
@@ -190,7 +190,7 @@ namespace Avalara.SDK.Client
         /// Version of the SDK being used
         /// </summary>
         private string sdkVersion;
-        
+
         /// <summary>
         /// SDKVersion property - Cannot be set by user
         /// </summary>
@@ -299,7 +299,7 @@ namespace Avalara.SDK.Client
             if (path == null) throw new ArgumentNullException("path");
             if (options == null) throw new ArgumentNullException("options");
 
-            string clientID = String.Format("{0}; {1}; {2}; {3}; {4}", Configuration.AppName, Configuration.AppVersion,
+            string sdkClientHeader = String.Format("{0}; {1}; {2}; {3}; {4}", Configuration.AppName, Configuration.AppVersion,
                 "CSharpRestClient", ((IInternalApiClient)this).SdkVersion, Configuration.MachineName);
 
             WebRequestPathBuilder builder = new WebRequestPathBuilder(Configuration.GetBasePath(microservice), path);
@@ -309,7 +309,16 @@ namespace Avalara.SDK.Client
             builder.AddQueryParameters(options.QueryParameters);
 
             HttpRequestMessage request = new HttpRequestMessage(method, builder.GetFullUri());
-            request.Headers.Add(AVALARA_CLIENT_HEADER, clientID);
+
+            // Always set X-Avalara-SDK-Client to SDK info
+            request.Headers.Add("X-Avalara-SDK-Client", sdkClientHeader);
+
+            // If X-Avalara-Client is null/empty, set it to SDK info as well
+            if (!options.HeaderParameters.TryGetValue(AVALARA_CLIENT_HEADER, out var avalaraClientValue) ||
+                String.IsNullOrWhiteSpace(avalaraClientValue.FirstOrDefault()))
+            {
+                request.Headers.Add(AVALARA_CLIENT_HEADER, sdkClientHeader);
+            }
 
             if (Configuration.DefaultHeaders != null)
             {
@@ -523,7 +532,9 @@ namespace Avalara.SDK.Client
                             response = await Configuration.HttpClient.SendAsync(req, cancellationToken).ConfigureAwait(false);
                         }
                     }
-                } else if (this.Configuration.RefreshTokenDelegate != null) {
+                }
+                else if (this.Configuration.RefreshTokenDelegate != null)
+                {
                     // Execute injected delegate to get a new access token
                     string accessToken = await this.Configuration.RefreshTokenDelegate();
 
@@ -559,11 +570,11 @@ namespace Avalara.SDK.Client
             // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
             if (typeof(Avalara.SDK.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
             {
-                responseData = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                responseData = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
             }
             else if (typeof(T).Name == "Stream") // for binary response
             {
-                responseData = (T) (object) await response.Content.ReadAsStreamAsync();
+                responseData = (T)(object)await response.Content.ReadAsStreamAsync();
             }
 
             InterceptResponse(req, response);
