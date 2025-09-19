@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type.
         /// </summary>
         /// <value>The form type.</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -101,31 +100,21 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W9FormBaseMinimalRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected W9FormBaseMinimalRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="W9FormBaseMinimalRequest" /> class.
-        /// </summary>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W9FormBaseMinimalRequest(string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
-            {
-                throw new ArgumentNullException("companyId is a required property for W9FormBaseMinimalRequest and cannot be null");
-            }
             this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -174,12 +163,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }

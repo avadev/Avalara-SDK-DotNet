@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w4\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w4\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -110,7 +109,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="employeeFirstName">The first name of the employee. (required).</param>
         /// <param name="employeeLastName">The last name of the employee. (required).</param>
         /// <param name="officeCode">The office code associated with the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         public W4FormMinimalRequest(string email = default(string), string employeeFirstName = default(string), string employeeLastName = default(string), string officeCode = default(string), string companyId = default(string), string referenceId = default(string))
         {
@@ -132,13 +131,8 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("employeeLastName is a required property for W4FormMinimalRequest and cannot be null");
             }
             this.EmployeeLastName = employeeLastName;
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
-            {
-                throw new ArgumentNullException("companyId is a required property for W4FormMinimalRequest and cannot be null");
-            }
-            this.CompanyId = companyId;
             this.OfficeCode = officeCode;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
         }
 
@@ -171,10 +165,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string OfficeCode { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -235,12 +229,6 @@ namespace Avalara.SDK.Model.A1099.V2
             if (this.EmployeeLastName != null && this.EmployeeLastName.Length < 1)
             {
                 yield return new ValidationResult("Invalid value for EmployeeLastName, length must be greater than 1.", new [] { "EmployeeLastName" });
-            }
-
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
             }
 
             yield break;

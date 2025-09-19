@@ -44,9 +44,9 @@ namespace Avalara.SDK.Model.A1099.V2
     public partial class Form1099K : IValidatableObject
     {
         /// <summary>
-        /// Filer type (PSE or EPF)
+        /// Filer type for tax reporting purposes.  Available values:  - PSE: Payment Settlement Entity  - EPF: Electronic Payment Facilitator or other third party
         /// </summary>
-        /// <value>Filer type (PSE or EPF)</value>
+        /// <value>Filer type for tax reporting purposes.  Available values:  - PSE: Payment Settlement Entity  - EPF: Electronic Payment Facilitator or other third party</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum FilerTypeEnum
         {
@@ -60,34 +60,28 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum EPF for value: EPF
             /// </summary>
             [EnumMember(Value = "EPF")]
-            EPF = 2,
-
-            /// <summary>
-            /// Enum Other for value: Other
-            /// </summary>
-            [EnumMember(Value = "Other")]
-            Other = 3
+            EPF = 2
         }
 
 
         /// <summary>
-        /// Filer type (PSE or EPF)
+        /// Filer type for tax reporting purposes.  Available values:  - PSE: Payment Settlement Entity  - EPF: Electronic Payment Facilitator or other third party
         /// </summary>
-        /// <value>Filer type (PSE or EPF)</value>
-        [DataMember(Name = "filerType", EmitDefaultValue = true)]
-        public FilerTypeEnum? FilerType { get; set; }
+        /// <value>Filer type for tax reporting purposes.  Available values:  - PSE: Payment Settlement Entity  - EPF: Electronic Payment Facilitator or other third party</value>
+        [DataMember(Name = "filerType", IsRequired = true, EmitDefaultValue = true)]
+        public FilerTypeEnum FilerType { get; set; }
         /// <summary>
-        /// Payment type (payment card or third party network)
+        /// Payment type for transaction classification.  Available values:  - PaymentCard: Payment card transactions  - ThirdPartyNetwork: Third party network transactions
         /// </summary>
-        /// <value>Payment type (payment card or third party network)</value>
+        /// <value>Payment type for transaction classification.  Available values:  - PaymentCard: Payment card transactions  - ThirdPartyNetwork: Third party network transactions</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum PaymentTypeEnum
         {
             /// <summary>
-            /// Enum MerchantPaymentCard for value: MerchantPaymentCard
+            /// Enum PaymentCard for value: PaymentCard
             /// </summary>
-            [EnumMember(Value = "MerchantPaymentCard")]
-            MerchantPaymentCard = 1,
+            [EnumMember(Value = "PaymentCard")]
+            PaymentCard = 1,
 
             /// <summary>
             /// Enum ThirdPartyNetwork for value: ThirdPartyNetwork
@@ -98,124 +92,117 @@ namespace Avalara.SDK.Model.A1099.V2
 
 
         /// <summary>
-        /// Payment type (payment card or third party network)
+        /// Payment type for transaction classification.  Available values:  - PaymentCard: Payment card transactions  - ThirdPartyNetwork: Third party network transactions
         /// </summary>
-        /// <value>Payment type (payment card or third party network)</value>
-        [DataMember(Name = "paymentType", EmitDefaultValue = true)]
-        public PaymentTypeEnum? PaymentType { get; set; }
+        /// <value>Payment type for transaction classification.  Available values:  - PaymentCard: Payment card transactions  - ThirdPartyNetwork: Third party network transactions</value>
+        [DataMember(Name = "paymentType", IsRequired = true, EmitDefaultValue = true)]
+        public PaymentTypeEnum PaymentType { get; set; }
         /// <summary>
-        /// Form type
+        /// Form type.
         /// </summary>
-        /// <value>Form type</value>
+        /// <value>Form type.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>
-            /// Enum _1099NEC for value: 1099-NEC
+            /// Enum Form1099Nec for value: Form1099Nec
             /// </summary>
-            [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 1,
+            [EnumMember(Value = "Form1099Nec")]
+            Form1099Nec = 1,
 
             /// <summary>
-            /// Enum _1099MISC for value: 1099-MISC
+            /// Enum Form1099Misc for value: Form1099Misc
             /// </summary>
-            [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 2,
+            [EnumMember(Value = "Form1099Misc")]
+            Form1099Misc = 2,
 
             /// <summary>
-            /// Enum _1099DIV for value: 1099-DIV
+            /// Enum Form1099Div for value: Form1099Div
             /// </summary>
-            [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 3,
+            [EnumMember(Value = "Form1099Div")]
+            Form1099Div = 3,
 
             /// <summary>
-            /// Enum _1099R for value: 1099-R
+            /// Enum Form1099R for value: Form1099R
             /// </summary>
-            [EnumMember(Value = "1099-R")]
-            _1099R = 4,
+            [EnumMember(Value = "Form1099R")]
+            Form1099R = 4,
 
             /// <summary>
-            /// Enum _1099K for value: 1099-K
+            /// Enum Form1099K for value: Form1099K
             /// </summary>
-            [EnumMember(Value = "1099-K")]
-            _1099K = 5,
+            [EnumMember(Value = "Form1099K")]
+            Form1099K = 5,
 
             /// <summary>
-            /// Enum _1095B for value: 1095-B
+            /// Enum Form1095B for value: Form1095B
             /// </summary>
-            [EnumMember(Value = "1095-B")]
-            _1095B = 6,
+            [EnumMember(Value = "Form1095B")]
+            Form1095B = 6,
 
             /// <summary>
-            /// Enum _1042S for value: 1042-S
+            /// Enum Form1042S for value: Form1042S
             /// </summary>
-            [EnumMember(Value = "1042-S")]
-            _1042S = 7,
+            [EnumMember(Value = "Form1042S")]
+            Form1042S = 7,
 
             /// <summary>
-            /// Enum _1095C for value: 1095-C
+            /// Enum Form1095C for value: Form1095C
             /// </summary>
-            [EnumMember(Value = "1095-C")]
-            _1095C = 8,
+            [EnumMember(Value = "Form1095C")]
+            Form1095C = 8,
 
             /// <summary>
-            /// Enum _1099INT for value: 1099-INT
+            /// Enum Form1099Int for value: Form1099Int
             /// </summary>
-            [EnumMember(Value = "1099-INT")]
-            _1099INT = 9
+            [EnumMember(Value = "Form1099Int")]
+            Form1099Int = 9
         }
 
 
         /// <summary>
-        /// Form type
+        /// Form type.
         /// </summary>
-        /// <value>Form type</value>
-        /// <example>1099-NEC</example>
+        /// <value>Form type.</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// Type of TIN (Tax ID Number)
+        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Type of TIN (Tax ID Number)</value>
+        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TinTypeEnum
         {
             /// <summary>
-            /// Enum Empty for value: Empty
-            /// </summary>
-            [EnumMember(Value = "Empty")]
-            Empty = 1,
-
-            /// <summary>
             /// Enum EIN for value: EIN
             /// </summary>
             [EnumMember(Value = "EIN")]
-            EIN = 2,
+            EIN = 1,
 
             /// <summary>
             /// Enum SSN for value: SSN
             /// </summary>
             [EnumMember(Value = "SSN")]
-            SSN = 3,
+            SSN = 2,
 
             /// <summary>
             /// Enum ITIN for value: ITIN
             /// </summary>
             [EnumMember(Value = "ITIN")]
-            ITIN = 4,
+            ITIN = 3,
 
             /// <summary>
             /// Enum ATIN for value: ATIN
             /// </summary>
             [EnumMember(Value = "ATIN")]
-            ATIN = 5
+            ATIN = 4
         }
 
 
         /// <summary>
-        /// Type of TIN (Tax ID Number)
+        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Type of TIN (Tax ID Number)</value>
+        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
@@ -226,13 +213,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1099K" /> class.
         /// </summary>
-        /// <param name="filerType">Filer type (PSE or EPF).</param>
-        /// <param name="paymentType">Payment type (payment card or third party network).</param>
-        /// <param name="paymentSettlementEntityNamePhoneNumber">Payment settlement entity name and phone number.</param>
-        /// <param name="grossAmountPaymentCard">Gross amount of payment card/third party network transactions.</param>
+        /// <param name="filerType">Filer type for tax reporting purposes.  Available values:  - PSE: Payment Settlement Entity  - EPF: Electronic Payment Facilitator or other third party (required).</param>
+        /// <param name="paymentType">Payment type for transaction classification.  Available values:  - PaymentCard: Payment card transactions  - ThirdPartyNetwork: Third party network transactions (required).</param>
+        /// <param name="paymentSettlementEntityNamePhoneNumber">Payment settlement entity name and phone number, if different from Filer&#39;s.</param>
+        /// <param name="grossAmountPaymentCard">Gross amount of payment card/third party network transactions. This value must equal the total of all monthly payment amounts (January through December). (required).</param>
         /// <param name="cardNotPresentTransactions">Card not present transactions.</param>
-        /// <param name="merchantCategoryCode">Merchant category code.</param>
-        /// <param name="paymentTransactionNumber">Number of payment transactions.</param>
+        /// <param name="merchantCategoryCode">Merchant category code (4 numbers).</param>
+        /// <param name="paymentTransactionNumber">Number of payment transactions (required).</param>
         /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
         /// <param name="january">January gross payments.</param>
         /// <param name="february">February gross payments.</param>
@@ -246,15 +233,15 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="october">October gross payments.</param>
         /// <param name="november">November gross payments.</param>
         /// <param name="december">December gross payments.</param>
-        /// <param name="type">Form type (required).</param>
+        /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
-        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms.</param>
+        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
         /// <param name="issuerTin">Issuer TIN - readonly.</param>
-        /// <param name="taxYear">Tax Year - only required when creating forms.</param>
+        /// <param name="taxYear">Tax Year - only required when creating forms via $bulk-upsert.</param>
         /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
         /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
         /// <param name="recipientName">Recipient name (required).</param>
-        /// <param name="tinType">Type of TIN (Tax ID Number).</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number.</param>
         /// <param name="recipientSecondName">Recipient second name.</param>
         /// <param name="address">Address. (required).</param>
         /// <param name="address2">Address line 2..</param>
@@ -266,17 +253,31 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office code.</param>
         /// <param name="nonUsProvince">Province or region for non-US/CA addresses..</param>
         /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
-        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled for this form.</param>
+        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
-        /// <param name="stateEfileDate">Date when state e-filing should be scheduled for this form.</param>
-        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled for this form.</param>
+        /// <param name="stateEfileDate">Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
+        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
         /// <param name="noTin">No TIN indicator.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099K(FilerTypeEnum? filerType = default(FilerTypeEnum?), PaymentTypeEnum? paymentType = default(PaymentTypeEnum?), string paymentSettlementEntityNamePhoneNumber = default(string), double? grossAmountPaymentCard = default(double?), double? cardNotPresentTransactions = default(double?), string merchantCategoryCode = default(string), double? paymentTransactionNumber = default(double?), double? federalIncomeTaxWithheld = default(double?), double? january = default(double?), double? february = default(double?), double? march = default(double?), double? april = default(double?), double? may = default(double?), double? june = default(double?), double? july = default(double?), double? august = default(double?), double? september = default(double?), double? october = default(double?), double? november = default(double?), double? december = default(double?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool secondTinNotice = default(bool))
+        public Form1099K(FilerTypeEnum filerType = default(FilerTypeEnum), PaymentTypeEnum paymentType = default(PaymentTypeEnum), string paymentSettlementEntityNamePhoneNumber = default(string), double? grossAmountPaymentCard = default(double?), double? cardNotPresentTransactions = default(double?), string merchantCategoryCode = default(string), double? paymentTransactionNumber = default(double?), double? federalIncomeTaxWithheld = default(double?), double? january = default(double?), double? february = default(double?), double? march = default(double?), double? april = default(double?), double? may = default(double?), double? june = default(double?), double? july = default(double?), double? august = default(double?), double? september = default(double?), double? october = default(double?), double? november = default(double?), double? december = default(double?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
         {
+            this.FilerType = filerType;
+            this.PaymentType = paymentType;
+            // to ensure "grossAmountPaymentCard" is required (not null)
+            if (grossAmountPaymentCard == null)
+            {
+                throw new ArgumentNullException("grossAmountPaymentCard is a required property for Form1099K and cannot be null");
+            }
+            this.GrossAmountPaymentCard = grossAmountPaymentCard;
+            // to ensure "paymentTransactionNumber" is required (not null)
+            if (paymentTransactionNumber == null)
+            {
+                throw new ArgumentNullException("paymentTransactionNumber is a required property for Form1099K and cannot be null");
+            }
+            this.PaymentTransactionNumber = paymentTransactionNumber;
             this.Type = type;
             // to ensure "recipientName" is required (not null)
             if (recipientName == null)
@@ -302,13 +303,9 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("countryCode is a required property for Form1099K and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.FilerType = filerType;
-            this.PaymentType = paymentType;
             this.PaymentSettlementEntityNamePhoneNumber = paymentSettlementEntityNamePhoneNumber;
-            this.GrossAmountPaymentCard = grossAmountPaymentCard;
             this.CardNotPresentTransactions = cardNotPresentTransactions;
             this.MerchantCategoryCode = merchantCategoryCode;
-            this.PaymentTransactionNumber = paymentTransactionNumber;
             this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
             this.January = january;
             this.February = february;
@@ -349,17 +346,17 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Payment settlement entity name and phone number
+        /// Payment settlement entity name and phone number, if different from Filer&#39;s
         /// </summary>
-        /// <value>Payment settlement entity name and phone number</value>
+        /// <value>Payment settlement entity name and phone number, if different from Filer&#39;s</value>
         [DataMember(Name = "paymentSettlementEntityNamePhoneNumber", EmitDefaultValue = true)]
         public string PaymentSettlementEntityNamePhoneNumber { get; set; }
 
         /// <summary>
-        /// Gross amount of payment card/third party network transactions
+        /// Gross amount of payment card/third party network transactions. This value must equal the total of all monthly payment amounts (January through December).
         /// </summary>
-        /// <value>Gross amount of payment card/third party network transactions</value>
-        [DataMember(Name = "grossAmountPaymentCard", EmitDefaultValue = true)]
+        /// <value>Gross amount of payment card/third party network transactions. This value must equal the total of all monthly payment amounts (January through December).</value>
+        [DataMember(Name = "grossAmountPaymentCard", IsRequired = true, EmitDefaultValue = true)]
         public double? GrossAmountPaymentCard { get; set; }
 
         /// <summary>
@@ -370,9 +367,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? CardNotPresentTransactions { get; set; }
 
         /// <summary>
-        /// Merchant category code
+        /// Merchant category code (4 numbers)
         /// </summary>
-        /// <value>Merchant category code</value>
+        /// <value>Merchant category code (4 numbers)</value>
         [DataMember(Name = "merchantCategoryCode", EmitDefaultValue = true)]
         public string MerchantCategoryCode { get; set; }
 
@@ -380,7 +377,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Number of payment transactions
         /// </summary>
         /// <value>Number of payment transactions</value>
-        [DataMember(Name = "paymentTransactionNumber", EmitDefaultValue = true)]
+        [DataMember(Name = "paymentTransactionNumber", IsRequired = true, EmitDefaultValue = true)]
         public double? PaymentTransactionNumber { get; set; }
 
         /// <summary>
@@ -497,9 +494,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IssuerId { get; set; }
 
         /// <summary>
-        /// Issuer Reference ID - only required when creating forms
+        /// Issuer Reference ID - only required when creating forms via $bulk-upsert
         /// </summary>
-        /// <value>Issuer Reference ID - only required when creating forms</value>
+        /// <value>Issuer Reference ID - only required when creating forms via $bulk-upsert</value>
         [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
         public string IssuerReferenceId { get; set; }
 
@@ -511,9 +508,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IssuerTin { get; set; }
 
         /// <summary>
-        /// Tax Year - only required when creating forms
+        /// Tax Year - only required when creating forms via $bulk-upsert
         /// </summary>
-        /// <value>Tax Year - only required when creating forms</value>
+        /// <value>Tax Year - only required when creating forms via $bulk-upsert</value>
         [DataMember(Name = "taxYear", EmitDefaultValue = true)]
         public int? TaxYear { get; set; }
 
@@ -616,9 +613,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Date when federal e-filing should be scheduled for this form
+        /// Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when federal e-filing should be scheduled for this form</value>
+        /// <value>Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "federalEfileDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FederalEfileDate { get; set; }
@@ -631,17 +628,17 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? PostalMail { get; set; }
 
         /// <summary>
-        /// Date when state e-filing should be scheduled for this form
+        /// Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when state e-filing should be scheduled for this form</value>
+        /// <value>Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "stateEfileDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StateEfileDate { get; set; }
 
         /// <summary>
-        /// Date when recipient e-delivery should be scheduled for this form
+        /// Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when recipient e-delivery should be scheduled for this form</value>
+        /// <value>Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "recipientEdeliveryDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? RecipientEdeliveryDate { get; set; }
@@ -679,12 +676,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Second TIN notice</value>
         [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
-        public bool SecondTinNotice { get; set; }
+        public bool? SecondTinNotice { get; set; }
 
         /// <summary>
-        /// Federal e-file status
+        /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)
         /// </summary>
-        /// <value>Federal e-file status</value>
+        /// <value>Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)</value>
         [DataMember(Name = "federalEfileStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail FederalEfileStatus { get; private set; }
 
@@ -697,9 +694,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// State e-file status
+        /// State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state
         /// </summary>
-        /// <value>State e-file status</value>
+        /// <value>State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state</value>
         [DataMember(Name = "stateEfileStatus", EmitDefaultValue = true)]
         public List<StateEfileStatusDetail> StateEfileStatus { get; private set; }
 
@@ -712,9 +709,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// Postal mail to recipient status
+        /// Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered
         /// </summary>
-        /// <value>Postal mail to recipient status</value>
+        /// <value>Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered</value>
         [DataMember(Name = "postalMailStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail PostalMailStatus { get; private set; }
 
@@ -727,9 +724,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// TIN Match status
+        /// TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued
         /// </summary>
-        /// <value>TIN Match status</value>
+        /// <value>TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued</value>
         [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail TinMatchStatus { get; private set; }
 
@@ -742,9 +739,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// Address verification status
+        /// Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted
         /// </summary>
-        /// <value>Address verification status</value>
+        /// <value>Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted</value>
         [DataMember(Name = "addressVerificationStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail AddressVerificationStatus { get; private set; }
 
@@ -757,9 +754,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// EDelivery status
+        /// EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)
         /// </summary>
-        /// <value>EDelivery status</value>
+        /// <value>EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)</value>
         [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail EDeliveryStatus { get; private set; }
 

@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w9\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w9\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -106,57 +105,92 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W9FormRequest" /> class.
         /// </summary>
-        /// <param name="name">The name of the individual or entity associated with the form..</param>
+        /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
         /// <param name="businessName">The name of the business associated with the form..</param>
-        /// <param name="businessClassification">The classification of the business..</param>
+        /// <param name="businessClassification">The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated) (required).</param>
         /// <param name="businessOther">The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;..</param>
         /// <param name="foreignPartnerOwnerOrBeneficiary">Indicates whether the individual is a foreign partner, owner, or beneficiary..</param>
         /// <param name="exemptPayeeCode">The exempt payee code..</param>
         /// <param name="exemptFatcaCode">The exemption from FATCA reporting code..</param>
         /// <param name="foreignCountryIndicator">Indicates whether the individual or entity is in a foreign country..</param>
-        /// <param name="address">The address of the individual or entity..</param>
+        /// <param name="address">The address of the individual or entity. (required).</param>
         /// <param name="foreignAddress">The foreign address of the individual or entity..</param>
-        /// <param name="city">The city of the address..</param>
-        /// <param name="state">The state of the address..</param>
-        /// <param name="zip">The ZIP code of the address..</param>
+        /// <param name="city">The city of the address. (required).</param>
+        /// <param name="state">The state of the address. (required).</param>
+        /// <param name="zip">The ZIP code of the address. (required).</param>
         /// <param name="accountNumber">The account number associated with the form..</param>
-        /// <param name="tinType">The type of TIN provided..</param>
-        /// <param name="tin">The taxpayer identification number (TIN)..</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type. SSN/ITIN (for individuals) and EIN (for businesses). (required).</param>
+        /// <param name="tin">The taxpayer identification number (TIN). (required).</param>
         /// <param name="backupWithholding">Indicates whether backup withholding applies..</param>
         /// <param name="is1099able">Indicates whether the individual or entity should be issued a 1099 form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W9FormRequest(string name = default(string), string businessName = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("companyId is a required property for W9FormRequest and cannot be null");
+                throw new ArgumentNullException("name is a required property for W9FormRequest and cannot be null");
             }
-            this.CompanyId = companyId;
             this.Name = name;
-            this.BusinessName = businessName;
+            // to ensure "businessClassification" is required (not null)
+            if (businessClassification == null)
+            {
+                throw new ArgumentNullException("businessClassification is a required property for W9FormRequest and cannot be null");
+            }
             this.BusinessClassification = businessClassification;
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for W9FormRequest and cannot be null");
+            }
+            this.Address = address;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for W9FormRequest and cannot be null");
+            }
+            this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for W9FormRequest and cannot be null");
+            }
+            this.State = state;
+            // to ensure "zip" is required (not null)
+            if (zip == null)
+            {
+                throw new ArgumentNullException("zip is a required property for W9FormRequest and cannot be null");
+            }
+            this.Zip = zip;
+            // to ensure "tinType" is required (not null)
+            if (tinType == null)
+            {
+                throw new ArgumentNullException("tinType is a required property for W9FormRequest and cannot be null");
+            }
+            this.TinType = tinType;
+            // to ensure "tin" is required (not null)
+            if (tin == null)
+            {
+                throw new ArgumentNullException("tin is a required property for W9FormRequest and cannot be null");
+            }
+            this.Tin = tin;
+            this.BusinessName = businessName;
             this.BusinessOther = businessOther;
             this.ForeignPartnerOwnerOrBeneficiary = foreignPartnerOwnerOrBeneficiary;
             this.ExemptPayeeCode = exemptPayeeCode;
             this.ExemptFatcaCode = exemptFatcaCode;
             this.ForeignCountryIndicator = foreignCountryIndicator;
-            this.Address = address;
             this.ForeignAddress = foreignAddress;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
             this.AccountNumber = accountNumber;
-            this.TinType = tinType;
-            this.Tin = tin;
             this.BackupWithholding = backupWithholding;
             this.Is1099able = is1099able;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
@@ -165,7 +199,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -176,10 +210,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string BusinessName { get; set; }
 
         /// <summary>
-        /// The classification of the business.
+        /// The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)
         /// </summary>
-        /// <value>The classification of the business.</value>
-        [DataMember(Name = "businessClassification", EmitDefaultValue = false)]
+        /// <value>The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)</value>
+        [DataMember(Name = "businessClassification", IsRequired = true, EmitDefaultValue = true)]
         public string BusinessClassification { get; set; }
 
         /// <summary>
@@ -221,7 +255,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The address of the individual or entity.
         /// </summary>
         /// <value>The address of the individual or entity.</value>
-        [DataMember(Name = "address", EmitDefaultValue = false)]
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
@@ -235,21 +269,21 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The city of the address.
         /// </summary>
         /// <value>The city of the address.</value>
-        [DataMember(Name = "city", EmitDefaultValue = true)]
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
         /// The state of the address.
         /// </summary>
         /// <value>The state of the address.</value>
-        [DataMember(Name = "state", EmitDefaultValue = true)]
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
         /// The ZIP code of the address.
         /// </summary>
         /// <value>The ZIP code of the address.</value>
-        [DataMember(Name = "zip", EmitDefaultValue = true)]
+        [DataMember(Name = "zip", IsRequired = true, EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
@@ -260,17 +294,17 @@ namespace Avalara.SDK.Model.A1099.V2
         public string AccountNumber { get; set; }
 
         /// <summary>
-        /// The type of TIN provided.
+        /// Tax Identification Number (TIN) type. SSN/ITIN (for individuals) and EIN (for businesses).
         /// </summary>
-        /// <value>The type of TIN provided.</value>
-        [DataMember(Name = "tinType", EmitDefaultValue = false)]
+        /// <value>Tax Identification Number (TIN) type. SSN/ITIN (for individuals) and EIN (for businesses).</value>
+        [DataMember(Name = "tinType", IsRequired = true, EmitDefaultValue = true)]
         public string TinType { get; set; }
 
         /// <summary>
         /// The taxpayer identification number (TIN).
         /// </summary>
         /// <value>The taxpayer identification number (TIN).</value>
-        [DataMember(Name = "tin", EmitDefaultValue = false)]
+        [DataMember(Name = "tin", IsRequired = true, EmitDefaultValue = true)]
         public string Tin { get; set; }
 
         /// <summary>
@@ -302,10 +336,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Signature { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -374,12 +408,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }

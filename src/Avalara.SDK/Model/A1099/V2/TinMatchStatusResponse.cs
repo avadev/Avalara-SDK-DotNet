@@ -80,7 +80,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The current status for the TIN match request.
         /// </summary>
         /// <value>The current status for the TIN match request.</value>
-        /// <example>None</example>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>

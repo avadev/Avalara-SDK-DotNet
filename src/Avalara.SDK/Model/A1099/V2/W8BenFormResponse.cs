@@ -31,7 +31,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = Avalara.SDK.Client.FileParameter;
 using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
@@ -42,9 +41,62 @@ namespace Avalara.SDK.Model.A1099.V2
     /// W8BenFormResponse
     /// </summary>
     [DataContract(Name = "W8BenFormResponse")]
-    [JsonConverter(typeof(JsonSubtypes), "Type")]
-    public partial class W8BenFormResponse : W9FormBaseResponse, IValidatableObject
+    public partial class W8BenFormResponse : IValidatableObject
     {
+        /// <summary>
+        /// The form type (always \&quot;W8Ben\&quot; for this model).
+        /// </summary>
+        /// <value>The form type (always \&quot;W8Ben\&quot; for this model).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum W4 for value: W4
+            /// </summary>
+            [EnumMember(Value = "W4")]
+            W4 = 1,
+
+            /// <summary>
+            /// Enum W8Ben for value: W8Ben
+            /// </summary>
+            [EnumMember(Value = "W8Ben")]
+            W8Ben = 2,
+
+            /// <summary>
+            /// Enum W8BenE for value: W8BenE
+            /// </summary>
+            [EnumMember(Value = "W8BenE")]
+            W8BenE = 3,
+
+            /// <summary>
+            /// Enum W8Imy for value: W8Imy
+            /// </summary>
+            [EnumMember(Value = "W8Imy")]
+            W8Imy = 4,
+
+            /// <summary>
+            /// Enum W9 for value: W9
+            /// </summary>
+            [EnumMember(Value = "W9")]
+            W9 = 5
+        }
+
+
+        /// <summary>
+        /// The form type (always \&quot;W8Ben\&quot; for this model).
+        /// </summary>
+        /// <value>The form type (always \&quot;W8Ben\&quot; for this model).</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TypeEnum? Type { get; set; }
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return false;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="W8BenFormResponse" /> class.
         /// </summary>
@@ -61,7 +113,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="mailingState">The state of the mailing address..</param>
         /// <param name="mailingZip">The ZIP code of the mailing address..</param>
         /// <param name="mailingCountry">The country of the mailing address..</param>
-        /// <param name="tinType">The type of TIN provided..</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type..</param>
         /// <param name="tin">The taxpayer identification number (TIN)..</param>
         /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not required..</param>
         /// <param name="foreignTin">The foreign taxpayer identification number (TIN)..</param>
@@ -87,8 +139,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
-        /// <param name="type">The type of the response object. (default to &quot;W8BenFormResponse&quot;).</param>
-        public W8BenFormResponse(string name = default(string), string citizenshipCountry = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), DateTime? birthday = default(DateTime?), string treatyCountry = default(string), string treatyArticle = default(string), string treatyReasons = default(string), string withholdingRate = default(string), string incomeType = default(string), string signerName = default(string), string signerCapacity = default(string), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W8BenFormResponse") : base(id, entryStatus, referenceId, companyId, displayName, email, archived, ancestorId, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
+        public W8BenFormResponse(string name = default(string), string citizenshipCountry = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), DateTime? birthday = default(DateTime?), string treatyCountry = default(string), string treatyArticle = default(string), string treatyReasons = default(string), string withholdingRate = default(string), string incomeType = default(string), string signerName = default(string), string signerCapacity = default(string), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Name = name;
             this.CitizenshipCountry = citizenshipCountry;
@@ -116,13 +167,25 @@ namespace Avalara.SDK.Model.A1099.V2
             this.IncomeType = incomeType;
             this.SignerName = signerName;
             this.SignerCapacity = signerCapacity;
+            this.Id = id;
+            this.EntryStatus = entryStatus;
+            this.ReferenceId = referenceId;
+            this.CompanyId = companyId;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Archived = archived;
+            this.AncestorId = ancestorId;
+            this.Signature = signature;
+            this.SignedDate = signedDate;
+            this.EDeliveryConsentedAt = eDeliveryConsentedAt;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        /// <example>International Trading Co.</example>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
@@ -130,7 +193,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of citizenship.
         /// </summary>
         /// <value>The country of citizenship.</value>
-        /// <example>US</example>
         [DataMember(Name = "citizenshipCountry", EmitDefaultValue = false)]
         public string CitizenshipCountry { get; set; }
 
@@ -138,7 +200,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The residential address of the individual or entity.
         /// </summary>
         /// <value>The residential address of the individual or entity.</value>
-        /// <example>789 Global St</example>
         [DataMember(Name = "residenceAddress", EmitDefaultValue = false)]
         public string ResidenceAddress { get; set; }
 
@@ -146,7 +207,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The city of residence.
         /// </summary>
         /// <value>The city of residence.</value>
-        /// <example>Capital City</example>
         [DataMember(Name = "residenceCity", EmitDefaultValue = false)]
         public string ResidenceCity { get; set; }
 
@@ -154,7 +214,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The state of residence.
         /// </summary>
         /// <value>The state of residence.</value>
-        /// <example>DC</example>
         [DataMember(Name = "residenceState", EmitDefaultValue = true)]
         public string ResidenceState { get; set; }
 
@@ -162,7 +221,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The ZIP code of the residence.
         /// </summary>
         /// <value>The ZIP code of the residence.</value>
-        /// <example>20001</example>
         [DataMember(Name = "residenceZip", EmitDefaultValue = false)]
         public string ResidenceZip { get; set; }
 
@@ -170,7 +228,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of residence.
         /// </summary>
         /// <value>The country of residence.</value>
-        /// <example>US</example>
         [DataMember(Name = "residenceCountry", EmitDefaultValue = false)]
         public string ResidenceCountry { get; set; }
 
@@ -178,7 +235,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether the residence address is the mailing address.
         /// </summary>
         /// <value>Indicates whether the residence address is the mailing address.</value>
-        /// <example>false</example>
         [DataMember(Name = "residenceIsMailing", EmitDefaultValue = true)]
         public bool ResidenceIsMailing { get; set; }
 
@@ -186,7 +242,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The mailing address.
         /// </summary>
         /// <value>The mailing address.</value>
-        /// <example>P.O. Box 456</example>
         [DataMember(Name = "mailingAddress", EmitDefaultValue = true)]
         public string MailingAddress { get; set; }
 
@@ -194,7 +249,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The city of the mailing address.
         /// </summary>
         /// <value>The city of the mailing address.</value>
-        /// <example>Capital City</example>
         [DataMember(Name = "mailingCity", EmitDefaultValue = true)]
         public string MailingCity { get; set; }
 
@@ -202,7 +256,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The state of the mailing address.
         /// </summary>
         /// <value>The state of the mailing address.</value>
-        /// <example>DC</example>
         [DataMember(Name = "mailingState", EmitDefaultValue = true)]
         public string MailingState { get; set; }
 
@@ -210,7 +263,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The ZIP code of the mailing address.
         /// </summary>
         /// <value>The ZIP code of the mailing address.</value>
-        /// <example>20002</example>
         [DataMember(Name = "mailingZip", EmitDefaultValue = true)]
         public string MailingZip { get; set; }
 
@@ -218,15 +270,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of the mailing address.
         /// </summary>
         /// <value>The country of the mailing address.</value>
-        /// <example>USA</example>
         [DataMember(Name = "mailingCountry", EmitDefaultValue = true)]
         public string MailingCountry { get; set; }
 
         /// <summary>
-        /// The type of TIN provided.
+        /// Tax Identification Number (TIN) type.
         /// </summary>
-        /// <value>The type of TIN provided.</value>
-        /// <example>SSN</example>
+        /// <value>Tax Identification Number (TIN) type.</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public string TinType { get; set; }
 
@@ -234,7 +284,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The taxpayer identification number (TIN).
         /// </summary>
         /// <value>The taxpayer identification number (TIN).</value>
-        /// <example>123-45-6789</example>
         [DataMember(Name = "tin", EmitDefaultValue = true)]
         public string Tin { get; set; }
 
@@ -242,7 +291,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether a foreign TIN is not required.
         /// </summary>
         /// <value>Indicates whether a foreign TIN is not required.</value>
-        /// <example>false</example>
         [DataMember(Name = "foreignTinNotRequired", EmitDefaultValue = true)]
         public bool ForeignTinNotRequired { get; set; }
 
@@ -250,7 +298,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The foreign taxpayer identification number (TIN).
         /// </summary>
         /// <value>The foreign taxpayer identification number (TIN).</value>
-        /// <example>FTIN56789</example>
         [DataMember(Name = "foreignTin", EmitDefaultValue = true)]
         public string ForeignTin { get; set; }
 
@@ -258,7 +305,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// A reference number for the form.
         /// </summary>
         /// <value>A reference number for the form.</value>
-        /// <example>W8BEN12345</example>
         [DataMember(Name = "referenceNumber", EmitDefaultValue = true)]
         public string ReferenceNumber { get; set; }
 
@@ -266,7 +312,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The birthday of the individual associated with the form.
         /// </summary>
         /// <value>The birthday of the individual associated with the form.</value>
-        /// <example>Mon Oct 01 17:00:00 PDT 1990</example>
         [DataMember(Name = "birthday", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Birthday { get; set; }
@@ -275,7 +320,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country for which the treaty applies.
         /// </summary>
         /// <value>The country for which the treaty applies.</value>
-        /// <example>CA</example>
         [DataMember(Name = "treatyCountry", EmitDefaultValue = false)]
         public string TreatyCountry { get; set; }
 
@@ -283,7 +327,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The specific article of the treaty being claimed.
         /// </summary>
         /// <value>The specific article of the treaty being claimed.</value>
-        /// <example>Article 12</example>
         [DataMember(Name = "treatyArticle", EmitDefaultValue = true)]
         public string TreatyArticle { get; set; }
 
@@ -291,7 +334,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The reasons for claiming treaty benefits.
         /// </summary>
         /// <value>The reasons for claiming treaty benefits.</value>
-        /// <example>Reduced withholding</example>
         [DataMember(Name = "treatyReasons", EmitDefaultValue = true)]
         public string TreatyReasons { get; set; }
 
@@ -299,7 +341,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The withholding rate applied as per the treaty.
         /// </summary>
         /// <value>The withholding rate applied as per the treaty.</value>
-        /// <example>15%</example>
         [DataMember(Name = "withholdingRate", EmitDefaultValue = true)]
         public string WithholdingRate { get; set; }
 
@@ -307,7 +348,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The type of income covered by the treaty.
         /// </summary>
         /// <value>The type of income covered by the treaty.</value>
-        /// <example>Dividend</example>
         [DataMember(Name = "incomeType", EmitDefaultValue = true)]
         public string IncomeType { get; set; }
 
@@ -315,7 +355,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the signer of the form.
         /// </summary>
         /// <value>The name of the signer of the form.</value>
-        /// <example>Alice Johnson</example>
         [DataMember(Name = "signerName", EmitDefaultValue = true)]
         public string SignerName { get; set; }
 
@@ -323,9 +362,99 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The capacity in which the signer is signing the form.
         /// </summary>
         /// <value>The capacity in which the signer is signing the form.</value>
-        /// <example>Authorized Representative</example>
         [DataMember(Name = "signerCapacity", EmitDefaultValue = true)]
         public string SignerCapacity { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the form.
+        /// </summary>
+        /// <value>The unique identifier for the form.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// The entry status information for the form.
+        /// </summary>
+        /// <value>The entry status information for the form.</value>
+        [DataMember(Name = "entryStatus", EmitDefaultValue = false)]
+        public EntryStatusResponse EntryStatus { get; set; }
+
+        /// <summary>
+        /// A reference identifier for the form.
+        /// </summary>
+        /// <value>A reference identifier for the form.</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// The ID of the associated company.
+        /// </summary>
+        /// <value>The ID of the associated company.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
+        public string CompanyId { get; set; }
+
+        /// <summary>
+        /// The display name associated with the form.
+        /// </summary>
+        /// <value>The display name associated with the form.</value>
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The email address of the individual associated with the form.
+        /// </summary>
+        /// <value>The email address of the individual associated with the form.</value>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Indicates whether the form is archived.
+        /// </summary>
+        /// <value>Indicates whether the form is archived.</value>
+        [DataMember(Name = "archived", EmitDefaultValue = true)]
+        public bool Archived { get; set; }
+
+        /// <summary>
+        /// Form ID of previous version.
+        /// </summary>
+        /// <value>Form ID of previous version.</value>
+        [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
+        public string AncestorId { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
+
+        /// <summary>
+        /// The date the form was signed.
+        /// </summary>
+        /// <value>The date the form was signed.</value>
+        [DataMember(Name = "signedDate", EmitDefaultValue = true)]
+        public DateTime? SignedDate { get; set; }
+
+        /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The creation date of the form.
+        /// </summary>
+        /// <value>The creation date of the form.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// The last updated date of the form.
+        /// </summary>
+        /// <value>The last updated date of the form.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -335,7 +464,7 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class W8BenFormResponse {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CitizenshipCountry: ").Append(CitizenshipCountry).Append("\n");
             sb.Append("  ResidenceAddress: ").Append(ResidenceAddress).Append("\n");
@@ -362,6 +491,19 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  IncomeType: ").Append(IncomeType).Append("\n");
             sb.Append("  SignerName: ").Append(SignerName).Append("\n");
             sb.Append("  SignerCapacity: ").Append(SignerCapacity).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
+            sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Archived: ").Append(Archived).Append("\n");
+            sb.Append("  AncestorId: ").Append(AncestorId).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
+            sb.Append("  SignedDate: ").Append(SignedDate).Append("\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -370,7 +512,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -382,20 +524,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.BaseValidate(validationContext);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        protected IEnumerable<ValidationResult> BaseValidate(ValidationContext validationContext)
-        {
-            foreach (var x in base.BaseValidate(validationContext))
-            {
-                yield return x;
-            }
             yield break;
         }
     }

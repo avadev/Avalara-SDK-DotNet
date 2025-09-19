@@ -30,7 +30,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The issuer to create
         /// </summary>
-        public CreateIssuerRequest CreateIssuerRequest { get; set; }
+        public IssuerRequest IssuerRequest { get; set; }
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The issuer to update
         /// </summary>
-        public CreateIssuerRequest CreateIssuerRequest { get; set; }
+        public IssuerRequest IssuerRequest { get; set; }
     }
 
 
@@ -372,7 +372,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateIssuerRequest;
+            localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<IssuerResponse>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -444,7 +444,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateIssuerRequest;
+            localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
 			var localVarResponse = await this.Client.PostAsync<IssuerResponse>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -978,7 +978,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateIssuerRequest;
+            localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<Object>("/1099/issuers/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -1054,7 +1054,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateIssuerRequest;
+            localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
 			var localVarResponse = await this.Client.PutAsync<Object>("/1099/issuers/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -1077,7 +1077,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.8.3";
+            this.Client.SdkVersion = "25.9.0";
         }
         
     }

@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w8bene\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w8bene\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -106,17 +105,17 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W8BenEFormRequest" /> class.
         /// </summary>
-        /// <param name="name">The name of the individual or entity associated with the form..</param>
-        /// <param name="citizenshipCountry">The country of citizenship..</param>
+        /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
+        /// <param name="citizenshipCountry">The country of citizenship. (required).</param>
         /// <param name="disregardedEntity">The name of the disregarded entity receiving the payment (if applicable)..</param>
-        /// <param name="entityType">The entity type..</param>
+        /// <param name="entityType">The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part (required).</param>
         /// <param name="makingTreatyClaim">Indicates whether the entity is making a treaty claim..</param>
-        /// <param name="fatcaStatus">The FATCA status..</param>
+        /// <param name="fatcaStatus">The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account (required).</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
         /// <param name="residenceState">The state of residence..</param>
         /// <param name="residenceZip">The ZIP code of the residence..</param>
-        /// <param name="residenceCountry">The country of residence..</param>
+        /// <param name="residenceCountry">The country of residence. (required).</param>
         /// <param name="residenceIsMailing">Indicates whether the residence address is also the mailing address..</param>
         /// <param name="mailingAddress">The mailing address..</param>
         /// <param name="mailingCity">The city of the mailing address..</param>
@@ -128,7 +127,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not required..</param>
         /// <param name="foreignTin">The foreign taxpayer identification number (TIN)..</param>
         /// <param name="referenceNumber">A reference number for the form..</param>
-        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment..</param>
+        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI.</param>
         /// <param name="disregardedAddress">The address for disregarded entities..</param>
         /// <param name="disregardedCity">The city for disregarded entities..</param>
         /// <param name="disregardedState">The state for disregarded entities..</param>
@@ -138,7 +137,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="treatyCountryCertification">Certifies the beneficial owner&#39;s country under the U.S. tax treaty..</param>
         /// <param name="treatyCountry">The treaty country of the beneficial owner..</param>
         /// <param name="benefitLimitationCertification">Certifies that the beneficial owner is eligible for treaty benefits and meets any limitation on benefits requirements..</param>
-        /// <param name="benefitLimitation">The benefit limitation for tax treaty claims..</param>
+        /// <param name="benefitLimitation">The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other.</param>
         /// <param name="qualifiedResidentStatusCertification">Certifies that the beneficial owner claims treaty benefits and meets the qualified resident status for specific U.S. source income..</param>
         /// <param name="treatyArticle">Indicates the specific article and paragraph of the tax treaty under which the beneficial owner is claiming benefits..</param>
         /// <param name="withholdingRate">Specifies the reduced withholding rate claimed under the applicable tax treaty..</param>
@@ -162,7 +161,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="restrictedDistributorPreexistingSalesComplianceCertification">Certifies that the entity complies with distribution restrictions for U.S.-linked investors  and has addressed any preexisting sales in accordance with FATCA regulations..</param>
         /// <param name="nonreportingIgaFfiCertification">Certifies that the entity meets the requirements to be considered a nonreporting financial institution to an applicable IGA..</param>
         /// <param name="igaCountry">The country for the applicable IGA with the United States..</param>
-        /// <param name="igaModel">The applicable IGA model..</param>
+        /// <param name="igaModel">The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA.</param>
         /// <param name="igaLegalStatusTreatment">Specifies how the applicable IGA is treated under the IGA provisions or Treasury regulations..</param>
         /// <param name="igaFfiTrusteeOrSponsor">The trustee or sponsor name for the nonreporting IGA FFI..</param>
         /// <param name="igaFfiTrusteeIsForeign">Indicates whether the trustee for the nonreporting IGA FFI is foreign..</param>
@@ -203,28 +202,47 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="capacityToSignCertification">Certifies signer has the capacity to sign for the beneficial owner..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W8BenEFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool? makingTreatyClaim = default(bool?), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), string giin = default(string), bool? foreignTinNotRequired = default(bool?), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? treatyCountryCertification = default(bool?), string treatyCountry = default(string), bool? benefitLimitationCertification = default(bool?), string benefitLimitation = default(string), bool? qualifiedResidentStatusCertification = default(bool?), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? ownerDocumentedFfiTrustBeneficiariesCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? nonCommercialFinancialActivityCertification = default(bool?), bool? internationOrganizationCertification = default(bool?), bool? intergovernmentalOrganizationCertification = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? section501COrganizationCertification = default(bool?), DateTime? determinationLetterDate = default(DateTime?), bool? nonprofitOrganizationCertification = default(bool?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? passiveNffeNoSubstantialUsOwnersCertification = default(bool?), bool? passiveNffeSubstantialUsOwnersProvidedCertification = default(bool?), bool? exceptedInterAffiliateFfiCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerRequest> substantialUsOwners = default(List<SubstantialUsOwnerRequest>), string signerName = default(string), bool? capacityToSignCertification = default(bool?), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("companyId is a required property for W8BenEFormRequest and cannot be null");
+                throw new ArgumentNullException("name is a required property for W8BenEFormRequest and cannot be null");
             }
-            this.CompanyId = companyId;
             this.Name = name;
+            // to ensure "citizenshipCountry" is required (not null)
+            if (citizenshipCountry == null)
+            {
+                throw new ArgumentNullException("citizenshipCountry is a required property for W8BenEFormRequest and cannot be null");
+            }
             this.CitizenshipCountry = citizenshipCountry;
-            this.DisregardedEntity = disregardedEntity;
+            // to ensure "entityType" is required (not null)
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("entityType is a required property for W8BenEFormRequest and cannot be null");
+            }
             this.EntityType = entityType;
-            this.MakingTreatyClaim = makingTreatyClaim;
+            // to ensure "fatcaStatus" is required (not null)
+            if (fatcaStatus == null)
+            {
+                throw new ArgumentNullException("fatcaStatus is a required property for W8BenEFormRequest and cannot be null");
+            }
             this.FatcaStatus = fatcaStatus;
+            // to ensure "residenceCountry" is required (not null)
+            if (residenceCountry == null)
+            {
+                throw new ArgumentNullException("residenceCountry is a required property for W8BenEFormRequest and cannot be null");
+            }
+            this.ResidenceCountry = residenceCountry;
+            this.DisregardedEntity = disregardedEntity;
+            this.MakingTreatyClaim = makingTreatyClaim;
             this.ResidenceAddress = residenceAddress;
             this.ResidenceCity = residenceCity;
             this.ResidenceState = residenceState;
             this.ResidenceZip = residenceZip;
-            this.ResidenceCountry = residenceCountry;
             this.ResidenceIsMailing = residenceIsMailing;
             this.MailingAddress = mailingAddress;
             this.MailingCity = mailingCity;
@@ -311,6 +329,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.CapacityToSignCertification = capacityToSignCertification;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
@@ -319,14 +338,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The country of citizenship.
         /// </summary>
         /// <value>The country of citizenship.</value>
-        [DataMember(Name = "citizenshipCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "citizenshipCountry", IsRequired = true, EmitDefaultValue = true)]
         public string CitizenshipCountry { get; set; }
 
         /// <summary>
@@ -337,10 +356,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string DisregardedEntity { get; set; }
 
         /// <summary>
-        /// The entity type.
+        /// The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part
         /// </summary>
-        /// <value>The entity type.</value>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
+        /// <value>The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part</value>
+        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
         public string EntityType { get; set; }
 
         /// <summary>
@@ -351,10 +370,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? MakingTreatyClaim { get; set; }
 
         /// <summary>
-        /// The FATCA status.
+        /// The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account
         /// </summary>
-        /// <value>The FATCA status.</value>
-        [DataMember(Name = "fatcaStatus", EmitDefaultValue = false)]
+        /// <value>The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account</value>
+        [DataMember(Name = "fatcaStatus", IsRequired = true, EmitDefaultValue = true)]
         public string FatcaStatus { get; set; }
 
         /// <summary>
@@ -389,7 +408,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of residence.
         /// </summary>
         /// <value>The country of residence.</value>
-        [DataMember(Name = "residenceCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "residenceCountry", IsRequired = true, EmitDefaultValue = true)]
         public string ResidenceCountry { get; set; }
 
         /// <summary>
@@ -470,9 +489,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string ReferenceNumber { get; set; }
 
         /// <summary>
-        /// The FATCA status of disregarded entity or branch receiving payment.
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI
         /// </summary>
-        /// <value>The FATCA status of disregarded entity or branch receiving payment.</value>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI</value>
         [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
         public string DisregardedEntityFatcaStatus { get; set; }
 
@@ -540,9 +559,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? BenefitLimitationCertification { get; set; }
 
         /// <summary>
-        /// The benefit limitation for tax treaty claims.
+        /// The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other
         /// </summary>
-        /// <value>The benefit limitation for tax treaty claims.</value>
+        /// <value>The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other</value>
         [DataMember(Name = "benefitLimitation", EmitDefaultValue = true)]
         public string BenefitLimitation { get; set; }
 
@@ -708,9 +727,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IgaCountry { get; set; }
 
         /// <summary>
-        /// The applicable IGA model.
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
         /// </summary>
-        /// <value>The applicable IGA model.</value>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
         [DataMember(Name = "igaModel", EmitDefaultValue = true)]
         public string IgaModel { get; set; }
 
@@ -998,10 +1017,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Signature { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -1147,12 +1166,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }

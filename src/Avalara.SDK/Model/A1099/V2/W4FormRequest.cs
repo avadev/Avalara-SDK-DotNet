@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w4\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w4\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -106,17 +105,17 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W4FormRequest" /> class.
         /// </summary>
-        /// <param name="employeeFirstName">The first name of the employee..</param>
+        /// <param name="employeeFirstName">The first name of the employee. (required).</param>
         /// <param name="employeeMiddleName">The middle name of the employee..</param>
-        /// <param name="employeeLastName">The last name of the employee..</param>
+        /// <param name="employeeLastName">The last name of the employee. (required).</param>
         /// <param name="employeeNameSuffix">The name suffix of the employee..</param>
-        /// <param name="tinType">The type of TIN provided..</param>
-        /// <param name="tin">The taxpayer identification number (TIN)..</param>
-        /// <param name="address">The address of the employee..</param>
-        /// <param name="city">The city of residence of the employee..</param>
-        /// <param name="state">The state of residence of the employee..</param>
-        /// <param name="zip">The ZIP code of residence of the employee..</param>
-        /// <param name="maritalStatus">The marital status of the employee..</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type. (required).</param>
+        /// <param name="tin">The taxpayer identification number (TIN). (required).</param>
+        /// <param name="address">The address of the employee. Required unless exempt..</param>
+        /// <param name="city">The city of residence of the employee. Required unless exempt..</param>
+        /// <param name="state">The state of residence of the employee. Required unless exempt..</param>
+        /// <param name="zip">The ZIP code of residence of the employee. Required unless exempt..</param>
+        /// <param name="maritalStatus">The marital status of the employee. Required unless exempt.  Available values:  - Single: Single or Married filing separately  - Married: Married filing jointly or qualifying surviving spouse  - MarriedBut: Head of household. Check only if you&#39;re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual..</param>
         /// <param name="lastNameDiffers">Indicates whether the last name differs from prior records..</param>
         /// <param name="numAllowances">The number of allowances claimed by the employee..</param>
         /// <param name="otherDependents">The number of dependents other than allowances..</param>
@@ -127,23 +126,37 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">The office code associated with the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W4FormRequest(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), string tinType = default(string), string tin = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string maritalStatus = default(string), bool lastNameDiffers = default(bool), int? numAllowances = default(int?), int? otherDependents = default(int?), float? nonJobIncome = default(float?), float? deductions = default(float?), float? additionalWithheld = default(float?), bool exemptFromWithholding = default(bool), string officeCode = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
+            // to ensure "employeeFirstName" is required (not null)
+            if (employeeFirstName == null)
             {
-                throw new ArgumentNullException("companyId is a required property for W4FormRequest and cannot be null");
+                throw new ArgumentNullException("employeeFirstName is a required property for W4FormRequest and cannot be null");
             }
-            this.CompanyId = companyId;
             this.EmployeeFirstName = employeeFirstName;
-            this.EmployeeMiddleName = employeeMiddleName;
+            // to ensure "employeeLastName" is required (not null)
+            if (employeeLastName == null)
+            {
+                throw new ArgumentNullException("employeeLastName is a required property for W4FormRequest and cannot be null");
+            }
             this.EmployeeLastName = employeeLastName;
-            this.EmployeeNameSuffix = employeeNameSuffix;
+            // to ensure "tinType" is required (not null)
+            if (tinType == null)
+            {
+                throw new ArgumentNullException("tinType is a required property for W4FormRequest and cannot be null");
+            }
             this.TinType = tinType;
+            // to ensure "tin" is required (not null)
+            if (tin == null)
+            {
+                throw new ArgumentNullException("tin is a required property for W4FormRequest and cannot be null");
+            }
             this.Tin = tin;
+            this.EmployeeMiddleName = employeeMiddleName;
+            this.EmployeeNameSuffix = employeeNameSuffix;
             this.Address = address;
             this.City = city;
             this.State = state;
@@ -159,6 +172,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.OfficeCode = officeCode;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
@@ -167,7 +181,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The first name of the employee.
         /// </summary>
         /// <value>The first name of the employee.</value>
-        [DataMember(Name = "employeeFirstName", EmitDefaultValue = false)]
+        [DataMember(Name = "employeeFirstName", IsRequired = true, EmitDefaultValue = true)]
         public string EmployeeFirstName { get; set; }
 
         /// <summary>
@@ -181,7 +195,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The last name of the employee.
         /// </summary>
         /// <value>The last name of the employee.</value>
-        [DataMember(Name = "employeeLastName", EmitDefaultValue = false)]
+        [DataMember(Name = "employeeLastName", IsRequired = true, EmitDefaultValue = true)]
         public string EmployeeLastName { get; set; }
 
         /// <summary>
@@ -192,51 +206,51 @@ namespace Avalara.SDK.Model.A1099.V2
         public string EmployeeNameSuffix { get; set; }
 
         /// <summary>
-        /// The type of TIN provided.
+        /// Tax Identification Number (TIN) type.
         /// </summary>
-        /// <value>The type of TIN provided.</value>
-        [DataMember(Name = "tinType", EmitDefaultValue = false)]
+        /// <value>Tax Identification Number (TIN) type.</value>
+        [DataMember(Name = "tinType", IsRequired = true, EmitDefaultValue = true)]
         public string TinType { get; set; }
 
         /// <summary>
         /// The taxpayer identification number (TIN).
         /// </summary>
         /// <value>The taxpayer identification number (TIN).</value>
-        [DataMember(Name = "tin", EmitDefaultValue = false)]
+        [DataMember(Name = "tin", IsRequired = true, EmitDefaultValue = true)]
         public string Tin { get; set; }
 
         /// <summary>
-        /// The address of the employee.
+        /// The address of the employee. Required unless exempt.
         /// </summary>
-        /// <value>The address of the employee.</value>
+        /// <value>The address of the employee. Required unless exempt.</value>
         [DataMember(Name = "address", EmitDefaultValue = true)]
         public string Address { get; set; }
 
         /// <summary>
-        /// The city of residence of the employee.
+        /// The city of residence of the employee. Required unless exempt.
         /// </summary>
-        /// <value>The city of residence of the employee.</value>
+        /// <value>The city of residence of the employee. Required unless exempt.</value>
         [DataMember(Name = "city", EmitDefaultValue = true)]
         public string City { get; set; }
 
         /// <summary>
-        /// The state of residence of the employee.
+        /// The state of residence of the employee. Required unless exempt.
         /// </summary>
-        /// <value>The state of residence of the employee.</value>
+        /// <value>The state of residence of the employee. Required unless exempt.</value>
         [DataMember(Name = "state", EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
-        /// The ZIP code of residence of the employee.
+        /// The ZIP code of residence of the employee. Required unless exempt.
         /// </summary>
-        /// <value>The ZIP code of residence of the employee.</value>
+        /// <value>The ZIP code of residence of the employee. Required unless exempt.</value>
         [DataMember(Name = "zip", EmitDefaultValue = true)]
         public string Zip { get; set; }
 
         /// <summary>
-        /// The marital status of the employee.
+        /// The marital status of the employee. Required unless exempt.  Available values:  - Single: Single or Married filing separately  - Married: Married filing jointly or qualifying surviving spouse  - MarriedBut: Head of household. Check only if you&#39;re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.
         /// </summary>
-        /// <value>The marital status of the employee.</value>
+        /// <value>The marital status of the employee. Required unless exempt.  Available values:  - Single: Single or Married filing separately  - Married: Married filing jointly or qualifying surviving spouse  - MarriedBut: Head of household. Check only if you&#39;re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.</value>
         [DataMember(Name = "maritalStatus", EmitDefaultValue = true)]
         public string MaritalStatus { get; set; }
 
@@ -311,10 +325,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Signature { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -384,12 +398,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }
