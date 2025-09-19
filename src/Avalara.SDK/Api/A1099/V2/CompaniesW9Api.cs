@@ -30,7 +30,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The company to create
         /// </summary>
-        public CreateCompanyRequest CreateCompanyRequest { get; set; }
+        public CompanyRequest CompanyRequest { get; set; }
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <summary>
         /// The updated company data
         /// </summary>
-        public CreateCompanyRequest CreateCompanyRequest { get; set; }
+        public CompanyRequest CompanyRequest { get; set; }
     }
 
 
@@ -372,7 +372,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
+            localVarRequestOptions.Data = requestParameters.CompanyRequest;
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<CompanyResponse>("/w9/companies", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -444,7 +444,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
+            localVarRequestOptions.Data = requestParameters.CompanyRequest;
 
             // make the HTTP request
 			var localVarResponse = await this.Client.PostAsync<CompanyResponse>("/w9/companies", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -979,7 +979,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
+            localVarRequestOptions.Data = requestParameters.CompanyRequest;
 
             // make the HTTP request
             var localVarResponse = this.Client.Put<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
@@ -1056,7 +1056,7 @@ namespace Avalara.SDK.Api.A1099.V2
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
             }
-            localVarRequestOptions.Data = requestParameters.CreateCompanyRequest;
+            localVarRequestOptions.Data = requestParameters.CompanyRequest;
 
             // make the HTTP request
 			var localVarResponse = await this.Client.PutAsync<CompanyResponse>("/w9/companies/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
@@ -1079,7 +1079,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.8.3";
+            this.Client.SdkVersion = "25.9.0";
         }
         
     }

@@ -43,9 +43,9 @@ namespace Example
             var apiInstance = new CompaniesW9Api(apiClient);
             var requestParameters = new CreateCompanyRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 68cce84c-ae6e-4cef-bdc6-4620c710b5e5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = a607ad38-398e-43d2-918d-d809e43dbd6b;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CreateCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | The company to create (optional) 
+            requestParameters.CompanyRequest = new CompanyRequest(); // CompanyRequest | The company to create (optional) 
 
             try
             {
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CreateCompanyRequest** | [**CreateCompanyRequest**](CreateCompanyRequest.md)| The company to create | [optional] 
+ **CompanyRequest** | [**CompanyRequest**](CompanyRequest.md)| The company to create | [optional] 
 
 ### Return type
 
@@ -129,7 +129,7 @@ namespace Example
             var requestParameters = new DeleteCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The company to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = f2e08ea9-6e1e-4828-91f9-4926ff26dbe4;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 54780530-dee1-472f-8626-a1ef1d6f3bfa;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -220,7 +220,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = f431c7bb-9661-447a-8f5f-b17b3d55a06c;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 7ee6e06e-ae28-4317-9053-d966f0b24a94;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -312,7 +312,7 @@ namespace Example
             var requestParameters = new GetCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the company
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = c5c11797-5ea9-4ec3-85ba-ed4e0ee63300;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = c2254966-bcae-4b32-a7b4-67f0518ca748;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -399,9 +399,9 @@ namespace Example
             var requestParameters = new UpdateCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The ID of the company to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 86a26d78-90b6-4ca0-a10b-0221d11dd34a;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = b730ea19-59f4-4cc8-8ef0-94a9d4637a6a;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CreateCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | The updated company data (optional) 
+            requestParameters.CompanyRequest = new CompanyRequest(); // CompanyRequest | The updated company data (optional) 
 
             try
             {
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CreateCompanyRequest** | [**CreateCompanyRequest**](CreateCompanyRequest.md)| The updated company data | [optional] 
+ **CompanyRequest** | [**CompanyRequest**](CompanyRequest.md)| The updated company data | [optional] 
 
 ### Return type
 

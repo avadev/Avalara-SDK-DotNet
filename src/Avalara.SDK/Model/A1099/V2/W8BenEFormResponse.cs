@@ -31,7 +31,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = Avalara.SDK.Client.FileParameter;
 using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
@@ -42,9 +41,62 @@ namespace Avalara.SDK.Model.A1099.V2
     /// W8BenEFormResponse
     /// </summary>
     [DataContract(Name = "W8BenEFormResponse")]
-    [JsonConverter(typeof(JsonSubtypes), "Type")]
-    public partial class W8BenEFormResponse : W9FormBaseResponse, IValidatableObject
+    public partial class W8BenEFormResponse : IValidatableObject
     {
+        /// <summary>
+        /// The form type (always \&quot;W8BenE\&quot; for this model).
+        /// </summary>
+        /// <value>The form type (always \&quot;W8BenE\&quot; for this model).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum W4 for value: W4
+            /// </summary>
+            [EnumMember(Value = "W4")]
+            W4 = 1,
+
+            /// <summary>
+            /// Enum W8Ben for value: W8Ben
+            /// </summary>
+            [EnumMember(Value = "W8Ben")]
+            W8Ben = 2,
+
+            /// <summary>
+            /// Enum W8BenE for value: W8BenE
+            /// </summary>
+            [EnumMember(Value = "W8BenE")]
+            W8BenE = 3,
+
+            /// <summary>
+            /// Enum W8Imy for value: W8Imy
+            /// </summary>
+            [EnumMember(Value = "W8Imy")]
+            W8Imy = 4,
+
+            /// <summary>
+            /// Enum W9 for value: W9
+            /// </summary>
+            [EnumMember(Value = "W9")]
+            W9 = 5
+        }
+
+
+        /// <summary>
+        /// The form type (always \&quot;W8BenE\&quot; for this model).
+        /// </summary>
+        /// <value>The form type (always \&quot;W8BenE\&quot; for this model).</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TypeEnum? Type { get; set; }
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return false;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="W8BenEFormResponse" /> class.
         /// </summary>
@@ -65,7 +117,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="mailingState">The state of the mailing address..</param>
         /// <param name="mailingZip">The ZIP code of the mailing address..</param>
         /// <param name="mailingCountry">The country of the mailing address..</param>
-        /// <param name="tinType">The type of TIN provided..</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type..</param>
         /// <param name="tin">The taxpayer identification number (TIN)..</param>
         /// <param name="giin">The global intermediary identification number (GIIN)..</param>
         /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not required..</param>
@@ -157,8 +209,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
-        /// <param name="type">The type of the response object. (default to &quot;W8BenEFormResponse&quot;).</param>
-        public W8BenEFormResponse(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool makingTreatyClaim = default(bool), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), string giin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool treatyCountryCertification = default(bool), string treatyCountry = default(string), bool benefitLimitationCertification = default(bool), string benefitLimitation = default(string), bool qualifiedResidentStatusCertification = default(bool), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool investmentEntityCertification = default(bool), bool controlledForeignCorporationCertification = default(bool), bool compliantNonregisteringLocalBankCertification = default(bool), bool compliantFfiLowValueAccountsCertification = default(bool), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool sponsoredCloselyHeldInvestmentVehicleCertification = default(bool), bool compliantLimitedLifeDebtEntityCertification = default(bool), bool investmentEntityNoFinancialAccountsCertification = default(bool), bool ownerDocumentedFfiCertification = default(bool), bool ownerDocumentedFfiReportingStatementCertification = default(bool), bool ownerDocumentedFfiAuditorLetterCertification = default(bool), bool ownerDocumentedFfiTrustBeneficiariesCertification = default(bool), bool restrictedDistributorCertification = default(bool), bool restrictedDistributorAgreementCertification = default(bool), bool restrictedDistributorPreexistingSalesComplianceCertification = default(bool), bool nonreportingIgaFfiCertification = default(bool), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool nonCommercialFinancialActivityCertification = default(bool), bool internationOrganizationCertification = default(bool), bool intergovernmentalOrganizationCertification = default(bool), bool treatyQualifiedPensionFundCertification = default(bool), bool qualifiedRetirementFundCertification = default(bool), bool narrowParticipationRetirementFundCertification = default(bool), bool section401AEquivalentPensionPlanCertification = default(bool), bool investmentEntityForRetirementFundsCertification = default(bool), bool exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool), bool exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool), bool territoryFinancialInstitutionCertification = default(bool), bool exceptedNonfinancialGroupEntityCertification = default(bool), bool exceptedNonfinancialStartUpCertification = default(bool), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool section501COrganizationCertification = default(bool), DateTime? determinationLetterDate = default(DateTime?), bool nonprofitOrganizationCertification = default(bool), bool publiclyTradedNffeCertification = default(bool), string publiclyTradedNffeSecuritiesMarket = default(string), bool nffeAffiliateOfPubliclyTradedEntityCertification = default(bool), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool exceptedTerritoryNffeCertification = default(bool), bool activeNffeCertification = default(bool), bool passiveNffeCertification = default(bool), bool passiveNffeNoSubstantialUsOwnersCertification = default(bool), bool passiveNffeSubstantialUsOwnersProvidedCertification = default(bool), bool exceptedInterAffiliateFfiCertification = default(bool), bool sponsoredDirectReportingNffeCertification = default(bool), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerResponse> substantialUsOwners = default(List<SubstantialUsOwnerResponse>), string signerName = default(string), bool capacityToSignCertification = default(bool), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string type = @"W8BenEFormResponse") : base(id, entryStatus, referenceId, companyId, displayName, email, archived, ancestorId, signature, signedDate, eDeliveryConsentedAt, createdAt, updatedAt, type)
+        public W8BenEFormResponse(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool makingTreatyClaim = default(bool), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), string giin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool treatyCountryCertification = default(bool), string treatyCountry = default(string), bool benefitLimitationCertification = default(bool), string benefitLimitation = default(string), bool qualifiedResidentStatusCertification = default(bool), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool investmentEntityCertification = default(bool), bool controlledForeignCorporationCertification = default(bool), bool compliantNonregisteringLocalBankCertification = default(bool), bool compliantFfiLowValueAccountsCertification = default(bool), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool sponsoredCloselyHeldInvestmentVehicleCertification = default(bool), bool compliantLimitedLifeDebtEntityCertification = default(bool), bool investmentEntityNoFinancialAccountsCertification = default(bool), bool ownerDocumentedFfiCertification = default(bool), bool ownerDocumentedFfiReportingStatementCertification = default(bool), bool ownerDocumentedFfiAuditorLetterCertification = default(bool), bool ownerDocumentedFfiTrustBeneficiariesCertification = default(bool), bool restrictedDistributorCertification = default(bool), bool restrictedDistributorAgreementCertification = default(bool), bool restrictedDistributorPreexistingSalesComplianceCertification = default(bool), bool nonreportingIgaFfiCertification = default(bool), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool nonCommercialFinancialActivityCertification = default(bool), bool internationOrganizationCertification = default(bool), bool intergovernmentalOrganizationCertification = default(bool), bool treatyQualifiedPensionFundCertification = default(bool), bool qualifiedRetirementFundCertification = default(bool), bool narrowParticipationRetirementFundCertification = default(bool), bool section401AEquivalentPensionPlanCertification = default(bool), bool investmentEntityForRetirementFundsCertification = default(bool), bool exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool), bool exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool), bool territoryFinancialInstitutionCertification = default(bool), bool exceptedNonfinancialGroupEntityCertification = default(bool), bool exceptedNonfinancialStartUpCertification = default(bool), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool section501COrganizationCertification = default(bool), DateTime? determinationLetterDate = default(DateTime?), bool nonprofitOrganizationCertification = default(bool), bool publiclyTradedNffeCertification = default(bool), string publiclyTradedNffeSecuritiesMarket = default(string), bool nffeAffiliateOfPubliclyTradedEntityCertification = default(bool), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool exceptedTerritoryNffeCertification = default(bool), bool activeNffeCertification = default(bool), bool passiveNffeCertification = default(bool), bool passiveNffeNoSubstantialUsOwnersCertification = default(bool), bool passiveNffeSubstantialUsOwnersProvidedCertification = default(bool), bool exceptedInterAffiliateFfiCertification = default(bool), bool sponsoredDirectReportingNffeCertification = default(bool), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerResponse> substantialUsOwners = default(List<SubstantialUsOwnerResponse>), string signerName = default(string), bool capacityToSignCertification = default(bool), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Name = name;
             this.CitizenshipCountry = citizenshipCountry;
@@ -256,13 +307,25 @@ namespace Avalara.SDK.Model.A1099.V2
             this.SubstantialUsOwners = substantialUsOwners;
             this.SignerName = signerName;
             this.CapacityToSignCertification = capacityToSignCertification;
+            this.Id = id;
+            this.EntryStatus = entryStatus;
+            this.ReferenceId = referenceId;
+            this.CompanyId = companyId;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Archived = archived;
+            this.AncestorId = ancestorId;
+            this.Signature = signature;
+            this.SignedDate = signedDate;
+            this.EDeliveryConsentedAt = eDeliveryConsentedAt;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        /// <example>Global Enterprises LLC</example>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
@@ -270,7 +333,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of citizenship.
         /// </summary>
         /// <value>The country of citizenship.</value>
-        /// <example>USA</example>
         [DataMember(Name = "citizenshipCountry", EmitDefaultValue = false)]
         public string CitizenshipCountry { get; set; }
 
@@ -278,7 +340,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the disregarded entity receiving the payment (if applicable).
         /// </summary>
         /// <value>The name of the disregarded entity receiving the payment (if applicable).</value>
-        /// <example>Subsidiary LLC</example>
         [DataMember(Name = "disregardedEntity", EmitDefaultValue = true)]
         public string DisregardedEntity { get; set; }
 
@@ -286,7 +347,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The entity type.
         /// </summary>
         /// <value>The entity type.</value>
-        /// <example>Corporation</example>
         [DataMember(Name = "entityType", EmitDefaultValue = false)]
         public string EntityType { get; set; }
 
@@ -294,7 +354,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether the entity is making a treaty claim.
         /// </summary>
         /// <value>Indicates whether the entity is making a treaty claim.</value>
-        /// <example>false</example>
         [DataMember(Name = "makingTreatyClaim", EmitDefaultValue = true)]
         public bool MakingTreatyClaim { get; set; }
 
@@ -302,7 +361,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The FATCA status.
         /// </summary>
         /// <value>The FATCA status.</value>
-        /// <example>Active</example>
         [DataMember(Name = "fatcaStatus", EmitDefaultValue = false)]
         public string FatcaStatus { get; set; }
 
@@ -310,7 +368,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The residential address of the individual or entity.
         /// </summary>
         /// <value>The residential address of the individual or entity.</value>
-        /// <example>123 International Blvd</example>
         [DataMember(Name = "residenceAddress", EmitDefaultValue = false)]
         public string ResidenceAddress { get; set; }
 
@@ -318,7 +375,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The city of residence.
         /// </summary>
         /// <value>The city of residence.</value>
-        /// <example>Metropolis</example>
         [DataMember(Name = "residenceCity", EmitDefaultValue = false)]
         public string ResidenceCity { get; set; }
 
@@ -326,7 +382,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The state of residence.
         /// </summary>
         /// <value>The state of residence.</value>
-        /// <example>NY</example>
         [DataMember(Name = "residenceState", EmitDefaultValue = true)]
         public string ResidenceState { get; set; }
 
@@ -334,7 +389,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The ZIP code of the residence.
         /// </summary>
         /// <value>The ZIP code of the residence.</value>
-        /// <example>10118</example>
         [DataMember(Name = "residenceZip", EmitDefaultValue = false)]
         public string ResidenceZip { get; set; }
 
@@ -342,7 +396,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of residence.
         /// </summary>
         /// <value>The country of residence.</value>
-        /// <example>USA</example>
         [DataMember(Name = "residenceCountry", EmitDefaultValue = false)]
         public string ResidenceCountry { get; set; }
 
@@ -350,7 +403,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether the residence address is also the mailing address.
         /// </summary>
         /// <value>Indicates whether the residence address is also the mailing address.</value>
-        /// <example>false</example>
         [DataMember(Name = "residenceIsMailing", EmitDefaultValue = true)]
         public bool ResidenceIsMailing { get; set; }
 
@@ -358,7 +410,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The mailing address.
         /// </summary>
         /// <value>The mailing address.</value>
-        /// <example>P.O. Box 123</example>
         [DataMember(Name = "mailingAddress", EmitDefaultValue = true)]
         public string MailingAddress { get; set; }
 
@@ -366,7 +417,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The city of the mailing address.
         /// </summary>
         /// <value>The city of the mailing address.</value>
-        /// <example>Metropolis</example>
         [DataMember(Name = "mailingCity", EmitDefaultValue = true)]
         public string MailingCity { get; set; }
 
@@ -374,7 +424,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The state of the mailing address.
         /// </summary>
         /// <value>The state of the mailing address.</value>
-        /// <example>NY</example>
         [DataMember(Name = "mailingState", EmitDefaultValue = true)]
         public string MailingState { get; set; }
 
@@ -382,7 +431,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The ZIP code of the mailing address.
         /// </summary>
         /// <value>The ZIP code of the mailing address.</value>
-        /// <example>10119</example>
         [DataMember(Name = "mailingZip", EmitDefaultValue = true)]
         public string MailingZip { get; set; }
 
@@ -390,14 +438,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of the mailing address.
         /// </summary>
         /// <value>The country of the mailing address.</value>
-        /// <example>USA</example>
         [DataMember(Name = "mailingCountry", EmitDefaultValue = true)]
         public string MailingCountry { get; set; }
 
         /// <summary>
-        /// The type of TIN provided.
+        /// Tax Identification Number (TIN) type.
         /// </summary>
-        /// <value>The type of TIN provided.</value>
+        /// <value>Tax Identification Number (TIN) type.</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public string TinType { get; set; }
 
@@ -405,7 +452,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The taxpayer identification number (TIN).
         /// </summary>
         /// <value>The taxpayer identification number (TIN).</value>
-        /// <example>123-45-6789</example>
         [DataMember(Name = "tin", EmitDefaultValue = true)]
         public string Tin { get; set; }
 
@@ -413,7 +459,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The global intermediary identification number (GIIN).
         /// </summary>
         /// <value>The global intermediary identification number (GIIN).</value>
-        /// <example>GIIN12345678</example>
         [DataMember(Name = "giin", EmitDefaultValue = true)]
         public string Giin { get; set; }
 
@@ -421,7 +466,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Indicates whether a foreign TIN is not required.
         /// </summary>
         /// <value>Indicates whether a foreign TIN is not required.</value>
-        /// <example>true</example>
         [DataMember(Name = "foreignTinNotRequired", EmitDefaultValue = true)]
         public bool ForeignTinNotRequired { get; set; }
 
@@ -436,7 +480,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// A reference number for the form.
         /// </summary>
         /// <value>A reference number for the form.</value>
-        /// <example>W8BENE12345</example>
         [DataMember(Name = "referenceNumber", EmitDefaultValue = true)]
         public string ReferenceNumber { get; set; }
 
@@ -493,7 +536,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies the beneficial owner&#39;s country under the U.S. tax treaty.
         /// </summary>
         /// <value>Certifies the beneficial owner&#39;s country under the U.S. tax treaty.</value>
-        /// <example>false</example>
         [DataMember(Name = "treatyCountryCertification", EmitDefaultValue = true)]
         public bool TreatyCountryCertification { get; set; }
 
@@ -508,7 +550,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the beneficial owner is eligible for treaty benefits and meets any limitation on benefits requirements.
         /// </summary>
         /// <value>Certifies that the beneficial owner is eligible for treaty benefits and meets any limitation on benefits requirements.</value>
-        /// <example>false</example>
         [DataMember(Name = "benefitLimitationCertification", EmitDefaultValue = true)]
         public bool BenefitLimitationCertification { get; set; }
 
@@ -523,7 +564,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the beneficial owner claims treaty benefits and meets the qualified resident status for specific U.S. source income.
         /// </summary>
         /// <value>Certifies that the beneficial owner claims treaty benefits and meets the qualified resident status for specific U.S. source income.</value>
-        /// <example>false</example>
         [DataMember(Name = "qualifiedResidentStatusCertification", EmitDefaultValue = true)]
         public bool QualifiedResidentStatusCertification { get; set; }
 
@@ -566,7 +606,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is an investment entity, not a QI, WP, or WT, and has an agreement with a sponsoring entity.
         /// </summary>
         /// <value>Certifies that the entity is an investment entity, not a QI, WP, or WT, and has an agreement with a sponsoring entity.</value>
-        /// <example>false</example>
         [DataMember(Name = "investmentEntityCertification", EmitDefaultValue = true)]
         public bool InvestmentEntityCertification { get; set; }
 
@@ -574,7 +613,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a controlled foreign corporation sponsored by a U.S. financial institution, not a QI, WP, or WT,  and shares a common electronic account system for full transparency.
         /// </summary>
         /// <value>Certifies that the entity is a controlled foreign corporation sponsored by a U.S. financial institution, not a QI, WP, or WT,  and shares a common electronic account system for full transparency.</value>
-        /// <example>false</example>
         [DataMember(Name = "controlledForeignCorporationCertification", EmitDefaultValue = true)]
         public bool ControlledForeignCorporationCertification { get; set; }
 
@@ -582,7 +620,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the FFI operates solely as a limited bank or credit union within its country, meets asset thresholds,  and has no foreign operations or affiliations outside its country of organization.
         /// </summary>
         /// <value>Certifies that the FFI operates solely as a limited bank or credit union within its country, meets asset thresholds,  and has no foreign operations or affiliations outside its country of organization.</value>
-        /// <example>false</example>
         [DataMember(Name = "compliantNonregisteringLocalBankCertification", EmitDefaultValue = true)]
         public bool CompliantNonregisteringLocalBankCertification { get; set; }
 
@@ -590,7 +627,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the FFI is not primarily engaged in investment activities, maintains only low-value accounts,  and has limited total assets within its group.
         /// </summary>
         /// <value>Certifies that the FFI is not primarily engaged in investment activities, maintains only low-value accounts,  and has limited total assets within its group.</value>
-        /// <example>false</example>
         [DataMember(Name = "compliantFfiLowValueAccountsCertification", EmitDefaultValue = true)]
         public bool CompliantFfiLowValueAccountsCertification { get; set; }
 
@@ -605,7 +641,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a sponsored investment entity with 20 or fewer individual owners,  and that all compliance obligations are fulfilled by the sponsoring entity.
         /// </summary>
         /// <value>Certifies that the entity is a sponsored investment entity with 20 or fewer individual owners,  and that all compliance obligations are fulfilled by the sponsoring entity.</value>
-        /// <example>false</example>
         [DataMember(Name = "sponsoredCloselyHeldInvestmentVehicleCertification", EmitDefaultValue = true)]
         public bool SponsoredCloselyHeldInvestmentVehicleCertification { get; set; }
 
@@ -613,7 +648,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity qualifies as a limited life debt investment entity based on its formation date, issuance terms,  and compliance with regulatory requirements.
         /// </summary>
         /// <value>Certifies that the entity qualifies as a limited life debt investment entity based on its formation date, issuance terms,  and compliance with regulatory requirements.</value>
-        /// <example>false</example>
         [DataMember(Name = "compliantLimitedLifeDebtEntityCertification", EmitDefaultValue = true)]
         public bool CompliantLimitedLifeDebtEntityCertification { get; set; }
 
@@ -621,7 +655,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a financial institution solely because it is an investment entity under regulations  and the entity does not maintain financial accounts.
         /// </summary>
         /// <value>Certifies that the entity is a financial institution solely because it is an investment entity under regulations  and the entity does not maintain financial accounts.</value>
-        /// <example>false</example>
         [DataMember(Name = "investmentEntityNoFinancialAccountsCertification", EmitDefaultValue = true)]
         public bool InvestmentEntityNoFinancialAccountsCertification { get; set; }
 
@@ -629,7 +662,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the FFI meets all requirements to qualify as an owner-documented FFI, including restrictions on activities,  ownership, and account relationships.
         /// </summary>
         /// <value>Certifies that the FFI meets all requirements to qualify as an owner-documented FFI, including restrictions on activities,  ownership, and account relationships.</value>
-        /// <example>false</example>
         [DataMember(Name = "ownerDocumentedFfiCertification", EmitDefaultValue = true)]
         public bool OwnerDocumentedFfiCertification { get; set; }
 
@@ -637,7 +669,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the FFI will provide a complete owner reporting statement  and required documentation for each relevant owner or debt holder.
         /// </summary>
         /// <value>Certifies that the FFI will provide a complete owner reporting statement  and required documentation for each relevant owner or debt holder.</value>
-        /// <example>false</example>
         [DataMember(Name = "ownerDocumentedFfiReportingStatementCertification", EmitDefaultValue = true)]
         public bool OwnerDocumentedFfiReportingStatementCertification { get; set; }
 
@@ -645,7 +676,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the FFI will provide an auditor’s letter and required owner reporting documentation  to confirm its status as an owner-documented FFI.
         /// </summary>
         /// <value>Certifies that the FFI will provide an auditor’s letter and required owner reporting documentation  to confirm its status as an owner-documented FFI.</value>
-        /// <example>false</example>
         [DataMember(Name = "ownerDocumentedFfiAuditorLetterCertification", EmitDefaultValue = true)]
         public bool OwnerDocumentedFfiAuditorLetterCertification { get; set; }
 
@@ -653,7 +683,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the trust has no contingent or unidentified beneficiaries or designated classes of beneficiaries.
         /// </summary>
         /// <value>Certifies that the trust has no contingent or unidentified beneficiaries or designated classes of beneficiaries.</value>
-        /// <example>false</example>
         [DataMember(Name = "ownerDocumentedFfiTrustBeneficiariesCertification", EmitDefaultValue = true)]
         public bool OwnerDocumentedFfiTrustBeneficiariesCertification { get; set; }
 
@@ -661,7 +690,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity qualifies as a restricted distributor based on its operations, customer base, regulatory compliance,  and financial and geographic limitations.
         /// </summary>
         /// <value>Certifies that the entity qualifies as a restricted distributor based on its operations, customer base, regulatory compliance,  and financial and geographic limitations.</value>
-        /// <example>false</example>
         [DataMember(Name = "restrictedDistributorCertification", EmitDefaultValue = true)]
         public bool RestrictedDistributorCertification { get; set; }
 
@@ -669,7 +697,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is, and has been, bound by distribution agreements prohibiting sales of fund interests to  specified U.S. persons and certain non-U.S. entities.
         /// </summary>
         /// <value>Certifies that the entity is, and has been, bound by distribution agreements prohibiting sales of fund interests to  specified U.S. persons and certain non-U.S. entities.</value>
-        /// <example>false</example>
         [DataMember(Name = "restrictedDistributorAgreementCertification", EmitDefaultValue = true)]
         public bool RestrictedDistributorAgreementCertification { get; set; }
 
@@ -677,7 +704,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity complies with distribution restrictions for U.S.-linked investors  and has addressed any preexisting sales in accordance with FATCA regulations.
         /// </summary>
         /// <value>Certifies that the entity complies with distribution restrictions for U.S.-linked investors  and has addressed any preexisting sales in accordance with FATCA regulations.</value>
-        /// <example>false</example>
         [DataMember(Name = "restrictedDistributorPreexistingSalesComplianceCertification", EmitDefaultValue = true)]
         public bool RestrictedDistributorPreexistingSalesComplianceCertification { get; set; }
 
@@ -685,7 +711,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity meets the requirements to be considered a nonreporting financial institution to an applicable IGA.
         /// </summary>
         /// <value>Certifies that the entity meets the requirements to be considered a nonreporting financial institution to an applicable IGA.</value>
-        /// <example>false</example>
         [DataMember(Name = "nonreportingIgaFfiCertification", EmitDefaultValue = true)]
         public bool NonreportingIgaFfiCertification { get; set; }
 
@@ -728,7 +753,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is the beneficial owner and is not engaged in commercial financial activities related  to the specified payments, accounts or obligations for which this form is submitted.
         /// </summary>
         /// <value>Certifies that the entity is the beneficial owner and is not engaged in commercial financial activities related  to the specified payments, accounts or obligations for which this form is submitted.</value>
-        /// <example>false</example>
         [DataMember(Name = "nonCommercialFinancialActivityCertification", EmitDefaultValue = true)]
         public bool NonCommercialFinancialActivityCertification { get; set; }
 
@@ -736,7 +760,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is an international organization described in section 7701(a)(18).
         /// </summary>
         /// <value>Certifies that the entity is an international organization described in section 7701(a)(18).</value>
-        /// <example>false</example>
         [DataMember(Name = "internationOrganizationCertification", EmitDefaultValue = true)]
         public bool InternationOrganizationCertification { get; set; }
 
@@ -744,7 +767,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is an intergovernmental or supranational organization primarily comprised of foreign governments,  is the beneficial owner, and is not engaged in commercial financial activities.
         /// </summary>
         /// <value>Certifies that the entity is an intergovernmental or supranational organization primarily comprised of foreign governments,  is the beneficial owner, and is not engaged in commercial financial activities.</value>
-        /// <example>false</example>
         [DataMember(Name = "intergovernmentalOrganizationCertification", EmitDefaultValue = true)]
         public bool IntergovernmentalOrganizationCertification { get; set; }
 
@@ -752,7 +774,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a pension or retirement fund established in a treaty country  and is entitled to treaty benefits on U.S. source income.
         /// </summary>
         /// <value>Certifies that the entity is a pension or retirement fund established in a treaty country  and is entitled to treaty benefits on U.S. source income.</value>
-        /// <example>false</example>
         [DataMember(Name = "treatyQualifiedPensionFundCertification", EmitDefaultValue = true)]
         public bool TreatyQualifiedPensionFundCertification { get; set; }
 
@@ -760,7 +781,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a government-regulated retirement fund meeting specific requirements for contributions, tax exemption,  beneficiary limits, and distribution restrictions.
         /// </summary>
         /// <value>Certifies that the entity is a government-regulated retirement fund meeting specific requirements for contributions, tax exemption,  beneficiary limits, and distribution restrictions.</value>
-        /// <example>false</example>
         [DataMember(Name = "qualifiedRetirementFundCertification", EmitDefaultValue = true)]
         public bool QualifiedRetirementFundCertification { get; set; }
 
@@ -768,7 +788,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a government-regulated retirement fund with fewer than 50 participants, limited foreign ownership,  and employer sponsorship that is not from investment entities or passive NFFEs.
         /// </summary>
         /// <value>Certifies that the entity is a government-regulated retirement fund with fewer than 50 participants, limited foreign ownership,  and employer sponsorship that is not from investment entities or passive NFFEs.</value>
-        /// <example>false</example>
         [DataMember(Name = "narrowParticipationRetirementFundCertification", EmitDefaultValue = true)]
         public bool NarrowParticipationRetirementFundCertification { get; set; }
 
@@ -776,7 +795,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is formed under a pension plan meeting section 401(a) requirements, except for being U.S.-trust funded.
         /// </summary>
         /// <value>Certifies that the entity is formed under a pension plan meeting section 401(a) requirements, except for being U.S.-trust funded.</value>
-        /// <example>false</example>
         [DataMember(Name = "section401AEquivalentPensionPlanCertification", EmitDefaultValue = true)]
         public bool Section401AEquivalentPensionPlanCertification { get; set; }
 
@@ -784,7 +802,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is established solely to earn income for the benefit of qualifying retirement funds  or accounts under applicable FATCA regulations or IGAs.
         /// </summary>
         /// <value>Certifies that the entity is established solely to earn income for the benefit of qualifying retirement funds  or accounts under applicable FATCA regulations or IGAs.</value>
-        /// <example>false</example>
         [DataMember(Name = "investmentEntityForRetirementFundsCertification", EmitDefaultValue = true)]
         public bool InvestmentEntityForRetirementFundsCertification { get; set; }
 
@@ -792,7 +809,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is established and sponsored by a qualifying exempt beneficial owner to provide retirement, disability,  or death benefits to individuals based on services performed for the sponsor.
         /// </summary>
         /// <value>Certifies that the entity is established and sponsored by a qualifying exempt beneficial owner to provide retirement, disability,  or death benefits to individuals based on services performed for the sponsor.</value>
-        /// <example>false</example>
         [DataMember(Name = "exemptBeneficialOwnerSponsoredRetirementFundCertification", EmitDefaultValue = true)]
         public bool ExemptBeneficialOwnerSponsoredRetirementFundCertification { get; set; }
 
@@ -800,7 +816,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is an investment entity wholly owned by exempt beneficial owners and has provided complete ownership  and documentation details as required under FATCA regulations.
         /// </summary>
         /// <value>Certifies that the entity is an investment entity wholly owned by exempt beneficial owners and has provided complete ownership  and documentation details as required under FATCA regulations.</value>
-        /// <example>false</example>
         [DataMember(Name = "exemptBeneficialOwnerOwnedInvestmentEntityCertification", EmitDefaultValue = true)]
         public bool ExemptBeneficialOwnerOwnedInvestmentEntityCertification { get; set; }
 
@@ -808,7 +823,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a financial institution (other than an investment entity) that is incorporated  or organized under the laws of a possession of the United States.
         /// </summary>
         /// <value>Certifies that the entity is a financial institution (other than an investment entity) that is incorporated  or organized under the laws of a possession of the United States.</value>
-        /// <example>false</example>
         [DataMember(Name = "territoryFinancialInstitutionCertification", EmitDefaultValue = true)]
         public bool TerritoryFinancialInstitutionCertification { get; set; }
 
@@ -816,7 +830,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a holding company, treasury center, or captive finance company operating within a nonfinancial group  and not functioning as an investment or financial institution.
         /// </summary>
         /// <value>Certifies that the entity is a holding company, treasury center, or captive finance company operating within a nonfinancial group  and not functioning as an investment or financial institution.</value>
-        /// <example>false</example>
         [DataMember(Name = "exceptedNonfinancialGroupEntityCertification", EmitDefaultValue = true)]
         public bool ExceptedNonfinancialGroupEntityCertification { get; set; }
 
@@ -824,7 +837,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a recently formed startup NFFE investing in a non-financial business  and is not operating as or presenting itself as an investment fund.
         /// </summary>
         /// <value>Certifies that the entity is a recently formed startup NFFE investing in a non-financial business  and is not operating as or presenting itself as an investment fund.</value>
-        /// <example>false</example>
         [DataMember(Name = "exceptedNonfinancialStartUpCertification", EmitDefaultValue = true)]
         public bool ExceptedNonfinancialStartUpCertification { get; set; }
 
@@ -840,7 +852,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is in liquidation, reorganization, or bankruptcy and intends to operate as a nonfinancial entity,  with supporting documentation available if the process exceeds three years.
         /// </summary>
         /// <value>Certifies that the entity is in liquidation, reorganization, or bankruptcy and intends to operate as a nonfinancial entity,  with supporting documentation available if the process exceeds three years.</value>
-        /// <example>false</example>
         [DataMember(Name = "exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification", EmitDefaultValue = true)]
         public bool ExceptedNonfinancialEntityInLiquidationOrBankruptcyCertification { get; set; }
 
@@ -856,7 +867,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a section 501(c) organization based on a valid IRS determination letter  or a legal opinion from U.S. counsel.
         /// </summary>
         /// <value>Certifies that the entity is a section 501(c) organization based on a valid IRS determination letter  or a legal opinion from U.S. counsel.</value>
-        /// <example>false</example>
         [DataMember(Name = "section501COrganizationCertification", EmitDefaultValue = true)]
         public bool Section501COrganizationCertification { get; set; }
 
@@ -872,7 +882,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a nonprofit organization established for charitable or similar purposes, exempt from income tax,  and restricted in the use and distribution of its assets under applicable law.
         /// </summary>
         /// <value>Certifies that the entity is a nonprofit organization established for charitable or similar purposes, exempt from income tax,  and restricted in the use and distribution of its assets under applicable law.</value>
-        /// <example>false</example>
         [DataMember(Name = "nonprofitOrganizationCertification", EmitDefaultValue = true)]
         public bool NonprofitOrganizationCertification { get; set; }
 
@@ -880,7 +889,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a foreign corporation that is not a financial institution  and whose stock is regularly traded on an established securities market.
         /// </summary>
         /// <value>Certifies that the entity is a foreign corporation that is not a financial institution  and whose stock is regularly traded on an established securities market.</value>
-        /// <example>false</example>
         [DataMember(Name = "publiclyTradedNffeCertification", EmitDefaultValue = true)]
         public bool PubliclyTradedNffeCertification { get; set; }
 
@@ -895,7 +903,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a foreign corporation that is not a financial institution  and is affiliated with a publicly traded entity within the same expanded affiliated group.
         /// </summary>
         /// <value>Certifies that the entity is a foreign corporation that is not a financial institution  and is affiliated with a publicly traded entity within the same expanded affiliated group.</value>
-        /// <example>false</example>
         [DataMember(Name = "nffeAffiliateOfPubliclyTradedEntityCertification", EmitDefaultValue = true)]
         public bool NffeAffiliateOfPubliclyTradedEntityCertification { get; set; }
 
@@ -917,7 +924,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is organized in a U.S. possession, is not engaged in financial activities,  and is entirely owned by bona fide residents of that possession.
         /// </summary>
         /// <value>Certifies that the entity is organized in a U.S. possession, is not engaged in financial activities,  and is entirely owned by bona fide residents of that possession.</value>
-        /// <example>false</example>
         [DataMember(Name = "exceptedTerritoryNffeCertification", EmitDefaultValue = true)]
         public bool ExceptedTerritoryNffeCertification { get; set; }
 
@@ -925,7 +931,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a foreign non-financial institution with less than 50% passive income  and less than 50% of its assets producing or held to produce passive income.
         /// </summary>
         /// <value>Certifies that the entity is a foreign non-financial institution with less than 50% passive income  and less than 50% of its assets producing or held to produce passive income.</value>
-        /// <example>false</example>
         [DataMember(Name = "activeNffeCertification", EmitDefaultValue = true)]
         public bool ActiveNffeCertification { get; set; }
 
@@ -933,7 +938,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a foreign non-financial entity that does not qualify for any other NFFE category  and is not a financial institution.
         /// </summary>
         /// <value>Certifies that the entity is a foreign non-financial entity that does not qualify for any other NFFE category  and is not a financial institution.</value>
-        /// <example>false</example>
         [DataMember(Name = "passiveNffeCertification", EmitDefaultValue = true)]
         public bool PassiveNffeCertification { get; set; }
 
@@ -941,7 +945,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the passive NFFE has no substantial U.S. owners or controlling U.S. persons.
         /// </summary>
         /// <value>Certifies that the passive NFFE has no substantial U.S. owners or controlling U.S. persons.</value>
-        /// <example>false</example>
         [DataMember(Name = "passiveNffeNoSubstantialUsOwnersCertification", EmitDefaultValue = true)]
         public bool PassiveNffeNoSubstantialUsOwnersCertification { get; set; }
 
@@ -949,7 +952,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the passive NFFE has provided the name, address, and TIN of each substantial U.S. owner or controlling U.S. person.
         /// </summary>
         /// <value>Certifies that the passive NFFE has provided the name, address, and TIN of each substantial U.S. owner or controlling U.S. person.</value>
-        /// <example>false</example>
         [DataMember(Name = "passiveNffeSubstantialUsOwnersProvidedCertification", EmitDefaultValue = true)]
         public bool PassiveNffeSubstantialUsOwnersProvidedCertification { get; set; }
 
@@ -957,7 +959,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is an inter-affiliate FFI meeting all conditions for exemption,  including limited account activity and payment interactions within its expanded affiliated group.
         /// </summary>
         /// <value>Certifies that the entity is an inter-affiliate FFI meeting all conditions for exemption,  including limited account activity and payment interactions within its expanded affiliated group.</value>
-        /// <example>false</example>
         [DataMember(Name = "exceptedInterAffiliateFfiCertification", EmitDefaultValue = true)]
         public bool ExceptedInterAffiliateFfiCertification { get; set; }
 
@@ -965,7 +966,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies that the entity is a sponsored direct reporting NFFE.
         /// </summary>
         /// <value>Certifies that the entity is a sponsored direct reporting NFFE.</value>
-        /// <example>false</example>
         [DataMember(Name = "sponsoredDirectReportingNffeCertification", EmitDefaultValue = true)]
         public bool SponsoredDirectReportingNffeCertification { get; set; }
 
@@ -980,7 +980,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The list of substantial U.S. owners of passive NFFE.
         /// </summary>
         /// <value>The list of substantial U.S. owners of passive NFFE.</value>
-        /// <example>[]</example>
         [DataMember(Name = "substantialUsOwners", EmitDefaultValue = false)]
         public List<SubstantialUsOwnerResponse> SubstantialUsOwners { get; set; }
 
@@ -995,9 +994,99 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Certifies signer has the capacity to sign for the beneficial owner.
         /// </summary>
         /// <value>Certifies signer has the capacity to sign for the beneficial owner.</value>
-        /// <example>false</example>
         [DataMember(Name = "capacityToSignCertification", EmitDefaultValue = true)]
         public bool CapacityToSignCertification { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the form.
+        /// </summary>
+        /// <value>The unique identifier for the form.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// The entry status information for the form.
+        /// </summary>
+        /// <value>The entry status information for the form.</value>
+        [DataMember(Name = "entryStatus", EmitDefaultValue = false)]
+        public EntryStatusResponse EntryStatus { get; set; }
+
+        /// <summary>
+        /// A reference identifier for the form.
+        /// </summary>
+        /// <value>A reference identifier for the form.</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// The ID of the associated company.
+        /// </summary>
+        /// <value>The ID of the associated company.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
+        public string CompanyId { get; set; }
+
+        /// <summary>
+        /// The display name associated with the form.
+        /// </summary>
+        /// <value>The display name associated with the form.</value>
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The email address of the individual associated with the form.
+        /// </summary>
+        /// <value>The email address of the individual associated with the form.</value>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Indicates whether the form is archived.
+        /// </summary>
+        /// <value>Indicates whether the form is archived.</value>
+        [DataMember(Name = "archived", EmitDefaultValue = true)]
+        public bool Archived { get; set; }
+
+        /// <summary>
+        /// Form ID of previous version.
+        /// </summary>
+        /// <value>Form ID of previous version.</value>
+        [DataMember(Name = "ancestorId", EmitDefaultValue = true)]
+        public string AncestorId { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
+
+        /// <summary>
+        /// The date the form was signed.
+        /// </summary>
+        /// <value>The date the form was signed.</value>
+        [DataMember(Name = "signedDate", EmitDefaultValue = true)]
+        public DateTime? SignedDate { get; set; }
+
+        /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The creation date of the form.
+        /// </summary>
+        /// <value>The creation date of the form.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// The last updated date of the form.
+        /// </summary>
+        /// <value>The last updated date of the form.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -1007,7 +1096,7 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class W8BenEFormResponse {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CitizenshipCountry: ").Append(CitizenshipCountry).Append("\n");
             sb.Append("  DisregardedEntity: ").Append(DisregardedEntity).Append("\n");
@@ -1104,6 +1193,19 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  SubstantialUsOwners: ").Append(SubstantialUsOwners).Append("\n");
             sb.Append("  SignerName: ").Append(SignerName).Append("\n");
             sb.Append("  CapacityToSignCertification: ").Append(CapacityToSignCertification).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  EntryStatus: ").Append(EntryStatus).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
+            sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Archived: ").Append(Archived).Append("\n");
+            sb.Append("  AncestorId: ").Append(AncestorId).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
+            sb.Append("  SignedDate: ").Append(SignedDate).Append("\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -1112,7 +1214,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -1124,20 +1226,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.BaseValidate(validationContext);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        protected IEnumerable<ValidationResult> BaseValidate(ValidationContext validationContext)
-        {
-            foreach (var x in base.BaseValidate(validationContext))
-            {
-                yield return x;
-            }
             yield break;
         }
     }

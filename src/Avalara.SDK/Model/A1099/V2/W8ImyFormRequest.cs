@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w8imy\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w8imy\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -106,28 +105,28 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W8ImyFormRequest" /> class.
         /// </summary>
-        /// <param name="name">The name of the individual or entity associated with the form..</param>
-        /// <param name="citizenshipCountry">The country of citizenship..</param>
+        /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
+        /// <param name="citizenshipCountry">The country of citizenship. (required).</param>
         /// <param name="disregardedEntity">The name of the disregarded entity receiving the payment (if applicable)..</param>
-        /// <param name="entityType">The entity type..</param>
-        /// <param name="fatcaStatus">The FATCA status..</param>
+        /// <param name="entityType">The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII. (required).</param>
+        /// <param name="fatcaStatus">The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII..</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
         /// <param name="residenceState">The state of residence..</param>
         /// <param name="residenceZip">The ZIP code of the residence..</param>
-        /// <param name="residenceCountry">The country of residence..</param>
+        /// <param name="residenceCountry">The country of residence. (required).</param>
         /// <param name="residenceIsMailing">Indicates whether the residence address is also the mailing address..</param>
         /// <param name="mailingAddress">The mailing address..</param>
         /// <param name="mailingCity">The city of the mailing address..</param>
         /// <param name="mailingState">The state of the mailing address..</param>
         /// <param name="mailingZip">The ZIP code of the mailing address..</param>
         /// <param name="mailingCountry">The country of the mailing address..</param>
-        /// <param name="tinType">The type of TIN provided..</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type.  Available values: - QI-EIN: Qualified Intermediary EIN - WP-EIN: Withholding Partnership EIN - WT-EIN: Withholding Trust EIN - EIN: Employer Identification Number.</param>
         /// <param name="tin">The taxpayer identification number (TIN)..</param>
         /// <param name="giin">The global intermediary identification number (GIIN)..</param>
         /// <param name="foreignTin">The foreign taxpayer identification number (TIN)..</param>
         /// <param name="referenceNumber">A reference number for the form..</param>
-        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment..</param>
+        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch.</param>
         /// <param name="disregardedAddress">The address for disregarded entities..</param>
         /// <param name="disregardedCity">The city for disregarded entities..</param>
         /// <param name="disregardedState">The state for disregarded entities..</param>
@@ -191,7 +190,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="foreignCentralBankOfIssueCertification">Certifies that the entity is treated as the beneficial owner of the payment solely  for purposes of chapter 4 under Regulations section 1.1471-6(d)(4)..</param>
         /// <param name="nonreportingIgaFfiCertification">Certifies that the entity meets the requirements to be considered a nonreporting financial institution to an applicable IGA..</param>
         /// <param name="igaCountry">The country for the applicable IGA with the United States..</param>
-        /// <param name="igaModel">The applicable IGA model..</param>
+        /// <param name="igaModel">The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA.</param>
         /// <param name="igaLegalStatusTreatment">Specifies how the applicable IGA is treated under the IGA provisions or Treasury regulations..</param>
         /// <param name="igaFfiTrusteeOrSponsor">The trustee or sponsor name for the nonreporting IGA FFI..</param>
         /// <param name="igaFfiTrusteeIsForeign">Indicates whether the trustee for the nonreporting IGA FFI is foreign..</param>
@@ -219,27 +218,41 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="signerName">The name of the signer..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W8ImyFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), string giin = default(string), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? qualifiedIntermediaryCertification = default(bool?), bool? qiPrimaryWithholdingResponsibilityCertification = default(bool?), bool? qiWithholdingResponsibilityForPtpSalesCertification = default(bool?), bool? qiNomineeWithholdingResponsibilityForPtpDistributionsCertification = default(bool?), bool? qiSecuritiesLenderSubstituteDividendWithholdingCertification = default(bool?), bool? qiWithholdingAnd1099ReportingResponsibilityCertification = default(bool?), bool? qiForm1099OrFatcaReportingResponsibilityCertification = default(bool?), bool? qiOptOutOfForm1099ReportingCertification = default(bool?), bool? qiWithholdingRatePoolCertification = default(bool?), bool? qiIntermediaryOrFlowThroughEntityDocumentationCertification = default(bool?), bool? qualifiedDerivativesDealerCertification = default(bool?), bool? qddCorporation = default(bool?), bool? qddPartnership = default(bool?), bool? qddDisregardedEntity = default(bool?), bool? nonqualifiedIntermediaryCertification = default(bool?), bool? nqiWithholdingStatementTransmissionCertification = default(bool?), bool? nqiWithholdingRatePoolComplianceCertification = default(bool?), bool? nqiQualifiedSecuritiesLenderCertification = default(bool?), bool? nqiAlternativeWithholdingStatementVerificationCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? tfiTreatedAsUsPersonCertification = default(bool?), bool? tfiWithholdingStatementTransmissionCertification = default(bool?), bool? tfiTreatedAsUsPersonForPtpSalesCertification = default(bool?), bool? tfiNomineeUsPersonForPtpDistributionsCertification = default(bool?), bool? tfiNotNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNonEffectivelyConnectedIncomeCertification = default(bool?), bool? usBranchAgreementToBeTreatedAsUsPersonCertification = default(bool?), bool? usBranchWithholdingStatementAndComplianceCertification = default(bool?), bool? usBranchActingAsUsPersonForPtpSalesCertification = default(bool?), bool? usBranchNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNotNomineeForPtpDistributionsCertification = default(bool?), bool? withholdingForeignPartnershipOrTrustCertification = default(bool?), bool? nonwithholdingForeignEntityWithholdingStatementCertification = default(bool?), bool? foreignEntityPartnerInLowerTierPartnershipCertification = default(bool?), bool? foreignPartnershipAmountRealizedSection1446FCertification = default(bool?), bool? foreignPartnershipModifiedAmountRealizedCertification = default(bool?), bool? foreignGrantorTrustAmountRealizedAllocationCertification = default(bool?), bool? alternativeWithholdingStatementRelianceCertification = default(bool?), bool? npFfiWithExemptBeneficialOwnersCertification = default(bool?), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? foreignCentralBankOfIssueCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("companyId is a required property for W8ImyFormRequest and cannot be null");
+                throw new ArgumentNullException("name is a required property for W8ImyFormRequest and cannot be null");
             }
-            this.CompanyId = companyId;
             this.Name = name;
+            // to ensure "citizenshipCountry" is required (not null)
+            if (citizenshipCountry == null)
+            {
+                throw new ArgumentNullException("citizenshipCountry is a required property for W8ImyFormRequest and cannot be null");
+            }
             this.CitizenshipCountry = citizenshipCountry;
-            this.DisregardedEntity = disregardedEntity;
+            // to ensure "entityType" is required (not null)
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("entityType is a required property for W8ImyFormRequest and cannot be null");
+            }
             this.EntityType = entityType;
+            // to ensure "residenceCountry" is required (not null)
+            if (residenceCountry == null)
+            {
+                throw new ArgumentNullException("residenceCountry is a required property for W8ImyFormRequest and cannot be null");
+            }
+            this.ResidenceCountry = residenceCountry;
+            this.DisregardedEntity = disregardedEntity;
             this.FatcaStatus = fatcaStatus;
             this.ResidenceAddress = residenceAddress;
             this.ResidenceCity = residenceCity;
             this.ResidenceState = residenceState;
             this.ResidenceZip = residenceZip;
-            this.ResidenceCountry = residenceCountry;
             this.ResidenceIsMailing = residenceIsMailing;
             this.MailingAddress = mailingAddress;
             this.MailingCity = mailingCity;
@@ -343,6 +356,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.SignerName = signerName;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
@@ -351,14 +365,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The country of citizenship.
         /// </summary>
         /// <value>The country of citizenship.</value>
-        [DataMember(Name = "citizenshipCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "citizenshipCountry", IsRequired = true, EmitDefaultValue = true)]
         public string CitizenshipCountry { get; set; }
 
         /// <summary>
@@ -369,16 +383,16 @@ namespace Avalara.SDK.Model.A1099.V2
         public string DisregardedEntity { get; set; }
 
         /// <summary>
-        /// The entity type.
+        /// The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII.
         /// </summary>
-        /// <value>The entity type.</value>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
+        /// <value>The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII.</value>
+        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
         public string EntityType { get; set; }
 
         /// <summary>
-        /// The FATCA status.
+        /// The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII.
         /// </summary>
-        /// <value>The FATCA status.</value>
+        /// <value>The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII.</value>
         [DataMember(Name = "fatcaStatus", EmitDefaultValue = false)]
         public string FatcaStatus { get; set; }
 
@@ -414,7 +428,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of residence.
         /// </summary>
         /// <value>The country of residence.</value>
-        [DataMember(Name = "residenceCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "residenceCountry", IsRequired = true, EmitDefaultValue = true)]
         public string ResidenceCountry { get; set; }
 
         /// <summary>
@@ -460,9 +474,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string MailingCountry { get; set; }
 
         /// <summary>
-        /// The type of TIN provided.
+        /// Tax Identification Number (TIN) type.  Available values: - QI-EIN: Qualified Intermediary EIN - WP-EIN: Withholding Partnership EIN - WT-EIN: Withholding Trust EIN - EIN: Employer Identification Number
         /// </summary>
-        /// <value>The type of TIN provided.</value>
+        /// <value>Tax Identification Number (TIN) type.  Available values: - QI-EIN: Qualified Intermediary EIN - WP-EIN: Withholding Partnership EIN - WT-EIN: Withholding Trust EIN - EIN: Employer Identification Number</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public string TinType { get; set; }
 
@@ -495,9 +509,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string ReferenceNumber { get; set; }
 
         /// <summary>
-        /// The FATCA status of disregarded entity or branch receiving payment.
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch
         /// </summary>
-        /// <value>The FATCA status of disregarded entity or branch receiving payment.</value>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch</value>
         [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
         public string DisregardedEntityFatcaStatus { get; set; }
 
@@ -943,9 +957,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IgaCountry { get; set; }
 
         /// <summary>
-        /// The applicable IGA model.
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
         /// </summary>
-        /// <value>The applicable IGA model.</value>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
         [DataMember(Name = "igaModel", EmitDefaultValue = true)]
         public string IgaModel { get; set; }
 
@@ -1141,10 +1155,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Signature { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -1306,12 +1320,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }

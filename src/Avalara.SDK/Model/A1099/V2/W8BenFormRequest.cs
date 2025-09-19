@@ -86,7 +86,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The form type (always \&quot;w8ben\&quot; for this model).
         /// </summary>
         /// <value>The form type (always \&quot;w8ben\&quot; for this model).</value>
-        /// <example>W4</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
 
@@ -106,19 +105,19 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W8BenFormRequest" /> class.
         /// </summary>
-        /// <param name="name">The name of the individual or entity associated with the form..</param>
-        /// <param name="citizenshipCountry">The country of citizenship..</param>
+        /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
+        /// <param name="citizenshipCountry">The country of citizenship. (required).</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
         /// <param name="residenceState">The state of residence..</param>
         /// <param name="residenceZip">The ZIP code of the residence..</param>
-        /// <param name="residenceCountry">The country of residence..</param>
+        /// <param name="residenceCountry">The country of residence. (required).</param>
         /// <param name="residenceIsMailing">Indicates whether the residence address is the mailing address..</param>
         /// <param name="mailingAddress">The mailing address..</param>
         /// <param name="mailingCity">The city of the mailing address..</param>
         /// <param name="mailingState">The state of the mailing address..</param>
         /// <param name="mailingZip">The ZIP code of the mailing address..</param>
-        /// <param name="mailingCountry">The country of the mailing address..</param>
+        /// <param name="mailingCountry">The country of the mailing address. (required).</param>
         /// <param name="tin">The taxpayer identification number (TIN)..</param>
         /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not legally required..</param>
         /// <param name="foreignTin">The foreign taxpayer identification number (TIN)..</param>
@@ -132,30 +131,44 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="signerName">The name of the signer of the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        /// <param name="companyId">The ID of the associated company. (required).</param>
+        /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
         public W8BenFormRequest(string name = default(string), string citizenshipCountry = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), DateTime? birthday = default(DateTime?), string treatyCountry = default(string), string treatyArticle = default(string), string treatyReasons = default(string), string withholdingRate = default(string), string incomeType = default(string), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
-            // to ensure "companyId" is required (not null)
-            if (companyId == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("companyId is a required property for W8BenFormRequest and cannot be null");
+                throw new ArgumentNullException("name is a required property for W8BenFormRequest and cannot be null");
             }
-            this.CompanyId = companyId;
             this.Name = name;
+            // to ensure "citizenshipCountry" is required (not null)
+            if (citizenshipCountry == null)
+            {
+                throw new ArgumentNullException("citizenshipCountry is a required property for W8BenFormRequest and cannot be null");
+            }
             this.CitizenshipCountry = citizenshipCountry;
+            // to ensure "residenceCountry" is required (not null)
+            if (residenceCountry == null)
+            {
+                throw new ArgumentNullException("residenceCountry is a required property for W8BenFormRequest and cannot be null");
+            }
+            this.ResidenceCountry = residenceCountry;
+            // to ensure "mailingCountry" is required (not null)
+            if (mailingCountry == null)
+            {
+                throw new ArgumentNullException("mailingCountry is a required property for W8BenFormRequest and cannot be null");
+            }
+            this.MailingCountry = mailingCountry;
             this.ResidenceAddress = residenceAddress;
             this.ResidenceCity = residenceCity;
             this.ResidenceState = residenceState;
             this.ResidenceZip = residenceZip;
-            this.ResidenceCountry = residenceCountry;
             this.ResidenceIsMailing = residenceIsMailing;
             this.MailingAddress = mailingAddress;
             this.MailingCity = mailingCity;
             this.MailingState = mailingState;
             this.MailingZip = mailingZip;
-            this.MailingCountry = mailingCountry;
             this.Tin = tin;
             this.ForeignTinNotRequired = foreignTinNotRequired;
             this.ForeignTin = foreignTin;
@@ -169,6 +182,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.SignerName = signerName;
             this.EDeliveryConsentedAt = eDeliveryConsentedAt;
             this.Signature = signature;
+            this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
         }
@@ -177,14 +191,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The country of citizenship.
         /// </summary>
         /// <value>The country of citizenship.</value>
-        [DataMember(Name = "citizenshipCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "citizenshipCountry", IsRequired = true, EmitDefaultValue = true)]
         public string CitizenshipCountry { get; set; }
 
         /// <summary>
@@ -219,7 +233,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of residence.
         /// </summary>
         /// <value>The country of residence.</value>
-        [DataMember(Name = "residenceCountry", EmitDefaultValue = false)]
+        [DataMember(Name = "residenceCountry", IsRequired = true, EmitDefaultValue = true)]
         public string ResidenceCountry { get; set; }
 
         /// <summary>
@@ -261,7 +275,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The country of the mailing address.
         /// </summary>
         /// <value>The country of the mailing address.</value>
-        [DataMember(Name = "mailingCountry", EmitDefaultValue = true)]
+        [DataMember(Name = "mailingCountry", IsRequired = true, EmitDefaultValue = true)]
         public string MailingCountry { get; set; }
 
         /// <summary>
@@ -357,10 +371,10 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Signature { get; set; }
 
         /// <summary>
-        /// The ID of the associated company.
+        /// The ID of the associated company. Required when creating a form.
         /// </summary>
-        /// <value>The ID of the associated company.</value>
-        [DataMember(Name = "companyId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The ID of the associated company. Required when creating a form.</value>
+        [DataMember(Name = "companyId", EmitDefaultValue = false)]
         public string CompanyId { get; set; }
 
         /// <summary>
@@ -435,12 +449,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CompanyId (string) minLength
-            if (this.CompanyId != null && this.CompanyId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for CompanyId, length must be greater than 1.", new [] { "CompanyId" });
-            }
-
             yield break;
         }
     }

@@ -31,7 +31,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = Avalara.SDK.Client.FileParameter;
 using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;

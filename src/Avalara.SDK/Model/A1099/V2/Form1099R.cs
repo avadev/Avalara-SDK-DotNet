@@ -38,124 +38,495 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form 1099-R: Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc.
+    /// Form 1099-R: Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc.                *At least one of the following amounts must be provided:*   Gross distribution, Taxable amount, Capital gain, Employee contributions/Designated Roth contributions or insurance premiums,  Net unrealized appreciation in employer&#39;s securities, Other amount, Total employee contributions,  Traditional IRA/SEP/SIMPLE or Roth conversion amount, or Amount allocable to IRR within 5 years
     /// </summary>
     [DataContract(Name = "Form1099R")]
     public partial class Form1099R : IValidatableObject
     {
         /// <summary>
-        /// Form type
+        /// Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements
         /// </summary>
-        /// <value>Form type</value>
+        /// <value>Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements</value>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypeEnum
+        public enum DistributionCodeEnum
         {
             /// <summary>
-            /// Enum _1099NEC for value: 1099-NEC
+            /// Enum _1 for value: 1
             /// </summary>
-            [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 1,
+            [EnumMember(Value = "1")]
+            _1 = 1,
 
             /// <summary>
-            /// Enum _1099MISC for value: 1099-MISC
+            /// Enum _2 for value: 2
             /// </summary>
-            [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 2,
+            [EnumMember(Value = "2")]
+            _2 = 2,
 
             /// <summary>
-            /// Enum _1099DIV for value: 1099-DIV
+            /// Enum _3 for value: 3
             /// </summary>
-            [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 3,
+            [EnumMember(Value = "3")]
+            _3 = 3,
 
             /// <summary>
-            /// Enum _1099R for value: 1099-R
+            /// Enum _4 for value: 4
             /// </summary>
-            [EnumMember(Value = "1099-R")]
-            _1099R = 4,
+            [EnumMember(Value = "4")]
+            _4 = 4,
 
             /// <summary>
-            /// Enum _1099K for value: 1099-K
+            /// Enum _5 for value: 5
             /// </summary>
-            [EnumMember(Value = "1099-K")]
-            _1099K = 5,
+            [EnumMember(Value = "5")]
+            _5 = 5,
 
             /// <summary>
-            /// Enum _1095B for value: 1095-B
+            /// Enum _6 for value: 6
             /// </summary>
-            [EnumMember(Value = "1095-B")]
-            _1095B = 6,
+            [EnumMember(Value = "6")]
+            _6 = 6,
 
             /// <summary>
-            /// Enum _1042S for value: 1042-S
+            /// Enum _7 for value: 7
             /// </summary>
-            [EnumMember(Value = "1042-S")]
-            _1042S = 7,
+            [EnumMember(Value = "7")]
+            _7 = 7,
 
             /// <summary>
-            /// Enum _1095C for value: 1095-C
+            /// Enum _8 for value: 8
             /// </summary>
-            [EnumMember(Value = "1095-C")]
-            _1095C = 8,
+            [EnumMember(Value = "8")]
+            _8 = 8,
 
             /// <summary>
-            /// Enum _1099INT for value: 1099-INT
+            /// Enum _9 for value: 9
             /// </summary>
-            [EnumMember(Value = "1099-INT")]
-            _1099INT = 9
+            [EnumMember(Value = "9")]
+            _9 = 9,
+
+            /// <summary>
+            /// Enum A for value: A
+            /// </summary>
+            [EnumMember(Value = "A")]
+            A = 10,
+
+            /// <summary>
+            /// Enum B for value: B
+            /// </summary>
+            [EnumMember(Value = "B")]
+            B = 11,
+
+            /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 12,
+
+            /// <summary>
+            /// Enum D for value: D
+            /// </summary>
+            [EnumMember(Value = "D")]
+            D = 13,
+
+            /// <summary>
+            /// Enum E for value: E
+            /// </summary>
+            [EnumMember(Value = "E")]
+            E = 14,
+
+            /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 15,
+
+            /// <summary>
+            /// Enum G for value: G
+            /// </summary>
+            [EnumMember(Value = "G")]
+            G = 16,
+
+            /// <summary>
+            /// Enum H for value: H
+            /// </summary>
+            [EnumMember(Value = "H")]
+            H = 17,
+
+            /// <summary>
+            /// Enum J for value: J
+            /// </summary>
+            [EnumMember(Value = "J")]
+            J = 18,
+
+            /// <summary>
+            /// Enum K for value: K
+            /// </summary>
+            [EnumMember(Value = "K")]
+            K = 19,
+
+            /// <summary>
+            /// Enum L for value: L
+            /// </summary>
+            [EnumMember(Value = "L")]
+            L = 20,
+
+            /// <summary>
+            /// Enum M for value: M
+            /// </summary>
+            [EnumMember(Value = "M")]
+            M = 21,
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 22,
+
+            /// <summary>
+            /// Enum P for value: P
+            /// </summary>
+            [EnumMember(Value = "P")]
+            P = 23,
+
+            /// <summary>
+            /// Enum Q for value: Q
+            /// </summary>
+            [EnumMember(Value = "Q")]
+            Q = 24,
+
+            /// <summary>
+            /// Enum R for value: R
+            /// </summary>
+            [EnumMember(Value = "R")]
+            R = 25,
+
+            /// <summary>
+            /// Enum S for value: S
+            /// </summary>
+            [EnumMember(Value = "S")]
+            S = 26,
+
+            /// <summary>
+            /// Enum T for value: T
+            /// </summary>
+            [EnumMember(Value = "T")]
+            T = 27,
+
+            /// <summary>
+            /// Enum U for value: U
+            /// </summary>
+            [EnumMember(Value = "U")]
+            U = 28,
+
+            /// <summary>
+            /// Enum W for value: W
+            /// </summary>
+            [EnumMember(Value = "W")]
+            W = 29
         }
 
 
         /// <summary>
-        /// Form type
+        /// Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements
         /// </summary>
-        /// <value>Form type</value>
-        /// <example>1099-NEC</example>
+        /// <value>Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements</value>
+        [DataMember(Name = "distributionCode", IsRequired = true, EmitDefaultValue = true)]
+        public DistributionCodeEnum DistributionCode { get; set; }
+        /// <summary>
+        /// Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)
+        /// </summary>
+        /// <value>Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SecondDistributionCodeEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 4,
+
+            /// <summary>
+            /// Enum _5 for value: 5
+            /// </summary>
+            [EnumMember(Value = "5")]
+            _5 = 5,
+
+            /// <summary>
+            /// Enum _6 for value: 6
+            /// </summary>
+            [EnumMember(Value = "6")]
+            _6 = 6,
+
+            /// <summary>
+            /// Enum _7 for value: 7
+            /// </summary>
+            [EnumMember(Value = "7")]
+            _7 = 7,
+
+            /// <summary>
+            /// Enum _8 for value: 8
+            /// </summary>
+            [EnumMember(Value = "8")]
+            _8 = 8,
+
+            /// <summary>
+            /// Enum _9 for value: 9
+            /// </summary>
+            [EnumMember(Value = "9")]
+            _9 = 9,
+
+            /// <summary>
+            /// Enum A for value: A
+            /// </summary>
+            [EnumMember(Value = "A")]
+            A = 10,
+
+            /// <summary>
+            /// Enum B for value: B
+            /// </summary>
+            [EnumMember(Value = "B")]
+            B = 11,
+
+            /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 12,
+
+            /// <summary>
+            /// Enum D for value: D
+            /// </summary>
+            [EnumMember(Value = "D")]
+            D = 13,
+
+            /// <summary>
+            /// Enum E for value: E
+            /// </summary>
+            [EnumMember(Value = "E")]
+            E = 14,
+
+            /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 15,
+
+            /// <summary>
+            /// Enum G for value: G
+            /// </summary>
+            [EnumMember(Value = "G")]
+            G = 16,
+
+            /// <summary>
+            /// Enum H for value: H
+            /// </summary>
+            [EnumMember(Value = "H")]
+            H = 17,
+
+            /// <summary>
+            /// Enum J for value: J
+            /// </summary>
+            [EnumMember(Value = "J")]
+            J = 18,
+
+            /// <summary>
+            /// Enum K for value: K
+            /// </summary>
+            [EnumMember(Value = "K")]
+            K = 19,
+
+            /// <summary>
+            /// Enum L for value: L
+            /// </summary>
+            [EnumMember(Value = "L")]
+            L = 20,
+
+            /// <summary>
+            /// Enum M for value: M
+            /// </summary>
+            [EnumMember(Value = "M")]
+            M = 21,
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 22,
+
+            /// <summary>
+            /// Enum P for value: P
+            /// </summary>
+            [EnumMember(Value = "P")]
+            P = 23,
+
+            /// <summary>
+            /// Enum Q for value: Q
+            /// </summary>
+            [EnumMember(Value = "Q")]
+            Q = 24,
+
+            /// <summary>
+            /// Enum R for value: R
+            /// </summary>
+            [EnumMember(Value = "R")]
+            R = 25,
+
+            /// <summary>
+            /// Enum S for value: S
+            /// </summary>
+            [EnumMember(Value = "S")]
+            S = 26,
+
+            /// <summary>
+            /// Enum T for value: T
+            /// </summary>
+            [EnumMember(Value = "T")]
+            T = 27,
+
+            /// <summary>
+            /// Enum U for value: U
+            /// </summary>
+            [EnumMember(Value = "U")]
+            U = 28,
+
+            /// <summary>
+            /// Enum W for value: W
+            /// </summary>
+            [EnumMember(Value = "W")]
+            W = 29
+        }
+
+
+        /// <summary>
+        /// Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)
+        /// </summary>
+        /// <value>Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)</value>
+        [DataMember(Name = "secondDistributionCode", EmitDefaultValue = true)]
+        public SecondDistributionCodeEnum? SecondDistributionCode { get; set; }
+        /// <summary>
+        /// Form type.
+        /// </summary>
+        /// <value>Form type.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum Form1099Nec for value: Form1099Nec
+            /// </summary>
+            [EnumMember(Value = "Form1099Nec")]
+            Form1099Nec = 1,
+
+            /// <summary>
+            /// Enum Form1099Misc for value: Form1099Misc
+            /// </summary>
+            [EnumMember(Value = "Form1099Misc")]
+            Form1099Misc = 2,
+
+            /// <summary>
+            /// Enum Form1099Div for value: Form1099Div
+            /// </summary>
+            [EnumMember(Value = "Form1099Div")]
+            Form1099Div = 3,
+
+            /// <summary>
+            /// Enum Form1099R for value: Form1099R
+            /// </summary>
+            [EnumMember(Value = "Form1099R")]
+            Form1099R = 4,
+
+            /// <summary>
+            /// Enum Form1099K for value: Form1099K
+            /// </summary>
+            [EnumMember(Value = "Form1099K")]
+            Form1099K = 5,
+
+            /// <summary>
+            /// Enum Form1095B for value: Form1095B
+            /// </summary>
+            [EnumMember(Value = "Form1095B")]
+            Form1095B = 6,
+
+            /// <summary>
+            /// Enum Form1042S for value: Form1042S
+            /// </summary>
+            [EnumMember(Value = "Form1042S")]
+            Form1042S = 7,
+
+            /// <summary>
+            /// Enum Form1095C for value: Form1095C
+            /// </summary>
+            [EnumMember(Value = "Form1095C")]
+            Form1095C = 8,
+
+            /// <summary>
+            /// Enum Form1099Int for value: Form1099Int
+            /// </summary>
+            [EnumMember(Value = "Form1099Int")]
+            Form1099Int = 9
+        }
+
+
+        /// <summary>
+        /// Form type.
+        /// </summary>
+        /// <value>Form type.</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// Type of TIN (Tax ID Number)
+        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Type of TIN (Tax ID Number)</value>
+        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TinTypeEnum
         {
             /// <summary>
-            /// Enum Empty for value: Empty
-            /// </summary>
-            [EnumMember(Value = "Empty")]
-            Empty = 1,
-
-            /// <summary>
             /// Enum EIN for value: EIN
             /// </summary>
             [EnumMember(Value = "EIN")]
-            EIN = 2,
+            EIN = 1,
 
             /// <summary>
             /// Enum SSN for value: SSN
             /// </summary>
             [EnumMember(Value = "SSN")]
-            SSN = 3,
+            SSN = 2,
 
             /// <summary>
             /// Enum ITIN for value: ITIN
             /// </summary>
             [EnumMember(Value = "ITIN")]
-            ITIN = 4,
+            ITIN = 3,
 
             /// <summary>
             /// Enum ATIN for value: ATIN
             /// </summary>
             [EnumMember(Value = "ATIN")]
-            ATIN = 5
+            ATIN = 4
         }
 
 
         /// <summary>
-        /// Type of TIN (Tax ID Number)
+        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Type of TIN (Tax ID Number)</value>
+        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
@@ -174,8 +545,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
         /// <param name="employeeContributionsOrDesignatedRothOrInsurancePremiums">Employee contributions/Designated Roth contributions or insurance premiums.</param>
         /// <param name="netUnrealizedAppreciationInEmployerSecurities">Net unrealized appreciation in employer&#39;s securities.</param>
-        /// <param name="distributionCode">Distribution code.</param>
-        /// <param name="secondDistributionCode">Second distribution code.</param>
+        /// <param name="distributionCode">Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements (required).</param>
+        /// <param name="secondDistributionCode">Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes).</param>
         /// <param name="iraSepSimple">IRA/SEP/SIMPLE.</param>
         /// <param name="traditionalIraSepSimpleOrRothConversionAmount">Traditional IRA/SEP/SIMPLE or Roth conversion amount.</param>
         /// <param name="otherAmount">Other amount.</param>
@@ -185,16 +556,16 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="amountAllocableToIrrWithin5Years">Amount allocable to IRR within 5 years.</param>
         /// <param name="firstYearOfDesignatedRothContribution">First year of designated Roth contribution.</param>
         /// <param name="dateOfPayment">Date of payment.</param>
-        /// <param name="fatcaFilingRequirement">FATCA filing requirement.</param>
-        /// <param name="type">Form type (required).</param>
+        /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
+        /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
-        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms.</param>
+        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
         /// <param name="issuerTin">Issuer TIN - readonly.</param>
-        /// <param name="taxYear">Tax Year - only required when creating forms.</param>
+        /// <param name="taxYear">Tax Year - only required when creating forms via $bulk-upsert.</param>
         /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
         /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
         /// <param name="recipientName">Recipient name (required).</param>
-        /// <param name="tinType">Type of TIN (Tax ID Number).</param>
+        /// <param name="tinType">Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number.</param>
         /// <param name="recipientSecondName">Recipient second name.</param>
         /// <param name="address">Address. (required).</param>
         /// <param name="address2">Address line 2..</param>
@@ -206,17 +577,18 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office code.</param>
         /// <param name="nonUsProvince">Province or region for non-US/CA addresses..</param>
         /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
-        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled for this form.</param>
+        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
-        /// <param name="stateEfileDate">Date when state e-filing should be scheduled for this form.</param>
-        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled for this form.</param>
+        /// <param name="stateEfileDate">Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
+        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
         /// <param name="noTin">No TIN indicator.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099R(double? grossDistribution = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionDetermined = default(bool?), double? capitalGain = default(double?), double? federalIncomeTaxWithheld = default(double?), double? employeeContributionsOrDesignatedRothOrInsurancePremiums = default(double?), double? netUnrealizedAppreciationInEmployerSecurities = default(double?), string distributionCode = default(string), string secondDistributionCode = default(string), bool? iraSepSimple = default(bool?), double? traditionalIraSepSimpleOrRothConversionAmount = default(double?), double? otherAmount = default(double?), string otherPercentage = default(string), string totalDistributionPercentage = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrrWithin5Years = default(double?), string firstYearOfDesignatedRothContribution = default(string), DateTime? dateOfPayment = default(DateTime?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool secondTinNotice = default(bool))
+        public Form1099R(double? grossDistribution = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionDetermined = default(bool?), double? capitalGain = default(double?), double? federalIncomeTaxWithheld = default(double?), double? employeeContributionsOrDesignatedRothOrInsurancePremiums = default(double?), double? netUnrealizedAppreciationInEmployerSecurities = default(double?), DistributionCodeEnum distributionCode = default(DistributionCodeEnum), SecondDistributionCodeEnum? secondDistributionCode = default(SecondDistributionCodeEnum?), bool? iraSepSimple = default(bool?), double? traditionalIraSepSimpleOrRothConversionAmount = default(double?), double? otherAmount = default(double?), string otherPercentage = default(string), string totalDistributionPercentage = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrrWithin5Years = default(double?), string firstYearOfDesignatedRothContribution = default(string), DateTime? dateOfPayment = default(DateTime?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
         {
+            this.DistributionCode = distributionCode;
             this.Type = type;
             // to ensure "recipientName" is required (not null)
             if (recipientName == null)
@@ -250,7 +622,6 @@ namespace Avalara.SDK.Model.A1099.V2
             this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
             this.EmployeeContributionsOrDesignatedRothOrInsurancePremiums = employeeContributionsOrDesignatedRothOrInsurancePremiums;
             this.NetUnrealizedAppreciationInEmployerSecurities = netUnrealizedAppreciationInEmployerSecurities;
-            this.DistributionCode = distributionCode;
             this.SecondDistributionCode = secondDistributionCode;
             this.IraSepSimple = iraSepSimple;
             this.TraditionalIraSepSimpleOrRothConversionAmount = traditionalIraSepSimpleOrRothConversionAmount;
@@ -345,20 +716,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? NetUnrealizedAppreciationInEmployerSecurities { get; set; }
 
         /// <summary>
-        /// Distribution code
-        /// </summary>
-        /// <value>Distribution code</value>
-        [DataMember(Name = "distributionCode", EmitDefaultValue = true)]
-        public string DistributionCode { get; set; }
-
-        /// <summary>
-        /// Second distribution code
-        /// </summary>
-        /// <value>Second distribution code</value>
-        [DataMember(Name = "secondDistributionCode", EmitDefaultValue = true)]
-        public string SecondDistributionCode { get; set; }
-
-        /// <summary>
         /// IRA/SEP/SIMPLE
         /// </summary>
         /// <value>IRA/SEP/SIMPLE</value>
@@ -423,9 +780,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime? DateOfPayment { get; set; }
 
         /// <summary>
-        /// FATCA filing requirement
+        /// FATCA filing requirement.
         /// </summary>
-        /// <value>FATCA filing requirement</value>
+        /// <value>FATCA filing requirement.</value>
         [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
         public bool? FatcaFilingRequirement { get; set; }
 
@@ -452,9 +809,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IssuerId { get; set; }
 
         /// <summary>
-        /// Issuer Reference ID - only required when creating forms
+        /// Issuer Reference ID - only required when creating forms via $bulk-upsert
         /// </summary>
-        /// <value>Issuer Reference ID - only required when creating forms</value>
+        /// <value>Issuer Reference ID - only required when creating forms via $bulk-upsert</value>
         [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
         public string IssuerReferenceId { get; set; }
 
@@ -466,9 +823,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string IssuerTin { get; set; }
 
         /// <summary>
-        /// Tax Year - only required when creating forms
+        /// Tax Year - only required when creating forms via $bulk-upsert
         /// </summary>
-        /// <value>Tax Year - only required when creating forms</value>
+        /// <value>Tax Year - only required when creating forms via $bulk-upsert</value>
         [DataMember(Name = "taxYear", EmitDefaultValue = true)]
         public int? TaxYear { get; set; }
 
@@ -571,9 +928,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Date when federal e-filing should be scheduled for this form
+        /// Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when federal e-filing should be scheduled for this form</value>
+        /// <value>Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "federalEfileDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FederalEfileDate { get; set; }
@@ -586,17 +943,17 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? PostalMail { get; set; }
 
         /// <summary>
-        /// Date when state e-filing should be scheduled for this form
+        /// Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when state e-filing should be scheduled for this form</value>
+        /// <value>Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "stateEfileDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StateEfileDate { get; set; }
 
         /// <summary>
-        /// Date when recipient e-delivery should be scheduled for this form
+        /// Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
         /// </summary>
-        /// <value>Date when recipient e-delivery should be scheduled for this form</value>
+        /// <value>Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
         [DataMember(Name = "recipientEdeliveryDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? RecipientEdeliveryDate { get; set; }
@@ -634,12 +991,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <value>Second TIN notice</value>
         [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
-        public bool SecondTinNotice { get; set; }
+        public bool? SecondTinNotice { get; set; }
 
         /// <summary>
-        /// Federal e-file status
+        /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)
         /// </summary>
-        /// <value>Federal e-file status</value>
+        /// <value>Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)</value>
         [DataMember(Name = "federalEfileStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail FederalEfileStatus { get; private set; }
 
@@ -652,9 +1009,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// State e-file status
+        /// State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state
         /// </summary>
-        /// <value>State e-file status</value>
+        /// <value>State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state</value>
         [DataMember(Name = "stateEfileStatus", EmitDefaultValue = true)]
         public List<StateEfileStatusDetail> StateEfileStatus { get; private set; }
 
@@ -667,9 +1024,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// Postal mail to recipient status
+        /// Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered
         /// </summary>
-        /// <value>Postal mail to recipient status</value>
+        /// <value>Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered</value>
         [DataMember(Name = "postalMailStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail PostalMailStatus { get; private set; }
 
@@ -682,9 +1039,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// TIN Match status
+        /// TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued
         /// </summary>
-        /// <value>TIN Match status</value>
+        /// <value>TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued</value>
         [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail TinMatchStatus { get; private set; }
 
@@ -697,9 +1054,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// Address verification status
+        /// Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted
         /// </summary>
-        /// <value>Address verification status</value>
+        /// <value>Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted</value>
         [DataMember(Name = "addressVerificationStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail AddressVerificationStatus { get; private set; }
 
@@ -712,9 +1069,9 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
-        /// EDelivery status
+        /// EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)
         /// </summary>
-        /// <value>EDelivery status</value>
+        /// <value>EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)</value>
         [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
         public Form1099StatusDetail EDeliveryStatus { get; private set; }
 

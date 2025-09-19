@@ -50,65 +50,64 @@ namespace Avalara.SDK.Model.A1099.V2
         public enum TypeEnum
         {
             /// <summary>
-            /// Enum _1099NEC for value: 1099-NEC
+            /// Enum Form1099Nec for value: Form1099Nec
             /// </summary>
-            [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 1,
+            [EnumMember(Value = "Form1099Nec")]
+            Form1099Nec = 1,
 
             /// <summary>
-            /// Enum _1099MISC for value: 1099-MISC
+            /// Enum Form1099Misc for value: Form1099Misc
             /// </summary>
-            [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 2,
+            [EnumMember(Value = "Form1099Misc")]
+            Form1099Misc = 2,
 
             /// <summary>
-            /// Enum _1099DIV for value: 1099-DIV
+            /// Enum Form1099Div for value: Form1099Div
             /// </summary>
-            [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 3,
+            [EnumMember(Value = "Form1099Div")]
+            Form1099Div = 3,
 
             /// <summary>
-            /// Enum _1099R for value: 1099-R
+            /// Enum Form1099R for value: Form1099R
             /// </summary>
-            [EnumMember(Value = "1099-R")]
-            _1099R = 4,
+            [EnumMember(Value = "Form1099R")]
+            Form1099R = 4,
 
             /// <summary>
-            /// Enum _1099K for value: 1099-K
+            /// Enum Form1099K for value: Form1099K
             /// </summary>
-            [EnumMember(Value = "1099-K")]
-            _1099K = 5,
+            [EnumMember(Value = "Form1099K")]
+            Form1099K = 5,
 
             /// <summary>
-            /// Enum _1095B for value: 1095-B
+            /// Enum Form1095B for value: Form1095B
             /// </summary>
-            [EnumMember(Value = "1095-B")]
-            _1095B = 6,
+            [EnumMember(Value = "Form1095B")]
+            Form1095B = 6,
 
             /// <summary>
-            /// Enum _1042S for value: 1042-S
+            /// Enum Form1042S for value: Form1042S
             /// </summary>
-            [EnumMember(Value = "1042-S")]
-            _1042S = 7,
+            [EnumMember(Value = "Form1042S")]
+            Form1042S = 7,
 
             /// <summary>
-            /// Enum _1095C for value: 1095-C
+            /// Enum Form1095C for value: Form1095C
             /// </summary>
-            [EnumMember(Value = "1095-C")]
-            _1095C = 8,
+            [EnumMember(Value = "Form1095C")]
+            Form1095C = 8,
 
             /// <summary>
-            /// Enum _1099INT for value: 1099-INT
+            /// Enum Form1099Int for value: Form1099Int
             /// </summary>
-            [EnumMember(Value = "1099-INT")]
-            _1099INT = 9
+            [EnumMember(Value = "Form1099Int")]
+            Form1099Int = 9
         }
 
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        /// <example>1099-NEC</example>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>

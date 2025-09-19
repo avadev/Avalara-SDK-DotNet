@@ -43,9 +43,9 @@ namespace Example
             var apiInstance = new Issuers1099Api(apiClient);
             var requestParameters = new CreateIssuerRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 26a8ae54-5655-49b3-b01a-f4203094a5ef;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 5c70e4f3-3885-4757-84f3-86323c1af033;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CreateIssuerRequest = new CreateIssuerRequest(); // CreateIssuerRequest | The issuer to create (optional) 
+            requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to create (optional) 
 
             try
             {
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CreateIssuerRequest** | [**CreateIssuerRequest**](CreateIssuerRequest.md)| The issuer to create | [optional] 
+ **IssuerRequest** | [**IssuerRequest**](IssuerRequest.md)| The issuer to create | [optional] 
 
 ### Return type
 
@@ -129,7 +129,7 @@ namespace Example
             var requestParameters = new DeleteIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = b8d102b3-3e63-4e6e-9735-25f17b0c69a7;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = ebe59aa0-745c-44da-b86b-67ad7994619c;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -213,7 +213,7 @@ namespace Example
             var requestParameters = new GetIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to retrieve
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = fc90ea70-0e20-46ed-a73c-80e99e89f3d5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = cfc604e9-15ae-4c65-a59f-123475fad2ef;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -303,7 +303,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = 8c33cfd6-f102-4192-9001-24fed7baee29;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 3302a30f-61fc-4b94-af04-c683c6064eed;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -395,9 +395,9 @@ namespace Example
             var requestParameters = new UpdateIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = c353a7ba-0386-49f8-97a8-378cd39452ea;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 4f30c58e-f8fd-4635-99d4-ea710f1d0182;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
-            requestParameters.CreateIssuerRequest = new CreateIssuerRequest(); // CreateIssuerRequest | The issuer to update (optional) 
+            requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to update (optional) 
 
             try
             {
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
  **AvalaraVersion** | **string**| API version | 
  **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
  **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
- **CreateIssuerRequest** | [**CreateIssuerRequest**](CreateIssuerRequest.md)| The issuer to update | [optional] 
+ **IssuerRequest** | [**IssuerRequest**](IssuerRequest.md)| The issuer to update | [optional] 
 
 ### Return type
 

@@ -74,7 +74,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Current status of the job (e.g., Success, Failed, InProgress)
         /// </summary>
         /// <value>Current status of the job (e.g., Success, Failed, InProgress)</value>
-        /// <example>InProgress</example>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>

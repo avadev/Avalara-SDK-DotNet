@@ -5,28 +5,28 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The form type (always \&quot;w8imy\&quot; for this model). | [optional] [readonly] 
-**Name** | **string** | The name of the individual or entity associated with the form. | [optional] 
-**CitizenshipCountry** | **string** | The country of citizenship. | [optional] 
+**Name** | **string** | The name of the individual or entity associated with the form. | 
+**CitizenshipCountry** | **string** | The country of citizenship. | 
 **DisregardedEntity** | **string** | The name of the disregarded entity receiving the payment (if applicable). | [optional] 
-**EntityType** | **string** | The entity type. | [optional] 
-**FatcaStatus** | **string** | The FATCA status. | [optional] 
+**EntityType** | **string** | The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII. | 
+**FatcaStatus** | **string** | The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII. | [optional] 
 **ResidenceAddress** | **string** | The residential address of the individual or entity. | [optional] 
 **ResidenceCity** | **string** | The city of residence. | [optional] 
 **ResidenceState** | **string** | The state of residence. | [optional] 
 **ResidenceZip** | **string** | The ZIP code of the residence. | [optional] 
-**ResidenceCountry** | **string** | The country of residence. | [optional] 
+**ResidenceCountry** | **string** | The country of residence. | 
 **ResidenceIsMailing** | **bool** | Indicates whether the residence address is also the mailing address. | [optional] 
 **MailingAddress** | **string** | The mailing address. | [optional] 
 **MailingCity** | **string** | The city of the mailing address. | [optional] 
 **MailingState** | **string** | The state of the mailing address. | [optional] 
 **MailingZip** | **string** | The ZIP code of the mailing address. | [optional] 
 **MailingCountry** | **string** | The country of the mailing address. | [optional] 
-**TinType** | **string** | The type of TIN provided. | [optional] 
+**TinType** | **string** | Tax Identification Number (TIN) type.  Available values: - QI-EIN: Qualified Intermediary EIN - WP-EIN: Withholding Partnership EIN - WT-EIN: Withholding Trust EIN - EIN: Employer Identification Number | [optional] 
 **Tin** | **string** | The taxpayer identification number (TIN). | [optional] 
 **Giin** | **string** | The global intermediary identification number (GIIN). | [optional] 
 **ForeignTin** | **string** | The foreign taxpayer identification number (TIN). | [optional] 
 **ReferenceNumber** | **string** | A reference number for the form. | [optional] 
-**DisregardedEntityFatcaStatus** | **string** | The FATCA status of disregarded entity or branch receiving payment. | [optional] 
+**DisregardedEntityFatcaStatus** | **string** | The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch | [optional] 
 **DisregardedAddress** | **string** | The address for disregarded entities. | [optional] 
 **DisregardedCity** | **string** | The city for disregarded entities. | [optional] 
 **DisregardedState** | **string** | The state for disregarded entities. | [optional] 
@@ -90,7 +90,7 @@ Name | Type | Description | Notes
 **ForeignCentralBankOfIssueCertification** | **bool?** | Certifies that the entity is treated as the beneficial owner of the payment solely  for purposes of chapter 4 under Regulations section 1.1471-6(d)(4). | [optional] 
 **NonreportingIgaFfiCertification** | **bool?** | Certifies that the entity meets the requirements to be considered a nonreporting financial institution to an applicable IGA. | [optional] 
 **IgaCountry** | **string** | The country for the applicable IGA with the United States. | [optional] 
-**IgaModel** | **string** | The applicable IGA model. | [optional] 
+**IgaModel** | **string** | The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA | [optional] 
 **IgaLegalStatusTreatment** | **string** | Specifies how the applicable IGA is treated under the IGA provisions or Treasury regulations. | [optional] 
 **IgaFfiTrusteeOrSponsor** | **string** | The trustee or sponsor name for the nonreporting IGA FFI. | [optional] 
 **IgaFfiTrusteeIsForeign** | **bool?** | Indicates whether the trustee for the nonreporting IGA FFI is foreign. | [optional] 
@@ -118,7 +118,7 @@ Name | Type | Description | Notes
 **SignerName** | **string** | The name of the signer. | [optional] 
 **EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
 **Signature** | **string** | The signature of the form. | [optional] 
-**CompanyId** | **string** | The ID of the associated company. | 
+**CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
 

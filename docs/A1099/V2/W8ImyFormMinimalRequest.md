@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Email** | **string** | The email address of the individual associated with the form. | 
 **Name** | **string** | The name of the individual or entity associated with the form. | 
 **ReferenceNumber** | **string** | A reference number for the form. | [optional] 
-**CompanyId** | **string** | The ID of the associated company. | 
+**CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)

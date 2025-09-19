@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The form type. | [optional] [readonly] 
-**CompanyId** | **string** | The ID of the associated company. | 
+**CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
 
