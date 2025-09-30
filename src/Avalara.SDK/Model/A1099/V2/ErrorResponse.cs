@@ -46,8 +46,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorResponse" /> class.
         /// </summary>
-        /// <param name="title">title.</param>
-        /// <param name="errors">errors.</param>
+        /// <param name="title">A summary of the problem type..</param>
+        /// <param name="errors">A list of errors detailing the problem type..</param>
         public ErrorResponse(string title = default(string), List<ErrorResponseItem> errors = default(List<ErrorResponseItem>))
         {
             this.Title = title;
@@ -55,14 +55,16 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// A summary of the problem type.
         /// </summary>
+        /// <value>A summary of the problem type.</value>
         [DataMember(Name = "title", EmitDefaultValue = true)]
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// A list of errors detailing the problem type.
         /// </summary>
+        /// <value>A list of errors detailing the problem type.</value>
         [DataMember(Name = "errors", EmitDefaultValue = true)]
         public List<ErrorResponseItem> Errors { get; set; }
 
