@@ -98,6 +98,318 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
+        /// Represents the entity type for W-8IMY tax forms.  W-8IMY forms only accept entity types 1-9, which is a subset of the full EntityType enum.
+        /// </summary>
+        /// <value>Represents the entity type for W-8IMY tax forms.  W-8IMY forms only accept entity types 1-9, which is a subset of the full EntityType enum.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum EntityTypeEnum
+        {
+            /// <summary>
+            /// Enum QI for value: QI
+            /// </summary>
+            [EnumMember(Value = "QI")]
+            QI = 1,
+
+            /// <summary>
+            /// Enum NonqualifiedIntermediary for value: NonqualifiedIntermediary
+            /// </summary>
+            [EnumMember(Value = "NonqualifiedIntermediary")]
+            NonqualifiedIntermediary = 2,
+
+            /// <summary>
+            /// Enum TerritoryFinancialInstitution for value: TerritoryFinancialInstitution
+            /// </summary>
+            [EnumMember(Value = "TerritoryFinancialInstitution")]
+            TerritoryFinancialInstitution = 3,
+
+            /// <summary>
+            /// Enum USBranch for value: USBranch
+            /// </summary>
+            [EnumMember(Value = "USBranch")]
+            USBranch = 4,
+
+            /// <summary>
+            /// Enum WithholdingForeignPartnership for value: WithholdingForeignPartnership
+            /// </summary>
+            [EnumMember(Value = "WithholdingForeignPartnership")]
+            WithholdingForeignPartnership = 5,
+
+            /// <summary>
+            /// Enum WithholdingForeignTrust for value: WithholdingForeignTrust
+            /// </summary>
+            [EnumMember(Value = "WithholdingForeignTrust")]
+            WithholdingForeignTrust = 6,
+
+            /// <summary>
+            /// Enum NonwithholdingForeignPartnership for value: NonwithholdingForeignPartnership
+            /// </summary>
+            [EnumMember(Value = "NonwithholdingForeignPartnership")]
+            NonwithholdingForeignPartnership = 7,
+
+            /// <summary>
+            /// Enum NonwithholdingForeignSimpleTrust for value: NonwithholdingForeignSimpleTrust
+            /// </summary>
+            [EnumMember(Value = "NonwithholdingForeignSimpleTrust")]
+            NonwithholdingForeignSimpleTrust = 8,
+
+            /// <summary>
+            /// Enum NonwithholdingForeignGrantorTrust for value: NonwithholdingForeignGrantorTrust
+            /// </summary>
+            [EnumMember(Value = "NonwithholdingForeignGrantorTrust")]
+            NonwithholdingForeignGrantorTrust = 9
+        }
+
+
+        /// <summary>
+        /// Represents the entity type for W-8IMY tax forms.  W-8IMY forms only accept entity types 1-9, which is a subset of the full EntityType enum.
+        /// </summary>
+        /// <value>Represents the entity type for W-8IMY tax forms.  W-8IMY forms only accept entity types 1-9, which is a subset of the full EntityType enum.</value>
+        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
+        public EntityTypeEnum EntityType { get; set; }
+        /// <summary>
+        /// Represents the FATCA status types specifically for W8-IMY forms.  This is a subset of the full FatcaStatus enum, restricted to values 1-26 for W8-IMY forms.
+        /// </summary>
+        /// <value>Represents the FATCA status types specifically for W8-IMY forms.  This is a subset of the full FatcaStatus enum, restricted to values 1-26 for W8-IMY forms.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum FatcaStatusEnum
+        {
+            /// <summary>
+            /// Enum NonparticipatingFFI for value: NonparticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "NonparticipatingFFI")]
+            NonparticipatingFFI = 1,
+
+            /// <summary>
+            /// Enum ParticipatingFFI for value: ParticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "ParticipatingFFI")]
+            ParticipatingFFI = 2,
+
+            /// <summary>
+            /// Enum ReportingModel1FFI for value: ReportingModel1FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel1FFI")]
+            ReportingModel1FFI = 3,
+
+            /// <summary>
+            /// Enum ReportingModel2FFI for value: ReportingModel2FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel2FFI")]
+            ReportingModel2FFI = 4,
+
+            /// <summary>
+            /// Enum RegisteredDeemedCompliantFFI for value: RegisteredDeemedCompliantFFI
+            /// </summary>
+            [EnumMember(Value = "RegisteredDeemedCompliantFFI")]
+            RegisteredDeemedCompliantFFI = 5,
+
+            /// <summary>
+            /// Enum TerritoryFinancialInstitution for value: TerritoryFinancialInstitution
+            /// </summary>
+            [EnumMember(Value = "TerritoryFinancialInstitution")]
+            TerritoryFinancialInstitution = 6,
+
+            /// <summary>
+            /// Enum SponsoredFFI for value: SponsoredFFI
+            /// </summary>
+            [EnumMember(Value = "SponsoredFFI")]
+            SponsoredFFI = 7,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantNonregisteringLocalBank for value: CertifiedDeemedCompliantNonregisteringLocalBank
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantNonregisteringLocalBank")]
+            CertifiedDeemedCompliantNonregisteringLocalBank = 8,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantFFIWithLowValueAccounts for value: CertifiedDeemedCompliantFFIWithLowValueAccounts
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantFFIWithLowValueAccounts")]
+            CertifiedDeemedCompliantFFIWithLowValueAccounts = 9,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle for value: CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle")]
+            CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle = 10,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity for value: CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity")]
+            CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity = 11,
+
+            /// <summary>
+            /// Enum CertainInvestmentEntitiesWithoutFinancialAccounts for value: CertainInvestmentEntitiesWithoutFinancialAccounts
+            /// </summary>
+            [EnumMember(Value = "CertainInvestmentEntitiesWithoutFinancialAccounts")]
+            CertainInvestmentEntitiesWithoutFinancialAccounts = 12,
+
+            /// <summary>
+            /// Enum OwnerDocumentedFFI for value: OwnerDocumentedFFI
+            /// </summary>
+            [EnumMember(Value = "OwnerDocumentedFFI")]
+            OwnerDocumentedFFI = 13,
+
+            /// <summary>
+            /// Enum RestrictedDistributor for value: RestrictedDistributor
+            /// </summary>
+            [EnumMember(Value = "RestrictedDistributor")]
+            RestrictedDistributor = 14,
+
+            /// <summary>
+            /// Enum ForeignCentralBankOfIssue for value: ForeignCentralBankOfIssue
+            /// </summary>
+            [EnumMember(Value = "ForeignCentralBankOfIssue")]
+            ForeignCentralBankOfIssue = 15,
+
+            /// <summary>
+            /// Enum NonreportingIGAFFI for value: NonreportingIGAFFI
+            /// </summary>
+            [EnumMember(Value = "NonreportingIGAFFI")]
+            NonreportingIGAFFI = 16,
+
+            /// <summary>
+            /// Enum ExemptRetirementPlans for value: ExemptRetirementPlans
+            /// </summary>
+            [EnumMember(Value = "ExemptRetirementPlans")]
+            ExemptRetirementPlans = 17,
+
+            /// <summary>
+            /// Enum ExceptedNonfinancialGroupEntity for value: ExceptedNonfinancialGroupEntity
+            /// </summary>
+            [EnumMember(Value = "ExceptedNonfinancialGroupEntity")]
+            ExceptedNonfinancialGroupEntity = 18,
+
+            /// <summary>
+            /// Enum ExceptedNonfinancialStartUpCompany for value: ExceptedNonfinancialStartUpCompany
+            /// </summary>
+            [EnumMember(Value = "ExceptedNonfinancialStartUpCompany")]
+            ExceptedNonfinancialStartUpCompany = 19,
+
+            /// <summary>
+            /// Enum ExceptedNonfinancialEntityInLiquidationOrBankruptcy for value: ExceptedNonfinancialEntityInLiquidationOrBankruptcy
+            /// </summary>
+            [EnumMember(Value = "ExceptedNonfinancialEntityInLiquidationOrBankruptcy")]
+            ExceptedNonfinancialEntityInLiquidationOrBankruptcy = 20,
+
+            /// <summary>
+            /// Enum PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation for value: PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation
+            /// </summary>
+            [EnumMember(Value = "PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation")]
+            PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation = 21,
+
+            /// <summary>
+            /// Enum ExceptedTerritoryNFFE for value: ExceptedTerritoryNFFE
+            /// </summary>
+            [EnumMember(Value = "ExceptedTerritoryNFFE")]
+            ExceptedTerritoryNFFE = 22,
+
+            /// <summary>
+            /// Enum ActiveNFFE for value: ActiveNFFE
+            /// </summary>
+            [EnumMember(Value = "ActiveNFFE")]
+            ActiveNFFE = 23,
+
+            /// <summary>
+            /// Enum PassiveNFFE for value: PassiveNFFE
+            /// </summary>
+            [EnumMember(Value = "PassiveNFFE")]
+            PassiveNFFE = 24,
+
+            /// <summary>
+            /// Enum DirectReportingNFFE for value: DirectReportingNFFE
+            /// </summary>
+            [EnumMember(Value = "DirectReportingNFFE")]
+            DirectReportingNFFE = 25,
+
+            /// <summary>
+            /// Enum SponsoredDirectReportingNFFE for value: SponsoredDirectReportingNFFE
+            /// </summary>
+            [EnumMember(Value = "SponsoredDirectReportingNFFE")]
+            SponsoredDirectReportingNFFE = 26
+        }
+
+
+        /// <summary>
+        /// Represents the FATCA status types specifically for W8-IMY forms.  This is a subset of the full FatcaStatus enum, restricted to values 1-26 for W8-IMY forms.
+        /// </summary>
+        /// <value>Represents the FATCA status types specifically for W8-IMY forms.  This is a subset of the full FatcaStatus enum, restricted to values 1-26 for W8-IMY forms.</value>
+        [DataMember(Name = "fatcaStatus", EmitDefaultValue = false)]
+        public FatcaStatusEnum? FatcaStatus { get; set; }
+        /// <summary>
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch
+        /// </summary>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DisregardedEntityFatcaStatusEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 4,
+
+            /// <summary>
+            /// Enum _5 for value: 5
+            /// </summary>
+            [EnumMember(Value = "5")]
+            _5 = 5
+        }
+
+
+        /// <summary>
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch
+        /// </summary>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch</value>
+        [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
+        public DisregardedEntityFatcaStatusEnum? DisregardedEntityFatcaStatus { get; set; }
+        /// <summary>
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
+        /// </summary>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum IgaModelEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2
+        }
+
+
+        /// <summary>
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
+        /// </summary>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
+        [DataMember(Name = "igaModel", EmitDefaultValue = true)]
+        public IgaModelEnum? IgaModel { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="W8ImyFormRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -108,8 +420,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
         /// <param name="citizenshipCountry">The country of citizenship. (required).</param>
         /// <param name="disregardedEntity">The name of the disregarded entity receiving the payment (if applicable)..</param>
-        /// <param name="entityType">The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII. (required).</param>
-        /// <param name="fatcaStatus">The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII..</param>
+        /// <param name="entityType">Represents the entity type for W-8IMY tax forms.  W-8IMY forms only accept entity types 1-9, which is a subset of the full EntityType enum. (required).</param>
+        /// <param name="fatcaStatus">Represents the FATCA status types specifically for W8-IMY forms.  This is a subset of the full FatcaStatus enum, restricted to values 1-26 for W8-IMY forms..</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
         /// <param name="residenceState">The state of residence..</param>
@@ -221,7 +533,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
-        public W8ImyFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), string giin = default(string), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? qualifiedIntermediaryCertification = default(bool?), bool? qiPrimaryWithholdingResponsibilityCertification = default(bool?), bool? qiWithholdingResponsibilityForPtpSalesCertification = default(bool?), bool? qiNomineeWithholdingResponsibilityForPtpDistributionsCertification = default(bool?), bool? qiSecuritiesLenderSubstituteDividendWithholdingCertification = default(bool?), bool? qiWithholdingAnd1099ReportingResponsibilityCertification = default(bool?), bool? qiForm1099OrFatcaReportingResponsibilityCertification = default(bool?), bool? qiOptOutOfForm1099ReportingCertification = default(bool?), bool? qiWithholdingRatePoolCertification = default(bool?), bool? qiIntermediaryOrFlowThroughEntityDocumentationCertification = default(bool?), bool? qualifiedDerivativesDealerCertification = default(bool?), bool? qddCorporation = default(bool?), bool? qddPartnership = default(bool?), bool? qddDisregardedEntity = default(bool?), bool? nonqualifiedIntermediaryCertification = default(bool?), bool? nqiWithholdingStatementTransmissionCertification = default(bool?), bool? nqiWithholdingRatePoolComplianceCertification = default(bool?), bool? nqiQualifiedSecuritiesLenderCertification = default(bool?), bool? nqiAlternativeWithholdingStatementVerificationCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? tfiTreatedAsUsPersonCertification = default(bool?), bool? tfiWithholdingStatementTransmissionCertification = default(bool?), bool? tfiTreatedAsUsPersonForPtpSalesCertification = default(bool?), bool? tfiNomineeUsPersonForPtpDistributionsCertification = default(bool?), bool? tfiNotNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNonEffectivelyConnectedIncomeCertification = default(bool?), bool? usBranchAgreementToBeTreatedAsUsPersonCertification = default(bool?), bool? usBranchWithholdingStatementAndComplianceCertification = default(bool?), bool? usBranchActingAsUsPersonForPtpSalesCertification = default(bool?), bool? usBranchNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNotNomineeForPtpDistributionsCertification = default(bool?), bool? withholdingForeignPartnershipOrTrustCertification = default(bool?), bool? nonwithholdingForeignEntityWithholdingStatementCertification = default(bool?), bool? foreignEntityPartnerInLowerTierPartnershipCertification = default(bool?), bool? foreignPartnershipAmountRealizedSection1446FCertification = default(bool?), bool? foreignPartnershipModifiedAmountRealizedCertification = default(bool?), bool? foreignGrantorTrustAmountRealizedAllocationCertification = default(bool?), bool? alternativeWithholdingStatementRelianceCertification = default(bool?), bool? npFfiWithExemptBeneficialOwnersCertification = default(bool?), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? foreignCentralBankOfIssueCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
+        public W8ImyFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), EntityTypeEnum entityType = default(EntityTypeEnum), FatcaStatusEnum? fatcaStatus = default(FatcaStatusEnum?), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tinType = default(string), string tin = default(string), string giin = default(string), string foreignTin = default(string), string referenceNumber = default(string), DisregardedEntityFatcaStatusEnum? disregardedEntityFatcaStatus = default(DisregardedEntityFatcaStatusEnum?), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? qualifiedIntermediaryCertification = default(bool?), bool? qiPrimaryWithholdingResponsibilityCertification = default(bool?), bool? qiWithholdingResponsibilityForPtpSalesCertification = default(bool?), bool? qiNomineeWithholdingResponsibilityForPtpDistributionsCertification = default(bool?), bool? qiSecuritiesLenderSubstituteDividendWithholdingCertification = default(bool?), bool? qiWithholdingAnd1099ReportingResponsibilityCertification = default(bool?), bool? qiForm1099OrFatcaReportingResponsibilityCertification = default(bool?), bool? qiOptOutOfForm1099ReportingCertification = default(bool?), bool? qiWithholdingRatePoolCertification = default(bool?), bool? qiIntermediaryOrFlowThroughEntityDocumentationCertification = default(bool?), bool? qualifiedDerivativesDealerCertification = default(bool?), bool? qddCorporation = default(bool?), bool? qddPartnership = default(bool?), bool? qddDisregardedEntity = default(bool?), bool? nonqualifiedIntermediaryCertification = default(bool?), bool? nqiWithholdingStatementTransmissionCertification = default(bool?), bool? nqiWithholdingRatePoolComplianceCertification = default(bool?), bool? nqiQualifiedSecuritiesLenderCertification = default(bool?), bool? nqiAlternativeWithholdingStatementVerificationCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? tfiTreatedAsUsPersonCertification = default(bool?), bool? tfiWithholdingStatementTransmissionCertification = default(bool?), bool? tfiTreatedAsUsPersonForPtpSalesCertification = default(bool?), bool? tfiNomineeUsPersonForPtpDistributionsCertification = default(bool?), bool? tfiNotNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNonEffectivelyConnectedIncomeCertification = default(bool?), bool? usBranchAgreementToBeTreatedAsUsPersonCertification = default(bool?), bool? usBranchWithholdingStatementAndComplianceCertification = default(bool?), bool? usBranchActingAsUsPersonForPtpSalesCertification = default(bool?), bool? usBranchNomineeForPtpDistributionsCertification = default(bool?), bool? usBranchNotNomineeForPtpDistributionsCertification = default(bool?), bool? withholdingForeignPartnershipOrTrustCertification = default(bool?), bool? nonwithholdingForeignEntityWithholdingStatementCertification = default(bool?), bool? foreignEntityPartnerInLowerTierPartnershipCertification = default(bool?), bool? foreignPartnershipAmountRealizedSection1446FCertification = default(bool?), bool? foreignPartnershipModifiedAmountRealizedCertification = default(bool?), bool? foreignGrantorTrustAmountRealizedAllocationCertification = default(bool?), bool? alternativeWithholdingStatementRelianceCertification = default(bool?), bool? npFfiWithExemptBeneficialOwnersCertification = default(bool?), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? foreignCentralBankOfIssueCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), IgaModelEnum? igaModel = default(IgaModelEnum?), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -235,11 +547,6 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("citizenshipCountry is a required property for W8ImyFormRequest and cannot be null");
             }
             this.CitizenshipCountry = citizenshipCountry;
-            // to ensure "entityType" is required (not null)
-            if (entityType == null)
-            {
-                throw new ArgumentNullException("entityType is a required property for W8ImyFormRequest and cannot be null");
-            }
             this.EntityType = entityType;
             // to ensure "residenceCountry" is required (not null)
             if (residenceCountry == null)
@@ -383,20 +690,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string DisregardedEntity { get; set; }
 
         /// <summary>
-        /// The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII.
-        /// </summary>
-        /// <value>The entity type.  Available values:  - 1: QI (including a QDD). Complete Part III.  - 2: Nonqualified intermediary. Complete Part IV.  - 3: Territory financial institution. Complete Part V.  - 4: U.S. branch. Complete Part VI.  - 5: Withholding foreign partnership. Complete Part VII.  - 6: Withholding foreign trust. Complete Part VII.  - 7: Nonwithholding foreign partnership. Complete Part VIII.  - 8: Nonwithholding foreign simple trust. Complete Part VIII.  - 9: Nonwithholding foreign grantor trust. Complete Part VIII.</value>
-        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
-        public string EntityType { get; set; }
-
-        /// <summary>
-        /// The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII.
-        /// </summary>
-        /// <value>The FATCA status.  Available values:  - 1: Nonparticipating foreign financial institution (FFI) (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner). Complete Part IX (if applicable).  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XIX).  - 6: Territory financial institution. Complete Part V.  - 7: Sponsored FFI (other than a certified deemed-compliant sponsored, closely held investment vehicle). Complete Part X.  - 8: Certified deemed-compliant nonregistering local bank. Complete Part XII.  - 9: Certified deemed-compliant FFI with only low-value accounts. Complete Part XIII.  - 10: Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part XIV.  - 11: Certified deemed-compliant limited life debt investment entity. Complete Part XV.  - 12: Certain investment entities that do not maintain financial accounts. Complete Part XVI.  - 13: Owner-documented FFI. Complete Part XI.  - 14: Restricted distributor. Complete Part XVII.  - 15: Foreign central bank of issue. Complete Part XVIII.  - 16: Nonreporting IGA FFI. Complete Part XIX.  - 17: Exempt retirement plans. Complete Part XX.  - 18: Excepted nonfinancial group entity. Complete Part XXI.  - 19: Excepted nonfinancial start-up company. Complete Part XXII.  - 20: Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XXIII.  - 21: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIV.  - 22: Excepted territory NFFE. Complete Part XXV.  - 23: Active NFFE. Complete Part XXVI.  - 24: Passive NFFE. Complete Part XXVII.  - 25: Direct reporting NFFE.  - 26: Sponsored direct reporting NFFE. Complete Part XXVIII.</value>
-        [DataMember(Name = "fatcaStatus", EmitDefaultValue = false)]
-        public string FatcaStatus { get; set; }
-
-        /// <summary>
         /// The residential address of the individual or entity.
         /// </summary>
         /// <value>The residential address of the individual or entity.</value>
@@ -507,13 +800,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>A reference number for the form.</value>
         [DataMember(Name = "referenceNumber", EmitDefaultValue = true)]
         public string ReferenceNumber { get; set; }
-
-        /// <summary>
-        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch
-        /// </summary>
-        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI.  - 2: Participating FFI.  - 3: Reporting Model 1 FFI.  - 4: Reporting Model 2 FFI.  - 5: U.S. Branch</value>
-        [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
-        public string DisregardedEntityFatcaStatus { get; set; }
 
         /// <summary>
         /// The address for disregarded entities.
@@ -955,13 +1241,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The country for the applicable IGA with the United States.</value>
         [DataMember(Name = "igaCountry", EmitDefaultValue = true)]
         public string IgaCountry { get; set; }
-
-        /// <summary>
-        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
-        /// </summary>
-        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
-        [DataMember(Name = "igaModel", EmitDefaultValue = true)]
-        public string IgaModel { get; set; }
 
         /// <summary>
         /// Specifies how the applicable IGA is treated under the IGA provisions or Treasury regulations.

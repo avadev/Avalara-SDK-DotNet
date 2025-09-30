@@ -46,8 +46,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorResponseItem" /> class.
         /// </summary>
-        /// <param name="type">type.</param>
-        /// <param name="detail">detail.</param>
+        /// <param name="type">An identifier for this occurrence of the problem.  It is the name of a request&#39;s field when specific to that field.  Otherwise, for other types of errors, its value is empty..</param>
+        /// <param name="detail">An explanation specific to this occurrence of the problem..</param>
         public ErrorResponseItem(string type = default(string), string detail = default(string))
         {
             this.Type = type;
@@ -55,14 +55,16 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// An identifier for this occurrence of the problem.  It is the name of a request&#39;s field when specific to that field.  Otherwise, for other types of errors, its value is empty.
         /// </summary>
+        /// <value>An identifier for this occurrence of the problem.  It is the name of a request&#39;s field when specific to that field.  Otherwise, for other types of errors, its value is empty.</value>
         [DataMember(Name = "type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets Detail
+        /// An explanation specific to this occurrence of the problem.
         /// </summary>
+        /// <value>An explanation specific to this occurrence of the problem.</value>
         [DataMember(Name = "detail", EmitDefaultValue = true)]
         public string Detail { get; set; }
 

@@ -98,6 +98,462 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
+        /// The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)
+        /// </summary>
+        /// <value>The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum BusinessClassificationEnum
+        {
+            /// <summary>
+            /// Enum Individual for value: Individual
+            /// </summary>
+            [EnumMember(Value = "Individual")]
+            Individual = 1,
+
+            /// <summary>
+            /// Enum CCorporation for value: CCorporation
+            /// </summary>
+            [EnumMember(Value = "CCorporation")]
+            CCorporation = 2,
+
+            /// <summary>
+            /// Enum SCorporation for value: SCorporation
+            /// </summary>
+            [EnumMember(Value = "SCorporation")]
+            SCorporation = 3,
+
+            /// <summary>
+            /// Enum Partnership for value: Partnership
+            /// </summary>
+            [EnumMember(Value = "Partnership")]
+            Partnership = 4,
+
+            /// <summary>
+            /// Enum TrustEstate for value: TrustEstate
+            /// </summary>
+            [EnumMember(Value = "TrustEstate")]
+            TrustEstate = 5,
+
+            /// <summary>
+            /// Enum LlcC for value: LlcC
+            /// </summary>
+            [EnumMember(Value = "LlcC")]
+            LlcC = 6,
+
+            /// <summary>
+            /// Enum LlcS for value: LlcS
+            /// </summary>
+            [EnumMember(Value = "LlcS")]
+            LlcS = 7,
+
+            /// <summary>
+            /// Enum LlcP for value: LlcP
+            /// </summary>
+            [EnumMember(Value = "LlcP")]
+            LlcP = 8,
+
+            /// <summary>
+            /// Enum Other for value: Other
+            /// </summary>
+            [EnumMember(Value = "Other")]
+            Other = 9
+        }
+
+
+        /// <summary>
+        /// The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)
+        /// </summary>
+        /// <value>The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)</value>
+        [DataMember(Name = "businessClassification", IsRequired = true, EmitDefaultValue = true)]
+        public BusinessClassificationEnum BusinessClassification { get; set; }
+        /// <summary>
+        /// The state of the address.
+        /// </summary>
+        /// <value>The state of the address.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StateEnum
+        {
+            /// <summary>
+            /// Enum AA for value: AA
+            /// </summary>
+            [EnumMember(Value = "AA")]
+            AA = 1,
+
+            /// <summary>
+            /// Enum AE for value: AE
+            /// </summary>
+            [EnumMember(Value = "AE")]
+            AE = 2,
+
+            /// <summary>
+            /// Enum AK for value: AK
+            /// </summary>
+            [EnumMember(Value = "AK")]
+            AK = 3,
+
+            /// <summary>
+            /// Enum AL for value: AL
+            /// </summary>
+            [EnumMember(Value = "AL")]
+            AL = 4,
+
+            /// <summary>
+            /// Enum AP for value: AP
+            /// </summary>
+            [EnumMember(Value = "AP")]
+            AP = 5,
+
+            /// <summary>
+            /// Enum AR for value: AR
+            /// </summary>
+            [EnumMember(Value = "AR")]
+            AR = 6,
+
+            /// <summary>
+            /// Enum AS for value: AS
+            /// </summary>
+            [EnumMember(Value = "AS")]
+            AS = 7,
+
+            /// <summary>
+            /// Enum AZ for value: AZ
+            /// </summary>
+            [EnumMember(Value = "AZ")]
+            AZ = 8,
+
+            /// <summary>
+            /// Enum CA for value: CA
+            /// </summary>
+            [EnumMember(Value = "CA")]
+            CA = 9,
+
+            /// <summary>
+            /// Enum CO for value: CO
+            /// </summary>
+            [EnumMember(Value = "CO")]
+            CO = 10,
+
+            /// <summary>
+            /// Enum CT for value: CT
+            /// </summary>
+            [EnumMember(Value = "CT")]
+            CT = 11,
+
+            /// <summary>
+            /// Enum DC for value: DC
+            /// </summary>
+            [EnumMember(Value = "DC")]
+            DC = 12,
+
+            /// <summary>
+            /// Enum DE for value: DE
+            /// </summary>
+            [EnumMember(Value = "DE")]
+            DE = 13,
+
+            /// <summary>
+            /// Enum FL for value: FL
+            /// </summary>
+            [EnumMember(Value = "FL")]
+            FL = 14,
+
+            /// <summary>
+            /// Enum FM for value: FM
+            /// </summary>
+            [EnumMember(Value = "FM")]
+            FM = 15,
+
+            /// <summary>
+            /// Enum GA for value: GA
+            /// </summary>
+            [EnumMember(Value = "GA")]
+            GA = 16,
+
+            /// <summary>
+            /// Enum GU for value: GU
+            /// </summary>
+            [EnumMember(Value = "GU")]
+            GU = 17,
+
+            /// <summary>
+            /// Enum HI for value: HI
+            /// </summary>
+            [EnumMember(Value = "HI")]
+            HI = 18,
+
+            /// <summary>
+            /// Enum IA for value: IA
+            /// </summary>
+            [EnumMember(Value = "IA")]
+            IA = 19,
+
+            /// <summary>
+            /// Enum ID for value: ID
+            /// </summary>
+            [EnumMember(Value = "ID")]
+            ID = 20,
+
+            /// <summary>
+            /// Enum IL for value: IL
+            /// </summary>
+            [EnumMember(Value = "IL")]
+            IL = 21,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            IN = 22,
+
+            /// <summary>
+            /// Enum KS for value: KS
+            /// </summary>
+            [EnumMember(Value = "KS")]
+            KS = 23,
+
+            /// <summary>
+            /// Enum KY for value: KY
+            /// </summary>
+            [EnumMember(Value = "KY")]
+            KY = 24,
+
+            /// <summary>
+            /// Enum LA for value: LA
+            /// </summary>
+            [EnumMember(Value = "LA")]
+            LA = 25,
+
+            /// <summary>
+            /// Enum MA for value: MA
+            /// </summary>
+            [EnumMember(Value = "MA")]
+            MA = 26,
+
+            /// <summary>
+            /// Enum MD for value: MD
+            /// </summary>
+            [EnumMember(Value = "MD")]
+            MD = 27,
+
+            /// <summary>
+            /// Enum ME for value: ME
+            /// </summary>
+            [EnumMember(Value = "ME")]
+            ME = 28,
+
+            /// <summary>
+            /// Enum MH for value: MH
+            /// </summary>
+            [EnumMember(Value = "MH")]
+            MH = 29,
+
+            /// <summary>
+            /// Enum MI for value: MI
+            /// </summary>
+            [EnumMember(Value = "MI")]
+            MI = 30,
+
+            /// <summary>
+            /// Enum MN for value: MN
+            /// </summary>
+            [EnumMember(Value = "MN")]
+            MN = 31,
+
+            /// <summary>
+            /// Enum MO for value: MO
+            /// </summary>
+            [EnumMember(Value = "MO")]
+            MO = 32,
+
+            /// <summary>
+            /// Enum MP for value: MP
+            /// </summary>
+            [EnumMember(Value = "MP")]
+            MP = 33,
+
+            /// <summary>
+            /// Enum MS for value: MS
+            /// </summary>
+            [EnumMember(Value = "MS")]
+            MS = 34,
+
+            /// <summary>
+            /// Enum MT for value: MT
+            /// </summary>
+            [EnumMember(Value = "MT")]
+            MT = 35,
+
+            /// <summary>
+            /// Enum NC for value: NC
+            /// </summary>
+            [EnumMember(Value = "NC")]
+            NC = 36,
+
+            /// <summary>
+            /// Enum ND for value: ND
+            /// </summary>
+            [EnumMember(Value = "ND")]
+            ND = 37,
+
+            /// <summary>
+            /// Enum NE for value: NE
+            /// </summary>
+            [EnumMember(Value = "NE")]
+            NE = 38,
+
+            /// <summary>
+            /// Enum NH for value: NH
+            /// </summary>
+            [EnumMember(Value = "NH")]
+            NH = 39,
+
+            /// <summary>
+            /// Enum NJ for value: NJ
+            /// </summary>
+            [EnumMember(Value = "NJ")]
+            NJ = 40,
+
+            /// <summary>
+            /// Enum NM for value: NM
+            /// </summary>
+            [EnumMember(Value = "NM")]
+            NM = 41,
+
+            /// <summary>
+            /// Enum NV for value: NV
+            /// </summary>
+            [EnumMember(Value = "NV")]
+            NV = 42,
+
+            /// <summary>
+            /// Enum NY for value: NY
+            /// </summary>
+            [EnumMember(Value = "NY")]
+            NY = 43,
+
+            /// <summary>
+            /// Enum OH for value: OH
+            /// </summary>
+            [EnumMember(Value = "OH")]
+            OH = 44,
+
+            /// <summary>
+            /// Enum OK for value: OK
+            /// </summary>
+            [EnumMember(Value = "OK")]
+            OK = 45,
+
+            /// <summary>
+            /// Enum OR for value: OR
+            /// </summary>
+            [EnumMember(Value = "OR")]
+            OR = 46,
+
+            /// <summary>
+            /// Enum PA for value: PA
+            /// </summary>
+            [EnumMember(Value = "PA")]
+            PA = 47,
+
+            /// <summary>
+            /// Enum PR for value: PR
+            /// </summary>
+            [EnumMember(Value = "PR")]
+            PR = 48,
+
+            /// <summary>
+            /// Enum PW for value: PW
+            /// </summary>
+            [EnumMember(Value = "PW")]
+            PW = 49,
+
+            /// <summary>
+            /// Enum RI for value: RI
+            /// </summary>
+            [EnumMember(Value = "RI")]
+            RI = 50,
+
+            /// <summary>
+            /// Enum SC for value: SC
+            /// </summary>
+            [EnumMember(Value = "SC")]
+            SC = 51,
+
+            /// <summary>
+            /// Enum SD for value: SD
+            /// </summary>
+            [EnumMember(Value = "SD")]
+            SD = 52,
+
+            /// <summary>
+            /// Enum TN for value: TN
+            /// </summary>
+            [EnumMember(Value = "TN")]
+            TN = 53,
+
+            /// <summary>
+            /// Enum TX for value: TX
+            /// </summary>
+            [EnumMember(Value = "TX")]
+            TX = 54,
+
+            /// <summary>
+            /// Enum UT for value: UT
+            /// </summary>
+            [EnumMember(Value = "UT")]
+            UT = 55,
+
+            /// <summary>
+            /// Enum VA for value: VA
+            /// </summary>
+            [EnumMember(Value = "VA")]
+            VA = 56,
+
+            /// <summary>
+            /// Enum VI for value: VI
+            /// </summary>
+            [EnumMember(Value = "VI")]
+            VI = 57,
+
+            /// <summary>
+            /// Enum VT for value: VT
+            /// </summary>
+            [EnumMember(Value = "VT")]
+            VT = 58,
+
+            /// <summary>
+            /// Enum WA for value: WA
+            /// </summary>
+            [EnumMember(Value = "WA")]
+            WA = 59,
+
+            /// <summary>
+            /// Enum WI for value: WI
+            /// </summary>
+            [EnumMember(Value = "WI")]
+            WI = 60,
+
+            /// <summary>
+            /// Enum WV for value: WV
+            /// </summary>
+            [EnumMember(Value = "WV")]
+            WV = 61,
+
+            /// <summary>
+            /// Enum WY for value: WY
+            /// </summary>
+            [EnumMember(Value = "WY")]
+            WY = 62
+        }
+
+
+        /// <summary>
+        /// The state of the address.
+        /// </summary>
+        /// <value>The state of the address.</value>
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
+        public StateEnum State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="W9FormRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -110,8 +566,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="businessClassification">The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated) (required).</param>
         /// <param name="businessOther">The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;..</param>
         /// <param name="foreignPartnerOwnerOrBeneficiary">Indicates whether the individual is a foreign partner, owner, or beneficiary..</param>
-        /// <param name="exemptPayeeCode">The exempt payee code..</param>
-        /// <param name="exemptFatcaCode">The exemption from FATCA reporting code..</param>
+        /// <param name="exemptPayeeCode">The exempt payee code. Allowed values (1–13):  - 1 — Organization exempt under §501(a) or IRA; custodial account under §403(b)(7)  - 2 — U.S. government or its agencies/instrumentalities  - 3 — U.S. state, DC, U.S. territory/possession, or their political subdivisions/agencies/instrumentalities  - 4 — Foreign government or its political subdivisions/agencies/instrumentalities  - 5 — Corporation  - 6 — Dealer in securities or commodities required to register in the U.S., DC, or U.S. territory/possession  - 7 — Futures commission merchant registered with the CFTC  - 8 — Real estate investment trust (REIT)  - 9 — Entity registered at all times during the tax year under the Investment Company Act of 1940  - 10 — Common trust fund operated by a bank under §584(a)  - 11 — Financial institution (see §581)  - 12 — Broker (nominee/custodian)  - 13 — Trust exempt under §664 or described in §4947.</param>
+        /// <param name="exemptFatcaCode">The exemption from FATCA reporting code. Allowed values (A–M):  - A — Tax‑exempt organization under §501(a) or IRA (§7701(a)(37))  - B — U.S. government or any of its agencies/instrumentalities  - C — U.S. state, DC, territory/possession, or their political subdivisions/instrumentalities  - D — Corporation whose stock is regularly traded on an established securities market  - E — Corporation that is a member of the same expanded affiliated group as a D corporation  - F — Registered dealer in securities/commodities/derivatives  - G — REIT (Real Estate Investment Trust)  - H — Regulated investment company (§851) or entity registered all year under the Investment Company Act of 1940  - I — Common trust fund (§584(a))  - J — Bank (§581)  - K — Broker  - L — Charitable remainder trust (§664) or trust described in §4947(a)(1)  - M — Trust under §403(b) plan or §457(g) plan.</param>
         /// <param name="foreignCountryIndicator">Indicates whether the individual or entity is in a foreign country..</param>
         /// <param name="address">The address of the individual or entity. (required).</param>
         /// <param name="foreignAddress">The foreign address of the individual or entity..</param>
@@ -128,7 +584,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
-        public W9FormRequest(string name = default(string), string businessName = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
+        public W9FormRequest(string name = default(string), string businessName = default(string), BusinessClassificationEnum businessClassification = default(BusinessClassificationEnum), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), StateEnum state = default(StateEnum), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -136,11 +592,6 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("name is a required property for W9FormRequest and cannot be null");
             }
             this.Name = name;
-            // to ensure "businessClassification" is required (not null)
-            if (businessClassification == null)
-            {
-                throw new ArgumentNullException("businessClassification is a required property for W9FormRequest and cannot be null");
-            }
             this.BusinessClassification = businessClassification;
             // to ensure "address" is required (not null)
             if (address == null)
@@ -154,11 +605,6 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("city is a required property for W9FormRequest and cannot be null");
             }
             this.City = city;
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for W9FormRequest and cannot be null");
-            }
             this.State = state;
             // to ensure "zip" is required (not null)
             if (zip == null)
@@ -210,13 +656,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string BusinessName { get; set; }
 
         /// <summary>
-        /// The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)
-        /// </summary>
-        /// <value>The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated)</value>
-        [DataMember(Name = "businessClassification", IsRequired = true, EmitDefaultValue = true)]
-        public string BusinessClassification { get; set; }
-
-        /// <summary>
         /// The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;.
         /// </summary>
         /// <value>The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;.</value>
@@ -231,16 +670,16 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool ForeignPartnerOwnerOrBeneficiary { get; set; }
 
         /// <summary>
-        /// The exempt payee code.
+        /// The exempt payee code. Allowed values (1–13):  - 1 — Organization exempt under §501(a) or IRA; custodial account under §403(b)(7)  - 2 — U.S. government or its agencies/instrumentalities  - 3 — U.S. state, DC, U.S. territory/possession, or their political subdivisions/agencies/instrumentalities  - 4 — Foreign government or its political subdivisions/agencies/instrumentalities  - 5 — Corporation  - 6 — Dealer in securities or commodities required to register in the U.S., DC, or U.S. territory/possession  - 7 — Futures commission merchant registered with the CFTC  - 8 — Real estate investment trust (REIT)  - 9 — Entity registered at all times during the tax year under the Investment Company Act of 1940  - 10 — Common trust fund operated by a bank under §584(a)  - 11 — Financial institution (see §581)  - 12 — Broker (nominee/custodian)  - 13 — Trust exempt under §664 or described in §4947
         /// </summary>
-        /// <value>The exempt payee code.</value>
+        /// <value>The exempt payee code. Allowed values (1–13):  - 1 — Organization exempt under §501(a) or IRA; custodial account under §403(b)(7)  - 2 — U.S. government or its agencies/instrumentalities  - 3 — U.S. state, DC, U.S. territory/possession, or their political subdivisions/agencies/instrumentalities  - 4 — Foreign government or its political subdivisions/agencies/instrumentalities  - 5 — Corporation  - 6 — Dealer in securities or commodities required to register in the U.S., DC, or U.S. territory/possession  - 7 — Futures commission merchant registered with the CFTC  - 8 — Real estate investment trust (REIT)  - 9 — Entity registered at all times during the tax year under the Investment Company Act of 1940  - 10 — Common trust fund operated by a bank under §584(a)  - 11 — Financial institution (see §581)  - 12 — Broker (nominee/custodian)  - 13 — Trust exempt under §664 or described in §4947</value>
         [DataMember(Name = "exemptPayeeCode", EmitDefaultValue = true)]
         public string ExemptPayeeCode { get; set; }
 
         /// <summary>
-        /// The exemption from FATCA reporting code.
+        /// The exemption from FATCA reporting code. Allowed values (A–M):  - A — Tax‑exempt organization under §501(a) or IRA (§7701(a)(37))  - B — U.S. government or any of its agencies/instrumentalities  - C — U.S. state, DC, territory/possession, or their political subdivisions/instrumentalities  - D — Corporation whose stock is regularly traded on an established securities market  - E — Corporation that is a member of the same expanded affiliated group as a D corporation  - F — Registered dealer in securities/commodities/derivatives  - G — REIT (Real Estate Investment Trust)  - H — Regulated investment company (§851) or entity registered all year under the Investment Company Act of 1940  - I — Common trust fund (§584(a))  - J — Bank (§581)  - K — Broker  - L — Charitable remainder trust (§664) or trust described in §4947(a)(1)  - M — Trust under §403(b) plan or §457(g) plan
         /// </summary>
-        /// <value>The exemption from FATCA reporting code.</value>
+        /// <value>The exemption from FATCA reporting code. Allowed values (A–M):  - A — Tax‑exempt organization under §501(a) or IRA (§7701(a)(37))  - B — U.S. government or any of its agencies/instrumentalities  - C — U.S. state, DC, territory/possession, or their political subdivisions/instrumentalities  - D — Corporation whose stock is regularly traded on an established securities market  - E — Corporation that is a member of the same expanded affiliated group as a D corporation  - F — Registered dealer in securities/commodities/derivatives  - G — REIT (Real Estate Investment Trust)  - H — Regulated investment company (§851) or entity registered all year under the Investment Company Act of 1940  - I — Common trust fund (§584(a))  - J — Bank (§581)  - K — Broker  - L — Charitable remainder trust (§664) or trust described in §4947(a)(1)  - M — Trust under §403(b) plan or §457(g) plan</value>
         [DataMember(Name = "exemptFatcaCode", EmitDefaultValue = true)]
         public string ExemptFatcaCode { get; set; }
 
@@ -271,13 +710,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The city of the address.</value>
         [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
-
-        /// <summary>
-        /// The state of the address.
-        /// </summary>
-        /// <value>The state of the address.</value>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public string State { get; set; }
 
         /// <summary>
         /// The ZIP code of the address.
