@@ -100,6 +100,28 @@ namespace Avalara.SDK.Api.A1099.V2
     }
 
     /// <summary>
+    /// Represents the Request object for the GetW9FormPdf API
+    /// </summary>
+    public class GetW9FormPdfRequestSdk {
+        /// <summary>
+        /// Id of the form
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>
+        /// API version
+        /// </summary>
+        public string? AvalaraVersion { get; set; } = "2.0";
+        /// <summary>
+        /// Unique correlation Id in a GUID format
+        /// </summary>
+        public string XCorrelationId { get; set; }
+        /// <summary>
+        /// Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) .
+        /// </summary>
+        public string XAvalaraClient { get; set; }
+    }
+
+    /// <summary>
     /// Represents the Request object for the ListW9Forms API
     /// </summary>
     public class ListW9FormsRequestSdk {
@@ -267,6 +289,17 @@ namespace Avalara.SDK.Api.A1099.V2
         CreateW9Form201Response GetW9Form(GetW9FormRequestSdk requestParameters);
 
         /// <summary>
+        /// Download the PDF for a W9/W4/W8 form.
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF file for a W9/W4/W8 form.
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns></returns>
+        void GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters);
+
+        /// <summary>
         /// List W9/W4/W8 forms
         /// </summary>
         /// <remarks>
@@ -366,6 +399,18 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateW9Form201Response</returns>
         System.Threading.Tasks.Task<CreateW9Form201Response> GetW9FormAsync(GetW9FormRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Download the PDF for a W9/W4/W8 form.
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF file for a W9/W4/W8 form.
+        /// </remarks>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List W9/W4/W8 forms
@@ -1020,6 +1065,148 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
+        /// Download the PDF for a W9/W4/W8 form. Returns the PDF file for a W9/W4/W8 form.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns></returns>
+        public void GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters)
+        {
+            GetW9FormPdfWithHttpInfo(requestParameters);
+        }
+
+        /// <summary>
+        /// Download the PDF for a W9/W4/W8 form. Returns the PDF file for a W9/W4/W8 form.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        private Avalara.SDK.Client.ApiResponse<Object> GetW9FormPdfWithHttpInfo(GetW9FormPdfRequestSdk requestParameters)
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'Id' is set
+            if (requestParameters.Id == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.Id' when calling FormsW9Api->GetW9FormPdf");
+
+            // verify the required parameter 'AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9FormPdf");
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/pdf",
+                "application/json"
+            };
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<Object>("/w9/forms/{id}/pdf", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetW9FormPdf", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Download the PDF for a W9/W4/W8 form. Returns the PDF file for a W9/W4/W8 form.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await GetW9FormPdfWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Download the PDF for a W9/W4/W8 form. Returns the PDF file for a W9/W4/W8 form.
+        /// </summary>
+        /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestParameters">Request Object for the API</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> GetW9FormPdfWithHttpInfoAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            //OAuth2 Scopes
+            String requiredScopes = "";
+            // verify the required parameter 'requestParameters.Id' is set
+            if (requestParameters.Id == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.Id' when calling FormsW9Api->GetW9FormPdf");
+
+            // verify the required parameter 'requestParameters.AvalaraVersion' is set
+            if (requestParameters.AvalaraVersion == null)
+                throw new Avalara.SDK.Client.ApiException(400, "Missing required parameter 'requestParameters.AvalaraVersion' when calling FormsW9Api->GetW9FormPdf");
+
+
+            Avalara.SDK.Client.RequestOptions localVarRequestOptions = new Avalara.SDK.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/pdf",
+                "application/json"
+            };
+
+
+            var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.Id)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
+            if (requestParameters.XCorrelationId != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Correlation-Id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XCorrelationId)); // header parameter
+            }
+            if (requestParameters.XAvalaraClient != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Avalara-Client", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.XAvalaraClient)); // header parameter
+            }
+
+            // make the HTTP request
+			var localVarResponse = await this.Client.GetAsync<Object>("/w9/forms/{id}/pdf", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetW9FormPdf", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List W9/W4/W8 forms List W9/W4/W8 forms. Filterable/Sortable fields are: \&quot;companyId\&quot;, \&quot;type\&quot;, \&quot;displayName\&quot;, \&quot;entryStatus\&quot;, \&quot;email\&quot;, \&quot;archived\&quot; and \&quot;referenceId\&quot;.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1650,7 +1837,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.10.0";
+            this.Client.SdkVersion = "25.10.1";
         }
         
     }
