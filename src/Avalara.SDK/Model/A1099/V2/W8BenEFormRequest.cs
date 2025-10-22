@@ -98,6 +98,1620 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
+        /// Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part
+        /// </summary>
+        /// <value>Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum EntityTypeEnum
+        {
+            /// <summary>
+            /// Enum Corporation for value: Corporation
+            /// </summary>
+            [EnumMember(Value = "Corporation")]
+            Corporation = 1,
+
+            /// <summary>
+            /// Enum DisregardedEntity for value: DisregardedEntity
+            /// </summary>
+            [EnumMember(Value = "DisregardedEntity")]
+            DisregardedEntity = 2,
+
+            /// <summary>
+            /// Enum Partnership for value: Partnership
+            /// </summary>
+            [EnumMember(Value = "Partnership")]
+            Partnership = 3,
+
+            /// <summary>
+            /// Enum SimpleTrust for value: SimpleTrust
+            /// </summary>
+            [EnumMember(Value = "SimpleTrust")]
+            SimpleTrust = 4,
+
+            /// <summary>
+            /// Enum GrantorTrust for value: GrantorTrust
+            /// </summary>
+            [EnumMember(Value = "GrantorTrust")]
+            GrantorTrust = 5,
+
+            /// <summary>
+            /// Enum ComplexTrust for value: ComplexTrust
+            /// </summary>
+            [EnumMember(Value = "ComplexTrust")]
+            ComplexTrust = 6,
+
+            /// <summary>
+            /// Enum Estate for value: Estate
+            /// </summary>
+            [EnumMember(Value = "Estate")]
+            Estate = 7,
+
+            /// <summary>
+            /// Enum ForeignGovernmentControlledEntity for value: ForeignGovernmentControlledEntity
+            /// </summary>
+            [EnumMember(Value = "ForeignGovernmentControlledEntity")]
+            ForeignGovernmentControlledEntity = 8,
+
+            /// <summary>
+            /// Enum CentralBankOfIssue for value: CentralBankOfIssue
+            /// </summary>
+            [EnumMember(Value = "CentralBankOfIssue")]
+            CentralBankOfIssue = 9,
+
+            /// <summary>
+            /// Enum TaxExemptOrganization for value: TaxExemptOrganization
+            /// </summary>
+            [EnumMember(Value = "TaxExemptOrganization")]
+            TaxExemptOrganization = 10,
+
+            /// <summary>
+            /// Enum PrivateFoundation for value: PrivateFoundation
+            /// </summary>
+            [EnumMember(Value = "PrivateFoundation")]
+            PrivateFoundation = 11,
+
+            /// <summary>
+            /// Enum InternationalOrganization for value: InternationalOrganization
+            /// </summary>
+            [EnumMember(Value = "InternationalOrganization")]
+            InternationalOrganization = 12,
+
+            /// <summary>
+            /// Enum ForeignGovernmentControlledIntegralPart for value: ForeignGovernmentControlledIntegralPart
+            /// </summary>
+            [EnumMember(Value = "ForeignGovernmentControlledIntegralPart")]
+            ForeignGovernmentControlledIntegralPart = 13
+        }
+
+
+        /// <summary>
+        /// Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part
+        /// </summary>
+        /// <value>Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part</value>
+        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
+        public EntityTypeEnum EntityType { get; set; }
+        /// <summary>
+        /// Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account
+        /// </summary>
+        /// <value>Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum FatcaStatusEnum
+        {
+            /// <summary>
+            /// Enum NonparticipatingFFI for value: NonparticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "NonparticipatingFFI")]
+            NonparticipatingFFI = 1,
+
+            /// <summary>
+            /// Enum ParticipatingFFI for value: ParticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "ParticipatingFFI")]
+            ParticipatingFFI = 2,
+
+            /// <summary>
+            /// Enum ReportingModel1FFI for value: ReportingModel1FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel1FFI")]
+            ReportingModel1FFI = 3,
+
+            /// <summary>
+            /// Enum ReportingModel2FFI for value: ReportingModel2FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel2FFI")]
+            ReportingModel2FFI = 4,
+
+            /// <summary>
+            /// Enum RegisteredDeemedCompliantFFI for value: RegisteredDeemedCompliantFFI
+            /// </summary>
+            [EnumMember(Value = "RegisteredDeemedCompliantFFI")]
+            RegisteredDeemedCompliantFFI = 5,
+
+            /// <summary>
+            /// Enum SponsoredFFIWithoutGIIN for value: SponsoredFFIWithoutGIIN
+            /// </summary>
+            [EnumMember(Value = "SponsoredFFIWithoutGIIN")]
+            SponsoredFFIWithoutGIIN = 6,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantNonregisteringLocalBank for value: CertifiedDeemedCompliantNonregisteringLocalBank
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantNonregisteringLocalBank")]
+            CertifiedDeemedCompliantNonregisteringLocalBank = 7,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantFFIWithLowValueAccounts for value: CertifiedDeemedCompliantFFIWithLowValueAccounts
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantFFIWithLowValueAccounts")]
+            CertifiedDeemedCompliantFFIWithLowValueAccounts = 8,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle for value: CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle")]
+            CertifiedDeemedCompliantSponsoredCloselyHeldInvestmentVehicle = 9,
+
+            /// <summary>
+            /// Enum CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity for value: CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity
+            /// </summary>
+            [EnumMember(Value = "CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity")]
+            CertifiedDeemedCompliantLimitedLifeDebtInvestmentEntity = 10,
+
+            /// <summary>
+            /// Enum CertainInvestmentEntitiesWithoutFinancialAccounts for value: CertainInvestmentEntitiesWithoutFinancialAccounts
+            /// </summary>
+            [EnumMember(Value = "CertainInvestmentEntitiesWithoutFinancialAccounts")]
+            CertainInvestmentEntitiesWithoutFinancialAccounts = 11,
+
+            /// <summary>
+            /// Enum OwnerDocumentedFFI for value: OwnerDocumentedFFI
+            /// </summary>
+            [EnumMember(Value = "OwnerDocumentedFFI")]
+            OwnerDocumentedFFI = 12,
+
+            /// <summary>
+            /// Enum RestrictedDistributor for value: RestrictedDistributor
+            /// </summary>
+            [EnumMember(Value = "RestrictedDistributor")]
+            RestrictedDistributor = 13,
+
+            /// <summary>
+            /// Enum NonreportingIGAFFI for value: NonreportingIGAFFI
+            /// </summary>
+            [EnumMember(Value = "NonreportingIGAFFI")]
+            NonreportingIGAFFI = 14,
+
+            /// <summary>
+            /// Enum ForeignGovernmentOrUSPossessionOrForeignCentralBank for value: ForeignGovernmentOrUSPossessionOrForeignCentralBank
+            /// </summary>
+            [EnumMember(Value = "ForeignGovernmentOrUSPossessionOrForeignCentralBank")]
+            ForeignGovernmentOrUSPossessionOrForeignCentralBank = 15,
+
+            /// <summary>
+            /// Enum InternationalOrganization for value: InternationalOrganization
+            /// </summary>
+            [EnumMember(Value = "InternationalOrganization")]
+            InternationalOrganization = 16,
+
+            /// <summary>
+            /// Enum ExemptRetirementPlans for value: ExemptRetirementPlans
+            /// </summary>
+            [EnumMember(Value = "ExemptRetirementPlans")]
+            ExemptRetirementPlans = 17,
+
+            /// <summary>
+            /// Enum EntityWhollyOwnedByExemptBeneficialOwners for value: EntityWhollyOwnedByExemptBeneficialOwners
+            /// </summary>
+            [EnumMember(Value = "EntityWhollyOwnedByExemptBeneficialOwners")]
+            EntityWhollyOwnedByExemptBeneficialOwners = 18,
+
+            /// <summary>
+            /// Enum TerritoryFinancialInstitution for value: TerritoryFinancialInstitution
+            /// </summary>
+            [EnumMember(Value = "TerritoryFinancialInstitution")]
+            TerritoryFinancialInstitution = 19,
+
+            /// <summary>
+            /// Enum NonfinancialGroupEntity for value: NonfinancialGroupEntity
+            /// </summary>
+            [EnumMember(Value = "NonfinancialGroupEntity")]
+            NonfinancialGroupEntity = 20,
+
+            /// <summary>
+            /// Enum ExceptedNonfinancialStartUpCompany for value: ExceptedNonfinancialStartUpCompany
+            /// </summary>
+            [EnumMember(Value = "ExceptedNonfinancialStartUpCompany")]
+            ExceptedNonfinancialStartUpCompany = 21,
+
+            /// <summary>
+            /// Enum ExceptedNonfinancialEntityInLiquidationOrBankruptcy for value: ExceptedNonfinancialEntityInLiquidationOrBankruptcy
+            /// </summary>
+            [EnumMember(Value = "ExceptedNonfinancialEntityInLiquidationOrBankruptcy")]
+            ExceptedNonfinancialEntityInLiquidationOrBankruptcy = 22,
+
+            /// <summary>
+            /// Enum Organization501c for value: Organization501c
+            /// </summary>
+            [EnumMember(Value = "Organization501c")]
+            Organization501c = 23,
+
+            /// <summary>
+            /// Enum NonprofitOrganization for value: NonprofitOrganization
+            /// </summary>
+            [EnumMember(Value = "NonprofitOrganization")]
+            NonprofitOrganization = 24,
+
+            /// <summary>
+            /// Enum PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation for value: PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation
+            /// </summary>
+            [EnumMember(Value = "PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation")]
+            PubliclyTradedNFFEOrAffiliateOfPubliclyTradedCorporation = 25,
+
+            /// <summary>
+            /// Enum ExceptedTerritoryNFFE for value: ExceptedTerritoryNFFE
+            /// </summary>
+            [EnumMember(Value = "ExceptedTerritoryNFFE")]
+            ExceptedTerritoryNFFE = 26,
+
+            /// <summary>
+            /// Enum ActiveNFFE for value: ActiveNFFE
+            /// </summary>
+            [EnumMember(Value = "ActiveNFFE")]
+            ActiveNFFE = 27,
+
+            /// <summary>
+            /// Enum PassiveNFFE for value: PassiveNFFE
+            /// </summary>
+            [EnumMember(Value = "PassiveNFFE")]
+            PassiveNFFE = 28,
+
+            /// <summary>
+            /// Enum ExceptedInterAffiliateFFI for value: ExceptedInterAffiliateFFI
+            /// </summary>
+            [EnumMember(Value = "ExceptedInterAffiliateFFI")]
+            ExceptedInterAffiliateFFI = 29,
+
+            /// <summary>
+            /// Enum DirectReportingNFFE for value: DirectReportingNFFE
+            /// </summary>
+            [EnumMember(Value = "DirectReportingNFFE")]
+            DirectReportingNFFE = 30,
+
+            /// <summary>
+            /// Enum SponsoredDirectReportingNFFE for value: SponsoredDirectReportingNFFE
+            /// </summary>
+            [EnumMember(Value = "SponsoredDirectReportingNFFE")]
+            SponsoredDirectReportingNFFE = 31,
+
+            /// <summary>
+            /// Enum AccountThatIsNotFinancialAccount for value: AccountThatIsNotFinancialAccount
+            /// </summary>
+            [EnumMember(Value = "AccountThatIsNotFinancialAccount")]
+            AccountThatIsNotFinancialAccount = 32
+        }
+
+
+        /// <summary>
+        /// Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account
+        /// </summary>
+        /// <value>Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account</value>
+        [DataMember(Name = "fatcaStatus", IsRequired = true, EmitDefaultValue = true)]
+        public FatcaStatusEnum FatcaStatus { get; set; }
+        /// <summary>
+        /// The state of residence.
+        /// </summary>
+        /// <value>The state of residence.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ResidenceStateEnum
+        {
+            /// <summary>
+            /// Enum AA for value: AA
+            /// </summary>
+            [EnumMember(Value = "AA")]
+            AA = 1,
+
+            /// <summary>
+            /// Enum AE for value: AE
+            /// </summary>
+            [EnumMember(Value = "AE")]
+            AE = 2,
+
+            /// <summary>
+            /// Enum AK for value: AK
+            /// </summary>
+            [EnumMember(Value = "AK")]
+            AK = 3,
+
+            /// <summary>
+            /// Enum AL for value: AL
+            /// </summary>
+            [EnumMember(Value = "AL")]
+            AL = 4,
+
+            /// <summary>
+            /// Enum AP for value: AP
+            /// </summary>
+            [EnumMember(Value = "AP")]
+            AP = 5,
+
+            /// <summary>
+            /// Enum AR for value: AR
+            /// </summary>
+            [EnumMember(Value = "AR")]
+            AR = 6,
+
+            /// <summary>
+            /// Enum AS for value: AS
+            /// </summary>
+            [EnumMember(Value = "AS")]
+            AS = 7,
+
+            /// <summary>
+            /// Enum AZ for value: AZ
+            /// </summary>
+            [EnumMember(Value = "AZ")]
+            AZ = 8,
+
+            /// <summary>
+            /// Enum CA for value: CA
+            /// </summary>
+            [EnumMember(Value = "CA")]
+            CA = 9,
+
+            /// <summary>
+            /// Enum CO for value: CO
+            /// </summary>
+            [EnumMember(Value = "CO")]
+            CO = 10,
+
+            /// <summary>
+            /// Enum CT for value: CT
+            /// </summary>
+            [EnumMember(Value = "CT")]
+            CT = 11,
+
+            /// <summary>
+            /// Enum DC for value: DC
+            /// </summary>
+            [EnumMember(Value = "DC")]
+            DC = 12,
+
+            /// <summary>
+            /// Enum DE for value: DE
+            /// </summary>
+            [EnumMember(Value = "DE")]
+            DE = 13,
+
+            /// <summary>
+            /// Enum FL for value: FL
+            /// </summary>
+            [EnumMember(Value = "FL")]
+            FL = 14,
+
+            /// <summary>
+            /// Enum FM for value: FM
+            /// </summary>
+            [EnumMember(Value = "FM")]
+            FM = 15,
+
+            /// <summary>
+            /// Enum GA for value: GA
+            /// </summary>
+            [EnumMember(Value = "GA")]
+            GA = 16,
+
+            /// <summary>
+            /// Enum GU for value: GU
+            /// </summary>
+            [EnumMember(Value = "GU")]
+            GU = 17,
+
+            /// <summary>
+            /// Enum HI for value: HI
+            /// </summary>
+            [EnumMember(Value = "HI")]
+            HI = 18,
+
+            /// <summary>
+            /// Enum IA for value: IA
+            /// </summary>
+            [EnumMember(Value = "IA")]
+            IA = 19,
+
+            /// <summary>
+            /// Enum ID for value: ID
+            /// </summary>
+            [EnumMember(Value = "ID")]
+            ID = 20,
+
+            /// <summary>
+            /// Enum IL for value: IL
+            /// </summary>
+            [EnumMember(Value = "IL")]
+            IL = 21,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            IN = 22,
+
+            /// <summary>
+            /// Enum KS for value: KS
+            /// </summary>
+            [EnumMember(Value = "KS")]
+            KS = 23,
+
+            /// <summary>
+            /// Enum KY for value: KY
+            /// </summary>
+            [EnumMember(Value = "KY")]
+            KY = 24,
+
+            /// <summary>
+            /// Enum LA for value: LA
+            /// </summary>
+            [EnumMember(Value = "LA")]
+            LA = 25,
+
+            /// <summary>
+            /// Enum MA for value: MA
+            /// </summary>
+            [EnumMember(Value = "MA")]
+            MA = 26,
+
+            /// <summary>
+            /// Enum MD for value: MD
+            /// </summary>
+            [EnumMember(Value = "MD")]
+            MD = 27,
+
+            /// <summary>
+            /// Enum ME for value: ME
+            /// </summary>
+            [EnumMember(Value = "ME")]
+            ME = 28,
+
+            /// <summary>
+            /// Enum MH for value: MH
+            /// </summary>
+            [EnumMember(Value = "MH")]
+            MH = 29,
+
+            /// <summary>
+            /// Enum MI for value: MI
+            /// </summary>
+            [EnumMember(Value = "MI")]
+            MI = 30,
+
+            /// <summary>
+            /// Enum MN for value: MN
+            /// </summary>
+            [EnumMember(Value = "MN")]
+            MN = 31,
+
+            /// <summary>
+            /// Enum MO for value: MO
+            /// </summary>
+            [EnumMember(Value = "MO")]
+            MO = 32,
+
+            /// <summary>
+            /// Enum MP for value: MP
+            /// </summary>
+            [EnumMember(Value = "MP")]
+            MP = 33,
+
+            /// <summary>
+            /// Enum MS for value: MS
+            /// </summary>
+            [EnumMember(Value = "MS")]
+            MS = 34,
+
+            /// <summary>
+            /// Enum MT for value: MT
+            /// </summary>
+            [EnumMember(Value = "MT")]
+            MT = 35,
+
+            /// <summary>
+            /// Enum NC for value: NC
+            /// </summary>
+            [EnumMember(Value = "NC")]
+            NC = 36,
+
+            /// <summary>
+            /// Enum ND for value: ND
+            /// </summary>
+            [EnumMember(Value = "ND")]
+            ND = 37,
+
+            /// <summary>
+            /// Enum NE for value: NE
+            /// </summary>
+            [EnumMember(Value = "NE")]
+            NE = 38,
+
+            /// <summary>
+            /// Enum NH for value: NH
+            /// </summary>
+            [EnumMember(Value = "NH")]
+            NH = 39,
+
+            /// <summary>
+            /// Enum NJ for value: NJ
+            /// </summary>
+            [EnumMember(Value = "NJ")]
+            NJ = 40,
+
+            /// <summary>
+            /// Enum NM for value: NM
+            /// </summary>
+            [EnumMember(Value = "NM")]
+            NM = 41,
+
+            /// <summary>
+            /// Enum NV for value: NV
+            /// </summary>
+            [EnumMember(Value = "NV")]
+            NV = 42,
+
+            /// <summary>
+            /// Enum NY for value: NY
+            /// </summary>
+            [EnumMember(Value = "NY")]
+            NY = 43,
+
+            /// <summary>
+            /// Enum OH for value: OH
+            /// </summary>
+            [EnumMember(Value = "OH")]
+            OH = 44,
+
+            /// <summary>
+            /// Enum OK for value: OK
+            /// </summary>
+            [EnumMember(Value = "OK")]
+            OK = 45,
+
+            /// <summary>
+            /// Enum OR for value: OR
+            /// </summary>
+            [EnumMember(Value = "OR")]
+            OR = 46,
+
+            /// <summary>
+            /// Enum PA for value: PA
+            /// </summary>
+            [EnumMember(Value = "PA")]
+            PA = 47,
+
+            /// <summary>
+            /// Enum PR for value: PR
+            /// </summary>
+            [EnumMember(Value = "PR")]
+            PR = 48,
+
+            /// <summary>
+            /// Enum PW for value: PW
+            /// </summary>
+            [EnumMember(Value = "PW")]
+            PW = 49,
+
+            /// <summary>
+            /// Enum RI for value: RI
+            /// </summary>
+            [EnumMember(Value = "RI")]
+            RI = 50,
+
+            /// <summary>
+            /// Enum SC for value: SC
+            /// </summary>
+            [EnumMember(Value = "SC")]
+            SC = 51,
+
+            /// <summary>
+            /// Enum SD for value: SD
+            /// </summary>
+            [EnumMember(Value = "SD")]
+            SD = 52,
+
+            /// <summary>
+            /// Enum TN for value: TN
+            /// </summary>
+            [EnumMember(Value = "TN")]
+            TN = 53,
+
+            /// <summary>
+            /// Enum TX for value: TX
+            /// </summary>
+            [EnumMember(Value = "TX")]
+            TX = 54,
+
+            /// <summary>
+            /// Enum UT for value: UT
+            /// </summary>
+            [EnumMember(Value = "UT")]
+            UT = 55,
+
+            /// <summary>
+            /// Enum VA for value: VA
+            /// </summary>
+            [EnumMember(Value = "VA")]
+            VA = 56,
+
+            /// <summary>
+            /// Enum VI for value: VI
+            /// </summary>
+            [EnumMember(Value = "VI")]
+            VI = 57,
+
+            /// <summary>
+            /// Enum VT for value: VT
+            /// </summary>
+            [EnumMember(Value = "VT")]
+            VT = 58,
+
+            /// <summary>
+            /// Enum WA for value: WA
+            /// </summary>
+            [EnumMember(Value = "WA")]
+            WA = 59,
+
+            /// <summary>
+            /// Enum WI for value: WI
+            /// </summary>
+            [EnumMember(Value = "WI")]
+            WI = 60,
+
+            /// <summary>
+            /// Enum WV for value: WV
+            /// </summary>
+            [EnumMember(Value = "WV")]
+            WV = 61,
+
+            /// <summary>
+            /// Enum WY for value: WY
+            /// </summary>
+            [EnumMember(Value = "WY")]
+            WY = 62
+        }
+
+
+        /// <summary>
+        /// The state of residence.
+        /// </summary>
+        /// <value>The state of residence.</value>
+        [DataMember(Name = "residenceState", EmitDefaultValue = true)]
+        public ResidenceStateEnum? ResidenceState { get; set; }
+        /// <summary>
+        /// The state of the mailing address.
+        /// </summary>
+        /// <value>The state of the mailing address.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum MailingStateEnum
+        {
+            /// <summary>
+            /// Enum AA for value: AA
+            /// </summary>
+            [EnumMember(Value = "AA")]
+            AA = 1,
+
+            /// <summary>
+            /// Enum AE for value: AE
+            /// </summary>
+            [EnumMember(Value = "AE")]
+            AE = 2,
+
+            /// <summary>
+            /// Enum AK for value: AK
+            /// </summary>
+            [EnumMember(Value = "AK")]
+            AK = 3,
+
+            /// <summary>
+            /// Enum AL for value: AL
+            /// </summary>
+            [EnumMember(Value = "AL")]
+            AL = 4,
+
+            /// <summary>
+            /// Enum AP for value: AP
+            /// </summary>
+            [EnumMember(Value = "AP")]
+            AP = 5,
+
+            /// <summary>
+            /// Enum AR for value: AR
+            /// </summary>
+            [EnumMember(Value = "AR")]
+            AR = 6,
+
+            /// <summary>
+            /// Enum AS for value: AS
+            /// </summary>
+            [EnumMember(Value = "AS")]
+            AS = 7,
+
+            /// <summary>
+            /// Enum AZ for value: AZ
+            /// </summary>
+            [EnumMember(Value = "AZ")]
+            AZ = 8,
+
+            /// <summary>
+            /// Enum CA for value: CA
+            /// </summary>
+            [EnumMember(Value = "CA")]
+            CA = 9,
+
+            /// <summary>
+            /// Enum CO for value: CO
+            /// </summary>
+            [EnumMember(Value = "CO")]
+            CO = 10,
+
+            /// <summary>
+            /// Enum CT for value: CT
+            /// </summary>
+            [EnumMember(Value = "CT")]
+            CT = 11,
+
+            /// <summary>
+            /// Enum DC for value: DC
+            /// </summary>
+            [EnumMember(Value = "DC")]
+            DC = 12,
+
+            /// <summary>
+            /// Enum DE for value: DE
+            /// </summary>
+            [EnumMember(Value = "DE")]
+            DE = 13,
+
+            /// <summary>
+            /// Enum FL for value: FL
+            /// </summary>
+            [EnumMember(Value = "FL")]
+            FL = 14,
+
+            /// <summary>
+            /// Enum FM for value: FM
+            /// </summary>
+            [EnumMember(Value = "FM")]
+            FM = 15,
+
+            /// <summary>
+            /// Enum GA for value: GA
+            /// </summary>
+            [EnumMember(Value = "GA")]
+            GA = 16,
+
+            /// <summary>
+            /// Enum GU for value: GU
+            /// </summary>
+            [EnumMember(Value = "GU")]
+            GU = 17,
+
+            /// <summary>
+            /// Enum HI for value: HI
+            /// </summary>
+            [EnumMember(Value = "HI")]
+            HI = 18,
+
+            /// <summary>
+            /// Enum IA for value: IA
+            /// </summary>
+            [EnumMember(Value = "IA")]
+            IA = 19,
+
+            /// <summary>
+            /// Enum ID for value: ID
+            /// </summary>
+            [EnumMember(Value = "ID")]
+            ID = 20,
+
+            /// <summary>
+            /// Enum IL for value: IL
+            /// </summary>
+            [EnumMember(Value = "IL")]
+            IL = 21,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            IN = 22,
+
+            /// <summary>
+            /// Enum KS for value: KS
+            /// </summary>
+            [EnumMember(Value = "KS")]
+            KS = 23,
+
+            /// <summary>
+            /// Enum KY for value: KY
+            /// </summary>
+            [EnumMember(Value = "KY")]
+            KY = 24,
+
+            /// <summary>
+            /// Enum LA for value: LA
+            /// </summary>
+            [EnumMember(Value = "LA")]
+            LA = 25,
+
+            /// <summary>
+            /// Enum MA for value: MA
+            /// </summary>
+            [EnumMember(Value = "MA")]
+            MA = 26,
+
+            /// <summary>
+            /// Enum MD for value: MD
+            /// </summary>
+            [EnumMember(Value = "MD")]
+            MD = 27,
+
+            /// <summary>
+            /// Enum ME for value: ME
+            /// </summary>
+            [EnumMember(Value = "ME")]
+            ME = 28,
+
+            /// <summary>
+            /// Enum MH for value: MH
+            /// </summary>
+            [EnumMember(Value = "MH")]
+            MH = 29,
+
+            /// <summary>
+            /// Enum MI for value: MI
+            /// </summary>
+            [EnumMember(Value = "MI")]
+            MI = 30,
+
+            /// <summary>
+            /// Enum MN for value: MN
+            /// </summary>
+            [EnumMember(Value = "MN")]
+            MN = 31,
+
+            /// <summary>
+            /// Enum MO for value: MO
+            /// </summary>
+            [EnumMember(Value = "MO")]
+            MO = 32,
+
+            /// <summary>
+            /// Enum MP for value: MP
+            /// </summary>
+            [EnumMember(Value = "MP")]
+            MP = 33,
+
+            /// <summary>
+            /// Enum MS for value: MS
+            /// </summary>
+            [EnumMember(Value = "MS")]
+            MS = 34,
+
+            /// <summary>
+            /// Enum MT for value: MT
+            /// </summary>
+            [EnumMember(Value = "MT")]
+            MT = 35,
+
+            /// <summary>
+            /// Enum NC for value: NC
+            /// </summary>
+            [EnumMember(Value = "NC")]
+            NC = 36,
+
+            /// <summary>
+            /// Enum ND for value: ND
+            /// </summary>
+            [EnumMember(Value = "ND")]
+            ND = 37,
+
+            /// <summary>
+            /// Enum NE for value: NE
+            /// </summary>
+            [EnumMember(Value = "NE")]
+            NE = 38,
+
+            /// <summary>
+            /// Enum NH for value: NH
+            /// </summary>
+            [EnumMember(Value = "NH")]
+            NH = 39,
+
+            /// <summary>
+            /// Enum NJ for value: NJ
+            /// </summary>
+            [EnumMember(Value = "NJ")]
+            NJ = 40,
+
+            /// <summary>
+            /// Enum NM for value: NM
+            /// </summary>
+            [EnumMember(Value = "NM")]
+            NM = 41,
+
+            /// <summary>
+            /// Enum NV for value: NV
+            /// </summary>
+            [EnumMember(Value = "NV")]
+            NV = 42,
+
+            /// <summary>
+            /// Enum NY for value: NY
+            /// </summary>
+            [EnumMember(Value = "NY")]
+            NY = 43,
+
+            /// <summary>
+            /// Enum OH for value: OH
+            /// </summary>
+            [EnumMember(Value = "OH")]
+            OH = 44,
+
+            /// <summary>
+            /// Enum OK for value: OK
+            /// </summary>
+            [EnumMember(Value = "OK")]
+            OK = 45,
+
+            /// <summary>
+            /// Enum OR for value: OR
+            /// </summary>
+            [EnumMember(Value = "OR")]
+            OR = 46,
+
+            /// <summary>
+            /// Enum PA for value: PA
+            /// </summary>
+            [EnumMember(Value = "PA")]
+            PA = 47,
+
+            /// <summary>
+            /// Enum PR for value: PR
+            /// </summary>
+            [EnumMember(Value = "PR")]
+            PR = 48,
+
+            /// <summary>
+            /// Enum PW for value: PW
+            /// </summary>
+            [EnumMember(Value = "PW")]
+            PW = 49,
+
+            /// <summary>
+            /// Enum RI for value: RI
+            /// </summary>
+            [EnumMember(Value = "RI")]
+            RI = 50,
+
+            /// <summary>
+            /// Enum SC for value: SC
+            /// </summary>
+            [EnumMember(Value = "SC")]
+            SC = 51,
+
+            /// <summary>
+            /// Enum SD for value: SD
+            /// </summary>
+            [EnumMember(Value = "SD")]
+            SD = 52,
+
+            /// <summary>
+            /// Enum TN for value: TN
+            /// </summary>
+            [EnumMember(Value = "TN")]
+            TN = 53,
+
+            /// <summary>
+            /// Enum TX for value: TX
+            /// </summary>
+            [EnumMember(Value = "TX")]
+            TX = 54,
+
+            /// <summary>
+            /// Enum UT for value: UT
+            /// </summary>
+            [EnumMember(Value = "UT")]
+            UT = 55,
+
+            /// <summary>
+            /// Enum VA for value: VA
+            /// </summary>
+            [EnumMember(Value = "VA")]
+            VA = 56,
+
+            /// <summary>
+            /// Enum VI for value: VI
+            /// </summary>
+            [EnumMember(Value = "VI")]
+            VI = 57,
+
+            /// <summary>
+            /// Enum VT for value: VT
+            /// </summary>
+            [EnumMember(Value = "VT")]
+            VT = 58,
+
+            /// <summary>
+            /// Enum WA for value: WA
+            /// </summary>
+            [EnumMember(Value = "WA")]
+            WA = 59,
+
+            /// <summary>
+            /// Enum WI for value: WI
+            /// </summary>
+            [EnumMember(Value = "WI")]
+            WI = 60,
+
+            /// <summary>
+            /// Enum WV for value: WV
+            /// </summary>
+            [EnumMember(Value = "WV")]
+            WV = 61,
+
+            /// <summary>
+            /// Enum WY for value: WY
+            /// </summary>
+            [EnumMember(Value = "WY")]
+            WY = 62
+        }
+
+
+        /// <summary>
+        /// The state of the mailing address.
+        /// </summary>
+        /// <value>The state of the mailing address.</value>
+        [DataMember(Name = "mailingState", EmitDefaultValue = true)]
+        public MailingStateEnum? MailingState { get; set; }
+        /// <summary>
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI
+        /// </summary>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DisregardedEntityFatcaStatusEnum
+        {
+            /// <summary>
+            /// Enum BranchTreatedAsNonparticipatingFFI for value: BranchTreatedAsNonparticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "BranchTreatedAsNonparticipatingFFI")]
+            BranchTreatedAsNonparticipatingFFI = 1,
+
+            /// <summary>
+            /// Enum USBranch for value: USBranch
+            /// </summary>
+            [EnumMember(Value = "USBranch")]
+            USBranch = 2,
+
+            /// <summary>
+            /// Enum ParticipatingFFI for value: ParticipatingFFI
+            /// </summary>
+            [EnumMember(Value = "ParticipatingFFI")]
+            ParticipatingFFI = 3,
+
+            /// <summary>
+            /// Enum ReportingModel1FFI for value: ReportingModel1FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel1FFI")]
+            ReportingModel1FFI = 4,
+
+            /// <summary>
+            /// Enum ReportingModel2FFI for value: ReportingModel2FFI
+            /// </summary>
+            [EnumMember(Value = "ReportingModel2FFI")]
+            ReportingModel2FFI = 5
+        }
+
+
+        /// <summary>
+        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI
+        /// </summary>
+        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI</value>
+        [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
+        public DisregardedEntityFatcaStatusEnum? DisregardedEntityFatcaStatus { get; set; }
+        /// <summary>
+        /// The state for disregarded entities.
+        /// </summary>
+        /// <value>The state for disregarded entities.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DisregardedStateEnum
+        {
+            /// <summary>
+            /// Enum AA for value: AA
+            /// </summary>
+            [EnumMember(Value = "AA")]
+            AA = 1,
+
+            /// <summary>
+            /// Enum AE for value: AE
+            /// </summary>
+            [EnumMember(Value = "AE")]
+            AE = 2,
+
+            /// <summary>
+            /// Enum AK for value: AK
+            /// </summary>
+            [EnumMember(Value = "AK")]
+            AK = 3,
+
+            /// <summary>
+            /// Enum AL for value: AL
+            /// </summary>
+            [EnumMember(Value = "AL")]
+            AL = 4,
+
+            /// <summary>
+            /// Enum AP for value: AP
+            /// </summary>
+            [EnumMember(Value = "AP")]
+            AP = 5,
+
+            /// <summary>
+            /// Enum AR for value: AR
+            /// </summary>
+            [EnumMember(Value = "AR")]
+            AR = 6,
+
+            /// <summary>
+            /// Enum AS for value: AS
+            /// </summary>
+            [EnumMember(Value = "AS")]
+            AS = 7,
+
+            /// <summary>
+            /// Enum AZ for value: AZ
+            /// </summary>
+            [EnumMember(Value = "AZ")]
+            AZ = 8,
+
+            /// <summary>
+            /// Enum CA for value: CA
+            /// </summary>
+            [EnumMember(Value = "CA")]
+            CA = 9,
+
+            /// <summary>
+            /// Enum CO for value: CO
+            /// </summary>
+            [EnumMember(Value = "CO")]
+            CO = 10,
+
+            /// <summary>
+            /// Enum CT for value: CT
+            /// </summary>
+            [EnumMember(Value = "CT")]
+            CT = 11,
+
+            /// <summary>
+            /// Enum DC for value: DC
+            /// </summary>
+            [EnumMember(Value = "DC")]
+            DC = 12,
+
+            /// <summary>
+            /// Enum DE for value: DE
+            /// </summary>
+            [EnumMember(Value = "DE")]
+            DE = 13,
+
+            /// <summary>
+            /// Enum FL for value: FL
+            /// </summary>
+            [EnumMember(Value = "FL")]
+            FL = 14,
+
+            /// <summary>
+            /// Enum FM for value: FM
+            /// </summary>
+            [EnumMember(Value = "FM")]
+            FM = 15,
+
+            /// <summary>
+            /// Enum GA for value: GA
+            /// </summary>
+            [EnumMember(Value = "GA")]
+            GA = 16,
+
+            /// <summary>
+            /// Enum GU for value: GU
+            /// </summary>
+            [EnumMember(Value = "GU")]
+            GU = 17,
+
+            /// <summary>
+            /// Enum HI for value: HI
+            /// </summary>
+            [EnumMember(Value = "HI")]
+            HI = 18,
+
+            /// <summary>
+            /// Enum IA for value: IA
+            /// </summary>
+            [EnumMember(Value = "IA")]
+            IA = 19,
+
+            /// <summary>
+            /// Enum ID for value: ID
+            /// </summary>
+            [EnumMember(Value = "ID")]
+            ID = 20,
+
+            /// <summary>
+            /// Enum IL for value: IL
+            /// </summary>
+            [EnumMember(Value = "IL")]
+            IL = 21,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            IN = 22,
+
+            /// <summary>
+            /// Enum KS for value: KS
+            /// </summary>
+            [EnumMember(Value = "KS")]
+            KS = 23,
+
+            /// <summary>
+            /// Enum KY for value: KY
+            /// </summary>
+            [EnumMember(Value = "KY")]
+            KY = 24,
+
+            /// <summary>
+            /// Enum LA for value: LA
+            /// </summary>
+            [EnumMember(Value = "LA")]
+            LA = 25,
+
+            /// <summary>
+            /// Enum MA for value: MA
+            /// </summary>
+            [EnumMember(Value = "MA")]
+            MA = 26,
+
+            /// <summary>
+            /// Enum MD for value: MD
+            /// </summary>
+            [EnumMember(Value = "MD")]
+            MD = 27,
+
+            /// <summary>
+            /// Enum ME for value: ME
+            /// </summary>
+            [EnumMember(Value = "ME")]
+            ME = 28,
+
+            /// <summary>
+            /// Enum MH for value: MH
+            /// </summary>
+            [EnumMember(Value = "MH")]
+            MH = 29,
+
+            /// <summary>
+            /// Enum MI for value: MI
+            /// </summary>
+            [EnumMember(Value = "MI")]
+            MI = 30,
+
+            /// <summary>
+            /// Enum MN for value: MN
+            /// </summary>
+            [EnumMember(Value = "MN")]
+            MN = 31,
+
+            /// <summary>
+            /// Enum MO for value: MO
+            /// </summary>
+            [EnumMember(Value = "MO")]
+            MO = 32,
+
+            /// <summary>
+            /// Enum MP for value: MP
+            /// </summary>
+            [EnumMember(Value = "MP")]
+            MP = 33,
+
+            /// <summary>
+            /// Enum MS for value: MS
+            /// </summary>
+            [EnumMember(Value = "MS")]
+            MS = 34,
+
+            /// <summary>
+            /// Enum MT for value: MT
+            /// </summary>
+            [EnumMember(Value = "MT")]
+            MT = 35,
+
+            /// <summary>
+            /// Enum NC for value: NC
+            /// </summary>
+            [EnumMember(Value = "NC")]
+            NC = 36,
+
+            /// <summary>
+            /// Enum ND for value: ND
+            /// </summary>
+            [EnumMember(Value = "ND")]
+            ND = 37,
+
+            /// <summary>
+            /// Enum NE for value: NE
+            /// </summary>
+            [EnumMember(Value = "NE")]
+            NE = 38,
+
+            /// <summary>
+            /// Enum NH for value: NH
+            /// </summary>
+            [EnumMember(Value = "NH")]
+            NH = 39,
+
+            /// <summary>
+            /// Enum NJ for value: NJ
+            /// </summary>
+            [EnumMember(Value = "NJ")]
+            NJ = 40,
+
+            /// <summary>
+            /// Enum NM for value: NM
+            /// </summary>
+            [EnumMember(Value = "NM")]
+            NM = 41,
+
+            /// <summary>
+            /// Enum NV for value: NV
+            /// </summary>
+            [EnumMember(Value = "NV")]
+            NV = 42,
+
+            /// <summary>
+            /// Enum NY for value: NY
+            /// </summary>
+            [EnumMember(Value = "NY")]
+            NY = 43,
+
+            /// <summary>
+            /// Enum OH for value: OH
+            /// </summary>
+            [EnumMember(Value = "OH")]
+            OH = 44,
+
+            /// <summary>
+            /// Enum OK for value: OK
+            /// </summary>
+            [EnumMember(Value = "OK")]
+            OK = 45,
+
+            /// <summary>
+            /// Enum OR for value: OR
+            /// </summary>
+            [EnumMember(Value = "OR")]
+            OR = 46,
+
+            /// <summary>
+            /// Enum PA for value: PA
+            /// </summary>
+            [EnumMember(Value = "PA")]
+            PA = 47,
+
+            /// <summary>
+            /// Enum PR for value: PR
+            /// </summary>
+            [EnumMember(Value = "PR")]
+            PR = 48,
+
+            /// <summary>
+            /// Enum PW for value: PW
+            /// </summary>
+            [EnumMember(Value = "PW")]
+            PW = 49,
+
+            /// <summary>
+            /// Enum RI for value: RI
+            /// </summary>
+            [EnumMember(Value = "RI")]
+            RI = 50,
+
+            /// <summary>
+            /// Enum SC for value: SC
+            /// </summary>
+            [EnumMember(Value = "SC")]
+            SC = 51,
+
+            /// <summary>
+            /// Enum SD for value: SD
+            /// </summary>
+            [EnumMember(Value = "SD")]
+            SD = 52,
+
+            /// <summary>
+            /// Enum TN for value: TN
+            /// </summary>
+            [EnumMember(Value = "TN")]
+            TN = 53,
+
+            /// <summary>
+            /// Enum TX for value: TX
+            /// </summary>
+            [EnumMember(Value = "TX")]
+            TX = 54,
+
+            /// <summary>
+            /// Enum UT for value: UT
+            /// </summary>
+            [EnumMember(Value = "UT")]
+            UT = 55,
+
+            /// <summary>
+            /// Enum VA for value: VA
+            /// </summary>
+            [EnumMember(Value = "VA")]
+            VA = 56,
+
+            /// <summary>
+            /// Enum VI for value: VI
+            /// </summary>
+            [EnumMember(Value = "VI")]
+            VI = 57,
+
+            /// <summary>
+            /// Enum VT for value: VT
+            /// </summary>
+            [EnumMember(Value = "VT")]
+            VT = 58,
+
+            /// <summary>
+            /// Enum WA for value: WA
+            /// </summary>
+            [EnumMember(Value = "WA")]
+            WA = 59,
+
+            /// <summary>
+            /// Enum WI for value: WI
+            /// </summary>
+            [EnumMember(Value = "WI")]
+            WI = 60,
+
+            /// <summary>
+            /// Enum WV for value: WV
+            /// </summary>
+            [EnumMember(Value = "WV")]
+            WV = 61,
+
+            /// <summary>
+            /// Enum WY for value: WY
+            /// </summary>
+            [EnumMember(Value = "WY")]
+            WY = 62
+        }
+
+
+        /// <summary>
+        /// The state for disregarded entities.
+        /// </summary>
+        /// <value>The state for disregarded entities.</value>
+        [DataMember(Name = "disregardedState", EmitDefaultValue = true)]
+        public DisregardedStateEnum? DisregardedState { get; set; }
+        /// <summary>
+        /// The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other  - 11: No LOB article in treaty
+        /// </summary>
+        /// <value>The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other  - 11: No LOB article in treaty</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum BenefitLimitationEnum
+        {
+            /// <summary>
+            /// Enum Government for value: Government
+            /// </summary>
+            [EnumMember(Value = "Government")]
+            Government = 1,
+
+            /// <summary>
+            /// Enum TaxExemptPensionTrustOrPensionFund for value: TaxExemptPensionTrustOrPensionFund
+            /// </summary>
+            [EnumMember(Value = "TaxExemptPensionTrustOrPensionFund")]
+            TaxExemptPensionTrustOrPensionFund = 2,
+
+            /// <summary>
+            /// Enum OtherTaxExemptOrganization for value: OtherTaxExemptOrganization
+            /// </summary>
+            [EnumMember(Value = "OtherTaxExemptOrganization")]
+            OtherTaxExemptOrganization = 3,
+
+            /// <summary>
+            /// Enum PubliclyTradedCorporation for value: PubliclyTradedCorporation
+            /// </summary>
+            [EnumMember(Value = "PubliclyTradedCorporation")]
+            PubliclyTradedCorporation = 4,
+
+            /// <summary>
+            /// Enum SubsidiaryOfPubliclyTradedCorporation for value: SubsidiaryOfPubliclyTradedCorporation
+            /// </summary>
+            [EnumMember(Value = "SubsidiaryOfPubliclyTradedCorporation")]
+            SubsidiaryOfPubliclyTradedCorporation = 5,
+
+            /// <summary>
+            /// Enum CompanyThatMeetsOwnershipAndBaseErosionTest for value: CompanyThatMeetsOwnershipAndBaseErosionTest
+            /// </summary>
+            [EnumMember(Value = "CompanyThatMeetsOwnershipAndBaseErosionTest")]
+            CompanyThatMeetsOwnershipAndBaseErosionTest = 6,
+
+            /// <summary>
+            /// Enum CompanyThatMeetsDerivativeBenefitsTest for value: CompanyThatMeetsDerivativeBenefitsTest
+            /// </summary>
+            [EnumMember(Value = "CompanyThatMeetsDerivativeBenefitsTest")]
+            CompanyThatMeetsDerivativeBenefitsTest = 7,
+
+            /// <summary>
+            /// Enum CompanyWithItemOfIncomeThatMeetsActiveTradeOrBusinessTest for value: CompanyWithItemOfIncomeThatMeetsActiveTradeOrBusinessTest
+            /// </summary>
+            [EnumMember(Value = "CompanyWithItemOfIncomeThatMeetsActiveTradeOrBusinessTest")]
+            CompanyWithItemOfIncomeThatMeetsActiveTradeOrBusinessTest = 8,
+
+            /// <summary>
+            /// Enum FavorableDiscretionaryDeterminationByUSCompetentAuthorityReceived for value: FavorableDiscretionaryDeterminationByUSCompetentAuthorityReceived
+            /// </summary>
+            [EnumMember(Value = "FavorableDiscretionaryDeterminationByUSCompetentAuthorityReceived")]
+            FavorableDiscretionaryDeterminationByUSCompetentAuthorityReceived = 9,
+
+            /// <summary>
+            /// Enum Other for value: Other
+            /// </summary>
+            [EnumMember(Value = "Other")]
+            Other = 10,
+
+            /// <summary>
+            /// Enum NoLOBArticleInTreaty for value: NoLOBArticleInTreaty
+            /// </summary>
+            [EnumMember(Value = "NoLOBArticleInTreaty")]
+            NoLOBArticleInTreaty = 11
+        }
+
+
+        /// <summary>
+        /// The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other  - 11: No LOB article in treaty
+        /// </summary>
+        /// <value>The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other  - 11: No LOB article in treaty</value>
+        [DataMember(Name = "benefitLimitation", EmitDefaultValue = true)]
+        public BenefitLimitationEnum? BenefitLimitation { get; set; }
+        /// <summary>
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
+        /// </summary>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum IgaModelEnum
+        {
+            /// <summary>
+            /// Enum Model1IGA for value: Model1IGA
+            /// </summary>
+            [EnumMember(Value = "Model1IGA")]
+            Model1IGA = 1,
+
+            /// <summary>
+            /// Enum Model2IGA for value: Model2IGA
+            /// </summary>
+            [EnumMember(Value = "Model2IGA")]
+            Model2IGA = 2
+        }
+
+
+        /// <summary>
+        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
+        /// </summary>
+        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
+        [DataMember(Name = "igaModel", EmitDefaultValue = true)]
+        public IgaModelEnum? IgaModel { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="W8BenEFormRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -108,9 +1722,9 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
         /// <param name="citizenshipCountry">The country of citizenship. (required).</param>
         /// <param name="disregardedEntity">The name of the disregarded entity receiving the payment (if applicable)..</param>
-        /// <param name="entityType">The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part (required).</param>
+        /// <param name="entityType">Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part (required).</param>
         /// <param name="makingTreatyClaim">Indicates whether the entity is making a treaty claim..</param>
-        /// <param name="fatcaStatus">The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account (required).</param>
+        /// <param name="fatcaStatus">Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account (required).</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
         /// <param name="residenceState">The state of residence..</param>
@@ -127,7 +1741,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="foreignTinNotRequired">Indicates whether a foreign TIN is not required..</param>
         /// <param name="foreignTin">The foreign taxpayer identification number (TIN)..</param>
         /// <param name="referenceNumber">A reference number for the form..</param>
-        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI.</param>
+        /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI.</param>
         /// <param name="disregardedAddress">The address for disregarded entities..</param>
         /// <param name="disregardedCity">The city for disregarded entities..</param>
         /// <param name="disregardedState">The state for disregarded entities..</param>
@@ -137,7 +1751,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="treatyCountryCertification">Certifies the beneficial owner&#39;s country under the U.S. tax treaty..</param>
         /// <param name="treatyCountry">The treaty country of the beneficial owner..</param>
         /// <param name="benefitLimitationCertification">Certifies that the beneficial owner is eligible for treaty benefits and meets any limitation on benefits requirements..</param>
-        /// <param name="benefitLimitation">The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other.</param>
+        /// <param name="benefitLimitation">The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other  - 11: No LOB article in treaty.</param>
         /// <param name="qualifiedResidentStatusCertification">Certifies that the beneficial owner claims treaty benefits and meets the qualified resident status for specific U.S. source income..</param>
         /// <param name="treatyArticle">Indicates the specific article and paragraph of the tax treaty under which the beneficial owner is claiming benefits..</param>
         /// <param name="withholdingRate">Specifies the reduced withholding rate claimed under the applicable tax treaty..</param>
@@ -205,7 +1819,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
-        public W8BenEFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), string entityType = default(string), bool? makingTreatyClaim = default(bool?), string fatcaStatus = default(string), string residenceAddress = default(string), string residenceCity = default(string), string residenceState = default(string), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), string mailingState = default(string), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), string giin = default(string), bool? foreignTinNotRequired = default(bool?), string foreignTin = default(string), string referenceNumber = default(string), string disregardedEntityFatcaStatus = default(string), string disregardedAddress = default(string), string disregardedCity = default(string), string disregardedState = default(string), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? treatyCountryCertification = default(bool?), string treatyCountry = default(string), bool? benefitLimitationCertification = default(bool?), string benefitLimitation = default(string), bool? qualifiedResidentStatusCertification = default(bool?), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? ownerDocumentedFfiTrustBeneficiariesCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), string igaModel = default(string), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? nonCommercialFinancialActivityCertification = default(bool?), bool? internationOrganizationCertification = default(bool?), bool? intergovernmentalOrganizationCertification = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? section501COrganizationCertification = default(bool?), DateTime? determinationLetterDate = default(DateTime?), bool? nonprofitOrganizationCertification = default(bool?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? passiveNffeNoSubstantialUsOwnersCertification = default(bool?), bool? passiveNffeSubstantialUsOwnersProvidedCertification = default(bool?), bool? exceptedInterAffiliateFfiCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerRequest> substantialUsOwners = default(List<SubstantialUsOwnerRequest>), string signerName = default(string), bool? capacityToSignCertification = default(bool?), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
+        public W8BenEFormRequest(string name = default(string), string citizenshipCountry = default(string), string disregardedEntity = default(string), EntityTypeEnum entityType = default(EntityTypeEnum), bool? makingTreatyClaim = default(bool?), FatcaStatusEnum fatcaStatus = default(FatcaStatusEnum), string residenceAddress = default(string), string residenceCity = default(string), ResidenceStateEnum? residenceState = default(ResidenceStateEnum?), string residenceZip = default(string), string residenceCountry = default(string), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), MailingStateEnum? mailingState = default(MailingStateEnum?), string mailingZip = default(string), string mailingCountry = default(string), string tin = default(string), string giin = default(string), bool? foreignTinNotRequired = default(bool?), string foreignTin = default(string), string referenceNumber = default(string), DisregardedEntityFatcaStatusEnum? disregardedEntityFatcaStatus = default(DisregardedEntityFatcaStatusEnum?), string disregardedAddress = default(string), string disregardedCity = default(string), DisregardedStateEnum? disregardedState = default(DisregardedStateEnum?), string disregardedZip = default(string), string disregardedCountry = default(string), string disregardedEntityGiin = default(string), bool? treatyCountryCertification = default(bool?), string treatyCountry = default(string), bool? benefitLimitationCertification = default(bool?), BenefitLimitationEnum? benefitLimitation = default(BenefitLimitationEnum?), bool? qualifiedResidentStatusCertification = default(bool?), string treatyArticle = default(string), string withholdingRate = default(string), string incomeType = default(string), string treatyReasons = default(string), string ffiSponsoringEntity = default(string), bool? investmentEntityCertification = default(bool?), bool? controlledForeignCorporationCertification = default(bool?), bool? compliantNonregisteringLocalBankCertification = default(bool?), bool? compliantFfiLowValueAccountsCertification = default(bool?), string sponsoredCloselyHeldEntitySponsoringEntity = default(string), bool? sponsoredCloselyHeldInvestmentVehicleCertification = default(bool?), bool? compliantLimitedLifeDebtEntityCertification = default(bool?), bool? investmentEntityNoFinancialAccountsCertification = default(bool?), bool? ownerDocumentedFfiCertification = default(bool?), bool? ownerDocumentedFfiReportingStatementCertification = default(bool?), bool? ownerDocumentedFfiAuditorLetterCertification = default(bool?), bool? ownerDocumentedFfiTrustBeneficiariesCertification = default(bool?), bool? restrictedDistributorCertification = default(bool?), bool? restrictedDistributorAgreementCertification = default(bool?), bool? restrictedDistributorPreexistingSalesComplianceCertification = default(bool?), bool? nonreportingIgaFfiCertification = default(bool?), string igaCountry = default(string), IgaModelEnum? igaModel = default(IgaModelEnum?), string igaLegalStatusTreatment = default(string), string igaFfiTrusteeOrSponsor = default(string), bool? igaFfiTrusteeIsForeign = default(bool?), bool? nonCommercialFinancialActivityCertification = default(bool?), bool? internationOrganizationCertification = default(bool?), bool? intergovernmentalOrganizationCertification = default(bool?), bool? treatyQualifiedPensionFundCertification = default(bool?), bool? qualifiedRetirementFundCertification = default(bool?), bool? narrowParticipationRetirementFundCertification = default(bool?), bool? section401AEquivalentPensionPlanCertification = default(bool?), bool? investmentEntityForRetirementFundsCertification = default(bool?), bool? exemptBeneficialOwnerSponsoredRetirementFundCertification = default(bool?), bool? exemptBeneficialOwnerOwnedInvestmentEntityCertification = default(bool?), bool? territoryFinancialInstitutionCertification = default(bool?), bool? exceptedNonfinancialGroupEntityCertification = default(bool?), bool? exceptedNonfinancialStartUpCertification = default(bool?), DateTime? startupFormationOrResolutionDate = default(DateTime?), bool? exceptedNonfinancialEntityInLiquidationOrBankruptcyCertification = default(bool?), DateTime? nonfinancialEntityFilingDate = default(DateTime?), bool? section501COrganizationCertification = default(bool?), DateTime? determinationLetterDate = default(DateTime?), bool? nonprofitOrganizationCertification = default(bool?), bool? publiclyTradedNffeCertification = default(bool?), string publiclyTradedNffeSecuritiesMarket = default(string), bool? nffeAffiliateOfPubliclyTradedEntityCertification = default(bool?), string publiclyTradedEntity = default(string), string nffeAffiliateOfPubliclyTradedEntitySecuritiesMarket = default(string), bool? exceptedTerritoryNffeCertification = default(bool?), bool? activeNffeCertification = default(bool?), bool? passiveNffeCertification = default(bool?), bool? passiveNffeNoSubstantialUsOwnersCertification = default(bool?), bool? passiveNffeSubstantialUsOwnersProvidedCertification = default(bool?), bool? exceptedInterAffiliateFfiCertification = default(bool?), bool? sponsoredDirectReportingNffeCertification = default(bool?), string directReportingNffeSponsoringEntity = default(string), List<SubstantialUsOwnerRequest> substantialUsOwners = default(List<SubstantialUsOwnerRequest>), string signerName = default(string), bool? capacityToSignCertification = default(bool?), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -219,17 +1833,7 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("citizenshipCountry is a required property for W8BenEFormRequest and cannot be null");
             }
             this.CitizenshipCountry = citizenshipCountry;
-            // to ensure "entityType" is required (not null)
-            if (entityType == null)
-            {
-                throw new ArgumentNullException("entityType is a required property for W8BenEFormRequest and cannot be null");
-            }
             this.EntityType = entityType;
-            // to ensure "fatcaStatus" is required (not null)
-            if (fatcaStatus == null)
-            {
-                throw new ArgumentNullException("fatcaStatus is a required property for W8BenEFormRequest and cannot be null");
-            }
             this.FatcaStatus = fatcaStatus;
             // to ensure "residenceCountry" is required (not null)
             if (residenceCountry == null)
@@ -356,25 +1960,11 @@ namespace Avalara.SDK.Model.A1099.V2
         public string DisregardedEntity { get; set; }
 
         /// <summary>
-        /// The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part
-        /// </summary>
-        /// <value>The entity type.  Available values:  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part</value>
-        [DataMember(Name = "entityType", IsRequired = true, EmitDefaultValue = true)]
-        public string EntityType { get; set; }
-
-        /// <summary>
         /// Indicates whether the entity is making a treaty claim.
         /// </summary>
         /// <value>Indicates whether the entity is making a treaty claim.</value>
         [DataMember(Name = "makingTreatyClaim", EmitDefaultValue = true)]
         public bool? MakingTreatyClaim { get; set; }
-
-        /// <summary>
-        /// The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account
-        /// </summary>
-        /// <value>The FATCA status.  Available values:  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account</value>
-        [DataMember(Name = "fatcaStatus", IsRequired = true, EmitDefaultValue = true)]
-        public string FatcaStatus { get; set; }
 
         /// <summary>
         /// The residential address of the individual or entity.
@@ -389,13 +1979,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The city of residence.</value>
         [DataMember(Name = "residenceCity", EmitDefaultValue = false)]
         public string ResidenceCity { get; set; }
-
-        /// <summary>
-        /// The state of residence.
-        /// </summary>
-        /// <value>The state of residence.</value>
-        [DataMember(Name = "residenceState", EmitDefaultValue = true)]
-        public string ResidenceState { get; set; }
 
         /// <summary>
         /// The ZIP code of the residence.
@@ -431,13 +2014,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The city of the mailing address.</value>
         [DataMember(Name = "mailingCity", EmitDefaultValue = true)]
         public string MailingCity { get; set; }
-
-        /// <summary>
-        /// The state of the mailing address.
-        /// </summary>
-        /// <value>The state of the mailing address.</value>
-        [DataMember(Name = "mailingState", EmitDefaultValue = true)]
-        public string MailingState { get; set; }
 
         /// <summary>
         /// The ZIP code of the mailing address.
@@ -489,13 +2065,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string ReferenceNumber { get; set; }
 
         /// <summary>
-        /// The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI
-        /// </summary>
-        /// <value>The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Limited Branch  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI</value>
-        [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
-        public string DisregardedEntityFatcaStatus { get; set; }
-
-        /// <summary>
         /// The address for disregarded entities.
         /// </summary>
         /// <value>The address for disregarded entities.</value>
@@ -508,13 +2077,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The city for disregarded entities.</value>
         [DataMember(Name = "disregardedCity", EmitDefaultValue = true)]
         public string DisregardedCity { get; set; }
-
-        /// <summary>
-        /// The state for disregarded entities.
-        /// </summary>
-        /// <value>The state for disregarded entities.</value>
-        [DataMember(Name = "disregardedState", EmitDefaultValue = true)]
-        public string DisregardedState { get; set; }
 
         /// <summary>
         /// The ZIP code for disregarded entities.
@@ -557,13 +2119,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Certifies that the beneficial owner is eligible for treaty benefits and meets any limitation on benefits requirements.</value>
         [DataMember(Name = "benefitLimitationCertification", EmitDefaultValue = true)]
         public bool? BenefitLimitationCertification { get; set; }
-
-        /// <summary>
-        /// The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other
-        /// </summary>
-        /// <value>The benefit limitation for tax treaty claims.  Available values:  - 1: Government  - 2: Tax exempt pension trust or pension fund  - 3: Other tax exempt organization  - 4: Publicly traded corporation  - 5: Subsidiary of a publicly traded corporation  - 6: Company that meets the ownership and base erosion test  - 7: Company that meets the derivative benefits test  - 8: Company with an item of income that meets active trade or business test  - 9: Favorable discretionary determination by the U.S. competent authority received  - 10: Other</value>
-        [DataMember(Name = "benefitLimitation", EmitDefaultValue = true)]
-        public string BenefitLimitation { get; set; }
 
         /// <summary>
         /// Certifies that the beneficial owner claims treaty benefits and meets the qualified resident status for specific U.S. source income.
@@ -725,13 +2280,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The country for the applicable IGA with the United States.</value>
         [DataMember(Name = "igaCountry", EmitDefaultValue = true)]
         public string IgaCountry { get; set; }
-
-        /// <summary>
-        /// The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA
-        /// </summary>
-        /// <value>The applicable IGA model.  Available values:  - 1: Model 1 IGA  - 2: Model 2 IGA</value>
-        [DataMember(Name = "igaModel", EmitDefaultValue = true)]
-        public string IgaModel { get; set; }
 
         /// <summary>
         /// Specifies how the applicable IGA is treated under the IGA provisions or Treasury regulations.

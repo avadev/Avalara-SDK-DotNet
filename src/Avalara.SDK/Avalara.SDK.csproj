@@ -12,7 +12,7 @@
     <Description>A library generated from a OpenAPI doc for Avalara APIs</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Avalara.SDK</RootNamespace>
-    <Version>25.10.0</Version>
+    <Version>25.10.1</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Avalara.SDK.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/avadev/Avalara-SDK-DotNet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
