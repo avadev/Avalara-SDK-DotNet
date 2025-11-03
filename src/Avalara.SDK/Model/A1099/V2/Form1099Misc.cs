@@ -171,7 +171,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="grossProceedsPaidToAttorney">Gross proceeds paid to an attorney.</param>
         /// <param name="fishPurchasedForResale">Fish purchased for resale.</param>
         /// <param name="section409ADeferrals">Section 409A deferrals.</param>
-        /// <param name="excessGoldenParachutePayments">(Legacy field) Excess golden parachute payments.</param>
+        /// <param name="excessGoldenParachutePayments">Excess golden parachute payments - Available only for tax year 2024 and earlier.</param>
         /// <param name="nonqualifiedDeferredCompensation">Nonqualified deferred compensation.</param>
         /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
         /// <param name="type">Form type. (required).</param>
@@ -356,9 +356,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? Section409ADeferrals { get; set; }
 
         /// <summary>
-        /// (Legacy field) Excess golden parachute payments
+        /// Excess golden parachute payments - Available only for tax year 2024 and earlier
         /// </summary>
-        /// <value>(Legacy field) Excess golden parachute payments</value>
+        /// <value>Excess golden parachute payments - Available only for tax year 2024 and earlier</value>
         [DataMember(Name = "excessGoldenParachutePayments", EmitDefaultValue = true)]
         public double? ExcessGoldenParachutePayments { get; set; }
 
