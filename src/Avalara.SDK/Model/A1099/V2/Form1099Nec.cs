@@ -161,6 +161,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <param name="nonemployeeCompensation">Nonemployee compensation. Required if DirectSalesIndicator is false. (required).</param>
         /// <param name="directSalesIndicator">Payer made direct sales totaling $5,000 or more of consumer products to recipient for resale. Should be true if Nonemployee compensation is not provided..</param>
+        /// <param name="excessGoldenParachutePayments">Excess golden parachute payments - Available only for tax year 2025 and later.</param>
         /// <param name="federalIncomeTaxWithheld">Federal income tax withheld..</param>
         /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
@@ -191,7 +192,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099Nec(double? nonemployeeCompensation = default(double?), bool? directSalesIndicator = default(bool?), double? federalIncomeTaxWithheld = default(double?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
+        public Form1099Nec(double? nonemployeeCompensation = default(double?), bool? directSalesIndicator = default(bool?), double? excessGoldenParachutePayments = default(double?), double? federalIncomeTaxWithheld = default(double?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
         {
             // to ensure "nonemployeeCompensation" is required (not null)
             if (nonemployeeCompensation == null)
@@ -225,6 +226,7 @@ namespace Avalara.SDK.Model.A1099.V2
             }
             this.CountryCode = countryCode;
             this.DirectSalesIndicator = directSalesIndicator;
+            this.ExcessGoldenParachutePayments = excessGoldenParachutePayments;
             this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
@@ -265,6 +267,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Payer made direct sales totaling $5,000 or more of consumer products to recipient for resale. Should be true if Nonemployee compensation is not provided.</value>
         [DataMember(Name = "directSalesIndicator", EmitDefaultValue = true)]
         public bool? DirectSalesIndicator { get; set; }
+
+        /// <summary>
+        /// Excess golden parachute payments - Available only for tax year 2025 and later
+        /// </summary>
+        /// <value>Excess golden parachute payments - Available only for tax year 2025 and later</value>
+        [DataMember(Name = "excessGoldenParachutePayments", EmitDefaultValue = true)]
+        public double? ExcessGoldenParachutePayments { get; set; }
 
         /// <summary>
         /// Federal income tax withheld.
@@ -625,6 +634,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class Form1099Nec {\n");
             sb.Append("  NonemployeeCompensation: ").Append(NonemployeeCompensation).Append("\n");
             sb.Append("  DirectSalesIndicator: ").Append(DirectSalesIndicator).Append("\n");
+            sb.Append("  ExcessGoldenParachutePayments: ").Append(ExcessGoldenParachutePayments).Append("\n");
             sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");

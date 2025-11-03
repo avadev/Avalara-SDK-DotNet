@@ -296,8 +296,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns></returns>
-        void GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters);
+        /// <returns>FileParameter</returns>
+        FileParameter GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters);
 
         /// <summary>
         /// List W9/W4/W8 forms
@@ -409,8 +409,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List W9/W4/W8 forms
@@ -1069,10 +1069,11 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns></returns>
-        public void GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters)
+        /// <returns>FileParameter</returns>
+        public FileParameter GetW9FormPdf(GetW9FormPdfRequestSdk requestParameters)
         {
-            GetW9FormPdfWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<FileParameter> localVarResponse = GetW9FormPdfWithHttpInfo(requestParameters);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1080,8 +1081,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        private Avalara.SDK.Client.ApiResponse<Object> GetW9FormPdfWithHttpInfo(GetW9FormPdfRequestSdk requestParameters)
+        /// <returns>ApiResponse of FileParameter</returns>
+        private Avalara.SDK.Client.ApiResponse<FileParameter> GetW9FormPdfWithHttpInfo(GetW9FormPdfRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1122,7 +1123,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/w9/forms/{id}/pdf", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Get<FileParameter>("/w9/forms/{id}/pdf", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -1139,10 +1140,11 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> GetW9FormPdfAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await GetW9FormPdfWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<FileParameter> localVarResponse = await GetW9FormPdfWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1151,8 +1153,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> GetW9FormPdfWithHttpInfoAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<FileParameter>> GetW9FormPdfWithHttpInfoAsync(GetW9FormPdfRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1195,7 +1197,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<Object>("/w9/forms/{id}/pdf", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<FileParameter>("/w9/forms/{id}/pdf", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1837,7 +1839,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.10.1";
+            this.Client.SdkVersion = "25.11.0";
         }
         
     }

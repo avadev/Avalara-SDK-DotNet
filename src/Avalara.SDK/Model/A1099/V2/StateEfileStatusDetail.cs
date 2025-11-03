@@ -49,11 +49,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="status">status.</param>
         /// <param name="time">time.</param>
         /// <param name="jurisdiction">jurisdiction.</param>
-        public StateEfileStatusDetail(string status = default(string), string time = default(string), string jurisdiction = default(string))
+        /// <param name="rejectedReason">rejectedReason.</param>
+        public StateEfileStatusDetail(string status = default(string), string time = default(string), string jurisdiction = default(string), string rejectedReason = default(string))
         {
             this.Status = status;
             this.Time = time;
             this.Jurisdiction = jurisdiction;
+            this.RejectedReason = rejectedReason;
         }
 
         /// <summary>
@@ -75,6 +77,12 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Jurisdiction { get; set; }
 
         /// <summary>
+        /// Gets or Sets RejectedReason
+        /// </summary>
+        [DataMember(Name = "rejectedReason", EmitDefaultValue = true)]
+        public string RejectedReason { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -85,6 +93,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Time: ").Append(Time).Append("\n");
             sb.Append("  Jurisdiction: ").Append(Jurisdiction).Append("\n");
+            sb.Append("  RejectedReason: ").Append(RejectedReason).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
