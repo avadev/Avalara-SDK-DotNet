@@ -57,7 +57,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="nameSuffix">Covered individual&#39;s name suffix.</param>
         /// <param name="tin">Covered individual&#39;s Federal Tax Identification Number (TIN).. SSN or ITIN. Required unless unavailable..</param>
         /// <param name="birthDate">Covered individual&#39;s date of birth - Required when SSN is missing..</param>
-        /// <param name="coveredAllMonths">Coverage indicator for all 12 months.</param>
         /// <param name="coveredJanuary">Coverage indicator for January.</param>
         /// <param name="coveredFebruary">Coverage indicator for February.</param>
         /// <param name="coveredMarch">Coverage indicator for March.</param>
@@ -70,7 +69,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="coveredOctober">Coverage indicator for October.</param>
         /// <param name="coveredNovember">Coverage indicator for November.</param>
         /// <param name="coveredDecember">Coverage indicator for December.</param>
-        public CoveredIndividual(string firstName = default(string), string middleName = default(string), string lastName = default(string), string nameSuffix = default(string), string tin = default(string), DateTime? birthDate = default(DateTime?), bool? coveredAllMonths = default(bool?), bool? coveredJanuary = default(bool?), bool? coveredFebruary = default(bool?), bool? coveredMarch = default(bool?), bool? coveredApril = default(bool?), bool? coveredMay = default(bool?), bool? coveredJune = default(bool?), bool? coveredJuly = default(bool?), bool? coveredAugust = default(bool?), bool? coveredSeptember = default(bool?), bool? coveredOctober = default(bool?), bool? coveredNovember = default(bool?), bool? coveredDecember = default(bool?))
+        public CoveredIndividual(string firstName = default(string), string middleName = default(string), string lastName = default(string), string nameSuffix = default(string), string tin = default(string), DateTime? birthDate = default(DateTime?), bool? coveredJanuary = default(bool?), bool? coveredFebruary = default(bool?), bool? coveredMarch = default(bool?), bool? coveredApril = default(bool?), bool? coveredMay = default(bool?), bool? coveredJune = default(bool?), bool? coveredJuly = default(bool?), bool? coveredAugust = default(bool?), bool? coveredSeptember = default(bool?), bool? coveredOctober = default(bool?), bool? coveredNovember = default(bool?), bool? coveredDecember = default(bool?))
         {
             // to ensure "firstName" is required (not null)
             if (firstName == null)
@@ -88,7 +87,6 @@ namespace Avalara.SDK.Model.A1099.V2
             this.NameSuffix = nameSuffix;
             this.Tin = tin;
             this.BirthDate = birthDate;
-            this.CoveredAllMonths = coveredAllMonths;
             this.CoveredJanuary = coveredJanuary;
             this.CoveredFebruary = coveredFebruary;
             this.CoveredMarch = coveredMarch;
@@ -160,13 +158,6 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "birthDate", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? BirthDate { get; set; }
-
-        /// <summary>
-        /// Coverage indicator for all 12 months
-        /// </summary>
-        /// <value>Coverage indicator for all 12 months</value>
-        [DataMember(Name = "coveredAllMonths", EmitDefaultValue = true)]
-        public bool? CoveredAllMonths { get; set; }
 
         /// <summary>
         /// Coverage indicator for January
@@ -267,7 +258,6 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  NameSuffix: ").Append(NameSuffix).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
             sb.Append("  BirthDate: ").Append(BirthDate).Append("\n");
-            sb.Append("  CoveredAllMonths: ").Append(CoveredAllMonths).Append("\n");
             sb.Append("  CoveredJanuary: ").Append(CoveredJanuary).Append("\n");
             sb.Append("  CoveredFebruary: ").Append(CoveredFebruary).Append("\n");
             sb.Append("  CoveredMarch: ").Append(CoveredMarch).Append("\n");

@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **NameSuffix** | **string** | Covered individual&#39;s name suffix | [optional] 
 **Tin** | **string** | Covered individual&#39;s Federal Tax Identification Number (TIN).. SSN or ITIN. Required unless unavailable. | [optional] 
 **BirthDate** | **DateTime?** | Covered individual&#39;s date of birth - Required when SSN is missing. | [optional] 
-**CoveredAllMonths** | **bool?** | Coverage indicator for all 12 months | [optional] 
 **CoveredJanuary** | **bool?** | Coverage indicator for January | [optional] 
 **CoveredFebruary** | **bool?** | Coverage indicator for February | [optional] 
 **CoveredMarch** | **bool?** | Coverage indicator for March | [optional] 
