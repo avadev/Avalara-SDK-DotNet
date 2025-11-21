@@ -46,7 +46,7 @@ namespace Example
             var requestParameters = new BulkUpsert1099FormsRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
             requestParameters.DryRun = false;  // bool? | defaults to false. If true, it will NOT change the DB. It will just return a report of what would've have been changed in the DB (optional)  (default to false)
-            requestParameters.XCorrelationId = 0a003f2f-5501-4250-ab7b-8d19badbfc37;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 6e64cd85-8016-4753-83f5-e78c041e8ab1;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.Form1099ListRequest = new Form1099ListRequest(); // Form1099ListRequest |  (optional) 
 
@@ -134,7 +134,7 @@ namespace Example
             var apiInstance = new Forms1099Api(apiClient);
             var requestParameters = new Create1099FormRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 57792295-a7b1-4533-b84b-80801d8a3029;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 05146ed0-5ef3-4d21-a139-bceaf30183da;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.Get1099Form200Response = new Get1099Form200Response(); // Get1099Form200Response |  (optional) 
 
@@ -221,7 +221,7 @@ namespace Example
             var requestParameters = new Delete1099FormRequestSdk();
             requestParameters.Id = "id_example";  // string | The unique identifier of the desired form to delete.
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 09b8e2c9-03af-4e93-a089-3815a9772bff;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = dfa0ca1e-71ad-4ea3-b2a0-e33a88ae9418;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -308,7 +308,7 @@ namespace Example
             var requestParameters = new Get1099FormRequestSdk();
             requestParameters.Id = "id_example";  // string | 
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 82187008-2768-4604-ab7e-c85895698b44;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 7cee7d23-fb69-4dd0-bbb5-e2afaf72a72e;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -396,7 +396,7 @@ namespace Example
             requestParameters.Id = "id_example";  // string | The ID of the form
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
             requestParameters.MarkEdelivered = true;  // bool? | Optional boolean that if set indicates that the form should be marked as having been successfully edelivered (optional) 
-            requestParameters.XCorrelationId = b394da48-4847-404d-9b08-ba462c76558a;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 751b64d2-bcd9-46d8-a671-cb88f65b2eb7;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -489,7 +489,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = e0a2a426-d793-43ac-b268-ffc5de391e38;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = a5957b23-68b0-4987-b6d8-6f2246d72c27;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -581,7 +581,7 @@ namespace Example
             var requestParameters = new Update1099FormRequestSdk();
             requestParameters.Id = "id_example";  // string | 
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 4ce0c187-5acb-4d13-98dd-5027249b2bae;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = f907e539-ce8b-4d8d-846e-793f9d00ba77;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.Get1099Form200Response = new Get1099Form200Response(); // Get1099Form200Response |  (optional) 
 

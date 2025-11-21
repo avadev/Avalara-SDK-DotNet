@@ -48,21 +48,21 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <param name="stateTaxWithheld">Amount of state tax that was withheld.</param>
         /// <param name="state">US state.</param>
-        /// <param name="stateIdNumber">State ID number of the entity issuing the form.</param>
+        /// <param name="stateId">State ID of the entity issuing the form.</param>
         /// <param name="stateIncome">Amount of state income.</param>
         /// <param name="localTaxWithheld">Amount of local tax that was withheld.</param>
         /// <param name="locality">Locality name.</param>
-        /// <param name="localityIdNumber">Locality ID number of the entity issuing the form.</param>
+        /// <param name="localityId">Locality ID of the entity issuing the form.</param>
         /// <param name="localIncome">Amount of local income.</param>
-        public StateAndLocalWithholding(double? stateTaxWithheld = default(double?), string state = default(string), string stateIdNumber = default(string), double? stateIncome = default(double?), double? localTaxWithheld = default(double?), string locality = default(string), string localityIdNumber = default(string), double? localIncome = default(double?))
+        public StateAndLocalWithholding(double? stateTaxWithheld = default(double?), string state = default(string), string stateId = default(string), double? stateIncome = default(double?), double? localTaxWithheld = default(double?), string locality = default(string), string localityId = default(string), double? localIncome = default(double?))
         {
             this.StateTaxWithheld = stateTaxWithheld;
             this.State = state;
-            this.StateIdNumber = stateIdNumber;
+            this.StateId = stateId;
             this.StateIncome = stateIncome;
             this.LocalTaxWithheld = localTaxWithheld;
             this.Locality = locality;
-            this.LocalityIdNumber = localityIdNumber;
+            this.LocalityId = localityId;
             this.LocalIncome = localIncome;
         }
 
@@ -81,11 +81,11 @@ namespace Avalara.SDK.Model.A1099.V2
         public string State { get; set; }
 
         /// <summary>
-        /// State ID number of the entity issuing the form
+        /// State ID of the entity issuing the form
         /// </summary>
-        /// <value>State ID number of the entity issuing the form</value>
-        [DataMember(Name = "stateIdNumber", EmitDefaultValue = true)]
-        public string StateIdNumber { get; set; }
+        /// <value>State ID of the entity issuing the form</value>
+        [DataMember(Name = "stateId", EmitDefaultValue = true)]
+        public string StateId { get; set; }
 
         /// <summary>
         /// Amount of state income
@@ -109,11 +109,11 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Locality { get; set; }
 
         /// <summary>
-        /// Locality ID number of the entity issuing the form
+        /// Locality ID of the entity issuing the form
         /// </summary>
-        /// <value>Locality ID number of the entity issuing the form</value>
-        [DataMember(Name = "localityIdNumber", EmitDefaultValue = true)]
-        public string LocalityIdNumber { get; set; }
+        /// <value>Locality ID of the entity issuing the form</value>
+        [DataMember(Name = "localityId", EmitDefaultValue = true)]
+        public string LocalityId { get; set; }
 
         /// <summary>
         /// Amount of local income
@@ -132,11 +132,11 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class StateAndLocalWithholding {\n");
             sb.Append("  StateTaxWithheld: ").Append(StateTaxWithheld).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  StateIdNumber: ").Append(StateIdNumber).Append("\n");
+            sb.Append("  StateId: ").Append(StateId).Append("\n");
             sb.Append("  StateIncome: ").Append(StateIncome).Append("\n");
             sb.Append("  LocalTaxWithheld: ").Append(LocalTaxWithheld).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
-            sb.Append("  LocalityIdNumber: ").Append(LocalityIdNumber).Append("\n");
+            sb.Append("  LocalityId: ").Append(LocalityId).Append("\n");
             sb.Append("  LocalIncome: ").Append(LocalIncome).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

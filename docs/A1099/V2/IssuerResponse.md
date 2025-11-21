@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **Tin** | **string** | Federal Tax Identification Number (TIN). | [optional] 
 **ReferenceId** | **string** | Internal reference ID. Never shown to any agency or recipient. If present, it will prefix download filenames. Allowed characters: letters, numbers, dashes, underscores, and spaces. | [optional] 
 **Telephone** | **string** | Contact phone number (must contain at least 10 digits, max 15 characters). For recipient inquiries. | 
-**TaxYear** | **int?** | Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. | 
-**CountryCode** | **string** | Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address. | [optional] 
-**Email** | **string** | Contact email address. For recipient inquiries. | 
+**TaxYear** | **int?** | Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. It&#39;s only required on creation, and cannot be modified on update. | 
+**CountryCode** | **string** | Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address. | 
+**Email** | **string** | Contact email address. For recipient inquiries. Phone will be used on communications if you don&#39;t specify an email | [optional] 
 **Address** | **string** | Address. | 
 **City** | **string** | City. | 
 **State** | **string** | Two-letter US state or Canadian province code (required for US/CA addresses). | 

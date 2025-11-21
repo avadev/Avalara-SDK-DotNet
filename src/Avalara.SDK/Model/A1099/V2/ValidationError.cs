@@ -48,10 +48,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// </summary>
         /// <param name="field">The field containing the error.</param>
         /// <param name="errors">The list of error messages.</param>
-        public ValidationError(string field = default(string), List<string> errors = default(List<string>))
+        /// <param name="errorCodes">The list of error codes (only present when api_error_codes flag is enabled).</param>
+        public ValidationError(string field = default(string), List<string> errors = default(List<string>), List<string> errorCodes = default(List<string>))
         {
             this.Field = field;
             this.Errors = errors;
+            this.ErrorCodes = errorCodes;
         }
 
         /// <summary>
@@ -69,6 +71,13 @@ namespace Avalara.SDK.Model.A1099.V2
         public List<string> Errors { get; set; }
 
         /// <summary>
+        /// The list of error codes (only present when api_error_codes flag is enabled)
+        /// </summary>
+        /// <value>The list of error codes (only present when api_error_codes flag is enabled)</value>
+        [DataMember(Name = "errorCodes", EmitDefaultValue = true)]
+        public List<string> ErrorCodes { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -78,6 +87,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class ValidationError {\n");
             sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  ErrorCodes: ").Append(ErrorCodes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
