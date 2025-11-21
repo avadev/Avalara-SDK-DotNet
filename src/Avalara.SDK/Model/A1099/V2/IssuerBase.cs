@@ -56,9 +56,9 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tin">Federal Tax Identification Number (TIN)..</param>
         /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient. If present, it will prefix download filenames. Allowed characters: letters, numbers, dashes, underscores, and spaces..</param>
         /// <param name="telephone">Contact phone number (must contain at least 10 digits, max 15 characters). For recipient inquiries. (required).</param>
-        /// <param name="taxYear">Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. (required).</param>
-        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address..</param>
-        /// <param name="email">Contact email address. For recipient inquiries. (required).</param>
+        /// <param name="taxYear">Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. It&#39;s only required on creation, and cannot be modified on update. (required).</param>
+        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address. (required).</param>
+        /// <param name="email">Contact email address. For recipient inquiries. Phone will be used on communications if you don&#39;t specify an email.</param>
         /// <param name="address">Address. (required).</param>
         /// <param name="city">City. (required).</param>
         /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses). (required).</param>
@@ -86,12 +86,12 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("taxYear is a required property for IssuerBase and cannot be null");
             }
             this.TaxYear = taxYear;
-            // to ensure "email" is required (not null)
-            if (email == null)
+            // to ensure "countryCode" is required (not null)
+            if (countryCode == null)
             {
-                throw new ArgumentNullException("email is a required property for IssuerBase and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for IssuerBase and cannot be null");
             }
-            this.Email = email;
+            this.CountryCode = countryCode;
             // to ensure "address" is required (not null)
             if (address == null)
             {
@@ -125,7 +125,7 @@ namespace Avalara.SDK.Model.A1099.V2
             this.DbaName = dbaName;
             this.Tin = tin;
             this.ReferenceId = referenceId;
-            this.CountryCode = countryCode;
+            this.Email = email;
             this.ForeignProvince = foreignProvince;
             this.TransferAgentName = transferAgentName;
         }
@@ -166,9 +166,9 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Telephone { get; set; }
 
         /// <summary>
-        /// Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4.
+        /// Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. It&#39;s only required on creation, and cannot be modified on update.
         /// </summary>
-        /// <value>Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4.</value>
+        /// <value>Tax year for which the forms are being filed (e.g., 2024). Must be within current tax year and current tax year - 4. It&#39;s only required on creation, and cannot be modified on update.</value>
         [DataMember(Name = "taxYear", IsRequired = true, EmitDefaultValue = true)]
         public int? TaxYear { get; set; }
 
@@ -176,14 +176,14 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address.
         /// </summary>
         /// <value>Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. If there is a transfer agent, use the transfer agent&#39;s shipping address.</value>
-        [DataMember(Name = "countryCode", EmitDefaultValue = true)]
+        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Contact email address. For recipient inquiries.
+        /// Contact email address. For recipient inquiries. Phone will be used on communications if you don&#39;t specify an email
         /// </summary>
-        /// <value>Contact email address. For recipient inquiries.</value>
-        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>Contact email address. For recipient inquiries. Phone will be used on communications if you don&#39;t specify an email</value>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
