@@ -140,6 +140,32 @@ namespace Avalara.SDK.Client
                 return stream;
             }
 
+            if (type == typeof(FileParameter)) // return a FileParameter object for binary file responses
+            {
+                var bytes = await response.Content.ReadAsByteArrayAsync();
+
+                string fileName = "downloaded_file";
+                var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
+                foreach (var header in headers)
+                {
+                    var match = regex.Match(header.ToString());
+                    if (match.Success)
+                    {
+                        fileName = ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
+                        break;
+                    }
+                }
+
+                string contentType = "application/octet-stream";
+                if (response.Content.Headers.ContentType != null)
+                {
+                    contentType = response.Content.Headers.ContentType.ToString();
+                }
+
+                var stream = new MemoryStream(bytes);
+                return new FileParameter(fileName, contentType, stream);
+            }
+
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
                 return DateTime.Parse(await response.Content.ReadAsStringAsync(), null, System.Globalization.DateTimeStyles.RoundtripKind);
@@ -518,7 +544,7 @@ namespace Avalara.SDK.Client
 
             if (response != null && (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden))
             {
-                if (!this.Configuration.ClientID.IsNullorEmpty()) //OAuth2 is configured 
+                if (!this.Configuration.ClientID.IsNullorEmpty()) //OAuth2 is configured
                 {
                     string authHeader = Convert.ToString(req.Headers.First(x => x.Key == "Authorization").Value);
                     if (!authHeader.IsNullorEmpty())
