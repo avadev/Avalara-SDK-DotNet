@@ -349,18 +349,8 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             string[] _contentTypes = new string[] {
             };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/pdf",
-                "application/xml",
-                "application/json"
-            };
-
             var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("documentId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.DocumentId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
@@ -424,19 +414,8 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             string[] _contentTypes = new string[] {
             };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/pdf",
-                "application/xml",
-                "application/json"
-            };
-
-
             var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("documentId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.DocumentId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
