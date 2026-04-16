@@ -39,11 +39,11 @@ namespace Example
             
             var apiInstance = new MandatesApi(apiClient);
             var requestParameters = new GetMandateDataInputFieldsRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.MandateId = AD-B2G-PEPPOL;  // string | The unique ID for the mandate that was returned in the GET /einvoicing/mandates response body
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.MandateId = AD-B2G-PEPPOL;  // string | Unique identifier of the mandate returned by the GET /mandates endpoint.
             requestParameters.DocumentType = ubl-invoice;  // string | Select the documentType for which you wish to view the data-input-fields (You may obtain the supported documentTypes from the GET /mandates endpoint)
             requestParameters.DocumentVersion = 2.1;  // string | Select the document version of the documentType (You may obtain the supported documentVersion from the GET /mandates endpoint)
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
 
             try
             {
@@ -66,11 +66,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **MandateId** | **string**| The unique ID for the mandate that was returned in the GET /einvoicing/mandates response body | 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **MandateId** | **string**| Unique identifier of the mandate returned by the GET /mandates endpoint. | 
  **DocumentType** | **string**| Select the documentType for which you wish to view the data-input-fields (You may obtain the supported documentTypes from the GET /mandates endpoint) | 
  **DocumentVersion** | **string**| Select the document version of the documentType (You may obtain the supported documentVersion from the GET /mandates endpoint) | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
 
 ### Return type
 
@@ -89,10 +89,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **200** | Returns a MandateDataInputFieldsResponse object containing the input fields and their optionality for the specified mandate, document type, and document version. |  -  |
+| **400** | Bad request. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 | **404** | Resource not found |  -  |
 | **500** | Internal Server Error |  -  |
 
@@ -129,13 +129,13 @@ namespace Example
             
             var apiInstance = new MandatesApi(apiClient);
             var requestParameters = new GetMandatesRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
             requestParameters.Filter = countryMandate eq DE-B2G-PEPPOL;  // string | Filter by field name and value. This filter only supports <code>eq</code> and <code>contains</code>. Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. (optional) 
             requestParameters.Top = 56;  // int? | The number of items to include in the result. (optional) 
             requestParameters.Skip = 56;  // int? | The number of items to skip in the result. (optional) 
             requestParameters.Count = true;  // bool? | When set to true, the count of the collection is also returned in the response body. (optional) 
-            requestParameters.CountOnly = true;  // bool? | When set to true, only the count of the collection is returned (optional) 
+            requestParameters.CountOnly = true;  // bool? | When set to true, only the count of the collection is returned. (optional) 
 
             try
             {
@@ -158,13 +158,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
  **Filter** | **string**| Filter by field name and value. This filter only supports &lt;code&gt;eq&lt;/code&gt; and &lt;code&gt;contains&lt;/code&gt;. Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. | [optional] 
  **Top** | **int?**| The number of items to include in the result. | [optional] 
  **Skip** | **int?**| The number of items to skip in the result. | [optional] 
  **Count** | **bool?**| When set to true, the count of the collection is also returned in the response body. | [optional] 
- **CountOnly** | **bool?**| When set to true, only the count of the collection is returned | [optional] 
+ **CountOnly** | **bool?**| When set to true, only the count of the collection is returned. | [optional] 
 
 ### Return type
 
@@ -183,11 +183,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **200** | Returns a MandatesResponse object containing the supported country mandates. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 | **404** | Resource not found |  -  |
-| **500** | Internal Server Error |  -  |
+| **500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

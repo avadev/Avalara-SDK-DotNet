@@ -16,15 +16,15 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetDataInputFieldsRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// Filter by field name and value. This filter only supports &lt;code&gt;eq&lt;/code&gt; and &lt;code&gt;contains&lt;/code&gt;. Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering.
+        /// Filter by field name and value. This filter supports only eq and contains. For more information, refer to the Avalara filtering guide.
         /// </summary>
         public string Filter { get; set; }
         /// <summary>
@@ -36,11 +36,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public int? Skip { get; set; }
         /// <summary>
-        /// When set to true, the count of the collection is also returned in the response body
+        /// When set to true, the response body also includes the count of items in the collection.
         /// </summary>
         public bool? Count { get; set; }
         /// <summary>
-        /// When set to true, only the count of the collection is returned
+        /// When set to true, the response returns only the count of items in the collection.
         /// </summary>
         public bool? CountOnly { get; set; }
     }
@@ -56,7 +56,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns the optionality of document fields for different country mandates
         /// </summary>
         /// <remarks>
-        /// This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -76,7 +76,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns the optionality of document fields for different country mandates
         /// </summary>
         /// <remarks>
-        /// This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -127,7 +127,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the optionality of document fields for different country mandates This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// Returns the optionality of document fields for different country mandates This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -139,7 +139,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the optionality of document fields for different country mandates This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// Returns the optionality of document fields for different country mandates This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -207,7 +207,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the optionality of document fields for different country mandates This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// Returns the optionality of document fields for different country mandates This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -220,7 +220,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the optionality of document fields for different country mandates This endpoint provides a list of required, conditional, and optional fields for each country mandate. You can use the &lt;code&gt;mandates&lt;/code&gt; endpoint to retrieve all available country mandates. You can use the $filter query parameter to retrieve fields for a particular mandate
+        /// Returns the optionality of document fields for different country mandates This endpoint returns a list of required, conditional, and optional fields for each country mandate. Use the mandates endpoint to retrieve all available country mandates. Use the $filter query parameter to retrieve fields for a specific mandate.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -299,7 +299,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

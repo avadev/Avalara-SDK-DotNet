@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Submit a document
 
-This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
 
 ### Example
 ```csharp
@@ -40,9 +40,9 @@ namespace Example
             var requestParameters = new SubmitInteropDocumentRequestSdk();
             requestParameters.DocumentType = "ubl-invoice-2.1";  // string | Type of the document being uploaded. Partners will be configured in Avalara system to send only certain types of documents.
             requestParameters.InterchangeType = "FI-B2B-TIEKE";  // string | Type of interchange (codes in Avalara system that uniquely identifies a type of interchange). Partners will be configured in Avalara system to send documents belonging to certain types of interchanges.
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\" (optional) 
-            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | The caller can use this as an identifier to use as a correlation id to trace the call. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
+            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | Optional correlation identifier provided by the caller to trace the call (for example \"f3f0d19a-01a1-4748-8a58-f000d0424f43\"). (optional) 
             requestParameters.FileName = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // FileParameter | The file to be uploaded (e.g., UBL XML, CII XML). (optional) 
 
             try
@@ -68,9 +68,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **DocumentType** | **string**| Type of the document being uploaded. Partners will be configured in Avalara system to send only certain types of documents. | 
  **InterchangeType** | **string**| Type of interchange (codes in Avalara system that uniquely identifies a type of interchange). Partners will be configured in Avalara system to send documents belonging to certain types of interchanges. | 
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot; | [optional] 
- **XCorrelationID** | **string**| The caller can use this as an identifier to use as a correlation id to trace the call. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
+ **XCorrelationID** | **string**| Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;). | [optional] 
  **FileName** | **FileParameter****FileParameter**| The file to be uploaded (e.g., UBL XML, CII XML). | [optional] 
 
 ### Return type
@@ -90,11 +90,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | Document Accepted. This doesn&#39;t mean it is processed. This is just a transport ack. |  * X-Correlation-ID -  <br>  |
-| **400** | Bad/Invalid Request. |  * X-Correlation-Id -  <br>  |
-| **401** | Unauthorized |  * X-Correlation-Id -  <br>  |
-| **403** | Forbidden |  * X-Correlation-Id -  <br>  |
-| **500** | Internal server error |  * X-Correlation-Id -  <br>  |
+| **202** | Document accepted for processing. Returns the interchange ID and acceptance message. This is a transport acknowledgment; processing occurs asynchronously. |  * X-Correlation-ID -  <br>  |
+| **400** | Bad request. The request is invalid or contains missing or incorrect parameters. |  * X-Correlation-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID -  <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID -  <br>  |
+| **500** | Internal server error. |  * X-Correlation-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

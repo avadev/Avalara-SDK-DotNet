@@ -24,15 +24,15 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public string InterchangeType { get; set; }
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Submit a document
         /// </summary>
         /// <remarks>
-        /// This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -72,7 +72,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Submit a document
         /// </summary>
         /// <remarks>
-        /// This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -123,7 +123,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Submit a document This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Submit a document Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -135,7 +135,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Submit a document This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Submit a document Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -202,7 +202,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Submit a document This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Submit a document Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -215,7 +215,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Submit a document This API used by the interoperability partners to submit a document to  their trading partners in Avalara on behalf of their customers. 
+        /// Submit a document Upload documents on behalf of interoperability partners and submit them to trading partners through the Avalara platform.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -293,7 +293,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

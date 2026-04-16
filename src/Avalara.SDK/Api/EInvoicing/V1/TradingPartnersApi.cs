@@ -16,11 +16,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class BatchSearchParticipantsRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// A &lt;b&gt;human-readable&lt;/b&gt; name for the batch search.
+        /// A human-readable name for the batch search.
         /// </summary>
         public string Name { get; set; }
         /// <summary>
@@ -32,11 +32,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public FileParameter File { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -46,19 +46,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class CreateTradingPartnerRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
         public TradingPartner TradingPartner { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -68,19 +68,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class CreateTradingPartnersBatchRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
         public CreateTradingPartnersBatchRequest CreateTradingPartnersBatchRequest { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -90,19 +90,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class DeleteTradingPartnerRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The ID of the trading partner which is being deleted.
+        /// Unique identifier of the trading partner.
         /// </summary>
         public string Id { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -112,19 +112,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class DownloadBatchSearchReportRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The ID of the batch search for which the report should be downloaded.
+        /// Unique identifier of the batch search for which to download the report.
         /// </summary>
         public string Id { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -134,19 +134,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetBatchSearchDetailRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The ID of the batch search that was submitted earlier.
+        /// Unique identifier of the batch search.
         /// </summary>
         public string Id { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -156,15 +156,15 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class ListBatchSearchesRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// Filters the results by field name. Only the &lt;code&gt;eq&lt;/code&gt; operator and the name field is supported. For more information, refer to [AvaTax filtering guide](https://developer.avalara.com/avatax/filtering-in-rest/).
+        /// Filters the results by field name. Only the eq operator and the name field are supported. For more information, refer to the Avalara filtering guide.
         /// </summary>
         public string Filter { get; set; }
         /// <summary>
@@ -184,7 +184,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public string OrderBy { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -194,23 +194,23 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class SearchParticipantsRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// Search by value supports logical &lt;code&gt;AND&lt;/code&gt; / &lt;code&gt;OR&lt;/code&gt; operators. Search is performed only over the name and identifier value fields. For more information, refer to [Query options overview - OData.](https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#search).
+        /// Search by value supports logical AND and OR operators (case-sensitive). Search is performed only over the name and identifier value fields. For more information, refer to the OData query options overview documentation.
         /// </summary>
         public string Search { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// When set to &lt;code&gt;true&lt;/code&gt;, returns the total count of matching records included as &lt;code&gt;@recordSetCount&lt;/code&gt; in the response body.
+        /// When set to true, returns the total count of matching records included as @recordSetCount in the response body.
         /// </summary>
         public bool? Count { get; set; }
         /// <summary>
-        /// Filters the results using the &lt;code&gt;eq&lt;/code&gt; operator. Supported fields: &lt;code&gt;network&lt;/code&gt;, &lt;code&gt;country&lt;/code&gt;, &lt;code&gt;documentType&lt;/code&gt;, &lt;code&gt;idType&lt;/code&gt;. For more information, refer to [AvaTax filtering guide](https://developer.avalara.com/avatax/filtering-in-rest/).
+        /// Filters the results using the eq operator. Supported fields include network, country, documentType, and idType. For more information, refer to the Avalara filtering guide.
         /// </summary>
         public string Filter { get; set; }
         /// <summary>
@@ -222,11 +222,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public int? Skip { get; set; }
         /// <summary>
-        /// The &lt;code&gt;$orderBy&lt;/code&gt; query parameter specifies the field and sorting direction for ordering the result set. The value is a string that combines a field name and a sorting direction (asc for ascending or desc for descending), separated by a space.
+        /// The $orderBy query parameter specifies the field and sorting direction for ordering the result set. The value combines a field name and a sorting direction (asc for ascending or desc for descending), separated by a space.
         /// </summary>
         public string OrderBy { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -236,11 +236,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class UpdateTradingPartnerRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The ID of the trading partner which is being updated.
+        /// Unique identifier of the trading partner.
         /// </summary>
         public string Id { get; set; }
         /// <summary>
@@ -248,11 +248,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public TradingPartner TradingPartner { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -290,7 +290,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Creates a batch of multiple trading partners.
         /// </summary>
         /// <remarks>
-        /// This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -400,7 +400,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Creates a batch of multiple trading partners.
         /// </summary>
         /// <remarks>
-        /// This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -831,7 +831,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -843,7 +843,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -901,7 +901,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -914,7 +914,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or 1 MB request payload. The batch is processed atomically and partial success is not allowed.
+        /// Creates a batch of multiple trading partners. This endpoint creates multiple trading partners in a single batch request. It accepts an array of trading partners and processes them synchronously. Supports a maximum of 100 records or a 1 MB request payload.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -1917,7 +1917,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

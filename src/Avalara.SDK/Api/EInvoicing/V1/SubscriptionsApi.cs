@@ -16,9 +16,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class CreateWebhookSubscriptionRequestSdk {
         /// <summary>
-        /// The version of the API to use, e.g., \&quot;1.4\&quot;.
+        /// The version of the API to use, e.g., \&quot;1.6\&quot;.
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
@@ -38,13 +38,13 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class DeleteWebhookSubscriptionRequestSdk {
         /// <summary>
-        /// 
+        /// Unique identifier of the subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
         /// <summary>
-        /// The version of the API to use, e.g., \&quot;1.4\&quot;.
+        /// The version of the API to use, e.g., \&quot;1.6\&quot;.
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// A unique identifier for tracking the request and its response
         /// </summary>
@@ -60,13 +60,13 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetWebhookSubscriptionRequestSdk {
         /// <summary>
-        /// 
+        /// Unique identifier of the subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
         /// <summary>
-        /// The version of the API to use, e.g., \&quot;1.4\&quot;.
+        /// The version of the API to use, e.g., \&quot;1.6\&quot;.
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// A unique identifier for tracking the request and its response
         /// </summary>
@@ -82,9 +82,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class ListWebhookSubscriptionsRequestSdk {
         /// <summary>
-        /// The version of the API to use, e.g., \&quot;1.4\&quot;.
+        /// The version of the API to use, e.g., \&quot;1.6\&quot;.
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// A unique identifier for tracking the request and its response
         /// </summary>
@@ -122,7 +122,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Create a subscription to events
         /// </summary>
         /// <remarks>
-        /// Create a subscription to events exposed by registered systems.
+        /// Create a new webhook subscription and return the created subscription details.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -133,7 +133,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Unsubscribe from events
         /// </summary>
         /// <remarks>
-        /// Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Delete the specified webhook subscription.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -155,7 +155,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// List all subscriptions
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of all subscriptions.
+        /// Retrieve a list of webhook subscriptions.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -175,7 +175,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Create a subscription to events
         /// </summary>
         /// <remarks>
-        /// Create a subscription to events exposed by registered systems.
+        /// Create a new webhook subscription and return the created subscription details.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -187,7 +187,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Unsubscribe from events
         /// </summary>
         /// <remarks>
-        /// Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Delete the specified webhook subscription.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -211,7 +211,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// List all subscriptions
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of all subscriptions.
+        /// Retrieve a list of webhook subscriptions.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -262,7 +262,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Create a subscription to events Create a subscription to events exposed by registered systems.
+        /// Create a subscription to events Create a new webhook subscription and return the created subscription details.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -274,7 +274,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Create a subscription to events Create a subscription to events exposed by registered systems.
+        /// Create a subscription to events Create a new webhook subscription and return the created subscription details.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -332,7 +332,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Create a subscription to events Create a subscription to events exposed by registered systems.
+        /// Create a subscription to events Create a new webhook subscription and return the created subscription details.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -345,7 +345,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Create a subscription to events Create a subscription to events exposed by registered systems.
+        /// Create a subscription to events Create a new webhook subscription and return the created subscription details.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -406,7 +406,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Unsubscribe from events Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Unsubscribe from events Delete the specified webhook subscription.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -417,7 +417,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Unsubscribe from events Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Unsubscribe from events Delete the specified webhook subscription.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -450,7 +450,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("subscription-id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("subscriptionId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationID != null)
             {
@@ -462,7 +462,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/einvoicing/webhooks/subscriptions/{subscription-id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.EInvoicing);
+            var localVarResponse = this.Client.Delete<Object>("/einvoicing/webhooks/subscriptions/{subscriptionId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.EInvoicing);
 
             if (this.ExceptionFactory != null)
             {
@@ -474,7 +474,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Unsubscribe from events Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Unsubscribe from events Delete the specified webhook subscription.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -486,7 +486,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Unsubscribe from events Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+        /// Unsubscribe from events Delete the specified webhook subscription.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -522,7 +522,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("subscription-id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("subscriptionId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationID != null)
             {
@@ -534,7 +534,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.DeleteAsync<Object>("/einvoicing/webhooks/subscriptions/{subscription-id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.DeleteAsync<Object>("/einvoicing/webhooks/subscriptions/{subscriptionId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -591,7 +591,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("subscription-id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("subscriptionId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationID != null)
             {
@@ -603,7 +603,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<SubscriptionDetail>("/einvoicing/webhooks/subscriptions/{subscription-id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.EInvoicing);
+            var localVarResponse = this.Client.Get<SubscriptionDetail>("/einvoicing/webhooks/subscriptions/{subscriptionId}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.EInvoicing);
 
             if (this.ExceptionFactory != null)
             {
@@ -664,7 +664,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             var localVarAccept = Avalara.SDK.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null && !localVarRequestOptions.HeaderParameters.ContainsKey("Accept")) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("subscription-id", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("subscriptionId", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.SubscriptionId)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("avalara-version", Avalara.SDK.Client.ClientUtils.ParameterToString(requestParameters.AvalaraVersion)); // header parameter
             if (requestParameters.XCorrelationID != null)
             {
@@ -676,7 +676,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<SubscriptionDetail>("/einvoicing/webhooks/subscriptions/{subscription-id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<SubscriptionDetail>("/einvoicing/webhooks/subscriptions/{subscriptionId}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.EInvoicing).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -688,7 +688,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// List all subscriptions Retrieve a list of all subscriptions.
+        /// List all subscriptions Retrieve a list of webhook subscriptions.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -700,7 +700,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// List all subscriptions Retrieve a list of all subscriptions.
+        /// List all subscriptions Retrieve a list of webhook subscriptions.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -768,7 +768,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// List all subscriptions Retrieve a list of all subscriptions.
+        /// List all subscriptions Retrieve a list of webhook subscriptions.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -781,7 +781,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// List all subscriptions Retrieve a list of all subscriptions.
+        /// List all subscriptions Retrieve a list of webhook subscriptions.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -860,7 +860,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

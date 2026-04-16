@@ -16,11 +16,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetMandateDataInputFieldsRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The unique ID for the mandate that was returned in the GET /einvoicing/mandates response body
+        /// Unique identifier of the mandate returned by the GET /mandates endpoint.
         /// </summary>
         public string MandateId { get; set; }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public string DocumentVersion { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
     }
@@ -42,11 +42,11 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetMandatesRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
@@ -66,7 +66,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public bool? Count { get; set; }
         /// <summary>
-        /// When set to true, only the count of the collection is returned
+        /// When set to true, only the count of the collection is returned.
         /// </summary>
         public bool? CountOnly { get; set; }
     }
@@ -502,7 +502,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

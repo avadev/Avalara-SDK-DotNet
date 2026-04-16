@@ -16,19 +16,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class DownloadDocumentRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// This header indicates the MIME type of the document
+        /// Header that specifies the MIME type of the returned document.
         /// </summary>
         public string Accept { get; set; }
         /// <summary>
-        /// The unique ID for this document that was returned in the POST /einvoicing/document response body
+        /// The unique documentId returned in the POST /documents response body.
         /// </summary>
         public string DocumentId { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
     }
@@ -38,15 +38,15 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class FetchDocumentsRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
         public FetchDocumentsRequest FetchDocumentsRequest { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
     }
@@ -56,37 +56,41 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetDocumentListRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// Start date of documents to return. This defaults to the previous month.
+        /// Start date for documents to return. Defaults to the previous month. Format: \&quot;YYYY-MM-DDThh:mm:ss\&quot;.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// End date of documents to return. This defaults to the current date.
+        /// End date for documents to return. Defaults to the current date. Format: \&quot;YYYY-MM-DDThh:mm:ss\&quot;.
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Optionally filter by document direction, where issued &#x3D; &#x60;out&#x60; and received &#x3D; &#x60;in&#x60;
+        /// Optional filter for document direction: issued uses \&quot;out\&quot; and received uses \&quot;in\&quot;.
         /// </summary>
         public string Flow { get; set; }
         /// <summary>
-        /// When set to true, the count of the collection is also returned in the response body
+        /// When set to true, the response body also includes the count of items in the collection.
         /// </summary>
         public string Count { get; set; }
         /// <summary>
-        /// When set to true, only the count of the collection is returned
+        /// When set to true, the response returns only the count of items in the collection.
         /// </summary>
         public string CountOnly { get; set; }
         /// <summary>
-        /// Filter by field name and value. This filter only supports &lt;code&gt;eq&lt;/code&gt; . Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. Filtering will be done over the provided startDate and endDate. If no startDate or endDate is provided, defaults will be assumed.
+        /// Filter by field name and value. This filter supports only eq. For more information, refer to the Avalara filtering guide.
         /// </summary>
         public string Filter { get; set; }
+        /// <summary>
+        /// When set to &#x60;events&#x60;, each document in the response includes its events array. Omit this parameter or use any other value to exclude events from the response.
+        /// </summary>
+        public string Include { get; set; }
         /// <summary>
         /// The number of items to include in the result.
         /// </summary>
@@ -102,15 +106,15 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class GetDocumentStatusRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The unique ID for this document that was returned in the POST /einvoicing/documents response body
+        /// The unique documentId returned in the POST /documents response body.
         /// </summary>
         public string DocumentId { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
     }
@@ -120,9 +124,9 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class SubmitDocumentRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
@@ -132,7 +136,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// </summary>
         public Object Data { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
     }
@@ -148,7 +152,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns a copy of the document
         /// </summary>
         /// <remarks>
-        /// When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -159,7 +163,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Fetch the inbound document from a tax authority
         /// </summary>
         /// <remarks>
-        /// This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -170,7 +174,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns a summary of documents for a date range
         /// </summary>
         /// <remarks>
-        /// Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a list of document summaries with a processing date within the specified date range.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -181,7 +185,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Checks the status of a document
         /// </summary>
         /// <remarks>
-        /// Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -212,7 +216,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns a copy of the document
         /// </summary>
         /// <remarks>
-        /// When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -224,7 +228,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Fetch the inbound document from a tax authority
         /// </summary>
         /// <remarks>
-        /// This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -236,7 +240,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Returns a summary of documents for a date range
         /// </summary>
         /// <remarks>
-        /// Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a list of document summaries with a processing date within the specified date range.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -248,7 +252,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         /// Checks the status of a document
         /// </summary>
         /// <remarks>
-        /// Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -311,7 +315,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a copy of the document When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Returns a copy of the document Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -323,7 +327,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a copy of the document When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Returns a copy of the document Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -383,7 +387,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a copy of the document When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Returns a copy of the document Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -396,7 +400,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a copy of the document When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+        /// Returns a copy of the document Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -459,7 +463,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Fetch the inbound document from a tax authority This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Fetch the inbound document from a tax authority Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -471,7 +475,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Fetch the inbound document from a tax authority This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Fetch the inbound document from a tax authority Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -525,7 +529,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Fetch the inbound document from a tax authority This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Fetch the inbound document from a tax authority Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -538,7 +542,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Fetch the inbound document from a tax authority This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+        /// Fetch the inbound document from a tax authority Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -595,7 +599,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a summary of documents for a date range Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a summary of documents for a date range Returns a list of document summaries with a processing date within the specified date range.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -607,7 +611,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a summary of documents for a date range Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a summary of documents for a date range Returns a list of document summaries with a processing date within the specified date range.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -660,6 +664,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$filter", requestParameters.Filter));
             }
+            if (requestParameters.Include != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$include", requestParameters.Include));
+            }
             if (requestParameters.Top != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$top", requestParameters.Top));
@@ -687,7 +695,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a summary of documents for a date range Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a summary of documents for a date range Returns a list of document summaries with a processing date within the specified date range.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -700,7 +708,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns a summary of documents for a date range Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+        /// Returns a summary of documents for a date range Returns a list of document summaries with a processing date within the specified date range.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -756,6 +764,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$filter", requestParameters.Filter));
             }
+            if (requestParameters.Include != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$include", requestParameters.Include));
+            }
             if (requestParameters.Top != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Avalara.SDK.Client.ClientUtils.ParameterToMultiMap("", "$top", requestParameters.Top));
@@ -783,7 +795,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Checks the status of a document Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Checks the status of a document Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -795,7 +807,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Checks the status of a document Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Checks the status of a document Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -848,7 +860,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Checks the status of a document Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Checks the status of a document Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -861,7 +873,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Checks the status of a document Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+        /// Checks the status of a document Uses the documentId from the POST /documents response body to return the current status of a document.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -1073,7 +1085,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

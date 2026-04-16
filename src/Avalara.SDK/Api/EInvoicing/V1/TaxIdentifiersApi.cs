@@ -16,23 +16,23 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class TaxIdentifierSchemaByCountryRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
-        /// The two-letter ISO-3166 country code for which the schema should be retrieved.
+        /// Two-letter ISO 3166 country code for which to retrieve the schema (for example \&quot;DE\&quot;).
         /// </summary>
         public string CountryCode { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
         /// <summary>
-        /// Specifies whether to return the request or response schema.
+        /// Specifies which schema to return: \&quot;request\&quot; to receive the request validation schema or \&quot;response\&quot; to receive the response validation schema.
         /// </summary>
         public string Type { get; set; }
     }
@@ -42,19 +42,19 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     /// </summary>
     public class ValidateTaxIdentifierRequestSdk {
         /// <summary>
-        /// The HTTP Header meant to specify the version of the API intended to be used.
+        /// Header that specifies the API version to use (for example \&quot;1.6\&quot;).
         /// </summary>
-        public string? AvalaraVersion { get; set; } = "1.4";
+        public string? AvalaraVersion { get; set; } = "1.6";
         /// <summary>
         /// 
         /// </summary>
         public TaxIdentifierRequest TaxIdentifierRequest { get; set; }
         /// <summary>
-        /// You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;.
+        /// Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;).
         /// </summary>
         public string XAvalaraClient { get; set; }
         /// <summary>
-        /// The caller can use this as an identifier to use as a correlation id to trace the call.
+        /// Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;).
         /// </summary>
         public string XCorrelationID { get; set; }
     }
@@ -67,10 +67,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     {
         #region Synchronous Operations
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country.
+        /// Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <remarks>
-        /// This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -98,10 +98,10 @@ namespace Avalara.SDK.Api.EInvoicing.V1
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country.
+        /// Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <remarks>
-        /// This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -164,7 +164,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country. This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country. Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -176,7 +176,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country. This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country. Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -237,7 +237,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country. This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country. Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -250,7 +250,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
         }
 
         /// <summary>
-        /// Returns the tax identifier request &amp; response schema for a specific country. This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country&#39;s requirements. This can include both standard fields and any additional parameters required by the respective country&#39;s tax authority.
+        /// Returns the tax identifier request and response schema for a specific country. Returns the tax identifier request and response schema for a specific country.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -466,7 +466,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "25.11.2";
+            this.Client.SdkVersion = "26.4.0";
         }
         
     }

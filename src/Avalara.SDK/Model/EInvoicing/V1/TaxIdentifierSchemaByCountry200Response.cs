@@ -52,8 +52,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Initializes a new instance of the <see cref="TaxIdentifierSchemaByCountry200Response" /> class.
         /// </summary>
         /// <param name="countryCode">The two-letter ISO-3166 country code of the tax identifier. (required).</param>
+        /// <param name="schemaType">The type of schema returned: \&quot;request\&quot; or \&quot;response\&quot;. (required).</param>
         /// <param name="schema">The JSON Schema definition, following Draft-07 specification, used to validate tax identifier data. (required).</param>
-        public TaxIdentifierSchemaByCountry200Response(string countryCode = default(string), Object schema = default(Object))
+        public TaxIdentifierSchemaByCountry200Response(string countryCode = default(string), string schemaType = default(string), Object schema = default(Object))
         {
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
@@ -61,6 +62,12 @@ namespace Avalara.SDK.Model.EInvoicing.V1
                 throw new ArgumentNullException("countryCode is a required property for TaxIdentifierSchemaByCountry200Response and cannot be null");
             }
             this.CountryCode = countryCode;
+            // to ensure "schemaType" is required (not null)
+            if (schemaType == null)
+            {
+                throw new ArgumentNullException("schemaType is a required property for TaxIdentifierSchemaByCountry200Response and cannot be null");
+            }
+            this.SchemaType = schemaType;
             // to ensure "schema" is required (not null)
             if (schema == null)
             {
@@ -75,6 +82,13 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <value>The two-letter ISO-3166 country code of the tax identifier.</value>
         [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
         public string CountryCode { get; set; }
+
+        /// <summary>
+        /// The type of schema returned: \&quot;request\&quot; or \&quot;response\&quot;.
+        /// </summary>
+        /// <value>The type of schema returned: \&quot;request\&quot; or \&quot;response\&quot;.</value>
+        [DataMember(Name = "schemaType", IsRequired = true, EmitDefaultValue = true)]
+        public string SchemaType { get; set; }
 
         /// <summary>
         /// The JSON Schema definition, following Draft-07 specification, used to validate tax identifier data.
@@ -92,6 +106,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             StringBuilder sb = new StringBuilder();
             sb.Append("class TaxIdentifierSchemaByCountry200Response {\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  SchemaType: ").Append(SchemaType).Append("\n");
             sb.Append("  Schema: ").Append(Schema).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

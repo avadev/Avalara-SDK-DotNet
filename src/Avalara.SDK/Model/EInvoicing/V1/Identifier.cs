@@ -54,7 +54,8 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="name">Identifier name (e.g., Peppol Participant ID). (required).</param>
         /// <param name="displayName">Display name of the identifier..</param>
         /// <param name="value">Value of the identifier. (required).</param>
-        public Identifier(string name = default(string), string displayName = default(string), string value = default(string))
+        /// <param name="extensions">Optional array used to carry additional metadata or configuration values for the identifier..</param>
+        public Identifier(string name = default(string), string displayName = default(string), string value = default(string), List<Extension> extensions = default(List<Extension>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -69,6 +70,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             }
             this.Value = value;
             this.DisplayName = displayName;
+            this.Extensions = extensions;
         }
 
         /// <summary>
@@ -93,6 +95,13 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string Value { get; set; }
 
         /// <summary>
+        /// Optional array used to carry additional metadata or configuration values for the identifier.
+        /// </summary>
+        /// <value>Optional array used to carry additional metadata or configuration values for the identifier.</value>
+        [DataMember(Name = "extensions", EmitDefaultValue = false)]
+        public List<Extension> Extensions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -103,6 +112,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

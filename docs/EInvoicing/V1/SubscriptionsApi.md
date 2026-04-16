@@ -5,8 +5,8 @@ All URIs are relative to *https://api.sbx.avalara.com/einvoicing*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWebhookSubscription**](SubscriptionsApi.md#createwebhooksubscription) | **POST** /webhooks/subscriptions | Create a subscription to events
-[**DeleteWebhookSubscription**](SubscriptionsApi.md#deletewebhooksubscription) | **DELETE** /webhooks/subscriptions/{subscription-id} | Unsubscribe from events
-[**GetWebhookSubscription**](SubscriptionsApi.md#getwebhooksubscription) | **GET** /webhooks/subscriptions/{subscription-id} | Get details of a subscription
+[**DeleteWebhookSubscription**](SubscriptionsApi.md#deletewebhooksubscription) | **DELETE** /webhooks/subscriptions/{subscriptionId} | Unsubscribe from events
+[**GetWebhookSubscription**](SubscriptionsApi.md#getwebhooksubscription) | **GET** /webhooks/subscriptions/{subscriptionId} | Get details of a subscription
 [**ListWebhookSubscriptions**](SubscriptionsApi.md#listwebhooksubscriptions) | **GET** /webhooks/subscriptions | List all subscriptions
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create a subscription to events
 
-Create a subscription to events exposed by registered systems.
+Create a new webhook subscription and return the created subscription details.
 
 ### Example
 ```csharp
@@ -41,7 +41,7 @@ namespace Example
             
             var apiInstance = new SubscriptionsApi(apiClient);
             var requestParameters = new CreateWebhookSubscriptionRequestSdk();
-            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.4\".
+            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.6\".
             requestParameters.SubscriptionRegistration = new SubscriptionRegistration(); // SubscriptionRegistration | 
             requestParameters.XCorrelationID = "xCorrelationID_example";  // string | A unique identifier for tracking the request and its response (optional) 
             requestParameters.XAvalaraClient = "xAvalaraClient_example";  // string | Client application identification (optional) 
@@ -67,7 +67,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.4\&quot;. | 
+ **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.6\&quot;. | 
  **SubscriptionRegistration** | [**SubscriptionRegistration**](SubscriptionRegistration.md)|  | 
  **XCorrelationID** | **string**| A unique identifier for tracking the request and its response | [optional] 
  **XAvalaraClient** | **string**| Client application identification | [optional] 
@@ -89,10 +89,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Subscribed successfully |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **400** | Invalid input |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **401** | Not authenticated |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **403** | Access token does not have the required scope |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **201** | Subscription created successfully. Returns the created SubscriptionDetail object. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **400** | Bad request. The request payload is invalid or contains missing required fields. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 Unsubscribe from events
 
-Remove a subscription from the webhooks dispatch service. All events and subscriptions are also deleted.
+Delete the specified webhook subscription.
 
 ### Example
 ```csharp
@@ -127,8 +127,8 @@ namespace Example
             
             var apiInstance = new SubscriptionsApi(apiClient);
             var requestParameters = new DeleteWebhookSubscriptionRequestSdk();
-            requestParameters.SubscriptionId = "subscriptionId_example";  // string | 
-            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.4\".
+            requestParameters.SubscriptionId = "subscriptionId_example";  // string | Unique identifier of the subscription.
+            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.6\".
             requestParameters.XCorrelationID = "xCorrelationID_example";  // string | A unique identifier for tracking the request and its response (optional) 
             requestParameters.XAvalaraClient = "xAvalaraClient_example";  // string | Client application identification (optional) 
 
@@ -152,8 +152,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **SubscriptionId** | **string**|  | 
- **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.4\&quot;. | 
+ **SubscriptionId** | **string**| Unique identifier of the subscription. | 
+ **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.6\&quot;. | 
  **XCorrelationID** | **string**| A unique identifier for tracking the request and its response | [optional] 
  **XAvalaraClient** | **string**| Client application identification | [optional] 
 
@@ -174,10 +174,10 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Unsubscribed successfully |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **401** | Not authenticated |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **403** | Access token does not have the required scope |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **404** | Subscription not found |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **204** | Subscription deleted successfully. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **404** | Subscription not found for the specified subscriptionId. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -212,8 +212,8 @@ namespace Example
             
             var apiInstance = new SubscriptionsApi(apiClient);
             var requestParameters = new GetWebhookSubscriptionRequestSdk();
-            requestParameters.SubscriptionId = "subscriptionId_example";  // string | 
-            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.4\".
+            requestParameters.SubscriptionId = "subscriptionId_example";  // string | Unique identifier of the subscription.
+            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.6\".
             requestParameters.XCorrelationID = "xCorrelationID_example";  // string | A unique identifier for tracking the request and its response (optional) 
             requestParameters.XAvalaraClient = "xAvalaraClient_example";  // string | Client application identification (optional) 
 
@@ -238,8 +238,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **SubscriptionId** | **string**|  | 
- **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.4\&quot;. | 
+ **SubscriptionId** | **string**| Unique identifier of the subscription. | 
+ **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.6\&quot;. | 
  **XCorrelationID** | **string**| A unique identifier for tracking the request and its response | [optional] 
  **XAvalaraClient** | **string**| Client application identification | [optional] 
 
@@ -260,10 +260,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Subscription details retrieved successfully |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **401** | Not authenticated |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **403** | Access token does not have the required scope |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **404** | Subscription not found |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **200** | Returns the SubscriptionDetail object for the specified subscriptionId. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **404** | Subscription not found for the specified subscriptionId. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 List all subscriptions
 
-Retrieve a list of all subscriptions.
+Retrieve a list of webhook subscriptions.
 
 ### Example
 ```csharp
@@ -298,7 +298,7 @@ namespace Example
             
             var apiInstance = new SubscriptionsApi(apiClient);
             var requestParameters = new ListWebhookSubscriptionsRequestSdk();
-            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.4\".
+            requestParameters.AvalaraVersion = "avalaraVersion_example";  // string | The version of the API to use, e.g., \"1.6\".
             requestParameters.XCorrelationID = "xCorrelationID_example";  // string | A unique identifier for tracking the request and its response (optional) 
             requestParameters.XAvalaraClient = "xAvalaraClient_example";  // string | Client application identification (optional) 
             requestParameters.Top = 56;  // int? | The number of items to include in the result. (optional) 
@@ -327,7 +327,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.4\&quot;. | 
+ **AvalaraVersion** | **string**| The version of the API to use, e.g., \&quot;1.6\&quot;. | 
  **XCorrelationID** | **string**| A unique identifier for tracking the request and its response | [optional] 
  **XAvalaraClient** | **string**| Client application identification | [optional] 
  **Top** | **int?**| The number of items to include in the result. | [optional] 
@@ -352,10 +352,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A list of subscriptions |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **401** | Not authenticated |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **403** | Access token does not have the required scope |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
-| **500** | Internal server error |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **200** | Returns a list of webhook subscriptions in a SubscriptionListResponse object. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
+| **500** | Internal server error. |  * X-Correlation-ID - Correlation ID from the request, or a new one if not provided in request <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
