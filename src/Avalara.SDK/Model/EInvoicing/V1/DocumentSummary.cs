@@ -50,6 +50,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="companyId">Unique identifier that represents the company within the system..</param>
         /// <param name="processDateTime">The date and time when the document was processed, displayed in the format YYYY-MM-DDThh:mm:ss.</param>
         /// <param name="status">The Document status.</param>
+        /// <param name="businessStatus">Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation..</param>
         /// <param name="supplierName">The name of the supplier in the transaction.</param>
         /// <param name="customerName">The name of the customer in the transaction.</param>
         /// <param name="documentType">The document type.</param>
@@ -61,12 +62,16 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="countryMandate">The e-invoicing mandate for the specified country.</param>
         /// <param name="varInterface">The interface where the document is sent.</param>
         /// <param name="receiver">The document recipient based on the interface.</param>
-        public DocumentSummary(string id = default(string), string companyId = default(string), string processDateTime = default(string), string status = default(string), string supplierName = default(string), string customerName = default(string), string documentType = default(string), string documentVersion = default(string), string documentNumber = default(string), string documentDate = default(string), string flow = default(string), string countryCode = default(string), string countryMandate = default(string), string varInterface = default(string), string receiver = default(string))
+        /// <param name="events">Array of status events associated with this document. Events are included in each document in the response only when the query parameter $include&#x3D;events is passed; otherwise the events array is not populated..</param>
+        /// <param name="createdAt">The date and time when the document was created in the system, displayed in ISO 8601 format with timezone.</param>
+        /// <param name="lastUpdatedAt">The date and time when the document was last updated in the system, displayed in ISO 8601 format with timezone.</param>
+        public DocumentSummary(string id = default(string), string companyId = default(string), string processDateTime = default(string), string status = default(string), string businessStatus = default(string), string supplierName = default(string), string customerName = default(string), string documentType = default(string), string documentVersion = default(string), string documentNumber = default(string), string documentDate = default(string), string flow = default(string), string countryCode = default(string), string countryMandate = default(string), string varInterface = default(string), string receiver = default(string), List<StatusEvent> events = default(List<StatusEvent>), string createdAt = default(string), string lastUpdatedAt = default(string))
         {
             this.Id = id;
             this.CompanyId = companyId;
             this.ProcessDateTime = processDateTime;
             this.Status = status;
+            this.BusinessStatus = businessStatus;
             this.SupplierName = supplierName;
             this.CustomerName = customerName;
             this.DocumentType = documentType;
@@ -78,6 +83,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             this.CountryMandate = countryMandate;
             this.Interface = varInterface;
             this.Receiver = receiver;
+            this.Events = events;
+            this.CreatedAt = createdAt;
+            this.LastUpdatedAt = lastUpdatedAt;
         }
 
         /// <summary>
@@ -111,6 +119,14 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <example>Complete</example>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation.
+        /// </summary>
+        /// <value>Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation.</value>
+        /// <example>Approved</example>
+        [DataMember(Name = "businessStatus", EmitDefaultValue = false)]
+        public string BusinessStatus { get; set; }
 
         /// <summary>
         /// The name of the supplier in the transaction
@@ -201,6 +217,29 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string Receiver { get; set; }
 
         /// <summary>
+        /// Array of status events associated with this document. Events are included in each document in the response only when the query parameter $include&#x3D;events is passed; otherwise the events array is not populated.
+        /// </summary>
+        /// <value>Array of status events associated with this document. Events are included in each document in the response only when the query parameter $include&#x3D;events is passed; otherwise the events array is not populated.</value>
+        [DataMember(Name = "events", EmitDefaultValue = true)]
+        public List<StatusEvent> Events { get; set; }
+
+        /// <summary>
+        /// The date and time when the document was created in the system, displayed in ISO 8601 format with timezone
+        /// </summary>
+        /// <value>The date and time when the document was created in the system, displayed in ISO 8601 format with timezone</value>
+        /// <example>2025-01-09T12:36:02.000Z</example>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// The date and time when the document was last updated in the system, displayed in ISO 8601 format with timezone
+        /// </summary>
+        /// <value>The date and time when the document was last updated in the system, displayed in ISO 8601 format with timezone</value>
+        /// <example>2025-01-09T14:22:15.000Z</example>
+        [DataMember(Name = "lastUpdatedAt", EmitDefaultValue = false)]
+        public string LastUpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -212,6 +251,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ProcessDateTime: ").Append(ProcessDateTime).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  BusinessStatus: ").Append(BusinessStatus).Append("\n");
             sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");
             sb.Append("  CustomerName: ").Append(CustomerName).Append("\n");
             sb.Append("  DocumentType: ").Append(DocumentType).Append("\n");
@@ -223,6 +263,9 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  CountryMandate: ").Append(CountryMandate).Append("\n");
             sb.Append("  Interface: ").Append(Interface).Append("\n");
             sb.Append("  Receiver: ").Append(Receiver).Append("\n");
+            sb.Append("  Events: ").Append(Events).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  LastUpdatedAt: ").Append(LastUpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

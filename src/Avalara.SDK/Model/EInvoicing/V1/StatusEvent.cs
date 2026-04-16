@@ -46,23 +46,25 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="StatusEvent" /> class.
         /// </summary>
-        /// <param name="eventDateTime">The date and time when the status event occured, displayed in the format YYYY-MM-DDThh:mm:ss.</param>
+        /// <param name="eventDateTime">The date and time when the status event occurred, displayed in the format YYYY-MM-DDThh:mm:ss.</param>
         /// <param name="message">A message describing the status event.</param>
         /// <param name="responseKey"> The type of number or acknowledgement returned by the tax authority (if applicable). For example, it could be an identification key, acknowledgement code, or any other relevant identifier..</param>
         /// <param name="responseValue">The corresponding value associated with the response key. This value is provided by the tax authority in response to the event..</param>
-        public StatusEvent(string eventDateTime = default(string), string message = default(string), string responseKey = default(string), string responseValue = default(string))
+        /// <param name="category">Represents the functional area or process stage where the status event occurred. Useful for grouping related events such as document processing, transmission, or validation..</param>
+        public StatusEvent(string eventDateTime = default(string), string message = default(string), string responseKey = default(string), string responseValue = default(string), string category = default(string))
         {
             this.EventDateTime = eventDateTime;
             this.Message = message;
             this.ResponseKey = responseKey;
             this.ResponseValue = responseValue;
+            this.Category = category;
         }
 
         /// <summary>
-        /// The date and time when the status event occured, displayed in the format YYYY-MM-DDThh:mm:ss
+        /// The date and time when the status event occurred, displayed in the format YYYY-MM-DDThh:mm:ss
         /// </summary>
-        /// <value>The date and time when the status event occured, displayed in the format YYYY-MM-DDThh:mm:ss</value>
-        /// <example>2022-01-09T12:36:02</example>
+        /// <value>The date and time when the status event occurred, displayed in the format YYYY-MM-DDThh:mm:ss</value>
+        /// <example>2025-11-06T10:42:33Z</example>
         [DataMember(Name = "eventDateTime", EmitDefaultValue = false)]
         public string EventDateTime { get; set; }
 
@@ -91,6 +93,14 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string ResponseValue { get; set; }
 
         /// <summary>
+        /// Represents the functional area or process stage where the status event occurred. Useful for grouping related events such as document processing, transmission, or validation.
+        /// </summary>
+        /// <value>Represents the functional area or process stage where the status event occurred. Useful for grouping related events such as document processing, transmission, or validation.</value>
+        /// <example>DocumentProcessing</example>
+        [DataMember(Name = "category", EmitDefaultValue = true)]
+        public string Category { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,6 +112,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  ResponseKey: ").Append(ResponseKey).Append("\n");
             sb.Append("  ResponseValue: ").Append(ResponseValue).Append("\n");
+            sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

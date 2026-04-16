@@ -4,7 +4,7 @@ All URIs are relative to *https://api.sbx.avalara.com/einvoicing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TaxIdentifierSchemaByCountry**](TaxIdentifiersApi.md#taxidentifierschemabycountry) | **GET** /tax-identifiers/schema | Returns the tax identifier request &amp; response schema for a specific country.
+[**TaxIdentifierSchemaByCountry**](TaxIdentifiersApi.md#taxidentifierschemabycountry) | **GET** /tax-identifiers/schema | Returns the tax identifier request and response schema for a specific country.
 [**ValidateTaxIdentifier**](TaxIdentifiersApi.md#validatetaxidentifier) | **POST** /tax-identifiers/validate | Validates a tax identifier.
 
 
@@ -12,9 +12,9 @@ Method | HTTP request | Description
 # **TaxIdentifierSchemaByCountry**
 > TaxIdentifierSchemaByCountry200Response TaxIdentifierSchemaByCountry (TaxIdentifierSchemaByCountryRequestSdk requestParameters)
 
-Returns the tax identifier request & response schema for a specific country.
+Returns the tax identifier request and response schema for a specific country.
 
-This endpoint retrieves the request and response schema required to validate tax identifiers based on a specific country's requirements. This can include both standard fields and any additional parameters required by the respective country's tax authority.
+Returns the tax identifier request and response schema for a specific country.
 
 ### Example
 ```csharp
@@ -39,15 +39,15 @@ namespace Example
             
             var apiInstance = new TaxIdentifiersApi(apiClient);
             var requestParameters = new TaxIdentifierSchemaByCountryRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used.
-            requestParameters.CountryCode = DE;  // string | The two-letter ISO-3166 country code for which the schema should be retrieved.
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\". (optional) 
-            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | The caller can use this as an identifier to use as a correlation id to trace the call. (optional) 
-            requestParameters.Type = request;  // string | Specifies whether to return the request or response schema. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.CountryCode = DE;  // string | Two-letter ISO 3166 country code for which to retrieve the schema (for example \"DE\").
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
+            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | Optional correlation identifier provided by the caller to trace the call (for example \"f3f0d19a-01a1-4748-8a58-f000d0424f43\"). (optional) 
+            requestParameters.Type = request;  // string | Specifies which schema to return: \"request\" to receive the request validation schema or \"response\" to receive the response validation schema. (optional) 
 
             try
             {
-                // Returns the tax identifier request & response schema for a specific country.
+                // Returns the tax identifier request and response schema for a specific country.
                 TaxIdentifierSchemaByCountry200Response result = apiInstance.TaxIdentifierSchemaByCountry(requestParameters);
                 Debug.WriteLine(result);
             }
@@ -66,11 +66,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used. | 
- **CountryCode** | **string**| The two-letter ISO-3166 country code for which the schema should be retrieved. | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;. | [optional] 
- **XCorrelationID** | **string**| The caller can use this as an identifier to use as a correlation id to trace the call. | [optional] 
- **Type** | **string**| Specifies whether to return the request or response schema. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **CountryCode** | **string**| Two-letter ISO 3166 country code for which to retrieve the schema (for example \&quot;DE\&quot;). | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
+ **XCorrelationID** | **string**| Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;). | [optional] 
+ **Type** | **string**| Specifies which schema to return: \&quot;request\&quot; to receive the request validation schema or \&quot;response\&quot; to receive the response validation schema. | [optional] 
 
 ### Return type
 
@@ -89,11 +89,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  * X-Correlation-Id -  <br>  |
-| **400** | Invalid request |  * X-Correlation-Id -  <br>  |
-| **401** | Unauthorized |  * X-Correlation-Id -  <br>  |
-| **403** | Forbidden |  * X-Correlation-Id -  <br>  |
-| **500** | Internal server error |  * X-Correlation-Id -  <br>  |
+| **200** | Returns an object containing countryCode, schemaType, and schema. The schema property contains a JSON Schema (Draft-07) used to validate tax identifier requests or responses for the specified country. |  * X-Correlation-ID -  <br>  |
+| **400** | Invalid request |  * X-Correlation-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID -  <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID -  <br>  |
+| **500** | Internal server error. |  * X-Correlation-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -128,10 +128,10 @@ namespace Example
             
             var apiInstance = new TaxIdentifiersApi(apiClient);
             var requestParameters = new ValidateTaxIdentifierRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used.
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
             requestParameters.TaxIdentifierRequest = new TaxIdentifierRequest(); // TaxIdentifierRequest | 
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \"Fingerprint\". (optional) 
-            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | The caller can use this as an identifier to use as a correlation id to trace the call. (optional) 
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
+            requestParameters.XCorrelationID = f3f0d19a-01a1-4748-8a58-f000d0424f43;  // string | Optional correlation identifier provided by the caller to trace the call (for example \"f3f0d19a-01a1-4748-8a58-f000d0424f43\"). (optional) 
 
             try
             {
@@ -154,10 +154,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used. | 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
  **TaxIdentifierRequest** | [**TaxIdentifierRequest**](TaxIdentifierRequest.md)|  | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a \&quot;Fingerprint\&quot;. | [optional] 
- **XCorrelationID** | **string**| The caller can use this as an identifier to use as a correlation id to trace the call. | [optional] 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
+ **XCorrelationID** | **string**| Optional correlation identifier provided by the caller to trace the call (for example \&quot;f3f0d19a-01a1-4748-8a58-f000d0424f43\&quot;). | [optional] 
 
 ### Return type
 
@@ -176,12 +176,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success response. |  * X-Correlation-Id -  <br>  |
-| **400** | Invalid request |  * X-Correlation-Id -  <br>  |
-| **401** | Unauthorized |  * X-Correlation-Id -  <br>  |
-| **403** | Forbidden |  * X-Correlation-Id -  <br>  |
-| **429** | Rate limit exceeded |  * X-Correlation-Id -  <br>  |
-| **500** | Internal server error |  * X-Correlation-Id -  <br>  |
+| **200** | Validation completed. Returns a TaxIdentifierResponse object that includes countryCode and a value object with identifierType, identifier, and optional extensions when available. |  * X-Correlation-ID -  <br>  |
+| **400** | Bad request. The request is invalid or contains missing or incorrect parameters. |  * X-Correlation-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Correlation-ID -  <br>  |
+| **403** | Forbidden. |  * X-Correlation-ID -  <br>  |
+| **429** | Rate limit exceeded. |  * X-Correlation-ID -  <br>  |
+| **500** | Internal server error. |  * X-Correlation-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

@@ -59,7 +59,8 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// <param name="inputDataFormats">Format and version used when inputting the data.</param>
         /// <param name="outputDataFormats">Lists the supported output document formats for the country mandate. For countries where specifying an output document format is required (e.g., France), this array will contain the applicable formats. For other countries where output format selection is not necessary, the array will be empty..</param>
         /// <param name="workflowIds">Workflow ID list.</param>
-        public Mandate(string mandateId = default(string), string countryMandate = default(string), string countryCode = default(string), string description = default(string), bool supportedByELRAPI = default(bool), string mandateFormat = default(string), string eInvoicingFlow = default(string), string eInvoicingFlowDocumentationLink = default(string), List<string> getInvoiceAvailableMediaType = default(List<string>), string supportsInboundDigitalDocument = default(string), List<InputDataFormats> inputDataFormats = default(List<InputDataFormats>), List<OutputDataFormats> outputDataFormats = default(List<OutputDataFormats>), List<WorkflowIds> workflowIds = default(List<WorkflowIds>))
+        /// <param name="supportedDocumentStatuses">List of document statuses defined by the mandate..</param>
+        public Mandate(string mandateId = default(string), string countryMandate = default(string), string countryCode = default(string), string description = default(string), bool supportedByELRAPI = default(bool), string mandateFormat = default(string), string eInvoicingFlow = default(string), string eInvoicingFlowDocumentationLink = default(string), List<string> getInvoiceAvailableMediaType = default(List<string>), string supportsInboundDigitalDocument = default(string), List<InputDataFormats> inputDataFormats = default(List<InputDataFormats>), List<OutputDataFormats> outputDataFormats = default(List<OutputDataFormats>), List<WorkflowIds> workflowIds = default(List<WorkflowIds>), List<SupportedDocumentStatuses> supportedDocumentStatuses = default(List<SupportedDocumentStatuses>))
         {
             this.MandateId = mandateId;
             this.CountryMandate = countryMandate;
@@ -74,6 +75,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             this.InputDataFormats = inputDataFormats;
             this.OutputDataFormats = outputDataFormats;
             this.WorkflowIds = workflowIds;
+            this.SupportedDocumentStatuses = supportedDocumentStatuses;
         }
 
         /// <summary>
@@ -178,6 +180,14 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public List<WorkflowIds> WorkflowIds { get; set; }
 
         /// <summary>
+        /// List of document statuses defined by the mandate.
+        /// </summary>
+        /// <value>List of document statuses defined by the mandate.</value>
+        /// <example>[{&quot;status&quot;:&quot;Approved&quot;,&quot;description&quot;:&quot;Approved by buyer(C4)&quot;},{&quot;status&quot;:&quot;Fully Paid&quot;,&quot;description&quot;:&quot;Payment transmitted to Seller fully from Buyer&quot;},{&quot;status&quot;:&quot;Taken Charge&quot;,&quot;description&quot;:&quot;Document has been taken in charge by the recipient (C4)&quot;}]</example>
+        [DataMember(Name = "supportedDocumentStatuses", EmitDefaultValue = false)]
+        public List<SupportedDocumentStatuses> SupportedDocumentStatuses { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -198,6 +208,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("  InputDataFormats: ").Append(InputDataFormats).Append("\n");
             sb.Append("  OutputDataFormats: ").Append(OutputDataFormats).Append("\n");
             sb.Append("  WorkflowIds: ").Append(WorkflowIds).Append("\n");
+            sb.Append("  SupportedDocumentStatuses: ").Append(SupportedDocumentStatuses).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

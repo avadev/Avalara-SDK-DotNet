@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CompanyId** | **string** | Unique identifier that represents the company within the system. | [optional] 
 **ProcessDateTime** | **string** | The date and time when the document was processed, displayed in the format YYYY-MM-DDThh:mm:ss | [optional] 
 **Status** | **string** | The Document status | [optional] 
+**BusinessStatus** | **string** | Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation. | [optional] 
 **SupplierName** | **string** | The name of the supplier in the transaction | [optional] 
 **CustomerName** | **string** | The name of the customer in the transaction | [optional] 
 **DocumentType** | **string** | The document type | [optional] 
@@ -20,6 +21,9 @@ Name | Type | Description | Notes
 **CountryMandate** | **string** | The e-invoicing mandate for the specified country | [optional] 
 **Interface** | **string** | The interface where the document is sent | [optional] 
 **Receiver** | **string** | The document recipient based on the interface | [optional] 
+**Events** | [**List&lt;StatusEvent&gt;**](StatusEvent.md) | Array of status events associated with this document. Events are included in each document in the response only when the query parameter $include&#x3D;events is passed; otherwise the events array is not populated. | [optional] 
+**CreatedAt** | **string** | The date and time when the document was created in the system, displayed in ISO 8601 format with timezone | [optional] 
+**LastUpdatedAt** | **string** | The date and time when the document was last updated in the system, displayed in ISO 8601 format with timezone | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

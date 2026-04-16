@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Returns a copy of the document
 
-When the document is available, use this endpoint to download it as text, XML, or PDF. The output format needs to be specified in the Accept header, and it will vary depending on the mandate. If the file has not yet been created, then status code 404 (not found) is returned.
+Downloads the document when it is available. Specify the output format in the Accept header. Returns 404 if the file has not been created.
 
 ### Example
 ```csharp
@@ -42,10 +42,10 @@ namespace Example
             
             var apiInstance = new DocumentsApi(apiClient);
             var requestParameters = new DownloadDocumentRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.Accept = application/pdf;  // string | This header indicates the MIME type of the document
-            requestParameters.DocumentId = "documentId_example";  // string | The unique ID for this document that was returned in the POST /einvoicing/document response body
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.Accept = application/pdf;  // string | Header that specifies the MIME type of the returned document.
+            requestParameters.DocumentId = "documentId_example";  // string | The unique documentId returned in the POST /documents response body.
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
 
             try
             {
@@ -68,10 +68,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **Accept** | **string**| This header indicates the MIME type of the document | 
- **DocumentId** | **string**| The unique ID for this document that was returned in the POST /einvoicing/document response body | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **Accept** | **string**| Header that specifies the MIME type of the returned document. | 
+ **DocumentId** | **string**| The unique documentId returned in the POST /documents response body. | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
 
 ### Return type
 
@@ -90,11 +90,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  * Content-type -  <br>  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **200** | Returns the document content in the format specified by the Accept header. |  * Content-type -  <br>  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 | **404** | A document for the specified ID was not found. |  -  |
-| **406** | Unsupported document format was requested in the Accept header |  -  |
+| **406** | Unsupported document format was requested in the Accept header. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 Fetch the inbound document from a tax authority
 
-This API allows you to retrieve an inbound document. Pass key-value pairs as parameters in the request, such as the confirmation number, supplier number, and buyer VAT number.
+Retrieves an inbound document. Provide key-value pairs as request parameters. Supported parameters vary by tax authority and country.
 
 ### Example
 ```csharp
@@ -129,9 +129,9 @@ namespace Example
             
             var apiInstance = new DocumentsApi(apiClient);
             var requestParameters = new FetchDocumentsRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
             requestParameters.FetchDocumentsRequest = new FetchDocumentsRequest(); // FetchDocumentsRequest | 
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
 
             try
             {
@@ -154,9 +154,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
  **FetchDocumentsRequest** | [**FetchDocumentsRequest**](FetchDocumentsRequest.md)|  | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
 
 ### Return type
 
@@ -175,10 +175,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Accepted DocumentFetch Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
+| **200** | Response from the inbound document fetch endpoint. Contains the platform documentId for status checks and downloads, the returned status (e.g. Accepted), and eventDateTime when the document was accepted. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
+| **500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 Returns a summary of documents for a date range
 
-Get a list of documents on the Avalara E-Invoicing platform that have a processing date within the specified date range.
+Returns a list of document summaries with a processing date within the specified date range.
 
 ### Example
 ```csharp
@@ -213,14 +213,15 @@ namespace Example
             
             var apiInstance = new DocumentsApi(apiClient);
             var requestParameters = new GetDocumentListRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
-            requestParameters.StartDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Start date of documents to return. This defaults to the previous month. (optional) 
-            requestParameters.EndDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | End date of documents to return. This defaults to the current date. (optional) 
-            requestParameters.Flow = out;  // string | Optionally filter by document direction, where issued = `out` and received = `in` (optional) 
-            requestParameters.Count = true;  // string | When set to true, the count of the collection is also returned in the response body (optional) 
-            requestParameters.CountOnly = false;  // string | When set to true, only the count of the collection is returned (optional) 
-            requestParameters.Filter = id eq 52f60401-44d0-4667-ad47-4afe519abb53;  // string | Filter by field name and value. This filter only supports <code>eq</code> . Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. Filtering will be done over the provided startDate and endDate. If no startDate or endDate is provided, defaults will be assumed. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
+            requestParameters.StartDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Start date for documents to return. Defaults to the previous month. Format: \"YYYY-MM-DDThh:mm:ss\". (optional) 
+            requestParameters.EndDate = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | End date for documents to return. Defaults to the current date. Format: \"YYYY-MM-DDThh:mm:ss\". (optional) 
+            requestParameters.Flow = out;  // string | Optional filter for document direction: issued uses \"out\" and received uses \"in\". (optional) 
+            requestParameters.Count = true;  // string | When set to true, the response body also includes the count of items in the collection. (optional) 
+            requestParameters.CountOnly = false;  // string | When set to true, the response returns only the count of items in the collection. (optional) 
+            requestParameters.Filter = id eq 52f60401-44d0-4667-ad47-4afe519abb53;  // string | Filter by field name and value. This filter supports only eq. For more information, refer to the Avalara filtering guide. (optional) 
+            requestParameters.Include = events;  // string | When set to `events`, each document in the response includes its events array. Omit this parameter or use any other value to exclude events from the response. (optional) 
             requestParameters.Top = 56;  // int? | The number of items to include in the result. (optional) 
             requestParameters.Skip = 56;  // int? | The number of items to skip in the result. (optional) 
 
@@ -245,14 +246,15 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
- **StartDate** | **DateTime?**| Start date of documents to return. This defaults to the previous month. | [optional] 
- **EndDate** | **DateTime?**| End date of documents to return. This defaults to the current date. | [optional] 
- **Flow** | **string**| Optionally filter by document direction, where issued &#x3D; &#x60;out&#x60; and received &#x3D; &#x60;in&#x60; | [optional] 
- **Count** | **string**| When set to true, the count of the collection is also returned in the response body | [optional] 
- **CountOnly** | **string**| When set to true, only the count of the collection is returned | [optional] 
- **Filter** | **string**| Filter by field name and value. This filter only supports &lt;code&gt;eq&lt;/code&gt; . Refer to [https://developer.avalara.com/avatax/filtering-in-rest/](https://developer.avalara.com/avatax/filtering-in-rest/) for more information on filtering. Filtering will be done over the provided startDate and endDate. If no startDate or endDate is provided, defaults will be assumed. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
+ **StartDate** | **DateTime?**| Start date for documents to return. Defaults to the previous month. Format: \&quot;YYYY-MM-DDThh:mm:ss\&quot;. | [optional] 
+ **EndDate** | **DateTime?**| End date for documents to return. Defaults to the current date. Format: \&quot;YYYY-MM-DDThh:mm:ss\&quot;. | [optional] 
+ **Flow** | **string**| Optional filter for document direction: issued uses \&quot;out\&quot; and received uses \&quot;in\&quot;. | [optional] 
+ **Count** | **string**| When set to true, the response body also includes the count of items in the collection. | [optional] 
+ **CountOnly** | **string**| When set to true, the response returns only the count of items in the collection. | [optional] 
+ **Filter** | **string**| Filter by field name and value. This filter supports only eq. For more information, refer to the Avalara filtering guide. | [optional] 
+ **Include** | **string**| When set to &#x60;events&#x60;, each document in the response includes its events array. Omit this parameter or use any other value to exclude events from the response. | [optional] 
  **Top** | **int?**| The number of items to include in the result. | [optional] 
  **Skip** | **int?**| The number of items to skip in the result. | [optional] 
 
@@ -273,10 +275,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **200** | Returns a collection of document summaries for the specified date range. |  -  |
+| **400** | Bad request. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -286,7 +288,7 @@ Name | Type | Description  | Notes
 
 Checks the status of a document
 
-Using the unique ID from POST /einvoicing/documents response body, request the current status of a document.
+Uses the documentId from the POST /documents response body to return the current status of a document.
 
 ### Example
 ```csharp
@@ -311,9 +313,9 @@ namespace Example
             
             var apiInstance = new DocumentsApi(apiClient);
             var requestParameters = new GetDocumentStatusRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
-            requestParameters.DocumentId = "documentId_example";  // string | The unique ID for this document that was returned in the POST /einvoicing/documents response body
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
+            requestParameters.DocumentId = "documentId_example";  // string | The unique documentId returned in the POST /documents response body.
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
 
             try
             {
@@ -336,9 +338,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
- **DocumentId** | **string**| The unique ID for this document that was returned in the POST /einvoicing/documents response body | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
+ **DocumentId** | **string**| The unique documentId returned in the POST /documents response body. | 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
 
 ### Return type
 
@@ -357,9 +359,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **200** | Returns the current status for the specified documentId. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 | **404** | A document for the specified ID was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
@@ -395,10 +397,10 @@ namespace Example
             
             var apiInstance = new DocumentsApi(apiClient);
             var requestParameters = new SubmitDocumentRequestSdk();
-            requestParameters.AvalaraVersion = 1.4;  // string | The HTTP Header meant to specify the version of the API intended to be used
+            requestParameters.AvalaraVersion = 1.6;  // string | Header that specifies the API version to use (for example \"1.6\").
             requestParameters.Metadata = new SubmitDocumentMetadata(); // SubmitDocumentMetadata | 
             requestParameters.Data = new Object(); // Object | The document to be submitted, as indicated by the metadata fields 'dataFormat' and 'dataFormatVersion'
-            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. (optional) 
+            requestParameters.XAvalaraClient = John's E-Invoicing-API Client;  // string | Optional header for a client identifier string used for diagnostics (for example \"Fingerprint\"). (optional) 
 
             try
             {
@@ -421,10 +423,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AvalaraVersion** | **string**| The HTTP Header meant to specify the version of the API intended to be used | 
+ **AvalaraVersion** | **string**| Header that specifies the API version to use (for example \&quot;1.6\&quot;). | 
  **Metadata** | [**SubmitDocumentMetadata**](SubmitDocumentMetadata.md)|  | 
  **Data** | [**Object**](Object.md)| The document to be submitted, as indicated by the metadata fields &#39;dataFormat&#39; and &#39;dataFormatVersion&#39; | 
- **XAvalaraClient** | **string**| You can freely use any text you wish for this value. This feature can help you diagnose and solve problems with your software. The header can be treated like a fingerprint. | [optional] 
+ **XAvalaraClient** | **string**| Optional header for a client identifier string used for diagnostics (for example \&quot;Fingerprint\&quot;). | [optional] 
 
 ### Return type
 
@@ -443,10 +445,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **400** | Bad request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **201** | Returns a unique documentId for the submitted document. |  -  |
+| **400** | Bad request. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

@@ -47,12 +47,14 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Initializes a new instance of the <see cref="DocumentStatusResponse" /> class.
         /// </summary>
         /// <param name="id">The unique ID for this document.</param>
-        /// <param name="status">Status of the document.</param>
+        /// <param name="status">Document status. See the &#x60;supportedDocumentStatuses&#x60; field in the GET /mandates response for full status definitions..</param>
+        /// <param name="businessStatus">Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation..</param>
         /// <param name="events">events.</param>
-        public DocumentStatusResponse(string id = default(string), string status = default(string), List<StatusEvent> events = default(List<StatusEvent>))
+        public DocumentStatusResponse(string id = default(string), string status = default(string), string businessStatus = default(string), List<StatusEvent> events = default(List<StatusEvent>))
         {
             this.Id = id;
             this.Status = status;
+            this.BusinessStatus = businessStatus;
             this.Events = events;
         }
 
@@ -65,12 +67,20 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         public string Id { get; set; }
 
         /// <summary>
-        /// Status of the document
+        /// Document status. See the &#x60;supportedDocumentStatuses&#x60; field in the GET /mandates response for full status definitions.
         /// </summary>
-        /// <value>Status of the document</value>
-        /// <example>Complete</example>
+        /// <value>Document status. See the &#x60;supportedDocumentStatuses&#x60; field in the GET /mandates response for full status definitions.</value>
+        /// <example>Fully Paid</example>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation.
+        /// </summary>
+        /// <value>Represents the document&#39;s business lifecycle state based on responses from external actors (Tax Authority, PDP, or ERP), such as acceptance, rejection, or validation.</value>
+        /// <example>Approved</example>
+        [DataMember(Name = "businessStatus", EmitDefaultValue = false)]
+        public string BusinessStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets Events
@@ -88,6 +98,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
             sb.Append("class DocumentStatusResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  BusinessStatus: ").Append(BusinessStatus).Append("\n");
             sb.Append("  Events: ").Append(Events).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
