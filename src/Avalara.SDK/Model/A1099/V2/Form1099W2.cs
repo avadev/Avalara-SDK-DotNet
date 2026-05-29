@@ -38,395 +38,11 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form 1099-R: Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc.                *At least one of the following amounts must be provided:*   Gross distribution, Taxable amount, Capital gain, Employee contributions/Designated Roth contributions or insurance premiums,  Net unrealized appreciation in employer&#39;s securities, Other amount, Total employee contributions,  Traditional IRA/SEP/SIMPLE or Roth conversion amount, or Amount allocable to IRR within 5 years
+    /// Form W-2: Wage and Tax Statement.
     /// </summary>
-    [DataContract(Name = "Form1099R")]
-    public partial class Form1099R : IValidatableObject
+    [DataContract(Name = "Form1099W2")]
+    public partial class Form1099W2 : IValidatableObject
     {
-        /// <summary>
-        /// Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements  - Y: Qualified charitable distribution (QCD) claimed under section 408(d)(8) (Available for 2025 on)
-        /// </summary>
-        /// <value>Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements  - Y: Qualified charitable distribution (QCD) claimed under section 408(d)(8) (Available for 2025 on)</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DistributionCodeEnum
-        {
-            /// <summary>
-            /// Enum _1 for value: 1
-            /// </summary>
-            [EnumMember(Value = "1")]
-            _1 = 1,
-
-            /// <summary>
-            /// Enum _2 for value: 2
-            /// </summary>
-            [EnumMember(Value = "2")]
-            _2 = 2,
-
-            /// <summary>
-            /// Enum _3 for value: 3
-            /// </summary>
-            [EnumMember(Value = "3")]
-            _3 = 3,
-
-            /// <summary>
-            /// Enum _4 for value: 4
-            /// </summary>
-            [EnumMember(Value = "4")]
-            _4 = 4,
-
-            /// <summary>
-            /// Enum _5 for value: 5
-            /// </summary>
-            [EnumMember(Value = "5")]
-            _5 = 5,
-
-            /// <summary>
-            /// Enum _6 for value: 6
-            /// </summary>
-            [EnumMember(Value = "6")]
-            _6 = 6,
-
-            /// <summary>
-            /// Enum _7 for value: 7
-            /// </summary>
-            [EnumMember(Value = "7")]
-            _7 = 7,
-
-            /// <summary>
-            /// Enum _8 for value: 8
-            /// </summary>
-            [EnumMember(Value = "8")]
-            _8 = 8,
-
-            /// <summary>
-            /// Enum _9 for value: 9
-            /// </summary>
-            [EnumMember(Value = "9")]
-            _9 = 9,
-
-            /// <summary>
-            /// Enum A for value: A
-            /// </summary>
-            [EnumMember(Value = "A")]
-            A = 10,
-
-            /// <summary>
-            /// Enum B for value: B
-            /// </summary>
-            [EnumMember(Value = "B")]
-            B = 11,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 12,
-
-            /// <summary>
-            /// Enum D for value: D
-            /// </summary>
-            [EnumMember(Value = "D")]
-            D = 13,
-
-            /// <summary>
-            /// Enum E for value: E
-            /// </summary>
-            [EnumMember(Value = "E")]
-            E = 14,
-
-            /// <summary>
-            /// Enum F for value: F
-            /// </summary>
-            [EnumMember(Value = "F")]
-            F = 15,
-
-            /// <summary>
-            /// Enum G for value: G
-            /// </summary>
-            [EnumMember(Value = "G")]
-            G = 16,
-
-            /// <summary>
-            /// Enum H for value: H
-            /// </summary>
-            [EnumMember(Value = "H")]
-            H = 17,
-
-            /// <summary>
-            /// Enum J for value: J
-            /// </summary>
-            [EnumMember(Value = "J")]
-            J = 18,
-
-            /// <summary>
-            /// Enum K for value: K
-            /// </summary>
-            [EnumMember(Value = "K")]
-            K = 19,
-
-            /// <summary>
-            /// Enum L for value: L
-            /// </summary>
-            [EnumMember(Value = "L")]
-            L = 20,
-
-            /// <summary>
-            /// Enum M for value: M
-            /// </summary>
-            [EnumMember(Value = "M")]
-            M = 21,
-
-            /// <summary>
-            /// Enum N for value: N
-            /// </summary>
-            [EnumMember(Value = "N")]
-            N = 22,
-
-            /// <summary>
-            /// Enum P for value: P
-            /// </summary>
-            [EnumMember(Value = "P")]
-            P = 23,
-
-            /// <summary>
-            /// Enum Q for value: Q
-            /// </summary>
-            [EnumMember(Value = "Q")]
-            Q = 24,
-
-            /// <summary>
-            /// Enum R for value: R
-            /// </summary>
-            [EnumMember(Value = "R")]
-            R = 25,
-
-            /// <summary>
-            /// Enum S for value: S
-            /// </summary>
-            [EnumMember(Value = "S")]
-            S = 26,
-
-            /// <summary>
-            /// Enum T for value: T
-            /// </summary>
-            [EnumMember(Value = "T")]
-            T = 27,
-
-            /// <summary>
-            /// Enum U for value: U
-            /// </summary>
-            [EnumMember(Value = "U")]
-            U = 28,
-
-            /// <summary>
-            /// Enum W for value: W
-            /// </summary>
-            [EnumMember(Value = "W")]
-            W = 29,
-
-            /// <summary>
-            /// Enum Y for value: Y
-            /// </summary>
-            [EnumMember(Value = "Y")]
-            Y = 30
-        }
-
-
-        /// <summary>
-        /// Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements  - Y: Qualified charitable distribution (QCD) claimed under section 408(d)(8) (Available for 2025 on)
-        /// </summary>
-        /// <value>Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements  - Y: Qualified charitable distribution (QCD) claimed under section 408(d)(8) (Available for 2025 on)</value>
-        [DataMember(Name = "distributionCode", IsRequired = true, EmitDefaultValue = true)]
-        public DistributionCodeEnum DistributionCode { get; set; }
-        /// <summary>
-        /// Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6  - Y: 4, 7, K                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)
-        /// </summary>
-        /// <value>Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6  - Y: 4, 7, K                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SecondDistributionCodeEnum
-        {
-            /// <summary>
-            /// Enum _1 for value: 1
-            /// </summary>
-            [EnumMember(Value = "1")]
-            _1 = 1,
-
-            /// <summary>
-            /// Enum _2 for value: 2
-            /// </summary>
-            [EnumMember(Value = "2")]
-            _2 = 2,
-
-            /// <summary>
-            /// Enum _3 for value: 3
-            /// </summary>
-            [EnumMember(Value = "3")]
-            _3 = 3,
-
-            /// <summary>
-            /// Enum _4 for value: 4
-            /// </summary>
-            [EnumMember(Value = "4")]
-            _4 = 4,
-
-            /// <summary>
-            /// Enum _5 for value: 5
-            /// </summary>
-            [EnumMember(Value = "5")]
-            _5 = 5,
-
-            /// <summary>
-            /// Enum _6 for value: 6
-            /// </summary>
-            [EnumMember(Value = "6")]
-            _6 = 6,
-
-            /// <summary>
-            /// Enum _7 for value: 7
-            /// </summary>
-            [EnumMember(Value = "7")]
-            _7 = 7,
-
-            /// <summary>
-            /// Enum _8 for value: 8
-            /// </summary>
-            [EnumMember(Value = "8")]
-            _8 = 8,
-
-            /// <summary>
-            /// Enum _9 for value: 9
-            /// </summary>
-            [EnumMember(Value = "9")]
-            _9 = 9,
-
-            /// <summary>
-            /// Enum A for value: A
-            /// </summary>
-            [EnumMember(Value = "A")]
-            A = 10,
-
-            /// <summary>
-            /// Enum B for value: B
-            /// </summary>
-            [EnumMember(Value = "B")]
-            B = 11,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 12,
-
-            /// <summary>
-            /// Enum D for value: D
-            /// </summary>
-            [EnumMember(Value = "D")]
-            D = 13,
-
-            /// <summary>
-            /// Enum E for value: E
-            /// </summary>
-            [EnumMember(Value = "E")]
-            E = 14,
-
-            /// <summary>
-            /// Enum F for value: F
-            /// </summary>
-            [EnumMember(Value = "F")]
-            F = 15,
-
-            /// <summary>
-            /// Enum G for value: G
-            /// </summary>
-            [EnumMember(Value = "G")]
-            G = 16,
-
-            /// <summary>
-            /// Enum H for value: H
-            /// </summary>
-            [EnumMember(Value = "H")]
-            H = 17,
-
-            /// <summary>
-            /// Enum J for value: J
-            /// </summary>
-            [EnumMember(Value = "J")]
-            J = 18,
-
-            /// <summary>
-            /// Enum K for value: K
-            /// </summary>
-            [EnumMember(Value = "K")]
-            K = 19,
-
-            /// <summary>
-            /// Enum L for value: L
-            /// </summary>
-            [EnumMember(Value = "L")]
-            L = 20,
-
-            /// <summary>
-            /// Enum M for value: M
-            /// </summary>
-            [EnumMember(Value = "M")]
-            M = 21,
-
-            /// <summary>
-            /// Enum N for value: N
-            /// </summary>
-            [EnumMember(Value = "N")]
-            N = 22,
-
-            /// <summary>
-            /// Enum P for value: P
-            /// </summary>
-            [EnumMember(Value = "P")]
-            P = 23,
-
-            /// <summary>
-            /// Enum Q for value: Q
-            /// </summary>
-            [EnumMember(Value = "Q")]
-            Q = 24,
-
-            /// <summary>
-            /// Enum R for value: R
-            /// </summary>
-            [EnumMember(Value = "R")]
-            R = 25,
-
-            /// <summary>
-            /// Enum S for value: S
-            /// </summary>
-            [EnumMember(Value = "S")]
-            S = 26,
-
-            /// <summary>
-            /// Enum T for value: T
-            /// </summary>
-            [EnumMember(Value = "T")]
-            T = 27,
-
-            /// <summary>
-            /// Enum U for value: U
-            /// </summary>
-            [EnumMember(Value = "U")]
-            U = 28,
-
-            /// <summary>
-            /// Enum W for value: W
-            /// </summary>
-            [EnumMember(Value = "W")]
-            W = 29
-        }
-
-
-        /// <summary>
-        /// Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6  - Y: 4, 7, K                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)
-        /// </summary>
-        /// <value>Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6  - Y: 4, 7, K                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes)</value>
-        [DataMember(Name = "secondDistributionCode", EmitDefaultValue = true)]
-        public SecondDistributionCodeEnum? SecondDistributionCode { get; set; }
         /// <summary>
         /// Form type.
         /// </summary>
@@ -542,36 +158,47 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099R" /> class.
+        /// Initializes a new instance of the <see cref="Form1099W2" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Form1099R()
+        protected Form1099W2()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099R" /> class.
+        /// Initializes a new instance of the <see cref="Form1099W2" /> class.
         /// </summary>
-        /// <param name="grossDistribution">Gross distribution.</param>
-        /// <param name="taxableAmount">Taxable amount.</param>
-        /// <param name="taxableAmountNotDetermined">Taxable amount not determined.</param>
-        /// <param name="totalDistributionDetermined">Total distribution.</param>
-        /// <param name="capitalGain">Capital gain (included in Box 2a).</param>
-        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
-        /// <param name="employeeContributionsOrDesignatedRothOrInsurancePremiums">Employee contributions/Designated Roth contributions or insurance premiums.</param>
-        /// <param name="netUnrealizedAppreciationInEmployerSecurities">Net unrealized appreciation in employer&#39;s securities.</param>
-        /// <param name="distributionCode">Distribution code.    Available values:  - 1: Early distribution, no known exception (in most cases, under age 59½)  - 2: Early distribution, exception applies (under age 59½)  - 3: Disability  - 4: Death  - 5: Prohibited transaction  - 6: Section 1035 exchange (a tax-free exchange of life insurance, annuity, qualified long-term care insurance, or endowment contracts)  - 7: Normal distribution  - 8: Excess contributions plus earnings/excess deferrals (and/or earnings) taxable in payment year  - 9: Cost of current life insurance protection (premiums paid by a trustee or custodian for current insurance protection)  - A: May be eligible for 10-year tax option  - B: Designated Roth account distribution  - C: Reportable Death Benefits Under Section 6050Y(c)  - D: Annuity payments from nonqualified annuity payments and distributions from life insurance contracts that may be subject to tax under section 1411  - E: Distribution under Employee Plans Compliance Resolution System (EPCRS)  - F: Charitable gift annuity  - G: Direct rollover and rollover contribution  - H: Direct rollover of distribution from a designated Roth account to a Roth IRA  - J: Early distribution from a Roth IRA (This code may be used with a Code 8 or P)  - K: Distribution of IRA Assets Not Having A Readily Available FMV  - L: Loans treated as deemed distributions under section 72(p)  - M: Qualified Plan Loan Offsets  - N: Recharacterized IRA contribution made for year following payment year  - P: Excess contributions plus earnings/excess deferrals taxable for year prior to payment year  - Q: Qualified distribution from a Roth IRA (Distribution from a Roth IRA when the 5-year holding period has been met, and the recipient has reached 59½, has died, or is disabled)  - R: Recharacterized IRA contribution made for year prior to payment year  - S: Early distribution from a SIMPLE IRA in first 2 years no known exceptions  - T: Roth IRA distribution exception applies because participant has reached 59½, died or is disabled, but it is unknown if the 5-year period has been met  - U: Distribution from ESOP under Section 404(k)  - W: Charges or payments for purchasing qualified long-term care insurance contracts under combined arrangements  - Y: Qualified charitable distribution (QCD) claimed under section 408(d)(8) (Available for 2025 on) (required).</param>
-        /// <param name="secondDistributionCode">Second distribution code. Must be a valid combination with the first distribution code.  See DistributionCode property documentation for code descriptions.    Valid combinations based on first distribution code:  - 1: _, 8, B, D, K, L, M, P  - 2: _, 8, B, D, K, L, M, P  - 3: _, D  - 4: _, 8, A, B, D, G, H, K, L, M, P  - 5: _  - 6: _, W  - 7: _, A, B, D, K, L, M  - 8: _, 1, 2, 4, B, J, K  - 9: _  - A: 4, 7  - B: _, 1, 2, 4, 7, 8, G, L, M, P, U  - C: _, D  - D: 1, 2, 3, 4, 7, C  - E: _  - F: _  - G: _, 4, B, K  - H: _, 4  - J: _, 8, P  - K: 1, 2, 4, 7, 8, G  - L: _, 1, 2, 4, 7, B  - M: _, 1, 2, 4, 7, B  - N: _  - P: _, 1, 2, 4, B, J  - Q: _  - R: _  - S: _  - T: _  - U: _, B  - W: _, 6  - Y: 4, 7, K                (_ indicates no second distribution code)    (format: firstDistributionCode: availableSecondDistributionCodes).</param>
-        /// <param name="iraSepSimple">IRA/SEP/SIMPLE.</param>
-        /// <param name="traditionalIraSepSimpleOrRothConversionAmount">Traditional IRA/SEP/SIMPLE or Roth conversion amount.</param>
-        /// <param name="otherAmount">Other amount.</param>
-        /// <param name="otherPercentage">Other percentage.</param>
-        /// <param name="totalDistributionPercentage">Total distribution percentage.</param>
-        /// <param name="totalEmployeeContributions">Total employee contributions.</param>
-        /// <param name="amountAllocableToIrrWithin5Years">Amount allocable to IRR within 5 years.</param>
-        /// <param name="firstYearOfDesignatedRothContribution">First year of designated Roth contribution.</param>
-        /// <param name="dateOfPayment">Date of payment.</param>
-        /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
+        /// <param name="employeeFirstName">Employee first name (max 15 chars)..</param>
+        /// <param name="employeeMiddleName">Employee middle name (max 15 chars, optional)..</param>
+        /// <param name="employeeLastName">Employee last name (max 20 chars)..</param>
+        /// <param name="employeeNameSuffix">Employee name suffix (Jr, Sr, III, etc — max 4 chars, optional)..</param>
+        /// <param name="wages">Wages, tips, other compensation..</param>
+        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld..</param>
+        /// <param name="socialSecurityWages">Social security wages..</param>
+        /// <param name="socialSecurityTaxWithheld">Social security tax withheld..</param>
+        /// <param name="medicareWages">Medicare wages and tips..</param>
+        /// <param name="medicareTaxWithheld">Medicare tax withheld..</param>
+        /// <param name="socialSecurityTips">Social security tips..</param>
+        /// <param name="allocatedTips">Allocated tips..</param>
+        /// <param name="dependentCareBenefits">Dependent care benefits..</param>
+        /// <param name="nonqualifiedPlansSection457">Non-qualified plan Section 457 distributions or contributions..</param>
+        /// <param name="nonqualifiedPlansNotSection457">Non-qualified plan NOT Section 457 distributions or contributions..</param>
+        /// <param name="code12a">Letter code (A-Z, AA, BB, etc) for slot a..</param>
+        /// <param name="amount12a">Amount for slot a..</param>
+        /// <param name="code12b">Letter code for slot b..</param>
+        /// <param name="amount12b">Amount for slot b..</param>
+        /// <param name="code12c">Letter code for slot c..</param>
+        /// <param name="amount12c">Amount for slot c..</param>
+        /// <param name="code12d">Letter code for slot d..</param>
+        /// <param name="amount12d">Amount for slot d..</param>
+        /// <param name="statutoryEmployeeIndicator">Statutory employee indicator..</param>
+        /// <param name="retirementPlanIndicator">Retirement plan indicator..</param>
+        /// <param name="thirdPartySickPayIndicator">Third-party sick pay indicator..</param>
+        /// <param name="thirdPartySickPayWithholding">Third-party sick pay federal income tax withheld  (only effective when Avalara1099.Application.Forms1099.Models.Form1099W2.ThirdPartySickPayIndicator is true)..</param>
+        /// <param name="other14a">Other (max 30 chars) for slot a..</param>
+        /// <param name="other14b">Other (max 30 chars) for slot b..</param>
+        /// <param name="other14c">Other (max 30 chars) for slot c..</param>
+        /// <param name="stateAndLocalWithholdingSecondary">Secondary state and local withholding slot..</param>
         /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
         /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
@@ -601,53 +228,64 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099R(double? grossDistribution = default(double?), double? taxableAmount = default(double?), bool? taxableAmountNotDetermined = default(bool?), bool? totalDistributionDetermined = default(bool?), double? capitalGain = default(double?), double? federalIncomeTaxWithheld = default(double?), double? employeeContributionsOrDesignatedRothOrInsurancePremiums = default(double?), double? netUnrealizedAppreciationInEmployerSecurities = default(double?), DistributionCodeEnum distributionCode = default(DistributionCodeEnum), SecondDistributionCodeEnum? secondDistributionCode = default(SecondDistributionCodeEnum?), bool? iraSepSimple = default(bool?), double? traditionalIraSepSimpleOrRothConversionAmount = default(double?), double? otherAmount = default(double?), string otherPercentage = default(string), string totalDistributionPercentage = default(string), double? totalEmployeeContributions = default(double?), double? amountAllocableToIrrWithin5Years = default(double?), string firstYearOfDesignatedRothContribution = default(string), DateTime? dateOfPayment = default(DateTime?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
+        public Form1099W2(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), double? wages = default(double?), double? federalIncomeTaxWithheld = default(double?), double? socialSecurityWages = default(double?), double? socialSecurityTaxWithheld = default(double?), double? medicareWages = default(double?), double? medicareTaxWithheld = default(double?), double? socialSecurityTips = default(double?), double? allocatedTips = default(double?), double? dependentCareBenefits = default(double?), double? nonqualifiedPlansSection457 = default(double?), double? nonqualifiedPlansNotSection457 = default(double?), string code12a = default(string), double? amount12a = default(double?), string code12b = default(string), double? amount12b = default(double?), string code12c = default(string), double? amount12c = default(double?), string code12d = default(string), double? amount12d = default(double?), bool? statutoryEmployeeIndicator = default(bool?), bool? retirementPlanIndicator = default(bool?), bool? thirdPartySickPayIndicator = default(bool?), double? thirdPartySickPayWithholding = default(double?), string other14a = default(string), string other14b = default(string), string other14c = default(string), StateAndLocalWithholding stateAndLocalWithholdingSecondary = default(StateAndLocalWithholding), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
         {
-            this.DistributionCode = distributionCode;
             this.Type = type;
             // to ensure "recipientName" is required (not null)
             if (recipientName == null)
             {
-                throw new ArgumentNullException("recipientName is a required property for Form1099R and cannot be null");
+                throw new ArgumentNullException("recipientName is a required property for Form1099W2 and cannot be null");
             }
             this.RecipientName = recipientName;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for Form1099R and cannot be null");
+                throw new ArgumentNullException("address is a required property for Form1099W2 and cannot be null");
             }
             this.Address = address;
             // to ensure "city" is required (not null)
             if (city == null)
             {
-                throw new ArgumentNullException("city is a required property for Form1099R and cannot be null");
+                throw new ArgumentNullException("city is a required property for Form1099W2 and cannot be null");
             }
             this.City = city;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
-                throw new ArgumentNullException("countryCode is a required property for Form1099R and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for Form1099W2 and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.GrossDistribution = grossDistribution;
-            this.TaxableAmount = taxableAmount;
-            this.TaxableAmountNotDetermined = taxableAmountNotDetermined;
-            this.TotalDistributionDetermined = totalDistributionDetermined;
-            this.CapitalGain = capitalGain;
+            this.EmployeeFirstName = employeeFirstName;
+            this.EmployeeMiddleName = employeeMiddleName;
+            this.EmployeeLastName = employeeLastName;
+            this.EmployeeNameSuffix = employeeNameSuffix;
+            this.Wages = wages;
             this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
-            this.EmployeeContributionsOrDesignatedRothOrInsurancePremiums = employeeContributionsOrDesignatedRothOrInsurancePremiums;
-            this.NetUnrealizedAppreciationInEmployerSecurities = netUnrealizedAppreciationInEmployerSecurities;
-            this.SecondDistributionCode = secondDistributionCode;
-            this.IraSepSimple = iraSepSimple;
-            this.TraditionalIraSepSimpleOrRothConversionAmount = traditionalIraSepSimpleOrRothConversionAmount;
-            this.OtherAmount = otherAmount;
-            this.OtherPercentage = otherPercentage;
-            this.TotalDistributionPercentage = totalDistributionPercentage;
-            this.TotalEmployeeContributions = totalEmployeeContributions;
-            this.AmountAllocableToIrrWithin5Years = amountAllocableToIrrWithin5Years;
-            this.FirstYearOfDesignatedRothContribution = firstYearOfDesignatedRothContribution;
-            this.DateOfPayment = dateOfPayment;
-            this.FatcaFilingRequirement = fatcaFilingRequirement;
+            this.SocialSecurityWages = socialSecurityWages;
+            this.SocialSecurityTaxWithheld = socialSecurityTaxWithheld;
+            this.MedicareWages = medicareWages;
+            this.MedicareTaxWithheld = medicareTaxWithheld;
+            this.SocialSecurityTips = socialSecurityTips;
+            this.AllocatedTips = allocatedTips;
+            this.DependentCareBenefits = dependentCareBenefits;
+            this.NonqualifiedPlansSection457 = nonqualifiedPlansSection457;
+            this.NonqualifiedPlansNotSection457 = nonqualifiedPlansNotSection457;
+            this.Code12a = code12a;
+            this.Amount12a = amount12a;
+            this.Code12b = code12b;
+            this.Amount12b = amount12b;
+            this.Code12c = code12c;
+            this.Amount12c = amount12c;
+            this.Code12d = code12d;
+            this.Amount12d = amount12d;
+            this.StatutoryEmployeeIndicator = statutoryEmployeeIndicator;
+            this.RetirementPlanIndicator = retirementPlanIndicator;
+            this.ThirdPartySickPayIndicator = thirdPartySickPayIndicator;
+            this.ThirdPartySickPayWithholding = thirdPartySickPayWithholding;
+            this.Other14a = other14a;
+            this.Other14b = other14b;
+            this.Other14c = other14c;
+            this.StateAndLocalWithholdingSecondary = stateAndLocalWithholdingSecondary;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
@@ -676,131 +314,221 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Gross distribution
+        /// Employee first name (max 15 chars).
         /// </summary>
-        /// <value>Gross distribution</value>
-        [DataMember(Name = "grossDistribution", EmitDefaultValue = true)]
-        public double? GrossDistribution { get; set; }
+        /// <value>Employee first name (max 15 chars).</value>
+        [DataMember(Name = "employeeFirstName", EmitDefaultValue = true)]
+        public string EmployeeFirstName { get; set; }
 
         /// <summary>
-        /// Taxable amount
+        /// Employee middle name (max 15 chars, optional).
         /// </summary>
-        /// <value>Taxable amount</value>
-        [DataMember(Name = "taxableAmount", EmitDefaultValue = true)]
-        public double? TaxableAmount { get; set; }
+        /// <value>Employee middle name (max 15 chars, optional).</value>
+        [DataMember(Name = "employeeMiddleName", EmitDefaultValue = true)]
+        public string EmployeeMiddleName { get; set; }
 
         /// <summary>
-        /// Taxable amount not determined
+        /// Employee last name (max 20 chars).
         /// </summary>
-        /// <value>Taxable amount not determined</value>
-        [DataMember(Name = "taxableAmountNotDetermined", EmitDefaultValue = true)]
-        public bool? TaxableAmountNotDetermined { get; set; }
+        /// <value>Employee last name (max 20 chars).</value>
+        [DataMember(Name = "employeeLastName", EmitDefaultValue = true)]
+        public string EmployeeLastName { get; set; }
 
         /// <summary>
-        /// Total distribution
+        /// Employee name suffix (Jr, Sr, III, etc — max 4 chars, optional).
         /// </summary>
-        /// <value>Total distribution</value>
-        [DataMember(Name = "totalDistributionDetermined", EmitDefaultValue = true)]
-        public bool? TotalDistributionDetermined { get; set; }
+        /// <value>Employee name suffix (Jr, Sr, III, etc — max 4 chars, optional).</value>
+        [DataMember(Name = "employeeNameSuffix", EmitDefaultValue = true)]
+        public string EmployeeNameSuffix { get; set; }
 
         /// <summary>
-        /// Capital gain (included in Box 2a)
+        /// Wages, tips, other compensation.
         /// </summary>
-        /// <value>Capital gain (included in Box 2a)</value>
-        [DataMember(Name = "capitalGain", EmitDefaultValue = true)]
-        public double? CapitalGain { get; set; }
+        /// <value>Wages, tips, other compensation.</value>
+        [DataMember(Name = "wages", EmitDefaultValue = true)]
+        public double? Wages { get; set; }
 
         /// <summary>
-        /// Federal income tax withheld
+        /// Federal income tax withheld.
         /// </summary>
-        /// <value>Federal income tax withheld</value>
+        /// <value>Federal income tax withheld.</value>
         [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
         public double? FederalIncomeTaxWithheld { get; set; }
 
         /// <summary>
-        /// Employee contributions/Designated Roth contributions or insurance premiums
+        /// Social security wages.
         /// </summary>
-        /// <value>Employee contributions/Designated Roth contributions or insurance premiums</value>
-        [DataMember(Name = "employeeContributionsOrDesignatedRothOrInsurancePremiums", EmitDefaultValue = true)]
-        public double? EmployeeContributionsOrDesignatedRothOrInsurancePremiums { get; set; }
+        /// <value>Social security wages.</value>
+        [DataMember(Name = "socialSecurityWages", EmitDefaultValue = true)]
+        public double? SocialSecurityWages { get; set; }
 
         /// <summary>
-        /// Net unrealized appreciation in employer&#39;s securities
+        /// Social security tax withheld.
         /// </summary>
-        /// <value>Net unrealized appreciation in employer&#39;s securities</value>
-        [DataMember(Name = "netUnrealizedAppreciationInEmployerSecurities", EmitDefaultValue = true)]
-        public double? NetUnrealizedAppreciationInEmployerSecurities { get; set; }
+        /// <value>Social security tax withheld.</value>
+        [DataMember(Name = "socialSecurityTaxWithheld", EmitDefaultValue = true)]
+        public double? SocialSecurityTaxWithheld { get; set; }
 
         /// <summary>
-        /// IRA/SEP/SIMPLE
+        /// Medicare wages and tips.
         /// </summary>
-        /// <value>IRA/SEP/SIMPLE</value>
-        [DataMember(Name = "iraSepSimple", EmitDefaultValue = true)]
-        public bool? IraSepSimple { get; set; }
+        /// <value>Medicare wages and tips.</value>
+        [DataMember(Name = "medicareWages", EmitDefaultValue = true)]
+        public double? MedicareWages { get; set; }
 
         /// <summary>
-        /// Traditional IRA/SEP/SIMPLE or Roth conversion amount
+        /// Medicare tax withheld.
         /// </summary>
-        /// <value>Traditional IRA/SEP/SIMPLE or Roth conversion amount</value>
-        [DataMember(Name = "traditionalIraSepSimpleOrRothConversionAmount", EmitDefaultValue = true)]
-        public double? TraditionalIraSepSimpleOrRothConversionAmount { get; set; }
+        /// <value>Medicare tax withheld.</value>
+        [DataMember(Name = "medicareTaxWithheld", EmitDefaultValue = true)]
+        public double? MedicareTaxWithheld { get; set; }
 
         /// <summary>
-        /// Other amount
+        /// Social security tips.
         /// </summary>
-        /// <value>Other amount</value>
-        [DataMember(Name = "otherAmount", EmitDefaultValue = true)]
-        public double? OtherAmount { get; set; }
+        /// <value>Social security tips.</value>
+        [DataMember(Name = "socialSecurityTips", EmitDefaultValue = true)]
+        public double? SocialSecurityTips { get; set; }
 
         /// <summary>
-        /// Other percentage
+        /// Allocated tips.
         /// </summary>
-        /// <value>Other percentage</value>
-        [DataMember(Name = "otherPercentage", EmitDefaultValue = true)]
-        public string OtherPercentage { get; set; }
+        /// <value>Allocated tips.</value>
+        [DataMember(Name = "allocatedTips", EmitDefaultValue = true)]
+        public double? AllocatedTips { get; set; }
 
         /// <summary>
-        /// Total distribution percentage
+        /// Dependent care benefits.
         /// </summary>
-        /// <value>Total distribution percentage</value>
-        [DataMember(Name = "totalDistributionPercentage", EmitDefaultValue = true)]
-        public string TotalDistributionPercentage { get; set; }
+        /// <value>Dependent care benefits.</value>
+        [DataMember(Name = "dependentCareBenefits", EmitDefaultValue = true)]
+        public double? DependentCareBenefits { get; set; }
 
         /// <summary>
-        /// Total employee contributions
+        /// Non-qualified plan Section 457 distributions or contributions.
         /// </summary>
-        /// <value>Total employee contributions</value>
-        [DataMember(Name = "totalEmployeeContributions", EmitDefaultValue = true)]
-        public double? TotalEmployeeContributions { get; set; }
+        /// <value>Non-qualified plan Section 457 distributions or contributions.</value>
+        [DataMember(Name = "nonqualifiedPlansSection457", EmitDefaultValue = true)]
+        public double? NonqualifiedPlansSection457 { get; set; }
 
         /// <summary>
-        /// Amount allocable to IRR within 5 years
+        /// Non-qualified plan NOT Section 457 distributions or contributions.
         /// </summary>
-        /// <value>Amount allocable to IRR within 5 years</value>
-        [DataMember(Name = "amountAllocableToIrrWithin5Years", EmitDefaultValue = true)]
-        public double? AmountAllocableToIrrWithin5Years { get; set; }
+        /// <value>Non-qualified plan NOT Section 457 distributions or contributions.</value>
+        [DataMember(Name = "nonqualifiedPlansNotSection457", EmitDefaultValue = true)]
+        public double? NonqualifiedPlansNotSection457 { get; set; }
 
         /// <summary>
-        /// First year of designated Roth contribution
+        /// Letter code (A-Z, AA, BB, etc) for slot a.
         /// </summary>
-        /// <value>First year of designated Roth contribution</value>
-        [DataMember(Name = "firstYearOfDesignatedRothContribution", EmitDefaultValue = true)]
-        public string FirstYearOfDesignatedRothContribution { get; set; }
+        /// <value>Letter code (A-Z, AA, BB, etc) for slot a.</value>
+        [DataMember(Name = "code12a", EmitDefaultValue = true)]
+        public string Code12a { get; set; }
 
         /// <summary>
-        /// Date of payment
+        /// Amount for slot a.
         /// </summary>
-        /// <value>Date of payment</value>
-        [DataMember(Name = "dateOfPayment", EmitDefaultValue = true)]
-        [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime? DateOfPayment { get; set; }
+        /// <value>Amount for slot a.</value>
+        [DataMember(Name = "amount12a", EmitDefaultValue = true)]
+        public double? Amount12a { get; set; }
 
         /// <summary>
-        /// FATCA filing requirement.
+        /// Letter code for slot b.
         /// </summary>
-        /// <value>FATCA filing requirement.</value>
-        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
-        public bool? FatcaFilingRequirement { get; set; }
+        /// <value>Letter code for slot b.</value>
+        [DataMember(Name = "code12b", EmitDefaultValue = true)]
+        public string Code12b { get; set; }
+
+        /// <summary>
+        /// Amount for slot b.
+        /// </summary>
+        /// <value>Amount for slot b.</value>
+        [DataMember(Name = "amount12b", EmitDefaultValue = true)]
+        public double? Amount12b { get; set; }
+
+        /// <summary>
+        /// Letter code for slot c.
+        /// </summary>
+        /// <value>Letter code for slot c.</value>
+        [DataMember(Name = "code12c", EmitDefaultValue = true)]
+        public string Code12c { get; set; }
+
+        /// <summary>
+        /// Amount for slot c.
+        /// </summary>
+        /// <value>Amount for slot c.</value>
+        [DataMember(Name = "amount12c", EmitDefaultValue = true)]
+        public double? Amount12c { get; set; }
+
+        /// <summary>
+        /// Letter code for slot d.
+        /// </summary>
+        /// <value>Letter code for slot d.</value>
+        [DataMember(Name = "code12d", EmitDefaultValue = true)]
+        public string Code12d { get; set; }
+
+        /// <summary>
+        /// Amount for slot d.
+        /// </summary>
+        /// <value>Amount for slot d.</value>
+        [DataMember(Name = "amount12d", EmitDefaultValue = true)]
+        public double? Amount12d { get; set; }
+
+        /// <summary>
+        /// Statutory employee indicator.
+        /// </summary>
+        /// <value>Statutory employee indicator.</value>
+        [DataMember(Name = "statutoryEmployeeIndicator", EmitDefaultValue = true)]
+        public bool? StatutoryEmployeeIndicator { get; set; }
+
+        /// <summary>
+        /// Retirement plan indicator.
+        /// </summary>
+        /// <value>Retirement plan indicator.</value>
+        [DataMember(Name = "retirementPlanIndicator", EmitDefaultValue = true)]
+        public bool? RetirementPlanIndicator { get; set; }
+
+        /// <summary>
+        /// Third-party sick pay indicator.
+        /// </summary>
+        /// <value>Third-party sick pay indicator.</value>
+        [DataMember(Name = "thirdPartySickPayIndicator", EmitDefaultValue = true)]
+        public bool? ThirdPartySickPayIndicator { get; set; }
+
+        /// <summary>
+        /// Third-party sick pay federal income tax withheld  (only effective when Avalara1099.Application.Forms1099.Models.Form1099W2.ThirdPartySickPayIndicator is true).
+        /// </summary>
+        /// <value>Third-party sick pay federal income tax withheld  (only effective when Avalara1099.Application.Forms1099.Models.Form1099W2.ThirdPartySickPayIndicator is true).</value>
+        [DataMember(Name = "thirdPartySickPayWithholding", EmitDefaultValue = true)]
+        public double? ThirdPartySickPayWithholding { get; set; }
+
+        /// <summary>
+        /// Other (max 30 chars) for slot a.
+        /// </summary>
+        /// <value>Other (max 30 chars) for slot a.</value>
+        [DataMember(Name = "other14a", EmitDefaultValue = true)]
+        public string Other14a { get; set; }
+
+        /// <summary>
+        /// Other (max 30 chars) for slot b.
+        /// </summary>
+        /// <value>Other (max 30 chars) for slot b.</value>
+        [DataMember(Name = "other14b", EmitDefaultValue = true)]
+        public string Other14b { get; set; }
+
+        /// <summary>
+        /// Other (max 30 chars) for slot c.
+        /// </summary>
+        /// <value>Other (max 30 chars) for slot c.</value>
+        [DataMember(Name = "other14c", EmitDefaultValue = true)]
+        public string Other14c { get; set; }
+
+        /// <summary>
+        /// Secondary state and local withholding slot.
+        /// </summary>
+        /// <value>Secondary state and local withholding slot.</value>
+        [DataMember(Name = "stateAndLocalWithholdingSecondary", EmitDefaultValue = true)]
+        public StateAndLocalWithholding StateAndLocalWithholdingSecondary { get; set; }
 
         /// <summary>
         /// Form ID. Unique identifier set when the record is created.
@@ -1157,27 +885,38 @@ namespace Avalara.SDK.Model.A1099.V2
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Form1099R {\n");
-            sb.Append("  GrossDistribution: ").Append(GrossDistribution).Append("\n");
-            sb.Append("  TaxableAmount: ").Append(TaxableAmount).Append("\n");
-            sb.Append("  TaxableAmountNotDetermined: ").Append(TaxableAmountNotDetermined).Append("\n");
-            sb.Append("  TotalDistributionDetermined: ").Append(TotalDistributionDetermined).Append("\n");
-            sb.Append("  CapitalGain: ").Append(CapitalGain).Append("\n");
+            sb.Append("class Form1099W2 {\n");
+            sb.Append("  EmployeeFirstName: ").Append(EmployeeFirstName).Append("\n");
+            sb.Append("  EmployeeMiddleName: ").Append(EmployeeMiddleName).Append("\n");
+            sb.Append("  EmployeeLastName: ").Append(EmployeeLastName).Append("\n");
+            sb.Append("  EmployeeNameSuffix: ").Append(EmployeeNameSuffix).Append("\n");
+            sb.Append("  Wages: ").Append(Wages).Append("\n");
             sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
-            sb.Append("  EmployeeContributionsOrDesignatedRothOrInsurancePremiums: ").Append(EmployeeContributionsOrDesignatedRothOrInsurancePremiums).Append("\n");
-            sb.Append("  NetUnrealizedAppreciationInEmployerSecurities: ").Append(NetUnrealizedAppreciationInEmployerSecurities).Append("\n");
-            sb.Append("  DistributionCode: ").Append(DistributionCode).Append("\n");
-            sb.Append("  SecondDistributionCode: ").Append(SecondDistributionCode).Append("\n");
-            sb.Append("  IraSepSimple: ").Append(IraSepSimple).Append("\n");
-            sb.Append("  TraditionalIraSepSimpleOrRothConversionAmount: ").Append(TraditionalIraSepSimpleOrRothConversionAmount).Append("\n");
-            sb.Append("  OtherAmount: ").Append(OtherAmount).Append("\n");
-            sb.Append("  OtherPercentage: ").Append(OtherPercentage).Append("\n");
-            sb.Append("  TotalDistributionPercentage: ").Append(TotalDistributionPercentage).Append("\n");
-            sb.Append("  TotalEmployeeContributions: ").Append(TotalEmployeeContributions).Append("\n");
-            sb.Append("  AmountAllocableToIrrWithin5Years: ").Append(AmountAllocableToIrrWithin5Years).Append("\n");
-            sb.Append("  FirstYearOfDesignatedRothContribution: ").Append(FirstYearOfDesignatedRothContribution).Append("\n");
-            sb.Append("  DateOfPayment: ").Append(DateOfPayment).Append("\n");
-            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
+            sb.Append("  SocialSecurityWages: ").Append(SocialSecurityWages).Append("\n");
+            sb.Append("  SocialSecurityTaxWithheld: ").Append(SocialSecurityTaxWithheld).Append("\n");
+            sb.Append("  MedicareWages: ").Append(MedicareWages).Append("\n");
+            sb.Append("  MedicareTaxWithheld: ").Append(MedicareTaxWithheld).Append("\n");
+            sb.Append("  SocialSecurityTips: ").Append(SocialSecurityTips).Append("\n");
+            sb.Append("  AllocatedTips: ").Append(AllocatedTips).Append("\n");
+            sb.Append("  DependentCareBenefits: ").Append(DependentCareBenefits).Append("\n");
+            sb.Append("  NonqualifiedPlansSection457: ").Append(NonqualifiedPlansSection457).Append("\n");
+            sb.Append("  NonqualifiedPlansNotSection457: ").Append(NonqualifiedPlansNotSection457).Append("\n");
+            sb.Append("  Code12a: ").Append(Code12a).Append("\n");
+            sb.Append("  Amount12a: ").Append(Amount12a).Append("\n");
+            sb.Append("  Code12b: ").Append(Code12b).Append("\n");
+            sb.Append("  Amount12b: ").Append(Amount12b).Append("\n");
+            sb.Append("  Code12c: ").Append(Code12c).Append("\n");
+            sb.Append("  Amount12c: ").Append(Amount12c).Append("\n");
+            sb.Append("  Code12d: ").Append(Code12d).Append("\n");
+            sb.Append("  Amount12d: ").Append(Amount12d).Append("\n");
+            sb.Append("  StatutoryEmployeeIndicator: ").Append(StatutoryEmployeeIndicator).Append("\n");
+            sb.Append("  RetirementPlanIndicator: ").Append(RetirementPlanIndicator).Append("\n");
+            sb.Append("  ThirdPartySickPayIndicator: ").Append(ThirdPartySickPayIndicator).Append("\n");
+            sb.Append("  ThirdPartySickPayWithholding: ").Append(ThirdPartySickPayWithholding).Append("\n");
+            sb.Append("  Other14a: ").Append(Other14a).Append("\n");
+            sb.Append("  Other14b: ").Append(Other14b).Append("\n");
+            sb.Append("  Other14c: ").Append(Other14c).Append("\n");
+            sb.Append("  StateAndLocalWithholdingSecondary: ").Append(StateAndLocalWithholdingSecondary).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");

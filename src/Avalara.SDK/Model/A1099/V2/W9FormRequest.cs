@@ -8,7 +8,7 @@
  *
  * Avalara 1099 & W-9 API Definition
  *
- * ## 🔐 Authentication  Generate a **license key** from: *[Avalara Portal](https://www.avalara.com/us/en/signin.html) → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication  #### Step 1: Generate API Credentials  Generate a *client ID* and *client secret* from your [Avalara1099 account](https://sbx.track1099.com/api_tokens): *Your Profile → API*.  #### Step 2: Get an Identity Token  Send a `POST` request to the **Identity Token URL** with your *client ID* and *client secret* from Step 1 as form-encoded parameters:  ```http POST https://identity.avalara.com/connect/token Content-Type: application/x-www-form-urlencoded  grant_type=client_credentials client_id=<your client ID> client_secret=<your client secret> ```  **Body parameters** - `grant_type` — Always `client_credentials` - `client_id` — Your *client ID* from Step 1 - `client_secret` — Your *client secret* from Step 1  **Successful response**  ```json {   \"access_token\": \"eyJhbGci...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\" } ```  Use the `access_token` as a bearer token in the `Authorization` header on every A1099 API request:  ```http Authorization: Bearer <access_token> ```  - --  For more on authenticating requests, see the [A1099 authentication guide](https://developer.avalara.com/1099-and-w-9/kny2997001535374/).  - --  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -167,393 +167,6 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "businessClassification", IsRequired = true, EmitDefaultValue = true)]
         public BusinessClassificationEnum BusinessClassification { get; set; }
         /// <summary>
-        /// The state of the address.
-        /// </summary>
-        /// <value>The state of the address.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StateEnum
-        {
-            /// <summary>
-            /// Enum AA for value: AA
-            /// </summary>
-            [EnumMember(Value = "AA")]
-            AA = 1,
-
-            /// <summary>
-            /// Enum AE for value: AE
-            /// </summary>
-            [EnumMember(Value = "AE")]
-            AE = 2,
-
-            /// <summary>
-            /// Enum AK for value: AK
-            /// </summary>
-            [EnumMember(Value = "AK")]
-            AK = 3,
-
-            /// <summary>
-            /// Enum AL for value: AL
-            /// </summary>
-            [EnumMember(Value = "AL")]
-            AL = 4,
-
-            /// <summary>
-            /// Enum AP for value: AP
-            /// </summary>
-            [EnumMember(Value = "AP")]
-            AP = 5,
-
-            /// <summary>
-            /// Enum AR for value: AR
-            /// </summary>
-            [EnumMember(Value = "AR")]
-            AR = 6,
-
-            /// <summary>
-            /// Enum AS for value: AS
-            /// </summary>
-            [EnumMember(Value = "AS")]
-            AS = 7,
-
-            /// <summary>
-            /// Enum AZ for value: AZ
-            /// </summary>
-            [EnumMember(Value = "AZ")]
-            AZ = 8,
-
-            /// <summary>
-            /// Enum CA for value: CA
-            /// </summary>
-            [EnumMember(Value = "CA")]
-            CA = 9,
-
-            /// <summary>
-            /// Enum CO for value: CO
-            /// </summary>
-            [EnumMember(Value = "CO")]
-            CO = 10,
-
-            /// <summary>
-            /// Enum CT for value: CT
-            /// </summary>
-            [EnumMember(Value = "CT")]
-            CT = 11,
-
-            /// <summary>
-            /// Enum DC for value: DC
-            /// </summary>
-            [EnumMember(Value = "DC")]
-            DC = 12,
-
-            /// <summary>
-            /// Enum DE for value: DE
-            /// </summary>
-            [EnumMember(Value = "DE")]
-            DE = 13,
-
-            /// <summary>
-            /// Enum FL for value: FL
-            /// </summary>
-            [EnumMember(Value = "FL")]
-            FL = 14,
-
-            /// <summary>
-            /// Enum FM for value: FM
-            /// </summary>
-            [EnumMember(Value = "FM")]
-            FM = 15,
-
-            /// <summary>
-            /// Enum GA for value: GA
-            /// </summary>
-            [EnumMember(Value = "GA")]
-            GA = 16,
-
-            /// <summary>
-            /// Enum GU for value: GU
-            /// </summary>
-            [EnumMember(Value = "GU")]
-            GU = 17,
-
-            /// <summary>
-            /// Enum HI for value: HI
-            /// </summary>
-            [EnumMember(Value = "HI")]
-            HI = 18,
-
-            /// <summary>
-            /// Enum IA for value: IA
-            /// </summary>
-            [EnumMember(Value = "IA")]
-            IA = 19,
-
-            /// <summary>
-            /// Enum ID for value: ID
-            /// </summary>
-            [EnumMember(Value = "ID")]
-            ID = 20,
-
-            /// <summary>
-            /// Enum IL for value: IL
-            /// </summary>
-            [EnumMember(Value = "IL")]
-            IL = 21,
-
-            /// <summary>
-            /// Enum IN for value: IN
-            /// </summary>
-            [EnumMember(Value = "IN")]
-            IN = 22,
-
-            /// <summary>
-            /// Enum KS for value: KS
-            /// </summary>
-            [EnumMember(Value = "KS")]
-            KS = 23,
-
-            /// <summary>
-            /// Enum KY for value: KY
-            /// </summary>
-            [EnumMember(Value = "KY")]
-            KY = 24,
-
-            /// <summary>
-            /// Enum LA for value: LA
-            /// </summary>
-            [EnumMember(Value = "LA")]
-            LA = 25,
-
-            /// <summary>
-            /// Enum MA for value: MA
-            /// </summary>
-            [EnumMember(Value = "MA")]
-            MA = 26,
-
-            /// <summary>
-            /// Enum MD for value: MD
-            /// </summary>
-            [EnumMember(Value = "MD")]
-            MD = 27,
-
-            /// <summary>
-            /// Enum ME for value: ME
-            /// </summary>
-            [EnumMember(Value = "ME")]
-            ME = 28,
-
-            /// <summary>
-            /// Enum MH for value: MH
-            /// </summary>
-            [EnumMember(Value = "MH")]
-            MH = 29,
-
-            /// <summary>
-            /// Enum MI for value: MI
-            /// </summary>
-            [EnumMember(Value = "MI")]
-            MI = 30,
-
-            /// <summary>
-            /// Enum MN for value: MN
-            /// </summary>
-            [EnumMember(Value = "MN")]
-            MN = 31,
-
-            /// <summary>
-            /// Enum MO for value: MO
-            /// </summary>
-            [EnumMember(Value = "MO")]
-            MO = 32,
-
-            /// <summary>
-            /// Enum MP for value: MP
-            /// </summary>
-            [EnumMember(Value = "MP")]
-            MP = 33,
-
-            /// <summary>
-            /// Enum MS for value: MS
-            /// </summary>
-            [EnumMember(Value = "MS")]
-            MS = 34,
-
-            /// <summary>
-            /// Enum MT for value: MT
-            /// </summary>
-            [EnumMember(Value = "MT")]
-            MT = 35,
-
-            /// <summary>
-            /// Enum NC for value: NC
-            /// </summary>
-            [EnumMember(Value = "NC")]
-            NC = 36,
-
-            /// <summary>
-            /// Enum ND for value: ND
-            /// </summary>
-            [EnumMember(Value = "ND")]
-            ND = 37,
-
-            /// <summary>
-            /// Enum NE for value: NE
-            /// </summary>
-            [EnumMember(Value = "NE")]
-            NE = 38,
-
-            /// <summary>
-            /// Enum NH for value: NH
-            /// </summary>
-            [EnumMember(Value = "NH")]
-            NH = 39,
-
-            /// <summary>
-            /// Enum NJ for value: NJ
-            /// </summary>
-            [EnumMember(Value = "NJ")]
-            NJ = 40,
-
-            /// <summary>
-            /// Enum NM for value: NM
-            /// </summary>
-            [EnumMember(Value = "NM")]
-            NM = 41,
-
-            /// <summary>
-            /// Enum NV for value: NV
-            /// </summary>
-            [EnumMember(Value = "NV")]
-            NV = 42,
-
-            /// <summary>
-            /// Enum NY for value: NY
-            /// </summary>
-            [EnumMember(Value = "NY")]
-            NY = 43,
-
-            /// <summary>
-            /// Enum OH for value: OH
-            /// </summary>
-            [EnumMember(Value = "OH")]
-            OH = 44,
-
-            /// <summary>
-            /// Enum OK for value: OK
-            /// </summary>
-            [EnumMember(Value = "OK")]
-            OK = 45,
-
-            /// <summary>
-            /// Enum OR for value: OR
-            /// </summary>
-            [EnumMember(Value = "OR")]
-            OR = 46,
-
-            /// <summary>
-            /// Enum PA for value: PA
-            /// </summary>
-            [EnumMember(Value = "PA")]
-            PA = 47,
-
-            /// <summary>
-            /// Enum PR for value: PR
-            /// </summary>
-            [EnumMember(Value = "PR")]
-            PR = 48,
-
-            /// <summary>
-            /// Enum PW for value: PW
-            /// </summary>
-            [EnumMember(Value = "PW")]
-            PW = 49,
-
-            /// <summary>
-            /// Enum RI for value: RI
-            /// </summary>
-            [EnumMember(Value = "RI")]
-            RI = 50,
-
-            /// <summary>
-            /// Enum SC for value: SC
-            /// </summary>
-            [EnumMember(Value = "SC")]
-            SC = 51,
-
-            /// <summary>
-            /// Enum SD for value: SD
-            /// </summary>
-            [EnumMember(Value = "SD")]
-            SD = 52,
-
-            /// <summary>
-            /// Enum TN for value: TN
-            /// </summary>
-            [EnumMember(Value = "TN")]
-            TN = 53,
-
-            /// <summary>
-            /// Enum TX for value: TX
-            /// </summary>
-            [EnumMember(Value = "TX")]
-            TX = 54,
-
-            /// <summary>
-            /// Enum UT for value: UT
-            /// </summary>
-            [EnumMember(Value = "UT")]
-            UT = 55,
-
-            /// <summary>
-            /// Enum VA for value: VA
-            /// </summary>
-            [EnumMember(Value = "VA")]
-            VA = 56,
-
-            /// <summary>
-            /// Enum VI for value: VI
-            /// </summary>
-            [EnumMember(Value = "VI")]
-            VI = 57,
-
-            /// <summary>
-            /// Enum VT for value: VT
-            /// </summary>
-            [EnumMember(Value = "VT")]
-            VT = 58,
-
-            /// <summary>
-            /// Enum WA for value: WA
-            /// </summary>
-            [EnumMember(Value = "WA")]
-            WA = 59,
-
-            /// <summary>
-            /// Enum WI for value: WI
-            /// </summary>
-            [EnumMember(Value = "WI")]
-            WI = 60,
-
-            /// <summary>
-            /// Enum WV for value: WV
-            /// </summary>
-            [EnumMember(Value = "WV")]
-            WV = 61,
-
-            /// <summary>
-            /// Enum WY for value: WY
-            /// </summary>
-            [EnumMember(Value = "WY")]
-            WY = 62
-        }
-
-
-        /// <summary>
-        /// The state of the address.
-        /// </summary>
-        /// <value>The state of the address.</value>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public StateEnum State { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="W9FormRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -584,7 +197,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
-        public W9FormRequest(string name = default(string), string businessName = default(string), BusinessClassificationEnum businessClassification = default(BusinessClassificationEnum), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), StateEnum state = default(StateEnum), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
+        public W9FormRequest(string name = default(string), string businessName = default(string), BusinessClassificationEnum businessClassification = default(BusinessClassificationEnum), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -605,6 +218,11 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("city is a required property for W9FormRequest and cannot be null");
             }
             this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for W9FormRequest and cannot be null");
+            }
             this.State = state;
             // to ensure "zip" is required (not null)
             if (zip == null)
@@ -710,6 +328,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The city of the address.</value>
         [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
         public string City { get; set; }
+
+        /// <summary>
+        /// The state of the address.
+        /// </summary>
+        /// <value>The state of the address.</value>
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
+        public string State { get; set; }
 
         /// <summary>
         /// The ZIP code of the address.

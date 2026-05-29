@@ -8,7 +8,7 @@
  *
  * Avalara 1099 & W-9 API Definition
  *
- * ## 🔐 Authentication  Generate a **license key** from: *[Avalara Portal](https://www.avalara.com/us/en/signin.html) → Settings → License and API Keys*.  [More on authentication methods](https://developer.avalara.com/avatax-dm-combined-erp/common-setup/authentication/authentication-methods/)  [Test your credentials](https://developer.avalara.com/avatax/test-credentials/)  ## 📘 API & SDK Documentation  [Avalara SDK (.NET) on GitHub](https://github.com/avadev/Avalara-SDK-DotNet#avalarasdk- -the-unified-c-library-for-next-gen-avalara-services)  [Code Examples – 1099 API](https://github.com/avadev/Avalara-SDK-DotNet/blob/main/docs/A1099/V2/Class1099IssuersApi.md#call1099issuersget)
+ * ## Authentication  #### Step 1: Generate API Credentials  Generate a *client ID* and *client secret* from your [Avalara1099 account](https://sbx.track1099.com/api_tokens): *Your Profile → API*.  #### Step 2: Get an Identity Token  Send a `POST` request to the **Identity Token URL** with your *client ID* and *client secret* from Step 1 as form-encoded parameters:  ```http POST https://identity.avalara.com/connect/token Content-Type: application/x-www-form-urlencoded  grant_type=client_credentials client_id=<your client ID> client_secret=<your client secret> ```  **Body parameters** - `grant_type` — Always `client_credentials` - `client_id` — Your *client ID* from Step 1 - `client_secret` — Your *client secret* from Step 1  **Successful response**  ```json {   \"access_token\": \"eyJhbGci...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\" } ```  Use the `access_token` as a bearer token in the `Authorization` header on every A1099 API request:  ```http Authorization: Bearer <access_token> ```  - --  For more on authenticating requests, see the [A1099 authentication guide](https://developer.avalara.com/1099-and-w-9/kny2997001535374/).  - --  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -398,9 +398,9 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "fatcaStatus", IsRequired = true, EmitDefaultValue = true)]
         public FatcaStatusEnum FatcaStatus { get; set; }
         /// <summary>
-        /// The state of residence.
+        /// The state of residence.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state of residence.</value>
+        /// <value>The state of residence.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ResidenceStateEnum
         {
@@ -774,20 +774,98 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum WY for value: WY
             /// </summary>
             [EnumMember(Value = "WY")]
-            WY = 62
+            WY = 62,
+
+            /// <summary>
+            /// Enum AB for value: AB
+            /// </summary>
+            [EnumMember(Value = "AB")]
+            AB = 63,
+
+            /// <summary>
+            /// Enum BC for value: BC
+            /// </summary>
+            [EnumMember(Value = "BC")]
+            BC = 64,
+
+            /// <summary>
+            /// Enum MB for value: MB
+            /// </summary>
+            [EnumMember(Value = "MB")]
+            MB = 65,
+
+            /// <summary>
+            /// Enum NB for value: NB
+            /// </summary>
+            [EnumMember(Value = "NB")]
+            NB = 66,
+
+            /// <summary>
+            /// Enum NL for value: NL
+            /// </summary>
+            [EnumMember(Value = "NL")]
+            NL = 67,
+
+            /// <summary>
+            /// Enum NS for value: NS
+            /// </summary>
+            [EnumMember(Value = "NS")]
+            NS = 68,
+
+            /// <summary>
+            /// Enum NT for value: NT
+            /// </summary>
+            [EnumMember(Value = "NT")]
+            NT = 69,
+
+            /// <summary>
+            /// Enum NU for value: NU
+            /// </summary>
+            [EnumMember(Value = "NU")]
+            NU = 70,
+
+            /// <summary>
+            /// Enum ON for value: ON
+            /// </summary>
+            [EnumMember(Value = "ON")]
+            ON = 71,
+
+            /// <summary>
+            /// Enum PE for value: PE
+            /// </summary>
+            [EnumMember(Value = "PE")]
+            PE = 72,
+
+            /// <summary>
+            /// Enum QC for value: QC
+            /// </summary>
+            [EnumMember(Value = "QC")]
+            QC = 73,
+
+            /// <summary>
+            /// Enum SK for value: SK
+            /// </summary>
+            [EnumMember(Value = "SK")]
+            SK = 74,
+
+            /// <summary>
+            /// Enum YT for value: YT
+            /// </summary>
+            [EnumMember(Value = "YT")]
+            YT = 75
         }
 
 
         /// <summary>
-        /// The state of residence.
+        /// The state of residence.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state of residence.</value>
+        /// <value>The state of residence.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [DataMember(Name = "residenceState", EmitDefaultValue = true)]
         public ResidenceStateEnum? ResidenceState { get; set; }
         /// <summary>
-        /// The state of the mailing address.
+        /// The state of the mailing address.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state of the mailing address.</value>
+        /// <value>The state of the mailing address.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum MailingStateEnum
         {
@@ -1161,14 +1239,92 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum WY for value: WY
             /// </summary>
             [EnumMember(Value = "WY")]
-            WY = 62
+            WY = 62,
+
+            /// <summary>
+            /// Enum AB for value: AB
+            /// </summary>
+            [EnumMember(Value = "AB")]
+            AB = 63,
+
+            /// <summary>
+            /// Enum BC for value: BC
+            /// </summary>
+            [EnumMember(Value = "BC")]
+            BC = 64,
+
+            /// <summary>
+            /// Enum MB for value: MB
+            /// </summary>
+            [EnumMember(Value = "MB")]
+            MB = 65,
+
+            /// <summary>
+            /// Enum NB for value: NB
+            /// </summary>
+            [EnumMember(Value = "NB")]
+            NB = 66,
+
+            /// <summary>
+            /// Enum NL for value: NL
+            /// </summary>
+            [EnumMember(Value = "NL")]
+            NL = 67,
+
+            /// <summary>
+            /// Enum NS for value: NS
+            /// </summary>
+            [EnumMember(Value = "NS")]
+            NS = 68,
+
+            /// <summary>
+            /// Enum NT for value: NT
+            /// </summary>
+            [EnumMember(Value = "NT")]
+            NT = 69,
+
+            /// <summary>
+            /// Enum NU for value: NU
+            /// </summary>
+            [EnumMember(Value = "NU")]
+            NU = 70,
+
+            /// <summary>
+            /// Enum ON for value: ON
+            /// </summary>
+            [EnumMember(Value = "ON")]
+            ON = 71,
+
+            /// <summary>
+            /// Enum PE for value: PE
+            /// </summary>
+            [EnumMember(Value = "PE")]
+            PE = 72,
+
+            /// <summary>
+            /// Enum QC for value: QC
+            /// </summary>
+            [EnumMember(Value = "QC")]
+            QC = 73,
+
+            /// <summary>
+            /// Enum SK for value: SK
+            /// </summary>
+            [EnumMember(Value = "SK")]
+            SK = 74,
+
+            /// <summary>
+            /// Enum YT for value: YT
+            /// </summary>
+            [EnumMember(Value = "YT")]
+            YT = 75
         }
 
 
         /// <summary>
-        /// The state of the mailing address.
+        /// The state of the mailing address.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state of the mailing address.</value>
+        /// <value>The state of the mailing address.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [DataMember(Name = "mailingState", EmitDefaultValue = true)]
         public MailingStateEnum? MailingState { get; set; }
         /// <summary>
@@ -1217,9 +1373,9 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "disregardedEntityFatcaStatus", EmitDefaultValue = true)]
         public DisregardedEntityFatcaStatusEnum? DisregardedEntityFatcaStatus { get; set; }
         /// <summary>
-        /// The state for disregarded entities.
+        /// The state for disregarded entities.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state for disregarded entities.</value>
+        /// <value>The state for disregarded entities.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum DisregardedStateEnum
         {
@@ -1593,14 +1749,92 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum WY for value: WY
             /// </summary>
             [EnumMember(Value = "WY")]
-            WY = 62
+            WY = 62,
+
+            /// <summary>
+            /// Enum AB for value: AB
+            /// </summary>
+            [EnumMember(Value = "AB")]
+            AB = 63,
+
+            /// <summary>
+            /// Enum BC for value: BC
+            /// </summary>
+            [EnumMember(Value = "BC")]
+            BC = 64,
+
+            /// <summary>
+            /// Enum MB for value: MB
+            /// </summary>
+            [EnumMember(Value = "MB")]
+            MB = 65,
+
+            /// <summary>
+            /// Enum NB for value: NB
+            /// </summary>
+            [EnumMember(Value = "NB")]
+            NB = 66,
+
+            /// <summary>
+            /// Enum NL for value: NL
+            /// </summary>
+            [EnumMember(Value = "NL")]
+            NL = 67,
+
+            /// <summary>
+            /// Enum NS for value: NS
+            /// </summary>
+            [EnumMember(Value = "NS")]
+            NS = 68,
+
+            /// <summary>
+            /// Enum NT for value: NT
+            /// </summary>
+            [EnumMember(Value = "NT")]
+            NT = 69,
+
+            /// <summary>
+            /// Enum NU for value: NU
+            /// </summary>
+            [EnumMember(Value = "NU")]
+            NU = 70,
+
+            /// <summary>
+            /// Enum ON for value: ON
+            /// </summary>
+            [EnumMember(Value = "ON")]
+            ON = 71,
+
+            /// <summary>
+            /// Enum PE for value: PE
+            /// </summary>
+            [EnumMember(Value = "PE")]
+            PE = 72,
+
+            /// <summary>
+            /// Enum QC for value: QC
+            /// </summary>
+            [EnumMember(Value = "QC")]
+            QC = 73,
+
+            /// <summary>
+            /// Enum SK for value: SK
+            /// </summary>
+            [EnumMember(Value = "SK")]
+            SK = 74,
+
+            /// <summary>
+            /// Enum YT for value: YT
+            /// </summary>
+            [EnumMember(Value = "YT")]
+            YT = 75
         }
 
 
         /// <summary>
-        /// The state for disregarded entities.
+        /// The state for disregarded entities.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)
         /// </summary>
-        /// <value>The state for disregarded entities.</value>
+        /// <value>The state for disregarded entities.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more)</value>
         [DataMember(Name = "disregardedState", EmitDefaultValue = true)]
         public DisregardedStateEnum? DisregardedState { get; set; }
         /// <summary>
@@ -1727,13 +1961,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="fatcaStatus">Represents the FATCA status types for tax forms.  Used for W8-BEN-E forms and FATCA compliance validations.  Values correspond to numeric identifiers used in forms.  - 1: Nonparticipating FFI (including a limited FFI or an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)  - 2: Participating FFI  - 3: Reporting Model 1 FFI  - 4: Reporting Model 2 FFI  - 5: Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)  - 6: Sponsored FFI that has not obtained a GIIN  - 7: Certified deemed-compliant nonregistering local bank  - 8: Certified deemed-compliant FFI with only low-value accounts  - 9: Certified deemed-compliant sponsored, closely held investment vehicle  - 10: Certified deemed-compliant limited life debt investment entity  - 11: Certified deemed-compliant investment advisors and investment managers  - 12: Owner-documented FFI  - 13: Restricted distributor  - 14: Nonreporting IGA FFI  - 15: Foreign government, government of a U.S. possession, or foreign central bank of issue  - 16: International organization  - 17: Exempt retirement plans  - 18: Entity wholly owned by exempt beneficial owners  - 19: Territory financial institution  - 20: Nonfinancial group entity  - 21: Excepted nonfinancial start-up company  - 22: Excepted nonfinancial entity in liquidation or bankruptcy  - 23: 501(c) organization  - 24: Nonprofit organization  - 25: Publicly traded NFFE or NFFE affiliate of a publicly traded corporation  - 26: Excepted territory NFFE  - 27: Active NFFE  - 28: Passive NFFE  - 29: Excepted inter-affiliate FFI  - 30: Direct reporting NFFE  - 31: Sponsored direct reporting NFFE  - 32: Account that is not a financial account (required).</param>
         /// <param name="residenceAddress">The residential address of the individual or entity..</param>
         /// <param name="residenceCity">The city of residence..</param>
-        /// <param name="residenceState">The state of residence..</param>
+        /// <param name="residenceState">The state of residence.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more).</param>
         /// <param name="residenceZip">The ZIP code of the residence..</param>
         /// <param name="residenceCountry">The country of residence. (required).</param>
         /// <param name="residenceIsMailing">Indicates whether the residence address is also the mailing address..</param>
         /// <param name="mailingAddress">The mailing address..</param>
         /// <param name="mailingCity">The city of the mailing address..</param>
-        /// <param name="mailingState">The state of the mailing address..</param>
+        /// <param name="mailingState">The state of the mailing address.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more).</param>
         /// <param name="mailingZip">The ZIP code of the mailing address..</param>
         /// <param name="mailingCountry">The country of the mailing address..</param>
         /// <param name="tin">The taxpayer identification number (TIN)..</param>
@@ -1744,7 +1978,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="disregardedEntityFatcaStatus">The FATCA status of disregarded entity or branch receiving payment.  Available values:  - 1: Branch treated as nonparticipating FFI  - 2: U.S. Branch  - 3: Participating FFI  - 4: Reporting Model 1 FFI  - 5: Reporting Model 2 FFI.</param>
         /// <param name="disregardedAddress">The address for disregarded entities..</param>
         /// <param name="disregardedCity">The city for disregarded entities..</param>
-        /// <param name="disregardedState">The state for disregarded entities..</param>
+        /// <param name="disregardedState">The state for disregarded entities.. Allowed values: AA, AE, AK, AL, AP, AR, AS, AZ, CA, CO (and 65 more).</param>
         /// <param name="disregardedZip">The ZIP code for disregarded entities..</param>
         /// <param name="disregardedCountry">The country for disregarded entities..</param>
         /// <param name="disregardedEntityGiin">The GIIN for disregarded entities..</param>
