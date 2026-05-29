@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **UpdatedNoEmail** | **int** | Number of forms updated and valid for e-filing but missing email or email is undeliverable. Value can be 0 or another value based on what the job has available | [optional] 
 **UpdatedInvalid** | **int** | Number of forms updated but invalid for e-filing. Value can be 0 or another value based on what the job has available | [optional] 
 **SkippedDuplicate** | **int** | Number of forms skipped because they would have updated a record already updated once in the request. Value can be 0 or another value based on what the job has available | [optional] 
-**SkippedInvalid** | **int** | Number of forms skipped because they would have made a form invalid and the form is already e-filed or scheduled for e-filing. Value can be 0 or another value based on what the job has available | [optional] 
+**SkippedInvalid** | **int** | Number of forms skipped because they would have made a form invalid and the form is already e-filed or scheduled for e-filing, or because you do not have permission to update forms that have been scheduled. Value can be 0 or another value based on what the job has available | [optional] 
 **SkippedMultipleMatches** | **int** | Number of forms skipped because they matched multiple forms. Value can be 0 or another value based on what the job has available | [optional] 
 **NotFound** | **int** | Number of forms skipped because no matching form or issuer could be found. Value can be 0 or another value based on what the job has available | [optional] 
 **CreatedInvalid** | **int** | Number of new forms created because no matching form could be found (and &#x60;upsert&#x60; was true) - with errors. Value can be 0 or another value based on what the job has available | [optional] 
