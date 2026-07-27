@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createissuer"></a>
 # **CreateIssuer**
-> IssuerResponse CreateIssuer (CreateIssuerRequestSdk requestParameters)
+> IssuerWriteResponse CreateIssuer (CreateIssuerRequestSdk requestParameters)
 
 Create an issuer
 
@@ -43,14 +43,14 @@ namespace Example
             var apiInstance = new Issuers1099Api(apiClient);
             var requestParameters = new CreateIssuerRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = deb4448e-a364-4e99-b30c-9e876743be1f;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 86f494a4-440e-4bda-86a3-ad91885e318a;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to create (optional) 
 
             try
             {
                 // Create an issuer
-                IssuerResponse result = apiInstance.CreateIssuer(requestParameters);
+                IssuerWriteResponse result = apiInstance.CreateIssuer(requestParameters);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IssuerResponse**](IssuerResponse.md)
+[**IssuerWriteResponse**](IssuerWriteResponse.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ namespace Example
             var requestParameters = new DeleteIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = fbe6b0c6-506b-4d42-951d-dfbd382b2223;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = f366a724-0f66-4b3c-97b1-2bf6a3a6336b;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -182,7 +182,7 @@ void (empty response body)
 
 <a name="getissuer"></a>
 # **GetIssuer**
-> IssuerResponse GetIssuer (GetIssuerRequestSdk requestParameters)
+> GetIssuer200Response GetIssuer (GetIssuerRequestSdk requestParameters)
 
 Retrieve an issuer
 
@@ -213,13 +213,13 @@ namespace Example
             var requestParameters = new GetIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to retrieve
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 9b9f0e80-4a47-4390-ae04-cedb799f6f0c;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = d9601a03-b428-423c-9f53-82eee07213e2;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
             {
                 // Retrieve an issuer
-                IssuerResponse result = apiInstance.GetIssuer(requestParameters);
+                GetIssuer200Response result = apiInstance.GetIssuer(requestParameters);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IssuerResponse**](IssuerResponse.md)
+[**GetIssuer200Response**](GetIssuer200Response.md)
 
 ### Authorization
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 List issuers
 
-List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
 
 ### Example
 ```csharp
@@ -303,7 +303,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = 81488870-629b-4a05-8d4c-673e5db15454;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 4869c403-32c3-4c33-b2bd-b80de0fa0fad;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -364,11 +364,11 @@ Name | Type | Description  | Notes
 
 <a name="updateissuer"></a>
 # **UpdateIssuer**
-> void UpdateIssuer (UpdateIssuerRequestSdk requestParameters)
+> IssuerWriteResponse UpdateIssuer (UpdateIssuerRequestSdk requestParameters)
 
 Update an issuer
 
-Update an issuer (also known as a Payer).
+Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a `validationErrors[]` array describing each violation.
 
 ### Example
 ```csharp
@@ -395,14 +395,15 @@ namespace Example
             var requestParameters = new UpdateIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 0c9b920f-cb85-4332-a9f6-bc06014dab8e;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = d43a2a4e-19f2-40a6-a5fe-e5efb7c8b93b;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to update (optional) 
 
             try
             {
                 // Update an issuer
-                apiInstance.UpdateIssuer(requestParameters);
+                IssuerWriteResponse result = apiInstance.UpdateIssuer(requestParameters);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -427,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IssuerWriteResponse**](IssuerWriteResponse.md)
 
 ### Authorization
 
@@ -442,10 +443,11 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Issuer updated |  -  |
-| **400** | Bad request (e.g., invalid sort key) |  -  |
+| **200** | Issuer updated. Body may contain &#x60;validationErrors[]&#x60; when business rules failed. |  -  |
+| **400** | Invalid id format, malformed JSON, or identity change rejected for an issuer with scheduled Forms 1099 (TIN, TIN type, or name are immutable in that case). |  -  |
 | **401** | Unauthorized |  -  |
-| **404** | Resource Not Found |  -  |
+| **403** | Caller does not have access to this issuer. |  -  |
+| **404** | Issuer not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

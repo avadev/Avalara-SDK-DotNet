@@ -160,8 +160,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerResponse</returns>
-        IssuerResponse CreateIssuer(CreateIssuerRequestSdk requestParameters);
+        /// <returns>IssuerWriteResponse</returns>
+        IssuerWriteResponse CreateIssuer(CreateIssuerRequestSdk requestParameters);
 
         /// <summary>
         /// Delete an issuer
@@ -182,14 +182,14 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerResponse</returns>
-        IssuerResponse GetIssuer(GetIssuerRequestSdk requestParameters);
+        /// <returns>GetIssuer200Response</returns>
+        GetIssuer200Response GetIssuer(GetIssuerRequestSdk requestParameters);
 
         /// <summary>
         /// List issuers
         /// </summary>
         /// <remarks>
-        /// List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -200,12 +200,12 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Update an issuer
         /// </summary>
         /// <remarks>
-        /// Update an issuer (also known as a Payer).
+        /// Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns></returns>
-        void UpdateIssuer(UpdateIssuerRequestSdk requestParameters);
+        /// <returns>IssuerWriteResponse</returns>
+        IssuerWriteResponse UpdateIssuer(UpdateIssuerRequestSdk requestParameters);
 
         #endregion Synchronous Operations
     }
@@ -225,8 +225,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerResponse</returns>
-        System.Threading.Tasks.Task<IssuerResponse> CreateIssuerAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of IssuerWriteResponse</returns>
+        System.Threading.Tasks.Task<IssuerWriteResponse> CreateIssuerAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete an issuer
@@ -249,14 +249,14 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerResponse</returns>
-        System.Threading.Tasks.Task<IssuerResponse> GetIssuerAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetIssuer200Response</returns>
+        System.Threading.Tasks.Task<GetIssuer200Response> GetIssuerAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List issuers
         /// </summary>
         /// <remarks>
-        /// List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -268,13 +268,13 @@ namespace Avalara.SDK.Api.A1099.V2
         /// Update an issuer
         /// </summary>
         /// <remarks>
-        /// Update an issuer (also known as a Payer).
+        /// Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateIssuerAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of IssuerWriteResponse</returns>
+        System.Threading.Tasks.Task<IssuerWriteResponse> UpdateIssuerAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         #endregion Asynchronous Operations
     }
@@ -323,10 +323,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerResponse</returns>
-        public IssuerResponse CreateIssuer(CreateIssuerRequestSdk requestParameters)
+        /// <returns>IssuerWriteResponse</returns>
+        public IssuerWriteResponse CreateIssuer(CreateIssuerRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<IssuerResponse> localVarResponse = CreateIssuerWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> localVarResponse = CreateIssuerWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -335,8 +335,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of IssuerResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<IssuerResponse> CreateIssuerWithHttpInfo(CreateIssuerRequestSdk requestParameters)
+        /// <returns>ApiResponse of IssuerWriteResponse</returns>
+        private Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> CreateIssuerWithHttpInfo(CreateIssuerRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -375,7 +375,7 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IssuerResponse>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Post<IssuerWriteResponse>("/1099/issuers", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -392,10 +392,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerResponse</returns>
-        public async System.Threading.Tasks.Task<IssuerResponse> CreateIssuerAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of IssuerWriteResponse</returns>
+        public async System.Threading.Tasks.Task<IssuerWriteResponse> CreateIssuerAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<IssuerResponse> localVarResponse = await CreateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> localVarResponse = await CreateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -405,8 +405,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IssuerResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerResponse>> CreateIssuerWithHttpInfoAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (IssuerWriteResponse)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerWriteResponse>> CreateIssuerWithHttpInfoAsync(CreateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -447,7 +447,7 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
-			var localVarResponse = await this.Client.PostAsync<IssuerResponse>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PostAsync<IssuerWriteResponse>("/1099/issuers", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -603,10 +603,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>IssuerResponse</returns>
-        public IssuerResponse GetIssuer(GetIssuerRequestSdk requestParameters)
+        /// <returns>GetIssuer200Response</returns>
+        public GetIssuer200Response GetIssuer(GetIssuerRequestSdk requestParameters)
         {
-            Avalara.SDK.Client.ApiResponse<IssuerResponse> localVarResponse = GetIssuerWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<GetIssuer200Response> localVarResponse = GetIssuerWithHttpInfo(requestParameters);
             return localVarResponse.Data;
         }
 
@@ -615,8 +615,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of IssuerResponse</returns>
-        private Avalara.SDK.Client.ApiResponse<IssuerResponse> GetIssuerWithHttpInfo(GetIssuerRequestSdk requestParameters)
+        /// <returns>ApiResponse of GetIssuer200Response</returns>
+        private Avalara.SDK.Client.ApiResponse<GetIssuer200Response> GetIssuerWithHttpInfo(GetIssuerRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -656,7 +656,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<IssuerResponse>("/1099/issuers/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Get<GetIssuer200Response>("/1099/issuers/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -673,10 +673,10 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IssuerResponse</returns>
-        public async System.Threading.Tasks.Task<IssuerResponse> GetIssuerAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetIssuer200Response</returns>
+        public async System.Threading.Tasks.Task<GetIssuer200Response> GetIssuerAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Avalara.SDK.Client.ApiResponse<IssuerResponse> localVarResponse = await GetIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<GetIssuer200Response> localVarResponse = await GetIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -686,8 +686,8 @@ namespace Avalara.SDK.Api.A1099.V2
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IssuerResponse)</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerResponse>> GetIssuerWithHttpInfoAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetIssuer200Response)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<GetIssuer200Response>> GetIssuerWithHttpInfoAsync(GetIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -729,7 +729,7 @@ namespace Avalara.SDK.Api.A1099.V2
             }
 
             // make the HTTP request
-			var localVarResponse = await this.Client.GetAsync<IssuerResponse>("/1099/issuers/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.GetAsync<GetIssuer200Response>("/1099/issuers/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -741,7 +741,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -753,7 +753,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -829,7 +829,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -842,7 +842,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are name, referenceId and taxYear.
+        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -921,23 +921,24 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// Update an issuer Update an issuer (also known as a Payer).
+        /// Update an issuer Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns></returns>
-        public void UpdateIssuer(UpdateIssuerRequestSdk requestParameters)
+        /// <returns>IssuerWriteResponse</returns>
+        public IssuerWriteResponse UpdateIssuer(UpdateIssuerRequestSdk requestParameters)
         {
-            UpdateIssuerWithHttpInfo(requestParameters);
+            Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> localVarResponse = UpdateIssuerWithHttpInfo(requestParameters);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update an issuer Update an issuer (also known as a Payer).
+        /// Update an issuer Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        private Avalara.SDK.Client.ApiResponse<Object> UpdateIssuerWithHttpInfo(UpdateIssuerRequestSdk requestParameters)
+        /// <returns>ApiResponse of IssuerWriteResponse</returns>
+        private Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> UpdateIssuerWithHttpInfo(UpdateIssuerRequestSdk requestParameters)
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -981,7 +982,7 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/1099/issuers/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
+            var localVarResponse = this.Client.Put<IssuerWriteResponse>("/1099/issuers/{id}", localVarRequestOptions, requiredScopes, AvalaraMicroservice.A1099);
 
             if (this.ExceptionFactory != null)
             {
@@ -993,25 +994,26 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// Update an issuer Update an issuer (also known as a Payer).
+        /// Update an issuer Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateIssuerAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of IssuerWriteResponse</returns>
+        public async System.Threading.Tasks.Task<IssuerWriteResponse> UpdateIssuerAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await UpdateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            Avalara.SDK.Client.ApiResponse<IssuerWriteResponse> localVarResponse = await UpdateIssuerWithHttpInfoAsync(requestParameters, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update an issuer Update an issuer (also known as a Payer).
+        /// Update an issuer Update an issuer (also known as a Payer). When the payload violates field-level business rules, the issuer is still persisted and the response body includes a &#x60;validationErrors[]&#x60; array describing each violation.
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<Object>> UpdateIssuerWithHttpInfoAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (IssuerWriteResponse)</returns>
+        private async System.Threading.Tasks.Task<Avalara.SDK.Client.ApiResponse<IssuerWriteResponse>> UpdateIssuerWithHttpInfoAsync(UpdateIssuerRequestSdk requestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             //OAuth2 Scopes
             String requiredScopes = "";
@@ -1057,7 +1059,7 @@ namespace Avalara.SDK.Api.A1099.V2
             localVarRequestOptions.Data = requestParameters.IssuerRequest;
 
             // make the HTTP request
-			var localVarResponse = await this.Client.PutAsync<Object>("/1099/issuers/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
+			var localVarResponse = await this.Client.PutAsync<IssuerWriteResponse>("/1099/issuers/{id}", localVarRequestOptions, cancellationToken, requiredScopes, AvalaraMicroservice.A1099).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1077,7 +1079,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "26.5.0";
+            this.Client.SdkVersion = "26.7.0";
         }
         
     }

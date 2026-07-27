@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
 *Issuers1099Api* | [**GetIssuers**](docs/A1099/V2/Issuers1099Api.md#getissuers) | **GET** /1099/issuers | List issuers
 *Issuers1099Api* | [**UpdateIssuer**](docs/A1099/V2/Issuers1099Api.md#updateissuer) | **PUT** /1099/issuers/{id} | Update an issuer
 *JobsApi* | [**GetJob**](docs/A1099/V2/JobsApi.md#getjob) | **GET** /jobs/{id} | Retrieves information about the job
+*TINMatchesApi* | [**PerformRealTimeTinMatch**](docs/A1099/V2/TINMatchesApi.md#performrealtimetinmatch) | **POST** /tin-matches/$real-time | Perform real time TIN Match
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
@@ -268,11 +269,14 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.Form1099StatusDetail](docs/A1099/V2/Form1099StatusDetail.md)
  - [Model.A1099.V2.Form1099W2](docs/A1099/V2/Form1099W2.md)
  - [Model.A1099.V2.Get1099Form200Response](docs/A1099/V2/Get1099Form200Response.md)
+ - [Model.A1099.V2.GetIssuer200Response](docs/A1099/V2/GetIssuer200Response.md)
  - [Model.A1099.V2.IntermediaryOrFlowThrough](docs/A1099/V2/IntermediaryOrFlowThrough.md)
+ - [Model.A1099.V2.IrisFormBase](docs/A1099/V2/IrisFormBase.md)
  - [Model.A1099.V2.IrsResponse](docs/A1099/V2/IrsResponse.md)
  - [Model.A1099.V2.IssuerBase](docs/A1099/V2/IssuerBase.md)
  - [Model.A1099.V2.IssuerRequest](docs/A1099/V2/IssuerRequest.md)
  - [Model.A1099.V2.IssuerResponse](docs/A1099/V2/IssuerResponse.md)
+ - [Model.A1099.V2.IssuerWriteResponse](docs/A1099/V2/IssuerWriteResponse.md)
  - [Model.A1099.V2.JobResponse](docs/A1099/V2/JobResponse.md)
  - [Model.A1099.V2.OfferAndCoverage](docs/A1099/V2/OfferAndCoverage.md)
  - [Model.A1099.V2.PaginatedQueryResultModelCompanyResponse](docs/A1099/V2/PaginatedQueryResultModelCompanyResponse.md)
@@ -280,6 +284,9 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.PaginatedQueryResultModelIssuerResponse](docs/A1099/V2/PaginatedQueryResultModelIssuerResponse.md)
  - [Model.A1099.V2.PaginatedQueryResultModelW9FormBaseResponse](docs/A1099/V2/PaginatedQueryResultModelW9FormBaseResponse.md)
  - [Model.A1099.V2.PrimaryWithholdingAgent](docs/A1099/V2/PrimaryWithholdingAgent.md)
+ - [Model.A1099.V2.RealTimeTinMatchIrsResponse](docs/A1099/V2/RealTimeTinMatchIrsResponse.md)
+ - [Model.A1099.V2.RealTimeTinMatchRequest](docs/A1099/V2/RealTimeTinMatchRequest.md)
+ - [Model.A1099.V2.RealTimeTinMatchResponse](docs/A1099/V2/RealTimeTinMatchResponse.md)
  - [Model.A1099.V2.StateAndLocalWithholding](docs/A1099/V2/StateAndLocalWithholding.md)
  - [Model.A1099.V2.StateEfileStatusDetail](docs/A1099/V2/StateEfileStatusDetail.md)
  - [Model.A1099.V2.SubstantialUsOwnerRequest](docs/A1099/V2/SubstantialUsOwnerRequest.md)

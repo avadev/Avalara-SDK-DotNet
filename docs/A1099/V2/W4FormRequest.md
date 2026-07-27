@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **EmployeeMiddleName** | **string** | The middle name of the employee. | [optional] 
 **EmployeeLastName** | **string** | The last name of the employee. | 
 **EmployeeNameSuffix** | **string** | The name suffix of the employee. | [optional] 
-**TinType** | **string** | Tax Identification Number (TIN) type. | 
+**TinType** | **string** | Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number | 
 **Tin** | **string** | The taxpayer identification number (TIN). | 
 **Address** | **string** | The address of the employee. Required unless exempt. | [optional] 
 **City** | **string** | The city of residence of the employee. Required unless exempt. | [optional] 
@@ -24,11 +24,11 @@ Name | Type | Description | Notes
 **AdditionalWithheld** | **float?** | The additional amount withheld. | [optional] 
 **ExemptFromWithholding** | **bool** | Indicates whether the employee is exempt from withholding. | [optional] 
 **OfficeCode** | **string** | The office code associated with the form. | [optional] 
-**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
-**Signature** | **string** | The signature of the form. | [optional] 
 **CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
+**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
+**Signature** | **string** | The signature of the form. | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

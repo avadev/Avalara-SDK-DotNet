@@ -8,7 +8,7 @@
  *
  * Avalara 1099 & W-9 API Definition
  *
- * ## Authentication  #### Step 1: Generate API Credentials  Generate a *client ID* and *client secret* from your [Avalara1099 account](https://sbx.track1099.com/api_tokens): *Your Profile → API*.  #### Step 2: Get an Identity Token  Send a `POST` request to the **Identity Token URL** with your *client ID* and *client secret* from Step 1 as form-encoded parameters:  ```http POST https://identity.avalara.com/connect/token Content-Type: application/x-www-form-urlencoded  grant_type=client_credentials client_id=<your client ID> client_secret=<your client secret> ```  **Body parameters** - `grant_type` — Always `client_credentials` - `client_id` — Your *client ID* from Step 1 - `client_secret` — Your *client secret* from Step 1  **Successful response**  ```json {   \"access_token\": \"eyJhbGci...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\" } ```  Use the `access_token` as a bearer token in the `Authorization` header on every A1099 API request:  ```http Authorization: Bearer <access_token> ```  - --  For more on authenticating requests, see the [A1099 authentication guide](https://developer.avalara.com/1099-and-w-9/kny2997001535374/).  - --  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
+ * > **Note:** You must have an active Avalara 1099 & W-9 subscription to authenticate and use these APIs. If you don't have a subscription, please contact our [Sales team](https://www.avalara.com/us/en/products/1099/request-a-demo.html).  ## Authentication  The Avalara 1099 & W-9 API uses **Bearer Token Authentication**. To authenticate, acquire a bearer token using a **Client ID** and **Client Secret** that you generate in the Avalara 1099 & W-9 web application.  The sample cURL commands below use **production** URLs. For **sandbox**, replace them with the sandbox URLs listed in the Sandbox Environment table.  ### Option 1 — Client ID and Client Secret (recommended)  **Step 1: Create API credentials in the Avalara 1099 & W-9 web app**  For a full walkthrough, see the [Avalara 1099 & W-9 integration guide](https://developer.avalara.com/products/avalara-1099-and-w9/integration-guides/1099-and-w-9/siu2796410674799/).  > **Note:** To enable credential creation you must first enter a valid company address in **Account Settings > Account** and enable two-factor authentication in **Account Settings > Security**.  1. In Avalara 1099 & W-9, open **Account Settings** (gear icon, top-right of any page) and select **API**. 2. Click **Create new credentials** (a valid company address and 2FA are required). 3. Copy your **Client Id** and **Client Secret** securely — they will not be shown again after you leave the screen.  **Step 2: Request a bearer token**  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{client_id}}' \\   - -data-urlencode 'client_secret={{client_secret}}' ```  ### Option 2 — Account ID and License Key  If your organization already uses other Avalara products (AvaTax, CertCapture) and has access to the logged-in area of Avalara.com, you can generate the bearer token using your **Account ID** and **License Key**.  > **Note:** If you already have a license key for other Avalara products you can reuse it. Generating a new key will reset any previously created key.  1. Log in to Avalara.com. 2. Go to **Settings → License and API Keys**. 3. Click **Generate New Key**. 4. Note your **Account ID** from the Account menu.  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{accountId}}' \\   - -data-urlencode 'client_secret={{licenseKey}}' ```  ### Using and renewing the bearer token  Include the token in the `Authorization` header on every request:  ```http Authorization: Bearer {access_token} ```  Tokens expire after the number of seconds in the `expires_in` field of the token response. Your integration must renew the token before it expires.  **Example token response**  ```json {   \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\",   \"scope\": \"avatax_api iam-ds\" } ```  ### Sandbox Environment  Use the same steps as production, replacing the base URLs:  | Purpose | Production | Sandbox | | - -- | - -- | - -- | | Account & License Key management (web) | `https://www.avalara.com` | `https://sandbox.admin.avalara.com` | | Account & License Key management (API) | `https://rest.avatax.com` | `https://sandbox-rest.avatax.com` | | Token generation | `https://identity.avalara.com` | `https://ai-sbx.avlr.sh` |  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -119,9 +119,9 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TinTypeEnum
         {
@@ -147,14 +147,32 @@ namespace Avalara.SDK.Model.A1099.V2
             /// Enum ATIN for value: ATIN
             /// </summary>
             [EnumMember(Value = "ATIN")]
-            ATIN = 4
+            ATIN = 4,
+
+            /// <summary>
+            /// Enum INDIVIDUAL for value: INDIVIDUAL
+            /// </summary>
+            [EnumMember(Value = "INDIVIDUAL")]
+            INDIVIDUAL = 5,
+
+            /// <summary>
+            /// Enum BUSINESS for value: BUSINESS
+            /// </summary>
+            [EnumMember(Value = "BUSINESS")]
+            BUSINESS = 6,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7
         }
 
 
         /// <summary>
-        /// Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
         /// </summary>
-        /// <value>Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number</value>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
@@ -190,17 +208,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="taxYear">Tax Year - only required when creating forms via $bulk-upsert.</param>
         /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
         /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
-        /// <param name="recipientName">Recipient name (required).</param>
-        /// <param name="tinType">Tax Identification Number (TIN) type.  Available values: - EIN: Employer Identification Number - SSN: Social Security Number - ITIN: Individual Taxpayer Identification Number - ATIN: Adoption Taxpayer Identification Number.</param>
-        /// <param name="recipientSecondName">Recipient second name.</param>
+        /// <param name="recipientName">DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals..</param>
         /// <param name="address">Address. (required).</param>
         /// <param name="address2">Address line 2..</param>
         /// <param name="city">City. (required).</param>
         /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses)..</param>
         /// <param name="zip">ZIP/postal code..</param>
         /// <param name="email">Recipient&#39;s Contact email address..</param>
-        /// <param name="accountNumber">Account number.</param>
-        /// <param name="officeCode">Office code.</param>
         /// <param name="nonUsProvince">Province or region for non-US/CA addresses..</param>
         /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
         /// <param name="federalEfileDate">Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
@@ -208,19 +222,23 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="stateEfileDate">Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
         /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
-        /// <param name="noTin">No TIN indicator.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
+        /// <param name="tinType">Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number.</param>
+        /// <param name="businessName">Business name. Required when the recipient of the form is a business; should only be used for businesses..</param>
+        /// <param name="businessName2">Business name line 2. Should only be used for businesses..</param>
+        /// <param name="firstName">First name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="middleName">Middle name. Should only be used for individuals..</param>
+        /// <param name="lastName">Last name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="suffixName">Suffix name. Should only be used for individuals..</param>
+        /// <param name="recipientSecondName">DEPRECATED: Use &#x60;businessName2&#x60; instead..</param>
+        /// <param name="accountNumber">Account number.</param>
+        /// <param name="officeCode">Office code.</param>
+        /// <param name="noTin">No TIN indicator.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099Int(double? interestIncome = default(double?), double? earlyWithdrawalPenalty = default(double?), double? usSavingsBondsInterest = default(double?), double? federalIncomeTaxWithheld = default(double?), double? investmentExpenses = default(double?), double? foreignTaxPaid = default(double?), string foreignCountry = default(string), double? taxExemptInterest = default(double?), double? specifiedPrivateActivityBondInterest = default(double?), double? marketDiscount = default(double?), double? bondPremium = default(double?), double? bondPremiumOnTreasuryObligations = default(double?), double? bondPremiumOnTaxExemptBond = default(double?), string taxExemptBondCusipNumber = default(string), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string accountNumber = default(string), string officeCode = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? noTin = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), bool? secondTinNotice = default(bool?))
+        public Form1099Int(double? interestIncome = default(double?), double? earlyWithdrawalPenalty = default(double?), double? usSavingsBondsInterest = default(double?), double? federalIncomeTaxWithheld = default(double?), double? investmentExpenses = default(double?), double? foreignTaxPaid = default(double?), string foreignCountry = default(string), double? taxExemptInterest = default(double?), double? specifiedPrivateActivityBondInterest = default(double?), double? marketDiscount = default(double?), double? bondPremium = default(double?), double? bondPremiumOnTreasuryObligations = default(double?), double? bondPremiumOnTaxExemptBond = default(double?), string taxExemptBondCusipNumber = default(string), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
         {
             this.Type = type;
-            // to ensure "recipientName" is required (not null)
-            if (recipientName == null)
-            {
-                throw new ArgumentNullException("recipientName is a required property for Form1099Int and cannot be null");
-            }
-            this.RecipientName = recipientName;
             // to ensure "address" is required (not null)
             if (address == null)
             {
@@ -260,23 +278,30 @@ namespace Avalara.SDK.Model.A1099.V2
             this.TaxYear = taxYear;
             this.ReferenceId = referenceId;
             this.Tin = tin;
-            this.TinType = tinType;
-            this.RecipientSecondName = recipientSecondName;
+            this.RecipientName = recipientName;
             this.Address2 = address2;
             this.State = state;
             this.Zip = zip;
             this.Email = email;
-            this.AccountNumber = accountNumber;
-            this.OfficeCode = officeCode;
             this.NonUsProvince = nonUsProvince;
             this.FederalEfileDate = federalEfileDate;
             this.PostalMail = postalMail;
             this.StateEfileDate = stateEfileDate;
             this.RecipientEdeliveryDate = recipientEdeliveryDate;
             this.TinMatch = tinMatch;
-            this.NoTin = noTin;
             this.AddressVerification = addressVerification;
             this.StateAndLocalWithholding = stateAndLocalWithholding;
+            this.TinType = tinType;
+            this.BusinessName = businessName;
+            this.BusinessName2 = businessName2;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.SuffixName = suffixName;
+            this.RecipientSecondName = recipientSecondName;
+            this.AccountNumber = accountNumber;
+            this.OfficeCode = officeCode;
+            this.NoTin = noTin;
             this.SecondTinNotice = secondTinNotice;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
@@ -444,18 +469,12 @@ namespace Avalara.SDK.Model.A1099.V2
         public string Tin { get; set; }
 
         /// <summary>
-        /// Recipient name
+        /// DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals.
         /// </summary>
-        /// <value>Recipient name</value>
-        [DataMember(Name = "recipientName", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals.</value>
+        [DataMember(Name = "recipientName", EmitDefaultValue = true)]
+        [Obsolete]
         public string RecipientName { get; set; }
-
-        /// <summary>
-        /// Recipient second name
-        /// </summary>
-        /// <value>Recipient second name</value>
-        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
-        public string RecipientSecondName { get; set; }
 
         /// <summary>
         /// Address.
@@ -498,20 +517,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>Recipient&#39;s Contact email address.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
-
-        /// <summary>
-        /// Account number
-        /// </summary>
-        /// <value>Account number</value>
-        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
-        public string AccountNumber { get; set; }
-
-        /// <summary>
-        /// Office code
-        /// </summary>
-        /// <value>Office code</value>
-        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
-        public string OfficeCode { get; set; }
 
         /// <summary>
         /// Province or region for non-US/CA addresses.
@@ -566,13 +571,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? TinMatch { get; set; }
 
         /// <summary>
-        /// No TIN indicator
-        /// </summary>
-        /// <value>No TIN indicator</value>
-        [DataMember(Name = "noTin", EmitDefaultValue = true)]
-        public bool? NoTin { get; set; }
-
-        /// <summary>
         /// Boolean indicating that address verification should be scheduled for this form
         /// </summary>
         /// <value>Boolean indicating that address verification should be scheduled for this form</value>
@@ -585,13 +583,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>State and local withholding information</value>
         [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = true)]
         public StateAndLocalWithholding StateAndLocalWithholding { get; set; }
-
-        /// <summary>
-        /// Second TIN notice
-        /// </summary>
-        /// <value>Second TIN notice</value>
-        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
-        public bool? SecondTinNotice { get; set; }
 
         /// <summary>
         /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)
@@ -729,6 +720,84 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
+        /// Business name. Required when the recipient of the form is a business; should only be used for businesses.
+        /// </summary>
+        /// <value>Business name. Required when the recipient of the form is a business; should only be used for businesses.</value>
+        [DataMember(Name = "businessName", EmitDefaultValue = true)]
+        public string BusinessName { get; set; }
+
+        /// <summary>
+        /// Business name line 2. Should only be used for businesses.
+        /// </summary>
+        /// <value>Business name line 2. Should only be used for businesses.</value>
+        [DataMember(Name = "businessName2", EmitDefaultValue = true)]
+        public string BusinessName2 { get; set; }
+
+        /// <summary>
+        /// First name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>First name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Middle name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Middle name. Should only be used for individuals.</value>
+        [DataMember(Name = "middleName", EmitDefaultValue = true)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Last name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>Last name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Suffix name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Suffix name. Should only be used for individuals.</value>
+        [DataMember(Name = "suffixName", EmitDefaultValue = true)]
+        public string SuffixName { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Use &#x60;businessName2&#x60; instead.
+        /// </summary>
+        /// <value>DEPRECATED: Use &#x60;businessName2&#x60; instead.</value>
+        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
+        [Obsolete]
+        public string RecipientSecondName { get; set; }
+
+        /// <summary>
+        /// Account number
+        /// </summary>
+        /// <value>Account number</value>
+        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Office code
+        /// </summary>
+        /// <value>Office code</value>
+        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
+        public string OfficeCode { get; set; }
+
+        /// <summary>
+        /// No TIN indicator
+        /// </summary>
+        /// <value>No TIN indicator</value>
+        [DataMember(Name = "noTin", EmitDefaultValue = true)]
+        public bool? NoTin { get; set; }
+
+        /// <summary>
+        /// Second TIN notice
+        /// </summary>
+        /// <value>Second TIN notice</value>
+        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
+        public bool? SecondTinNotice { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -766,16 +835,12 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
-            sb.Append("  TinType: ").Append(TinType).Append("\n");
-            sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zip: ").Append(Zip).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
             sb.Append("  NonUsProvince: ").Append(NonUsProvince).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  FederalEfileDate: ").Append(FederalEfileDate).Append("\n");
@@ -783,10 +848,8 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  StateEfileDate: ").Append(StateEfileDate).Append("\n");
             sb.Append("  RecipientEdeliveryDate: ").Append(RecipientEdeliveryDate).Append("\n");
             sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
-            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
             sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
             sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
-            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
             sb.Append("  FederalEfileStatus: ").Append(FederalEfileStatus).Append("\n");
             sb.Append("  StateEfileStatus: ").Append(StateEfileStatus).Append("\n");
             sb.Append("  PostalMailStatus: ").Append(PostalMailStatus).Append("\n");
@@ -796,6 +859,18 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  TinType: ").Append(TinType).Append("\n");
+            sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  BusinessName2: ").Append(BusinessName2).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  SuffixName: ").Append(SuffixName).Append("\n");
+            sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
+            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
+            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
+            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

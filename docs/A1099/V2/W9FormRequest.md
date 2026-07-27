@@ -19,15 +19,15 @@ Name | Type | Description | Notes
 **State** | **string** | The state of the address. | 
 **Zip** | **string** | The ZIP code of the address. | 
 **AccountNumber** | **string** | The account number associated with the form. | [optional] 
-**TinType** | **string** | Tax Identification Number (TIN) type. SSN/ITIN (for individuals) and EIN (for businesses). | 
+**TinType** | **string** | Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number SSN/ITIN (for individuals) and EIN (for businesses). | 
 **Tin** | **string** | The taxpayer identification number (TIN). | 
 **BackupWithholding** | **bool** | Indicates whether backup withholding applies. | [optional] 
 **Is1099able** | **bool** | Indicates whether the individual or entity should be issued a 1099 form. | [optional] 
-**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
-**Signature** | **string** | The signature of the form. | [optional] 
 **CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
+**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
+**Signature** | **string** | The signature of the form. | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 
