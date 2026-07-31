@@ -84,9 +84,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="IssuerResponse" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier set when the record is created..</param>
-        /// <param name="createdAt">Date time when the record was created..</param>
-        /// <param name="updatedAt">Date time when the record was last updated..</param>
         /// <param name="businessName">Business name. Required when the recipient of the form is a business; should only be used for businesses. (required).</param>
         /// <param name="businessName2">Business name line 2. Should only be used for businesses. Use either this or &#39;transferAgentName&#39;..</param>
         /// <param name="name">Legal name. Not the DBA name. Deprecated alias for &#39;businessName&#39;..</param>
@@ -109,7 +106,10 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="foreignProvince">Province or region for non-US/CA addresses..</param>
         /// <param name="transferAgentName">Name of the transfer agent, if applicable — optional; use either this or &#39;dbaName&#39;..</param>
         /// <param name="lastFiling">Indicates if this is the issuer&#39;s final year filing. (required).</param>
-        public IssuerResponse(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string businessName = default(string), string businessName2 = default(string), string name = default(string), string dbaName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffix = default(string), string tin = default(string), string referenceId = default(string), string telephone = default(string), int? taxYear = default(int?), string countryCode = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string transferAgentName = default(string), bool? lastFiling = default(bool?))
+        /// <param name="id">Unique identifier set when the record is created..</param>
+        /// <param name="createdAt">Date time when the record was created..</param>
+        /// <param name="updatedAt">Date time when the record was last updated..</param>
+        public IssuerResponse(string businessName = default(string), string businessName2 = default(string), string name = default(string), string dbaName = default(string), TinTypeEnum? tinType = default(TinTypeEnum?), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffix = default(string), string tin = default(string), string referenceId = default(string), string telephone = default(string), int? taxYear = default(int?), string countryCode = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string foreignProvince = default(string), string transferAgentName = default(string), bool? lastFiling = default(bool?), string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             // to ensure "businessName" is required (not null)
             if (businessName == null)
@@ -165,9 +165,6 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("lastFiling is a required property for IssuerResponse and cannot be null");
             }
             this.LastFiling = lastFiling;
-            this.Id = id;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             this.BusinessName2 = businessName2;
             this.Name = name;
             this.DbaName = dbaName;
@@ -181,28 +178,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.Email = email;
             this.ForeignProvince = foreignProvince;
             this.TransferAgentName = transferAgentName;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
-
-        /// <summary>
-        /// Unique identifier set when the record is created.
-        /// </summary>
-        /// <value>Unique identifier set when the record is created.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Date time when the record was created.
-        /// </summary>
-        /// <value>Date time when the record was created.</value>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
-        /// Date time when the record was last updated.
-        /// </summary>
-        /// <value>Date time when the record was last updated.</value>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Business name. Required when the recipient of the form is a business; should only be used for businesses.
@@ -354,6 +333,27 @@ namespace Avalara.SDK.Model.A1099.V2
         public bool? LastFiling { get; set; }
 
         /// <summary>
+        /// Unique identifier set when the record is created.
+        /// </summary>
+        /// <value>Unique identifier set when the record is created.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Date time when the record was created.
+        /// </summary>
+        /// <value>Date time when the record was created.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Date time when the record was last updated.
+        /// </summary>
+        /// <value>Date time when the record was last updated.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -361,9 +361,6 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class IssuerResponse {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
             sb.Append("  BusinessName2: ").Append(BusinessName2).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -386,6 +383,9 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ForeignProvince: ").Append(ForeignProvince).Append("\n");
             sb.Append("  TransferAgentName: ").Append(TransferAgentName).Append("\n");
             sb.Append("  LastFiling: ").Append(LastFiling).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

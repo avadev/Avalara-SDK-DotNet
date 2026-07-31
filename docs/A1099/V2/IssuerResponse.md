@@ -4,9 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier set when the record is created. | [optional] 
-**CreatedAt** | **DateTime** | Date time when the record was created. | [optional] 
-**UpdatedAt** | **DateTime** | Date time when the record was last updated. | [optional] 
 **BusinessName** | **string** | Business name. Required when the recipient of the form is a business; should only be used for businesses. | 
 **BusinessName2** | **string** | Business name line 2. Should only be used for businesses. Use either this or &#39;transferAgentName&#39;. | [optional] 
 **Name** | **string** | Legal name. Not the DBA name. Deprecated alias for &#39;businessName&#39;. | [optional] 
@@ -29,6 +26,9 @@ Name | Type | Description | Notes
 **ForeignProvince** | **string** | Province or region for non-US/CA addresses. | [optional] 
 **TransferAgentName** | **string** | Name of the transfer agent, if applicable — optional; use either this or &#39;dbaName&#39;. | [optional] 
 **LastFiling** | **bool?** | Indicates if this is the issuer&#39;s final year filing. | 
+**Id** | **string** | Unique identifier set when the record is created. | [optional] 
+**CreatedAt** | **DateTime** | Date time when the record was created. | [optional] 
+**UpdatedAt** | **DateTime** | Date time when the record was last updated. | [optional] 
 
 [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to README]](../../../README.md)
 

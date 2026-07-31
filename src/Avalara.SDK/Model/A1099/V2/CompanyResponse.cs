@@ -51,9 +51,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyResponse" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier set when the record is created..</param>
-        /// <param name="createdAt">Date time when the record was created..</param>
-        /// <param name="updatedAt">Date time when the record was last updated..</param>
         /// <param name="name">Legal name. Not the DBA name. (required).</param>
         /// <param name="dbaName">Doing Business As (DBA) name or continuation of a long legal name..</param>
         /// <param name="email">Contact email address. For inquiries by vendors/employees. (required).</param>
@@ -71,7 +68,10 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="resendRequests">Boolean to enable automatic reminder emails (default: false)..</param>
         /// <param name="resendIntervalDays">Days between reminder emails (7-365, required if resendRequests is true)..</param>
         /// <param name="maxReminderAttempts">Maximum number of reminder attempts (1-52, required if resendRequests is true)..</param>
-        public CompanyResponse(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string name = default(string), string dbaName = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string referenceId = default(string), bool? doTinMatch = default(bool?), string groupName = default(string), string foreignProvince = default(string), string countryCode = default(string), bool? resendRequests = default(bool?), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?))
+        /// <param name="id">Unique identifier set when the record is created..</param>
+        /// <param name="createdAt">Date time when the record was created..</param>
+        /// <param name="updatedAt">Date time when the record was last updated..</param>
+        public CompanyResponse(string name = default(string), string dbaName = default(string), string email = default(string), string address = default(string), string city = default(string), string state = default(string), string zip = default(string), string telephone = default(string), string tin = default(string), string referenceId = default(string), bool? doTinMatch = default(bool?), string groupName = default(string), string foreignProvince = default(string), string countryCode = default(string), bool? resendRequests = default(bool?), int? resendIntervalDays = default(int?), int? maxReminderAttempts = default(int?), string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -121,9 +121,6 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("countryCode is a required property for CompanyResponse and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.Id = id;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             this.DbaName = dbaName;
             this.State = state;
             this.ReferenceId = referenceId;
@@ -133,28 +130,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.ResendRequests = resendRequests;
             this.ResendIntervalDays = resendIntervalDays;
             this.MaxReminderAttempts = maxReminderAttempts;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
-
-        /// <summary>
-        /// Unique identifier set when the record is created.
-        /// </summary>
-        /// <value>Unique identifier set when the record is created.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Date time when the record was created.
-        /// </summary>
-        /// <value>Date time when the record was created.</value>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
-        /// Date time when the record was last updated.
-        /// </summary>
-        /// <value>Date time when the record was last updated.</value>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Legal name. Not the DBA name.
@@ -276,6 +255,27 @@ namespace Avalara.SDK.Model.A1099.V2
         public int? MaxReminderAttempts { get; set; }
 
         /// <summary>
+        /// Unique identifier set when the record is created.
+        /// </summary>
+        /// <value>Unique identifier set when the record is created.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Date time when the record was created.
+        /// </summary>
+        /// <value>Date time when the record was created.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Date time when the record was last updated.
+        /// </summary>
+        /// <value>Date time when the record was last updated.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -283,9 +283,6 @@ namespace Avalara.SDK.Model.A1099.V2
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CompanyResponse {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DbaName: ").Append(DbaName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -303,6 +300,9 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ResendRequests: ").Append(ResendRequests).Append("\n");
             sb.Append("  ResendIntervalDays: ").Append(ResendIntervalDays).Append("\n");
             sb.Append("  MaxReminderAttempts: ").Append(MaxReminderAttempts).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

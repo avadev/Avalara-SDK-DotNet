@@ -49,7 +49,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="recordsetCount">recordsetCount.</param>
         /// <param name="value">value.</param>
         /// <param name="nextLink">nextLink.</param>
-        public PaginatedQueryResultModelIssuerResponse(int? recordsetCount = default(int?), List<GetIssuer200Response> value = default(List<GetIssuer200Response>), string nextLink = default(string))
+        public PaginatedQueryResultModelIssuerResponse(int? recordsetCount = default(int?), List<IssuerResponse> value = default(List<IssuerResponse>), string nextLink = default(string))
         {
             this.RecordsetCount = recordsetCount;
             this.Value = value;
@@ -66,7 +66,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name = "value", EmitDefaultValue = true)]
-        public List<GetIssuer200Response> Value { get; set; }
+        public List<IssuerResponse> Value { get; set; }
 
         /// <summary>
         /// Gets or Sets NextLink
