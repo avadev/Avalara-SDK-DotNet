@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **State** | **string** | The state of the address. | [optional] 
 **Zip** | **string** | The ZIP code of the address. | [optional] 
 **AccountNumber** | **string** | The account number associated with the form. | [optional] 
-**TinType** | **string** | Tax Identification Number (TIN) type. | [optional] 
+**TinType** | **string** | Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number | [optional] 
 **Tin** | **string** | The taxpayer identification number (TIN). | [optional] 
 **BackupWithholding** | **bool** | Indicates whether backup withholding applies. | [optional] 
 **Is1099able** | **bool** | Indicates whether the individual or entity should be issued a 1099 form. | [optional] 

@@ -1,6 +1,6 @@
 # Avalara.SDK.Api.A1099.V2.CompaniesW9Api
 
-All URIs are relative to *https://api.sbx.avalara.com/avalara1099*
+All URIs are relative to *https://api-ava1099.edge.qa.us-east-1.aws.avalara.io/avalara1099*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -43,7 +43,7 @@ namespace Example
             var apiInstance = new CompaniesW9Api(apiClient);
             var requestParameters = new CreateCompanyRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = d8a91153-a928-4bb1-9bdf-3108ec7a303d;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 445307e1-57a7-46d0-93bd-99c9cc698790;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.CompanyRequest = new CompanyRequest(); // CompanyRequest | The company to create (optional) 
 
@@ -129,7 +129,7 @@ namespace Example
             var requestParameters = new DeleteCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The company to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 0f8143df-fd6a-47a4-9612-f0b1def1d6b0;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 983bdd19-d944-400f-a332-6dbed9977702;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -220,7 +220,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = 0f6ead76-1245-4eb9-9f7c-925733e9d4a7;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = c02a5d8b-6916-4d0c-9d97-e31bfc2020e1;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -312,7 +312,7 @@ namespace Example
             var requestParameters = new GetCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the company
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 5d11a039-7f81-4ec9-b32f-b665ffe488e5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = ccf63d6b-d313-44b9-bc14-86486a6c1b19;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -399,7 +399,7 @@ namespace Example
             var requestParameters = new UpdateCompanyRequestSdk();
             requestParameters.Id = "id_example";  // string | The ID of the company to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 8e190a86-7ec8-4984-9126-c2d48e2ccdfc;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 57991ce4-31f7-41c8-8517-e363058bc302;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.CompanyRequest = new CompanyRequest(); // CompanyRequest | The updated company data (optional) 
 

@@ -8,7 +8,7 @@
  *
  * Avalara 1099 & W-9 API Definition
  *
- * ## Authentication  #### Step 1: Generate API Credentials  Generate a *client ID* and *client secret* from your [Avalara1099 account](https://sbx.track1099.com/api_tokens): *Your Profile → API*.  #### Step 2: Get an Identity Token  Send a `POST` request to the **Identity Token URL** with your *client ID* and *client secret* from Step 1 as form-encoded parameters:  ```http POST https://identity.avalara.com/connect/token Content-Type: application/x-www-form-urlencoded  grant_type=client_credentials client_id=<your client ID> client_secret=<your client secret> ```  **Body parameters** - `grant_type` — Always `client_credentials` - `client_id` — Your *client ID* from Step 1 - `client_secret` — Your *client secret* from Step 1  **Successful response**  ```json {   \"access_token\": \"eyJhbGci...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\" } ```  Use the `access_token` as a bearer token in the `Authorization` header on every A1099 API request:  ```http Authorization: Bearer <access_token> ```  - --  For more on authenticating requests, see the [A1099 authentication guide](https://developer.avalara.com/1099-and-w-9/kny2997001535374/).  - --  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
+ * > **Note:** You must have an active Avalara 1099 & W-9 subscription to authenticate and use these APIs. If you don't have a subscription, please contact our [Sales team](https://www.avalara.com/us/en/products/1099/request-a-demo.html).  ## Authentication  The Avalara 1099 & W-9 API uses **Bearer Token Authentication**. To authenticate, acquire a bearer token using a **Client ID** and **Client Secret** that you generate in the Avalara 1099 & W-9 web application.  The sample cURL commands below use **production** URLs. For **sandbox**, replace them with the sandbox URLs listed in the Sandbox Environment table.  ### Option 1 — Client ID and Client Secret (recommended)  **Step 1: Create API credentials in the Avalara 1099 & W-9 web app**  For a full walkthrough, see the [Avalara 1099 & W-9 integration guide](https://developer.avalara.com/products/avalara-1099-and-w9/integration-guides/1099-and-w-9/siu2796410674799/).  > **Note:** To enable credential creation you must first enter a valid company address in **Account Settings > Account** and enable two-factor authentication in **Account Settings > Security**.  1. In Avalara 1099 & W-9, open **Account Settings** (gear icon, top-right of any page) and select **API**. 2. Click **Create new credentials** (a valid company address and 2FA are required). 3. Copy your **Client Id** and **Client Secret** securely — they will not be shown again after you leave the screen.  **Step 2: Request a bearer token**  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{client_id}}' \\   - -data-urlencode 'client_secret={{client_secret}}' ```  ### Option 2 — Account ID and License Key  If your organization already uses other Avalara products (AvaTax, CertCapture) and has access to the logged-in area of Avalara.com, you can generate the bearer token using your **Account ID** and **License Key**.  > **Note:** If you already have a license key for other Avalara products you can reuse it. Generating a new key will reset any previously created key.  1. Log in to Avalara.com. 2. Go to **Settings → License and API Keys**. 3. Click **Generate New Key**. 4. Note your **Account ID** from the Account menu.  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{accountId}}' \\   - -data-urlencode 'client_secret={{licenseKey}}' ```  ### Using and renewing the bearer token  Include the token in the `Authorization` header on every request:  ```http Authorization: Bearer {access_token} ```  Tokens expire after the number of seconds in the `expires_in` field of the token response. Your integration must renew the token before it expires.  **Example token response**  ```json {   \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\",   \"scope\": \"avatax_api iam-ds\" } ```  ### Sandbox Environment  Use the same steps as production, replacing the base URLs:  | Purpose | Production | Sandbox | | - -- | - -- | - -- | | Account & License Key management (web) | `https://www.avalara.com` | `https://sandbox.admin.avalara.com` | | Account & License Key management (API) | `https://rest.avatax.com` | `https://sandbox-rest.avatax.com` | | Token generation | `https://identity.avalara.com` | `https://ai-sbx.avlr.sh` |  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
  *
 
  * @author     Sachin Baijal <sachin.baijal@avalara.com>
@@ -7392,12 +7392,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="withholdingRate">The withholding rate applied as per the treaty. Must be a percentage with up to two decimals (e.g., 12.50, 0).. Allowed values: 0, 0.0, 0.00, 5, 5.5, 10, 12.50, 15, 20, 25 (and 1 more).</param>
         /// <param name="incomeType">The type of income covered by the treaty..</param>
         /// <param name="signerName">The name of the signer of the form..</param>
-        /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
-        /// <param name="signature">The signature of the form..</param>
         /// <param name="companyId">The ID of the associated company. Required when creating a form..</param>
         /// <param name="referenceId">A reference identifier for the form..</param>
         /// <param name="email">The email address of the individual associated with the form..</param>
-        public W8BenFormRequest(string name = default(string), CitizenshipCountryEnum citizenshipCountry = default(CitizenshipCountryEnum), string residenceAddress = default(string), string residenceCity = default(string), ResidenceStateEnum? residenceState = default(ResidenceStateEnum?), string residenceZip = default(string), ResidenceCountryEnum residenceCountry = default(ResidenceCountryEnum), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), MailingStateEnum? mailingState = default(MailingStateEnum?), string mailingZip = default(string), MailingCountryEnum mailingCountry = default(MailingCountryEnum), string tin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), DateTime? birthday = default(DateTime?), TreatyCountryEnum? treatyCountry = default(TreatyCountryEnum?), string treatyArticle = default(string), string treatyReasons = default(string), WithholdingRateEnum? withholdingRate = default(WithholdingRateEnum?), string incomeType = default(string), string signerName = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string))
+        /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
+        /// <param name="signature">The signature of the form..</param>
+        public W8BenFormRequest(string name = default(string), CitizenshipCountryEnum citizenshipCountry = default(CitizenshipCountryEnum), string residenceAddress = default(string), string residenceCity = default(string), ResidenceStateEnum? residenceState = default(ResidenceStateEnum?), string residenceZip = default(string), ResidenceCountryEnum residenceCountry = default(ResidenceCountryEnum), bool residenceIsMailing = default(bool), string mailingAddress = default(string), string mailingCity = default(string), MailingStateEnum? mailingState = default(MailingStateEnum?), string mailingZip = default(string), MailingCountryEnum mailingCountry = default(MailingCountryEnum), string tin = default(string), bool foreignTinNotRequired = default(bool), string foreignTin = default(string), string referenceNumber = default(string), DateTime? birthday = default(DateTime?), TreatyCountryEnum? treatyCountry = default(TreatyCountryEnum?), string treatyArticle = default(string), string treatyReasons = default(string), WithholdingRateEnum? withholdingRate = default(WithholdingRateEnum?), string incomeType = default(string), string signerName = default(string), string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -7428,11 +7428,11 @@ namespace Avalara.SDK.Model.A1099.V2
             this.WithholdingRate = withholdingRate;
             this.IncomeType = incomeType;
             this.SignerName = signerName;
-            this.EDeliveryConsentedAt = eDeliveryConsentedAt;
-            this.Signature = signature;
             this.CompanyId = companyId;
             this.ReferenceId = referenceId;
             this.Email = email;
+            this.EDeliveryConsentedAt = eDeliveryConsentedAt;
+            this.Signature = signature;
         }
 
         /// <summary>
@@ -7556,20 +7556,6 @@ namespace Avalara.SDK.Model.A1099.V2
         public string SignerName { get; set; }
 
         /// <summary>
-        /// The date when e-delivery was consented.
-        /// </summary>
-        /// <value>The date when e-delivery was consented.</value>
-        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
-        public DateTime? EDeliveryConsentedAt { get; set; }
-
-        /// <summary>
-        /// The signature of the form.
-        /// </summary>
-        /// <value>The signature of the form.</value>
-        [DataMember(Name = "signature", EmitDefaultValue = true)]
-        public string Signature { get; set; }
-
-        /// <summary>
         /// The ID of the associated company. Required when creating a form.
         /// </summary>
         /// <value>The ID of the associated company. Required when creating a form.</value>
@@ -7589,6 +7575,20 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <value>The email address of the individual associated with the form.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// The date when e-delivery was consented.
+        /// </summary>
+        /// <value>The date when e-delivery was consented.</value>
+        [DataMember(Name = "eDeliveryConsentedAt", EmitDefaultValue = true)]
+        public DateTime? EDeliveryConsentedAt { get; set; }
+
+        /// <summary>
+        /// The signature of the form.
+        /// </summary>
+        /// <value>The signature of the form.</value>
+        [DataMember(Name = "signature", EmitDefaultValue = true)]
+        public string Signature { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -7623,11 +7623,11 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  WithholdingRate: ").Append(WithholdingRate).Append("\n");
             sb.Append("  IncomeType: ").Append(IncomeType).Append("\n");
             sb.Append("  SignerName: ").Append(SignerName).Append("\n");
-            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  EDeliveryConsentedAt: ").Append(EDeliveryConsentedAt).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

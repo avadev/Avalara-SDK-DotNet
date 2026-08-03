@@ -19,15 +19,15 @@ Name | Type | Description | Notes
 **State** | **string** | The state of residence of the employee. Required unless exempt. | 
 **Zip** | **string** | The ZIP code of residence of the employee. Required unless exempt. | 
 **AccountNumber** | **string** | The account number associated with the form. | [optional] 
-**TinType** | **string** | Tax Identification Number (TIN) type. | 
+**TinType** | **string** | Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number | 
 **Tin** | **string** | The taxpayer identification number (TIN). | 
 **BackupWithholding** | **bool** | Indicates whether backup withholding applies. | [optional] 
 **Is1099able** | **bool** | Indicates whether the individual or entity should be issued a 1099 form. | [optional] 
-**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
-**Signature** | **string** | The signature of the form. | [optional] 
 **CompanyId** | **string** | The ID of the associated company. Required when creating a form. | [optional] 
 **ReferenceId** | **string** | A reference identifier for the form. | [optional] 
 **Email** | **string** | The email address of the individual associated with the form. | [optional] 
+**EDeliveryConsentedAt** | **DateTime?** | The date when e-delivery was consented. | [optional] 
+**Signature** | **string** | The signature of the form. | [optional] 
 **CitizenshipCountry** | **string** | The country of citizenship.. Allowed values: US, AF, AX, AL, AG, AQ, AN, AO, AV, AY (and 248 more) | 
 **DisregardedEntity** | **string** | The name of the disregarded entity receiving the payment (if applicable). | [optional] 
 **EntityType** | **string** | Represents the entity type for tax forms.  Each value corresponds to a specific entity classification.  - 1: Corporation  - 2: Disregarded entity  - 3: Partnership  - 4: Simple trust  - 5: Grantor trust  - 6: Complex trust  - 7: Estate  - 8: Foreign Government - Controlled Entity  - 9: Central Bank of Issue  - 10: Tax-exempt organization  - 11: Private foundation  - 12: International organization  - 13: Foreign Government - Controlled Integral Part | 
