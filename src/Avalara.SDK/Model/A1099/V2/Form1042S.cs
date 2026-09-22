@@ -1461,16 +1461,22 @@ namespace Avalara.SDK.Model.A1099.V2
             _1099NEC = 8,
 
             /// <summary>
+            /// Enum _1099PATR for value: 1099-PATR
+            /// </summary>
+            [EnumMember(Value = "1099-PATR")]
+            _1099PATR = 9,
+
+            /// <summary>
             /// Enum _1099R for value: 1099-R
             /// </summary>
             [EnumMember(Value = "1099-R")]
-            _1099R = 9,
+            _1099R = 10,
 
             /// <summary>
             /// Enum W2 for value: W-2
             /// </summary>
             [EnumMember(Value = "W-2")]
-            W2 = 10
+            W2 = 11
         }
 
 

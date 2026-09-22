@@ -38,68 +38,11 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form 1095-B: Health Coverage
+    /// Form 1099-PATR: Taxable Distributions Received From Cooperatives                *At least one of the following amounts must be greater than zero:*  Patronage Dividends, Nonpatronage Distributions, Per-Unit Retain Allocations, or Redeemed Nonqualified Notices.                Federal Income Tax Withheld, when provided, must be less than the total of those four amounts.                Specified Cooperative may only be set when at least one of Qualified Payments,  Section 199A(a) Qualified Items, or Section 199A(a) SSTB Items is provided.                Form 1099-PATR has no state or local withholding boxes. &#x60;stateAndLocalWithholding&#x60; is not supported for this  form type on any endpoint: a supplied value is discarded rather than stored, and the field always reads back  as &#x60;null&#x60;.
     /// </summary>
-    [DataContract(Name = "Form1095B")]
-    public partial class Form1095B : IValidatableObject
+    [DataContract(Name = "Form1099Patr")]
+    public partial class Form1099Patr : IValidatableObject
     {
-        /// <summary>
-        /// Origin of health coverage code.    Available values:  - A: Small Business Health Options Program (SHOP)  - B: Employer-sponsored coverage  - C: Government-sponsored program  - D: Individual market insurance  - E: Multiemployer plan  - F: Other designated minimum essential coverage  - G: Employer-sponsored coverage that is an individual coverage HRA (valid for tax years 2020 and later)
-        /// </summary>
-        /// <value>Origin of health coverage code.    Available values:  - A: Small Business Health Options Program (SHOP)  - B: Employer-sponsored coverage  - C: Government-sponsored program  - D: Individual market insurance  - E: Multiemployer plan  - F: Other designated minimum essential coverage  - G: Employer-sponsored coverage that is an individual coverage HRA (valid for tax years 2020 and later)</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum OriginOfHealthCoverageCodeEnum
-        {
-            /// <summary>
-            /// Enum A for value: A
-            /// </summary>
-            [EnumMember(Value = "A")]
-            A = 1,
-
-            /// <summary>
-            /// Enum B for value: B
-            /// </summary>
-            [EnumMember(Value = "B")]
-            B = 2,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 3,
-
-            /// <summary>
-            /// Enum D for value: D
-            /// </summary>
-            [EnumMember(Value = "D")]
-            D = 4,
-
-            /// <summary>
-            /// Enum E for value: E
-            /// </summary>
-            [EnumMember(Value = "E")]
-            E = 5,
-
-            /// <summary>
-            /// Enum F for value: F
-            /// </summary>
-            [EnumMember(Value = "F")]
-            F = 6,
-
-            /// <summary>
-            /// Enum G for value: G
-            /// </summary>
-            [EnumMember(Value = "G")]
-            G = 7
-        }
-
-
-        /// <summary>
-        /// Origin of health coverage code.    Available values:  - A: Small Business Health Options Program (SHOP)  - B: Employer-sponsored coverage  - C: Government-sponsored program  - D: Individual market insurance  - E: Multiemployer plan  - F: Other designated minimum essential coverage  - G: Employer-sponsored coverage that is an individual coverage HRA (valid for tax years 2020 and later)
-        /// </summary>
-        /// <value>Origin of health coverage code.    Available values:  - A: Small Business Health Options Program (SHOP)  - B: Employer-sponsored coverage  - C: Government-sponsored program  - D: Individual market insurance  - E: Multiemployer plan  - F: Other designated minimum essential coverage  - G: Employer-sponsored coverage that is an individual coverage HRA (valid for tax years 2020 and later)</value>
-        [DataMember(Name = "originOfHealthCoverageCode", IsRequired = true, EmitDefaultValue = true)]
-        public OriginOfHealthCoverageCodeEnum OriginOfHealthCoverageCode { get; set; }
         /// <summary>
         /// Form type.
         /// </summary>
@@ -182,23 +125,86 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1095B" /> class.
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
+        /// </summary>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TinTypeEnum
+        {
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 1,
+
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 2,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 3,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 4,
+
+            /// <summary>
+            /// Enum INDIVIDUAL for value: INDIVIDUAL
+            /// </summary>
+            [EnumMember(Value = "INDIVIDUAL")]
+            INDIVIDUAL = 5,
+
+            /// <summary>
+            /// Enum BUSINESS for value: BUSINESS
+            /// </summary>
+            [EnumMember(Value = "BUSINESS")]
+            BUSINESS = 6,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7
+        }
+
+
+        /// <summary>
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
+        /// </summary>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
+        [DataMember(Name = "tinType", EmitDefaultValue = true)]
+        public TinTypeEnum? TinType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1099Patr" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Form1095B()
+        protected Form1099Patr()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1095B" /> class.
+        /// Initializes a new instance of the <see cref="Form1099Patr" /> class.
         /// </summary>
-        /// <param name="employeeFirstName">Employee&#39;s first name (required).</param>
-        /// <param name="employeeMiddleName">Employee&#39;s middle name.</param>
-        /// <param name="employeeLastName">Employee&#39;s last name (required).</param>
-        /// <param name="employeeNameSuffix">Employee&#39;s name suffix.</param>
-        /// <param name="employeeDateOfBirth">Employee&#39;s date of birth.</param>
-        /// <param name="originOfHealthCoverageCode">Origin of health coverage code.    Available values:  - A: Small Business Health Options Program (SHOP)  - B: Employer-sponsored coverage  - C: Government-sponsored program  - D: Individual market insurance  - E: Multiemployer plan  - F: Other designated minimum essential coverage  - G: Employer-sponsored coverage that is an individual coverage HRA (valid for tax years 2020 and later) (required).</param>
-        /// <param name="coveredIndividuals">Covered individuals information - At least one month of coverage must be entered if it&#39;s not a correction..</param>
+        /// <param name="patronageDividends">Patronage dividends.</param>
+        /// <param name="nonpatronageDistributions">Nonpatronage distributions.</param>
+        /// <param name="perUnitRetainAllocations">Per-unit retain allocations.</param>
+        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
+        /// <param name="redeemedNonqualifiedNotices">Redeemed nonqualified notices.</param>
+        /// <param name="section199AgDeduction">Section 199A(g) deduction.</param>
+        /// <param name="qualifiedPayments">Qualified payments (Section 199A(b)(7)).</param>
+        /// <param name="section199AaQualifiedItems">Section 199A(a) qualified items.</param>
+        /// <param name="section199AaSstbItems">Section 199A(a) SSTB items.</param>
+        /// <param name="investmentCredit">Investment credit.</param>
+        /// <param name="workOpportunityCredit">Work opportunity credit.</param>
+        /// <param name="otherCreditsAndDeductions">Other credits and deductions.</param>
+        /// <param name="specifiedCooperativeIndicator">Indicates the payer is a specified agricultural or horticultural cooperative.</param>
         /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
         /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
@@ -207,7 +213,6 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
         /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
         /// <param name="recipientName">DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals..</param>
-        /// <param name="recipientSecondName">DEPRECATED: Use &#x60;businessName2&#x60; instead..</param>
         /// <param name="address">Address. (required).</param>
         /// <param name="address2">Address line 2..</param>
         /// <param name="city">City. (required).</param>
@@ -223,44 +228,52 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
         /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
         /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
-        public Form1095B(string employeeFirstName = default(string), string employeeMiddleName = default(string), string employeeLastName = default(string), string employeeNameSuffix = default(string), DateTime? employeeDateOfBirth = default(DateTime?), OriginOfHealthCoverageCodeEnum originOfHealthCoverageCode = default(OriginOfHealthCoverageCodeEnum), List<CoveredIndividual> coveredIndividuals = default(List<CoveredIndividual>), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string recipientSecondName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding))
+        /// <param name="tinType">Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number.</param>
+        /// <param name="businessName">Business name. Required when the recipient of the form is a business; should only be used for businesses..</param>
+        /// <param name="businessName2">Business name line 2. Should only be used for businesses..</param>
+        /// <param name="firstName">First name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="middleName">Middle name. Should only be used for individuals..</param>
+        /// <param name="lastName">Last name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="suffixName">Suffix name. Should only be used for individuals..</param>
+        /// <param name="recipientSecondName">DEPRECATED: Use &#x60;businessName2&#x60; instead..</param>
+        /// <param name="accountNumber">Account number.</param>
+        /// <param name="officeCode">Office code.</param>
+        /// <param name="noTin">No TIN indicator.</param>
+        /// <param name="secondTinNotice">Second TIN notice.</param>
+        public Form1099Patr(double? patronageDividends = default(double?), double? nonpatronageDistributions = default(double?), double? perUnitRetainAllocations = default(double?), double? federalIncomeTaxWithheld = default(double?), double? redeemedNonqualifiedNotices = default(double?), double? section199AgDeduction = default(double?), double? qualifiedPayments = default(double?), double? section199AaQualifiedItems = default(double?), double? section199AaSstbItems = default(double?), double? investmentCredit = default(double?), double? workOpportunityCredit = default(double?), double? otherCreditsAndDeductions = default(double?), bool? specifiedCooperativeIndicator = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
         {
-            // to ensure "employeeFirstName" is required (not null)
-            if (employeeFirstName == null)
-            {
-                throw new ArgumentNullException("employeeFirstName is a required property for Form1095B and cannot be null");
-            }
-            this.EmployeeFirstName = employeeFirstName;
-            // to ensure "employeeLastName" is required (not null)
-            if (employeeLastName == null)
-            {
-                throw new ArgumentNullException("employeeLastName is a required property for Form1095B and cannot be null");
-            }
-            this.EmployeeLastName = employeeLastName;
-            this.OriginOfHealthCoverageCode = originOfHealthCoverageCode;
             this.Type = type;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for Form1095B and cannot be null");
+                throw new ArgumentNullException("address is a required property for Form1099Patr and cannot be null");
             }
             this.Address = address;
             // to ensure "city" is required (not null)
             if (city == null)
             {
-                throw new ArgumentNullException("city is a required property for Form1095B and cannot be null");
+                throw new ArgumentNullException("city is a required property for Form1099Patr and cannot be null");
             }
             this.City = city;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
-                throw new ArgumentNullException("countryCode is a required property for Form1095B and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for Form1099Patr and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.EmployeeMiddleName = employeeMiddleName;
-            this.EmployeeNameSuffix = employeeNameSuffix;
-            this.EmployeeDateOfBirth = employeeDateOfBirth;
-            this.CoveredIndividuals = coveredIndividuals;
+            this.PatronageDividends = patronageDividends;
+            this.NonpatronageDistributions = nonpatronageDistributions;
+            this.PerUnitRetainAllocations = perUnitRetainAllocations;
+            this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
+            this.RedeemedNonqualifiedNotices = redeemedNonqualifiedNotices;
+            this.Section199AgDeduction = section199AgDeduction;
+            this.QualifiedPayments = qualifiedPayments;
+            this.Section199AaQualifiedItems = section199AaQualifiedItems;
+            this.Section199AaSstbItems = section199AaSstbItems;
+            this.InvestmentCredit = investmentCredit;
+            this.WorkOpportunityCredit = workOpportunityCredit;
+            this.OtherCreditsAndDeductions = otherCreditsAndDeductions;
+            this.SpecifiedCooperativeIndicator = specifiedCooperativeIndicator;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
@@ -268,7 +281,6 @@ namespace Avalara.SDK.Model.A1099.V2
             this.ReferenceId = referenceId;
             this.Tin = tin;
             this.RecipientName = recipientName;
-            this.RecipientSecondName = recipientSecondName;
             this.Address2 = address2;
             this.State = state;
             this.Zip = zip;
@@ -281,51 +293,111 @@ namespace Avalara.SDK.Model.A1099.V2
             this.TinMatch = tinMatch;
             this.AddressVerification = addressVerification;
             this.StateAndLocalWithholding = stateAndLocalWithholding;
+            this.TinType = tinType;
+            this.BusinessName = businessName;
+            this.BusinessName2 = businessName2;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.SuffixName = suffixName;
+            this.RecipientSecondName = recipientSecondName;
+            this.AccountNumber = accountNumber;
+            this.OfficeCode = officeCode;
+            this.NoTin = noTin;
+            this.SecondTinNotice = secondTinNotice;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Employee&#39;s first name
+        /// Patronage dividends
         /// </summary>
-        /// <value>Employee&#39;s first name</value>
-        [DataMember(Name = "employeeFirstName", IsRequired = true, EmitDefaultValue = true)]
-        public string EmployeeFirstName { get; set; }
+        /// <value>Patronage dividends</value>
+        [DataMember(Name = "patronageDividends", EmitDefaultValue = true)]
+        public double? PatronageDividends { get; set; }
 
         /// <summary>
-        /// Employee&#39;s middle name
+        /// Nonpatronage distributions
         /// </summary>
-        /// <value>Employee&#39;s middle name</value>
-        [DataMember(Name = "employeeMiddleName", EmitDefaultValue = true)]
-        public string EmployeeMiddleName { get; set; }
+        /// <value>Nonpatronage distributions</value>
+        [DataMember(Name = "nonpatronageDistributions", EmitDefaultValue = true)]
+        public double? NonpatronageDistributions { get; set; }
 
         /// <summary>
-        /// Employee&#39;s last name
+        /// Per-unit retain allocations
         /// </summary>
-        /// <value>Employee&#39;s last name</value>
-        [DataMember(Name = "employeeLastName", IsRequired = true, EmitDefaultValue = true)]
-        public string EmployeeLastName { get; set; }
+        /// <value>Per-unit retain allocations</value>
+        [DataMember(Name = "perUnitRetainAllocations", EmitDefaultValue = true)]
+        public double? PerUnitRetainAllocations { get; set; }
 
         /// <summary>
-        /// Employee&#39;s name suffix
+        /// Federal income tax withheld
         /// </summary>
-        /// <value>Employee&#39;s name suffix</value>
-        [DataMember(Name = "employeeNameSuffix", EmitDefaultValue = true)]
-        public string EmployeeNameSuffix { get; set; }
+        /// <value>Federal income tax withheld</value>
+        [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
+        public double? FederalIncomeTaxWithheld { get; set; }
 
         /// <summary>
-        /// Employee&#39;s date of birth
+        /// Redeemed nonqualified notices
         /// </summary>
-        /// <value>Employee&#39;s date of birth</value>
-        [DataMember(Name = "employeeDateOfBirth", EmitDefaultValue = true)]
-        [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime? EmployeeDateOfBirth { get; set; }
+        /// <value>Redeemed nonqualified notices</value>
+        [DataMember(Name = "redeemedNonqualifiedNotices", EmitDefaultValue = true)]
+        public double? RedeemedNonqualifiedNotices { get; set; }
 
         /// <summary>
-        /// Covered individuals information - At least one month of coverage must be entered if it&#39;s not a correction.
+        /// Section 199A(g) deduction
         /// </summary>
-        /// <value>Covered individuals information - At least one month of coverage must be entered if it&#39;s not a correction.</value>
-        [DataMember(Name = "coveredIndividuals", EmitDefaultValue = false)]
-        public List<CoveredIndividual> CoveredIndividuals { get; set; }
+        /// <value>Section 199A(g) deduction</value>
+        [DataMember(Name = "section199AgDeduction", EmitDefaultValue = true)]
+        public double? Section199AgDeduction { get; set; }
+
+        /// <summary>
+        /// Qualified payments (Section 199A(b)(7))
+        /// </summary>
+        /// <value>Qualified payments (Section 199A(b)(7))</value>
+        [DataMember(Name = "qualifiedPayments", EmitDefaultValue = true)]
+        public double? QualifiedPayments { get; set; }
+
+        /// <summary>
+        /// Section 199A(a) qualified items
+        /// </summary>
+        /// <value>Section 199A(a) qualified items</value>
+        [DataMember(Name = "section199AaQualifiedItems", EmitDefaultValue = true)]
+        public double? Section199AaQualifiedItems { get; set; }
+
+        /// <summary>
+        /// Section 199A(a) SSTB items
+        /// </summary>
+        /// <value>Section 199A(a) SSTB items</value>
+        [DataMember(Name = "section199AaSstbItems", EmitDefaultValue = true)]
+        public double? Section199AaSstbItems { get; set; }
+
+        /// <summary>
+        /// Investment credit
+        /// </summary>
+        /// <value>Investment credit</value>
+        [DataMember(Name = "investmentCredit", EmitDefaultValue = true)]
+        public double? InvestmentCredit { get; set; }
+
+        /// <summary>
+        /// Work opportunity credit
+        /// </summary>
+        /// <value>Work opportunity credit</value>
+        [DataMember(Name = "workOpportunityCredit", EmitDefaultValue = true)]
+        public double? WorkOpportunityCredit { get; set; }
+
+        /// <summary>
+        /// Other credits and deductions
+        /// </summary>
+        /// <value>Other credits and deductions</value>
+        [DataMember(Name = "otherCreditsAndDeductions", EmitDefaultValue = true)]
+        public double? OtherCreditsAndDeductions { get; set; }
+
+        /// <summary>
+        /// Indicates the payer is a specified agricultural or horticultural cooperative
+        /// </summary>
+        /// <value>Indicates the payer is a specified agricultural or horticultural cooperative</value>
+        [DataMember(Name = "specifiedCooperativeIndicator", EmitDefaultValue = true)]
+        public bool? SpecifiedCooperativeIndicator { get; set; }
 
         /// <summary>
         /// Form ID. Unique identifier set when the record is created.
@@ -391,14 +463,6 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "recipientName", EmitDefaultValue = true)]
         [Obsolete]
         public string RecipientName { get; set; }
-
-        /// <summary>
-        /// DEPRECATED: Use &#x60;businessName2&#x60; instead.
-        /// </summary>
-        /// <value>DEPRECATED: Use &#x60;businessName2&#x60; instead.</value>
-        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
-        [Obsolete]
-        public string RecipientSecondName { get; set; }
 
         /// <summary>
         /// Address.
@@ -644,6 +708,84 @@ namespace Avalara.SDK.Model.A1099.V2
             return false;
         }
         /// <summary>
+        /// Business name. Required when the recipient of the form is a business; should only be used for businesses.
+        /// </summary>
+        /// <value>Business name. Required when the recipient of the form is a business; should only be used for businesses.</value>
+        [DataMember(Name = "businessName", EmitDefaultValue = true)]
+        public string BusinessName { get; set; }
+
+        /// <summary>
+        /// Business name line 2. Should only be used for businesses.
+        /// </summary>
+        /// <value>Business name line 2. Should only be used for businesses.</value>
+        [DataMember(Name = "businessName2", EmitDefaultValue = true)]
+        public string BusinessName2 { get; set; }
+
+        /// <summary>
+        /// First name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>First name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Middle name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Middle name. Should only be used for individuals.</value>
+        [DataMember(Name = "middleName", EmitDefaultValue = true)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Last name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>Last name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Suffix name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Suffix name. Should only be used for individuals.</value>
+        [DataMember(Name = "suffixName", EmitDefaultValue = true)]
+        public string SuffixName { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Use &#x60;businessName2&#x60; instead.
+        /// </summary>
+        /// <value>DEPRECATED: Use &#x60;businessName2&#x60; instead.</value>
+        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
+        [Obsolete]
+        public string RecipientSecondName { get; set; }
+
+        /// <summary>
+        /// Account number
+        /// </summary>
+        /// <value>Account number</value>
+        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Office code
+        /// </summary>
+        /// <value>Office code</value>
+        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
+        public string OfficeCode { get; set; }
+
+        /// <summary>
+        /// No TIN indicator
+        /// </summary>
+        /// <value>No TIN indicator</value>
+        [DataMember(Name = "noTin", EmitDefaultValue = true)]
+        public bool? NoTin { get; set; }
+
+        /// <summary>
+        /// Second TIN notice
+        /// </summary>
+        /// <value>Second TIN notice</value>
+        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
+        public bool? SecondTinNotice { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -656,14 +798,20 @@ namespace Avalara.SDK.Model.A1099.V2
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Form1095B {\n");
-            sb.Append("  EmployeeFirstName: ").Append(EmployeeFirstName).Append("\n");
-            sb.Append("  EmployeeMiddleName: ").Append(EmployeeMiddleName).Append("\n");
-            sb.Append("  EmployeeLastName: ").Append(EmployeeLastName).Append("\n");
-            sb.Append("  EmployeeNameSuffix: ").Append(EmployeeNameSuffix).Append("\n");
-            sb.Append("  EmployeeDateOfBirth: ").Append(EmployeeDateOfBirth).Append("\n");
-            sb.Append("  OriginOfHealthCoverageCode: ").Append(OriginOfHealthCoverageCode).Append("\n");
-            sb.Append("  CoveredIndividuals: ").Append(CoveredIndividuals).Append("\n");
+            sb.Append("class Form1099Patr {\n");
+            sb.Append("  PatronageDividends: ").Append(PatronageDividends).Append("\n");
+            sb.Append("  NonpatronageDistributions: ").Append(NonpatronageDistributions).Append("\n");
+            sb.Append("  PerUnitRetainAllocations: ").Append(PerUnitRetainAllocations).Append("\n");
+            sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
+            sb.Append("  RedeemedNonqualifiedNotices: ").Append(RedeemedNonqualifiedNotices).Append("\n");
+            sb.Append("  Section199AgDeduction: ").Append(Section199AgDeduction).Append("\n");
+            sb.Append("  QualifiedPayments: ").Append(QualifiedPayments).Append("\n");
+            sb.Append("  Section199AaQualifiedItems: ").Append(Section199AaQualifiedItems).Append("\n");
+            sb.Append("  Section199AaSstbItems: ").Append(Section199AaSstbItems).Append("\n");
+            sb.Append("  InvestmentCredit: ").Append(InvestmentCredit).Append("\n");
+            sb.Append("  WorkOpportunityCredit: ").Append(WorkOpportunityCredit).Append("\n");
+            sb.Append("  OtherCreditsAndDeductions: ").Append(OtherCreditsAndDeductions).Append("\n");
+            sb.Append("  SpecifiedCooperativeIndicator: ").Append(SpecifiedCooperativeIndicator).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");
@@ -673,7 +821,6 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Tin: ").Append(Tin).Append("\n");
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
-            sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Address2: ").Append(Address2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -698,6 +845,18 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  TinType: ").Append(TinType).Append("\n");
+            sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  BusinessName2: ").Append(BusinessName2).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  SuffixName: ").Append(SuffixName).Append("\n");
+            sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
+            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
+            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
+            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
