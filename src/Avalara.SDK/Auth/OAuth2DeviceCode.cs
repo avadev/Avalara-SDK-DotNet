@@ -25,7 +25,9 @@ namespace Avalara.SDK.Auth
             this.Configuration = configuration;
             this.DeviceAuthorizationURL = configuration.DeviceAuthorizationURL;
             this.TokenURL = configuration.TokenURL;
+#pragma warning disable CS0618 // device-code flow legitimately uses ClientID
             this.ClientID = configuration.ClientID;
+#pragma warning restore CS0618
             this.RequiredScopes = requiredScopes;
             this.DeviceAuthorizationCode = deviceAuthorizationCode;
         }

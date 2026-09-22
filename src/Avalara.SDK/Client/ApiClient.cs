@@ -235,9 +235,6 @@ namespace Avalara.SDK.Client
         /// </summary>
         internal string SdkVersion;
 
-        private IOAuth OAuthObj;
-        private Hashtable hashScopeTable;
-
         /// <summary>
         /// Specifies the settings on a <see cref="JsonSerializer" /> object.
         /// These settings can be adjusted to accommodate custom serialization rules.
@@ -267,7 +264,6 @@ namespace Avalara.SDK.Client
                 config
             );
 
-            hashScopeTable = new Hashtable();
             CheckConfiguration();
         }
 
@@ -421,17 +417,18 @@ namespace Avalara.SDK.Client
             {
                 req.Headers.Add("Authorization", "Bearer " + this.Configuration.BearerToken);
             }
-            //OAuth2 flow
+            // OAuth2 client-credentials flow - not supported, see remarks on Configuration.ClientID
+#pragma warning disable CS0618
             else if (!this.Configuration.ClientID.IsNullorEmpty() && !this.Configuration.ClientSecret.IsNullorEmpty())
             {
-                var accessKey = GetOAuthAccessToken(requiredScopes);
-                if (accessKey == null)
-                {
-                    UpdateOAuthAccessToken(requiredScopes);
-                    accessKey = GetOAuthAccessToken(requiredScopes);
-                }
-                req.Headers.Add("Authorization", "Bearer " + accessKey.AccessToken);
+                throw new ArgumentException(
+                    "OAuth2 client-credentials authentication is not supported by this SDK. " +
+                    "ClientID and ClientSecret cannot authenticate API calls because the generated " +
+                    "per-operation OAuth scopes are empty, so Avalara Identity cannot issue an access token. " +
+                    "Obtain an access token from Avalara Identity yourself and set Configuration.BearerToken, " +
+                    "optionally with Configuration.RefreshTokenDelegate to renew it on expiry.");
             }
+#pragma warning restore CS0618
             // authentication (BasicAuth) required
             else if (!string.IsNullOrEmpty(this.Configuration.Username) || !string.IsNullOrEmpty(this.Configuration.Password))
             {
@@ -544,22 +541,7 @@ namespace Avalara.SDK.Client
 
             if (response != null && (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden))
             {
-                if (!this.Configuration.ClientID.IsNullorEmpty()) //OAuth2 is configured
-                {
-                    string authHeader = Convert.ToString(req.Headers.First(x => x.Key == "Authorization").Value);
-                    if (!authHeader.IsNullorEmpty())
-                    {
-                        string[] authValues = authHeader.Split(' ');
-                        if (authValues.Length == 2)
-                        {
-                            UpdateOAuthAccessToken(requiredScopes, authValues[1]);
-                            string accessToken = GetOAuthAccessToken(requiredScopes).AccessToken;
-                            req.Headers.Add("Authorization", "Bearer " + accessToken);
-                            response = await Configuration.HttpClient.SendAsync(req, cancellationToken).ConfigureAwait(false);
-                        }
-                    }
-                }
-                else if (this.Configuration.RefreshTokenDelegate != null)
+                if (this.Configuration.RefreshTokenDelegate != null)
                 {
                     // Execute injected delegate to get a new access token
                     string accessToken = await this.Configuration.RefreshTokenDelegate();
@@ -639,51 +621,6 @@ namespace Avalara.SDK.Client
                     throw new ArgumentException("TestTokenURL is required for Test Environment");
             }
 
-        }
-
-        private TokenResponse GetOAuthAccessToken(string requiredScopes)
-        {
-            var scopes = StandardizeScopes(requiredScopes);
-            if (this.hashScopeTable.ContainsKey(scopes))
-            {
-                var accessToken = (TokenResponse)hashScopeTable[scopes];
-                var expirationTime = DateTime.Now.AddMinutes(5);
-                if (expirationTime < accessToken.ExpiryDateTime)
-                {
-                    return accessToken;
-                }
-            }
-            return null;
-        }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        private void UpdateOAuthAccessToken(string requiredScopes, string access_token = default(string))
-        {
-            var scopes = StandardizeScopes(requiredScopes);
-            if (GetOAuthAccessToken(scopes) == null ||
-                GetOAuthAccessToken(scopes).AccessToken.Equals(access_token))
-            {
-                if (this.OAuthObj == null)
-                {
-                    OAuthObj = new Auth.OAuth2ClientCredentials(Configuration, scopes);
-                }
-                var accessToken = this.OAuthObj.GetAccessToken();
-                if (this.hashScopeTable.ContainsKey(scopes))
-                {
-                    this.hashScopeTable[scopes] = accessToken;
-                }
-                else
-                {
-                    this.hashScopeTable.Add(scopes, accessToken);
-                }
-            }
-
-        }
-        private string StandardizeScopes(string scopes)
-        {
-            string[] scopeArray = scopes.Split(' ');
-            Array.Sort(scopeArray);
-            return String.Join(" ", scopeArray);
         }
 
         #region IAsynchronousClient

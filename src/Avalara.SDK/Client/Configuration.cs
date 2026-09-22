@@ -331,8 +331,16 @@ namespace Avalara.SDK.Client
         /// </summary>
         public string TestDeviceAuthorizationURL { set; get; }
         /// <summary>
-        /// ClientID for oAuth2 flow
+        /// ClientID for oAuth2 flow.
         /// </summary>
+        /// <remarks>
+        /// No longer used to authenticate API calls. The OAuth2 client-credentials flow is not
+        /// supported by this SDK: the generated per-operation OAuth scopes are empty, so Avalara
+        /// Identity cannot issue an access token. Set <see cref="BearerToken"/> instead, optionally
+        /// together with <see cref="RefreshTokenDelegate"/> to renew it on expiry.
+        /// This property is still honoured by the device-code flow (<c>Avalara.SDK.Auth.OAuthHelper</c>).
+        /// </remarks>
+        [Obsolete("Client-credentials authentication is not supported; API calls must set Configuration.BearerToken instead. ClientID is retained only for the device-code flow via Avalara.SDK.Auth.OAuthHelper.")]
         public string ClientID
         {
             get
@@ -346,8 +354,13 @@ namespace Avalara.SDK.Client
             }
         }
         /// <summary>
-        /// ClientSecret for oAuth2 flow
+        /// ClientSecret for oAuth2 flow.
         /// </summary>
+        /// <remarks>
+        /// No longer used. The OAuth2 client-credentials flow is not supported by this SDK;
+        /// set <see cref="BearerToken"/> instead.
+        /// </remarks>
+        [Obsolete("Client-credentials authentication is not supported; API calls must set Configuration.BearerToken instead.")]
         public string ClientSecret { get; set; }
         /// <summary>
         /// Bearer Token from Avalara Identity for oAuth2 flow
@@ -496,7 +509,9 @@ namespace Avalara.SDK.Client
         /// </summary>
         public void PopulateTokenURLFromOpenIdConnect()
         {
+#pragma warning disable CS0618 // ClientID is obsolete for API auth but still drives device-code endpoint discovery
             if (this.ClientID != null)
+#pragma warning restore CS0618
             {
                 if (this.Environment == AvalaraEnvironment.Test)
                 {
@@ -620,8 +635,10 @@ namespace Avalara.SDK.Client
                 AppVersion = second.AppVersion ?? first.AppVersion,
                 MachineName = second.MachineName ?? first.MachineName,
                 TestTokenURL = second.TestTokenURL ?? first.TestTokenURL,
+#pragma warning disable CS0618 // obsolete members are still merged so existing configurations round-trip unchanged
                 ClientID = second.ClientID ?? first.ClientID,
                 ClientSecret = second.ClientSecret ?? first.ClientSecret,
+#pragma warning restore CS0618
                 BearerToken = second.BearerToken ?? first.BearerToken,
                 RequiredScopes = second.RequiredScopes ?? first.RequiredScopes,
                 RefreshTokenDelegate = second.RefreshTokenDelegate ?? first.RefreshTokenDelegate
