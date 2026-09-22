@@ -144,10 +144,12 @@ namespace Avalara.SDK.Client
         /// <summary>
         /// ClientID for oAuth2 flow
         /// </summary>
+        [Obsolete("Client-credentials authentication is not supported; API calls must set Configuration.BearerToken instead. ClientID is retained only for the device-code flow via Avalara.SDK.Auth.OAuthHelper.")]
         string ClientID { get; set; }
         /// <summary>
         /// ClientSecret for oAuth2 flow
         /// </summary>
+        [Obsolete("Client-credentials authentication is not supported; API calls must set Configuration.BearerToken instead.")]
         string ClientSecret { get; set; }
         /// <summary>
         /// Bearer Token from Avalara Identity for oAuth2 flow

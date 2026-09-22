@@ -12,6 +12,7 @@ namespace Avalara.SDK.Auth
     /// <summary>
     /// This class supports Client Crendetials OAuth2 grant type
     /// </summary>
+    [Obsolete("Client-credentials authentication is not supported; API calls must set Configuration.BearerToken instead.")]
     public class OAuth2ClientCredentials : IOAuth
     {
         private const string GRANT_TYPE = "client_credentials";
@@ -24,8 +25,10 @@ namespace Avalara.SDK.Auth
         {
             this.Configuration = configuration;
             this.TokenURL = configuration.TokenURL;
+#pragma warning disable CS0618
             this.ClientID = configuration.ClientID;
             this.ClientSecret = configuration.ClientSecret;
+#pragma warning restore CS0618
             this.RequiredScopes = requiredScopes;
             
         }
