@@ -83,6 +83,24 @@ Name | Type | Description | Notes
 **PlanStartMonth** | **string** | Plan start month.  The calendar month during which the plan year begins of the health plan in which the employee is offered coverage (or would be offered coverage if the employee were eligible to participate in the plan).  Available values:  - 00: None  - 01: January  - 02: February  - 03: March  - 04: April  - 05: May  - 06: June  - 07: July  - 08: August  - 09: September  - 10: October  - 11: November  - 12: December | 
 **EmployerProvidedSiCoverage** | **bool?** | Employer provided self-insured coverage | [optional] 
 **OfferAndCoverages** | [**List&lt;OfferAndCoverage&gt;**](OfferAndCoverage.md) | Offer and coverage information | 
+**MortgageInterestReceived** | **double?** | Mortgage interest received from payer(s)/borrower(s) | [optional] 
+**OutstandingMortgagePrincipal** | **double?** | Outstanding mortgage principal | [optional] 
+**MortgageOriginationDate** | **DateTime?** | Mortgage origination date | [optional] 
+**RefundOfOverpaidInterest** | **double?** | Refund of overpaid interest | [optional] 
+**MortgageInsurancePremiums** | **double?** | Mortgage insurance premiums | [optional] 
+**PointsPaidOnPurchaseOfPrincipalResidence** | **double?** | Points paid on purchase of principal residence | [optional] 
+**PropertyAddressSameAsBorrowerIndicator** | **bool?** | If checked, the property securing the mortgage is at the borrower&#39;s address | [optional] 
+**PropertyAddressOrDescription** | **string** | Address or description of property securing mortgage (up to 39 characters) | [optional] 
+**NumberOfPropertiesSecuringMortgage** | **int?** | Number of properties securing the mortgage, if more than one | [optional] 
+**OtherInformation** | **string** | Other (up to 39 characters), such as real estate taxes or insurance paid from escrow | [optional] 
+**MortgageAcquisitionDate** | **DateTime?** | Mortgage acquisition date, if the mortgage was acquired during the tax year | [optional] 
+**DateOfIdentifiableEvent** | **DateTime?** | Date of identifiable event | 
+**AmountOfDebtDischarged** | **double?** | Amount of debt discharged | 
+**InterestIncludedInDebtDischarged** | **double?** | Interest, if included in the amount of debt discharged | [optional] 
+**DebtDescription** | **string** | Debt description (up to 39 characters) | 
+**DebtorPersonallyLiableIndicator** | **bool?** | If checked, the debtor was personally liable for repayment of the debt | [optional] 
+**IdentifiableEventCode** | **string** | Identifiable event code.                * &#x60;A&#x60; - Bankruptcy  * &#x60;B&#x60; - Other judicial debt relief  * &#x60;C&#x60; - Statute of limitations or expiration of deficiency period  * &#x60;D&#x60; - Foreclosure election  * &#x60;E&#x60; - Debt relief from probate or similar proceeding  * &#x60;F&#x60; - By agreement  * &#x60;G&#x60; - Decision or policy to discontinue collection  * &#x60;H&#x60; - Other actual discharge before identifiable event  * &#x60;I&#x60; - Deprecated; retired by the IRS in 2016 and folded into &#x60;H&#x60;. Only valid for prior tax years. | 
+**FairMarketValueOfProperty** | **double?** | Fair market value of property | [optional] 
 **TotalOrdinaryDividends** | **double?** | Total ordinary dividends | [optional] 
 **QualifiedDividends** | **double?** | Qualified dividends | [optional] 
 **TotalCapitalGainDistributions** | **double?** | Total capital gain distributions | [optional] 
@@ -176,6 +194,12 @@ Name | Type | Description | Notes
 **AmountAllocableToIrrWithin5Years** | **double?** | Amount allocable to IRR within 5 years | [optional] 
 **FirstYearOfDesignatedRothContribution** | **string** | First year of designated Roth contribution | [optional] 
 **DateOfPayment** | **DateTime?** | Date of payment | [optional] 
+**DateOfClosing** | **DateTime?** | Date of closing | 
+**GrossProceeds** | **double?** | Gross proceeds (the total gross proceeds, from tax year 2026 labeled Box 2a) | [optional] 
+**PropertyAddressOrLegalDescription** | **string** | Address or legal description of the property, including city, state and ZIP code (up to 39 characters) | 
+**TransferorReceivedPropertyOrServicesIndicator** | **bool?** | If checked, the transferor received or will receive property or services as part of the consideration | [optional] 
+**TransferorIsForeignPersonIndicator** | **bool?** | If checked, the transferor is a foreign person (nonresident alien, foreign partnership, foreign estate or foreign trust) | [optional] 
+**BuyersPartOfRealEstateTax** | **double?** | Buyer&#39;s part of real estate tax | [optional] 
 **Wages** | **double?** | Wages, tips, other compensation. | [optional] 
 **SocialSecurityWages** | **double?** | Social security wages. | [optional] 
 **SocialSecurityTaxWithheld** | **double?** | Social security tax withheld. | [optional] 
