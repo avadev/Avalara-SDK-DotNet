@@ -72,7 +72,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Date from which this version of the code list becomes legally or operationally effective in the jurisdiction. Typically corresponds to a go-live, mandate, or release date.
         /// </summary>
         /// <value>Date from which this version of the code list becomes legally or operationally effective in the jurisdiction. Typically corresponds to a go-live, mandate, or release date.</value>
-        /// <example>Tue Dec 31 16:00:00 PST 2024</example>
+        /// <example>Wed Jan 01 00:00:00 UTC 2025</example>
         [DataMember(Name = "jurisEffectiveDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime JurisEffectiveDate { get; set; }
@@ -81,7 +81,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// Date after which this version of the code list must no longer be used in the jurisdiction. Use a far-future date (e.g., 9999-12-31) when the sunset is not yet known.
         /// </summary>
         /// <value>Date after which this version of the code list must no longer be used in the jurisdiction. Use a far-future date (e.g., 9999-12-31) when the sunset is not yet known.</value>
-        /// <example>Thu Dec 30 16:00:00 PST 9999</example>
+        /// <example>Fri Dec 31 00:00:00 UTC 9999</example>
         [DataMember(Name = "jurisSunsetDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime JurisSunsetDate { get; set; }

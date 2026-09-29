@@ -116,7 +116,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// The start date of the reporting period.
         /// </summary>
         /// <value>The start date of the reporting period.</value>
-        /// <example>Sat Jan 31 16:00:00 PST 2026</example>
+        /// <example>Sun Feb 01 00:00:00 UTC 2026</example>
         [DataMember(Name = "reportFrom", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ReportFrom { get; set; }
@@ -125,7 +125,7 @@ namespace Avalara.SDK.Model.EInvoicing.V1
         /// The end date of the reporting period.
         /// </summary>
         /// <value>The end date of the reporting period.</value>
-        /// <example>Fri Feb 27 16:00:00 PST 2026</example>
+        /// <example>Sat Feb 28 00:00:00 UTC 2026</example>
         [DataMember(Name = "reportTo", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ReportTo { get; set; }

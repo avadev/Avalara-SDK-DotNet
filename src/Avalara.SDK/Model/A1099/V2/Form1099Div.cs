@@ -69,52 +69,70 @@ namespace Avalara.SDK.Model.A1099.V2
             _1095C = 3,
 
             /// <summary>
+            /// Enum _1098 for value: 1098
+            /// </summary>
+            [EnumMember(Value = "1098")]
+            _1098 = 4,
+
+            /// <summary>
+            /// Enum _1099C for value: 1099-C
+            /// </summary>
+            [EnumMember(Value = "1099-C")]
+            _1099C = 5,
+
+            /// <summary>
             /// Enum _1099DIV for value: 1099-DIV
             /// </summary>
             [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 4,
+            _1099DIV = 6,
 
             /// <summary>
             /// Enum _1099INT for value: 1099-INT
             /// </summary>
             [EnumMember(Value = "1099-INT")]
-            _1099INT = 5,
+            _1099INT = 7,
 
             /// <summary>
             /// Enum _1099K for value: 1099-K
             /// </summary>
             [EnumMember(Value = "1099-K")]
-            _1099K = 6,
+            _1099K = 8,
 
             /// <summary>
             /// Enum _1099MISC for value: 1099-MISC
             /// </summary>
             [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 7,
+            _1099MISC = 9,
 
             /// <summary>
             /// Enum _1099NEC for value: 1099-NEC
             /// </summary>
             [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 8,
+            _1099NEC = 10,
 
             /// <summary>
             /// Enum _1099PATR for value: 1099-PATR
             /// </summary>
             [EnumMember(Value = "1099-PATR")]
-            _1099PATR = 9,
+            _1099PATR = 11,
 
             /// <summary>
             /// Enum _1099R for value: 1099-R
             /// </summary>
             [EnumMember(Value = "1099-R")]
-            _1099R = 10,
+            _1099R = 12,
+
+            /// <summary>
+            /// Enum _1099S for value: 1099-S
+            /// </summary>
+            [EnumMember(Value = "1099-S")]
+            _1099S = 13,
 
             /// <summary>
             /// Enum W2 for value: W-2
             /// </summary>
             [EnumMember(Value = "W-2")]
-            W2 = 11
+            W2 = 14
         }
 
 

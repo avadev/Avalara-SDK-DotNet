@@ -149,7 +149,10 @@ Class | Method | HTTP request | Description
 *Issuers1099Api* | [**GetIssuers**](docs/A1099/V2/Issuers1099Api.md#getissuers) | **GET** /1099/issuers | List issuers
 *Issuers1099Api* | [**UpdateIssuer**](docs/A1099/V2/Issuers1099Api.md#updateissuer) | **PUT** /1099/issuers/{id} | Update an issuer
 *JobsApi* | [**GetJob**](docs/A1099/V2/JobsApi.md#getjob) | **GET** /jobs/{id} | Retrieves information about the job
+*TINMatchesApi* | [**GetBulkTinMatch**](docs/A1099/V2/TINMatchesApi.md#getbulktinmatch) | **GET** /tin-matches/$bulk/{id} | Get bulk TIN match details
+*TINMatchesApi* | [**GetBulkTinMatchResults**](docs/A1099/V2/TINMatchesApi.md#getbulktinmatchresults) | **GET** /tin-matches/$bulk/{id}/results | List bulk TIN match results
 *TINMatchesApi* | [**PerformRealTimeTinMatch**](docs/A1099/V2/TINMatchesApi.md#performrealtimetinmatch) | **POST** /tin-matches/$real-time | Perform real time TIN Match
+*TINMatchesApi* | [**SubmitBulkTinMatch**](docs/A1099/V2/TINMatchesApi.md#submitbulktinmatch) | **POST** /tin-matches/$bulk | Submit bulk TIN match
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
@@ -245,6 +248,12 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-A1099-V2-models"></a>
 ### A1099 V2 Model Documentation
 
+ - [Model.A1099.V2.BulkTinMatchAcceptedResponse](docs/A1099/V2/BulkTinMatchAcceptedResponse.md)
+ - [Model.A1099.V2.BulkTinMatchIrsResponse](docs/A1099/V2/BulkTinMatchIrsResponse.md)
+ - [Model.A1099.V2.BulkTinMatchRequest](docs/A1099/V2/BulkTinMatchRequest.md)
+ - [Model.A1099.V2.BulkTinMatchRequestItem](docs/A1099/V2/BulkTinMatchRequestItem.md)
+ - [Model.A1099.V2.BulkTinMatchResponse](docs/A1099/V2/BulkTinMatchResponse.md)
+ - [Model.A1099.V2.BulkTinMatchResultItemResponse](docs/A1099/V2/BulkTinMatchResultItemResponse.md)
  - [Model.A1099.V2.CompanyRequest](docs/A1099/V2/CompanyRequest.md)
  - [Model.A1099.V2.CompanyResponse](docs/A1099/V2/CompanyResponse.md)
  - [Model.A1099.V2.CoveredIndividual](docs/A1099/V2/CoveredIndividual.md)
@@ -257,7 +266,9 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.Form1042S](docs/A1099/V2/Form1042S.md)
  - [Model.A1099.V2.Form1095B](docs/A1099/V2/Form1095B.md)
  - [Model.A1099.V2.Form1095C](docs/A1099/V2/Form1095C.md)
+ - [Model.A1099.V2.Form1098](docs/A1099/V2/Form1098.md)
  - [Model.A1099.V2.Form1099Base](docs/A1099/V2/Form1099Base.md)
+ - [Model.A1099.V2.Form1099C](docs/A1099/V2/Form1099C.md)
  - [Model.A1099.V2.Form1099Div](docs/A1099/V2/Form1099Div.md)
  - [Model.A1099.V2.Form1099Int](docs/A1099/V2/Form1099Int.md)
  - [Model.A1099.V2.Form1099K](docs/A1099/V2/Form1099K.md)
@@ -266,6 +277,7 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.Form1099Nec](docs/A1099/V2/Form1099Nec.md)
  - [Model.A1099.V2.Form1099Patr](docs/A1099/V2/Form1099Patr.md)
  - [Model.A1099.V2.Form1099R](docs/A1099/V2/Form1099R.md)
+ - [Model.A1099.V2.Form1099S](docs/A1099/V2/Form1099S.md)
  - [Model.A1099.V2.Form1099StatusDetail](docs/A1099/V2/Form1099StatusDetail.md)
  - [Model.A1099.V2.Form1099W2](docs/A1099/V2/Form1099W2.md)
  - [Model.A1099.V2.Get1099Form200Response](docs/A1099/V2/Get1099Form200Response.md)
@@ -277,6 +289,7 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.IssuerWriteResponse](docs/A1099/V2/IssuerWriteResponse.md)
  - [Model.A1099.V2.JobResponse](docs/A1099/V2/JobResponse.md)
  - [Model.A1099.V2.OfferAndCoverage](docs/A1099/V2/OfferAndCoverage.md)
+ - [Model.A1099.V2.PaginatedQueryResultModelBulkTinMatchResultItemResponse](docs/A1099/V2/PaginatedQueryResultModelBulkTinMatchResultItemResponse.md)
  - [Model.A1099.V2.PaginatedQueryResultModelCompanyResponse](docs/A1099/V2/PaginatedQueryResultModelCompanyResponse.md)
  - [Model.A1099.V2.PaginatedQueryResultModelForm1099Base](docs/A1099/V2/PaginatedQueryResultModelForm1099Base.md)
  - [Model.A1099.V2.PaginatedQueryResultModelIssuerResponse](docs/A1099/V2/PaginatedQueryResultModelIssuerResponse.md)
