@@ -1,9 +1,17 @@
-# Avalara.SDK.Model.A1099.V2.IrisFormBase
+# Avalara.SDK.Model.A1099.V2.Form1099Sa
+Form 1099-SA: Distributions From an HSA, Archer MSA, or Medicare Advantage MSA                The recipient is the account holder and the issuer is the trustee (payer).                *Required:* Gross Distribution, Distribution Code, and exactly one of the three account type indicators  (HSA, Archer MSA, Medicare Advantage MSA).                Form 1099-SA has no state or local boxes, so `stateAndLocalWithholding` is discarded and reads back as `null`.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GrossDistribution** | **double?** | Gross distribution | 
+**EarningsOnExcessContributions** | **double?** | Earnings on excess contributions | [optional] 
+**DistributionCode** | **string** | Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary | 
+**FairMarketValueOnDateOfDeath** | **double?** | Fair market value (FMV) of the account on the date of death | [optional] 
+**HsaIndicator** | **bool?** | If checked, the account is a health savings account (HSA). Exactly one account type indicator must be checked. | [optional] 
+**ArcherMsaIndicator** | **bool?** | If checked, the account is an Archer medical savings account (MSA). Exactly one account type indicator must be checked. | [optional] 
+**MedicareAdvantageMsaIndicator** | **bool?** | If checked, the account is a Medicare Advantage MSA. Exactly one account type indicator must be checked. | [optional] 
 **Type** | **string** | Form type. | 
 **Id** | **string** | Form ID. Unique identifier set when the record is created. | [optional] [readonly] 
 **IssuerId** | **string** | Issuer ID - only required when creating forms | [optional] 

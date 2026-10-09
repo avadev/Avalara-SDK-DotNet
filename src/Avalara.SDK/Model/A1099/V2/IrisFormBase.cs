@@ -75,64 +75,76 @@ namespace Avalara.SDK.Model.A1099.V2
             _1098 = 4,
 
             /// <summary>
+            /// Enum _1098T for value: 1098-T
+            /// </summary>
+            [EnumMember(Value = "1098-T")]
+            _1098T = 5,
+
+            /// <summary>
             /// Enum _1099C for value: 1099-C
             /// </summary>
             [EnumMember(Value = "1099-C")]
-            _1099C = 5,
+            _1099C = 6,
 
             /// <summary>
             /// Enum _1099DIV for value: 1099-DIV
             /// </summary>
             [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 6,
+            _1099DIV = 7,
 
             /// <summary>
             /// Enum _1099INT for value: 1099-INT
             /// </summary>
             [EnumMember(Value = "1099-INT")]
-            _1099INT = 7,
+            _1099INT = 8,
 
             /// <summary>
             /// Enum _1099K for value: 1099-K
             /// </summary>
             [EnumMember(Value = "1099-K")]
-            _1099K = 8,
+            _1099K = 9,
 
             /// <summary>
             /// Enum _1099MISC for value: 1099-MISC
             /// </summary>
             [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 9,
+            _1099MISC = 10,
 
             /// <summary>
             /// Enum _1099NEC for value: 1099-NEC
             /// </summary>
             [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 10,
+            _1099NEC = 11,
 
             /// <summary>
             /// Enum _1099PATR for value: 1099-PATR
             /// </summary>
             [EnumMember(Value = "1099-PATR")]
-            _1099PATR = 11,
+            _1099PATR = 12,
 
             /// <summary>
             /// Enum _1099R for value: 1099-R
             /// </summary>
             [EnumMember(Value = "1099-R")]
-            _1099R = 12,
+            _1099R = 13,
 
             /// <summary>
             /// Enum _1099S for value: 1099-S
             /// </summary>
             [EnumMember(Value = "1099-S")]
-            _1099S = 13,
+            _1099S = 14,
+
+            /// <summary>
+            /// Enum _1099SA for value: 1099-SA
+            /// </summary>
+            [EnumMember(Value = "1099-SA")]
+            _1099SA = 15,
 
             /// <summary>
             /// Enum W2 for value: W-2
             /// </summary>
             [EnumMember(Value = "W-2")]
-            W2 = 14
+            W2 = 16
         }
 
 
@@ -578,8 +590,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Date time when the record was created.
         /// </summary>
         /// <value>Date time when the record was created.</value>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; private set; }
+        [DataMember(Name = "createdAt", EmitDefaultValue = true)]
+        public DateTime? CreatedAt { get; private set; }
 
         /// <summary>
         /// Returns false as CreatedAt should not be serialized given that it's read-only.
@@ -593,8 +605,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Date time when the record was last updated.
         /// </summary>
         /// <value>Date time when the record was last updated.</value>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; private set; }
+        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
+        public DateTime? UpdatedAt { get; private set; }
 
         /// <summary>
         /// Returns false as UpdatedAt should not be serialized given that it's read-only.

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteIssuer**](Issuers1099Api.md#deleteissuer) | **DELETE** /1099/issuers/{id} | Delete an issuer
 [**GetIssuer**](Issuers1099Api.md#getissuer) | **GET** /1099/issuers/{id} | Retrieve an issuer
 [**GetIssuers**](Issuers1099Api.md#getissuers) | **GET** /1099/issuers | List issuers
+[**ResubmitRejectedForms**](Issuers1099Api.md#resubmitrejectedforms) | **POST** /1099/issuers/{issuerId}/$resubmit-rejected-forms | Request a replacement submission for an issuer&#39;s rejected forms
 [**UpdateIssuer**](Issuers1099Api.md#updateissuer) | **PUT** /1099/issuers/{id} | Update an issuer
 
 
@@ -43,7 +44,7 @@ namespace Example
             var apiInstance = new Issuers1099Api(apiClient);
             var requestParameters = new CreateIssuerRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 020085b2-ced8-4d4e-8d8e-aac8901ba664;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 5ae71043-1efc-47f3-931c-194f239999b9;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to create (optional) 
 
@@ -129,7 +130,7 @@ namespace Example
             var requestParameters = new DeleteIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to delete
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = eeca9729-5b2f-4ba1-a3c7-bf49c3705b52;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = f7a15738-d958-4708-aad8-eac25b686d81;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -213,7 +214,7 @@ namespace Example
             var requestParameters = new GetIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to retrieve
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 1ba68926-014a-4e57-ac33-5120f7d67ad5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 27ab9711-3475-41e4-b82a-2b7ce52ca884;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -303,7 +304,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = 0b7d8a8b-c34a-48e3-bf9e-86c475547496;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 1dbcdaf4-7ea0-46e9-b83c-b663e6178568;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -362,6 +363,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
+<a name="resubmitrejectedforms"></a>
+# **ResubmitRejectedForms**
+> ResubmitRejectedFormsResponse ResubmitRejectedForms (ResubmitRejectedFormsRequestSdk requestParameters)
+
+Request a replacement submission for an issuer's rejected forms
+
+Mirrors the UI's \"Resubmit Rejected Forms\" action: schedules a replacement submission for every one  of the issuer's forms currently in Rejected or RejectedWithErrors status, in a single action. There  is no per-form or per-submission selection. This call only schedules the resubmission — actual  transmission to the IRS remains asynchronous and batch-driven.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using Avalara.SDK.Api.A1099.V2;
+using Avalara.SDK.Client;
+using Avalara.SDK.Model.A1099.V2;
+
+namespace Example
+{
+    public class ResubmitRejectedFormsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.Environment = AvalaraEnvironment.Sandbox;
+            config.BearerToken = "<Your Bearer Token>";
+            
+            ApiClient apiClient= new ApiClient(config);
+            
+            var apiInstance = new Issuers1099Api(apiClient);
+            var requestParameters = new ResubmitRejectedFormsRequestSdk();
+            requestParameters.IssuerId = 789L;  // long | Id of the issuer whose rejected forms should be resubmitted
+            requestParameters.AvalaraVersion = 2.0.0;  // string | API version
+            requestParameters.XCorrelationId = 0520f85b-11b0-4246-953f-e06f87029486;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
+
+            try
+            {
+                // Request a replacement submission for an issuer's rejected forms
+                ResubmitRejectedFormsResponse result = apiInstance.ResubmitRejectedForms(requestParameters);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling Issuers1099Api.ResubmitRejectedForms: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Request Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **IssuerId** | **long**| Id of the issuer whose rejected forms should be resubmitted | 
+ **AvalaraVersion** | **string**| API version | 
+ **XCorrelationId** | **string**| Unique correlation Id in a GUID format | [optional] 
+ **XAvalaraClient** | **string**| Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . | [optional] 
+
+### Return type
+
+[**ResubmitRejectedFormsResponse**](ResubmitRejectedFormsResponse.md)
+
+### Authorization
+
+[bearer](../../../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Rejected forms scheduled for replacement submission |  -  |
+| **401** | Authentication failed |  -  |
+| **403** | Caller does not have access to this issuer |  -  |
+| **404** | Issuer has no forms in Rejected or RejectedWithErrors status |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
 <a name="updateissuer"></a>
 # **UpdateIssuer**
 > IssuerWriteResponse UpdateIssuer (UpdateIssuerRequestSdk requestParameters)
@@ -395,7 +482,7 @@ namespace Example
             var requestParameters = new UpdateIssuerRequestSdk();
             requestParameters.Id = "id_example";  // string | Id of the issuer to update
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 5dcb2f2c-e12d-4e11-aeaa-dfbd23bbe954;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 542fb8dd-e4ec-49c2-aef5-f9159dd46aaf;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.IssuerRequest = new IssuerRequest(); // IssuerRequest | The issuer to update (optional) 
 
