@@ -38,11 +38,62 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form 1099-DIV: Dividends and Distributions                *At least one of the following dividend or distribution amounts must be provided:*   Total ordinary dividends, Total capital gain distributions, Nondividend distributions,   Cash liquidation distributions, Noncash liquidation distributions, or Exempt-interest dividends.
+    /// Form 1099-SA: Distributions From an HSA, Archer MSA, or Medicare Advantage MSA                The recipient is the account holder and the issuer is the trustee (payer).                *Required:* Gross Distribution, Distribution Code, and exactly one of the three account type indicators  (HSA, Archer MSA, Medicare Advantage MSA).                Form 1099-SA has no state or local boxes, so &#x60;stateAndLocalWithholding&#x60; is discarded and reads back as &#x60;null&#x60;.
     /// </summary>
-    [DataContract(Name = "Form1099Div")]
-    public partial class Form1099Div : IValidatableObject
+    [DataContract(Name = "Form1099Sa")]
+    public partial class Form1099Sa : IValidatableObject
     {
+        /// <summary>
+        /// Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary
+        /// </summary>
+        /// <value>Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DistributionCodeEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 4,
+
+            /// <summary>
+            /// Enum _5 for value: 5
+            /// </summary>
+            [EnumMember(Value = "5")]
+            _5 = 5,
+
+            /// <summary>
+            /// Enum _6 for value: 6
+            /// </summary>
+            [EnumMember(Value = "6")]
+            _6 = 6
+        }
+
+
+        /// <summary>
+        /// Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary
+        /// </summary>
+        /// <value>Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary</value>
+        [DataMember(Name = "distributionCode", IsRequired = true, EmitDefaultValue = true)]
+        public DistributionCodeEnum DistributionCode { get; set; }
         /// <summary>
         /// Form type.
         /// </summary>
@@ -212,35 +263,23 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099Div" /> class.
+        /// Initializes a new instance of the <see cref="Form1099Sa" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Form1099Div()
+        protected Form1099Sa()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099Div" /> class.
+        /// Initializes a new instance of the <see cref="Form1099Sa" /> class.
         /// </summary>
-        /// <param name="totalOrdinaryDividends">Total ordinary dividends.</param>
-        /// <param name="qualifiedDividends">Qualified dividends.</param>
-        /// <param name="totalCapitalGainDistributions">Total capital gain distributions.</param>
-        /// <param name="unrecapturedSection1250Gain">Unrecaptured Section 1250 gain.</param>
-        /// <param name="section1202Gain">Section 1202 gain.</param>
-        /// <param name="collectiblesGain">Collectibles (28%) gain.</param>
-        /// <param name="section897OrdinaryDividends">Section 897 ordinary dividends.</param>
-        /// <param name="section897CapitalGain">Section 897 capital gain.</param>
-        /// <param name="nondividendDistributions">Nondividend distributions.</param>
-        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
-        /// <param name="section199ADividends">Section 199A dividends.</param>
-        /// <param name="investmentExpenses">Investment expenses.</param>
-        /// <param name="foreignTaxPaid">Foreign tax paid.</param>
-        /// <param name="foreignCountryOrUSPossession">Foreign country or U.S. possession.</param>
-        /// <param name="cashLiquidationDistributions">Cash liquidation distributions.</param>
-        /// <param name="noncashLiquidationDistributions">Noncash liquidation distributions.</param>
-        /// <param name="exemptInterestDividends">Exempt-interest dividends.</param>
-        /// <param name="specifiedPrivateActivityBondInterestDividends">Specified private activity bond interest dividends.</param>
-        /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
+        /// <param name="grossDistribution">Gross distribution (required).</param>
+        /// <param name="earningsOnExcessContributions">Earnings on excess contributions.</param>
+        /// <param name="distributionCode">Distribution code.                * &#x60;1&#x60; - Normal distributions  * &#x60;2&#x60; - Excess contributions  * &#x60;3&#x60; - Disability  * &#x60;4&#x60; - Death distribution other than code 6  * &#x60;5&#x60; - Prohibited transaction  * &#x60;6&#x60; - Death distribution after year of death to a nonspouse beneficiary (required).</param>
+        /// <param name="fairMarketValueOnDateOfDeath">Fair market value (FMV) of the account on the date of death.</param>
+        /// <param name="hsaIndicator">If checked, the account is a health savings account (HSA). Exactly one account type indicator must be checked..</param>
+        /// <param name="archerMsaIndicator">If checked, the account is an Archer medical savings account (MSA). Exactly one account type indicator must be checked..</param>
+        /// <param name="medicareAdvantageMsaIndicator">If checked, the account is a Medicare Advantage MSA. Exactly one account type indicator must be checked..</param>
         /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
         /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
@@ -276,46 +315,39 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office code.</param>
         /// <param name="noTin">No TIN indicator.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099Div(double? totalOrdinaryDividends = default(double?), double? qualifiedDividends = default(double?), double? totalCapitalGainDistributions = default(double?), double? unrecapturedSection1250Gain = default(double?), double? section1202Gain = default(double?), double? collectiblesGain = default(double?), double? section897OrdinaryDividends = default(double?), double? section897CapitalGain = default(double?), double? nondividendDistributions = default(double?), double? federalIncomeTaxWithheld = default(double?), double? section199ADividends = default(double?), double? investmentExpenses = default(double?), double? foreignTaxPaid = default(double?), string foreignCountryOrUSPossession = default(string), double? cashLiquidationDistributions = default(double?), double? noncashLiquidationDistributions = default(double?), double? exemptInterestDividends = default(double?), double? specifiedPrivateActivityBondInterestDividends = default(double?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
+        public Form1099Sa(double? grossDistribution = default(double?), double? earningsOnExcessContributions = default(double?), DistributionCodeEnum distributionCode = default(DistributionCodeEnum), double? fairMarketValueOnDateOfDeath = default(double?), bool? hsaIndicator = default(bool?), bool? archerMsaIndicator = default(bool?), bool? medicareAdvantageMsaIndicator = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
         {
+            // to ensure "grossDistribution" is required (not null)
+            if (grossDistribution == null)
+            {
+                throw new ArgumentNullException("grossDistribution is a required property for Form1099Sa and cannot be null");
+            }
+            this.GrossDistribution = grossDistribution;
+            this.DistributionCode = distributionCode;
             this.Type = type;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("address is a required property for Form1099Sa and cannot be null");
             }
             this.Address = address;
             // to ensure "city" is required (not null)
             if (city == null)
             {
-                throw new ArgumentNullException("city is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("city is a required property for Form1099Sa and cannot be null");
             }
             this.City = city;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
-                throw new ArgumentNullException("countryCode is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for Form1099Sa and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.TotalOrdinaryDividends = totalOrdinaryDividends;
-            this.QualifiedDividends = qualifiedDividends;
-            this.TotalCapitalGainDistributions = totalCapitalGainDistributions;
-            this.UnrecapturedSection1250Gain = unrecapturedSection1250Gain;
-            this.Section1202Gain = section1202Gain;
-            this.CollectiblesGain = collectiblesGain;
-            this.Section897OrdinaryDividends = section897OrdinaryDividends;
-            this.Section897CapitalGain = section897CapitalGain;
-            this.NondividendDistributions = nondividendDistributions;
-            this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
-            this.Section199ADividends = section199ADividends;
-            this.InvestmentExpenses = investmentExpenses;
-            this.ForeignTaxPaid = foreignTaxPaid;
-            this.ForeignCountryOrUSPossession = foreignCountryOrUSPossession;
-            this.CashLiquidationDistributions = cashLiquidationDistributions;
-            this.NoncashLiquidationDistributions = noncashLiquidationDistributions;
-            this.ExemptInterestDividends = exemptInterestDividends;
-            this.SpecifiedPrivateActivityBondInterestDividends = specifiedPrivateActivityBondInterestDividends;
-            this.FatcaFilingRequirement = fatcaFilingRequirement;
+            this.EarningsOnExcessContributions = earningsOnExcessContributions;
+            this.FairMarketValueOnDateOfDeath = fairMarketValueOnDateOfDeath;
+            this.HsaIndicator = hsaIndicator;
+            this.ArcherMsaIndicator = archerMsaIndicator;
+            this.MedicareAdvantageMsaIndicator = medicareAdvantageMsaIndicator;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
@@ -351,137 +383,46 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Total ordinary dividends
+        /// Gross distribution
         /// </summary>
-        /// <value>Total ordinary dividends</value>
-        [DataMember(Name = "totalOrdinaryDividends", EmitDefaultValue = true)]
-        public double? TotalOrdinaryDividends { get; set; }
+        /// <value>Gross distribution</value>
+        [DataMember(Name = "grossDistribution", IsRequired = true, EmitDefaultValue = true)]
+        public double? GrossDistribution { get; set; }
 
         /// <summary>
-        /// Qualified dividends
+        /// Earnings on excess contributions
         /// </summary>
-        /// <value>Qualified dividends</value>
-        [DataMember(Name = "qualifiedDividends", EmitDefaultValue = true)]
-        public double? QualifiedDividends { get; set; }
+        /// <value>Earnings on excess contributions</value>
+        [DataMember(Name = "earningsOnExcessContributions", EmitDefaultValue = true)]
+        public double? EarningsOnExcessContributions { get; set; }
 
         /// <summary>
-        /// Total capital gain distributions
+        /// Fair market value (FMV) of the account on the date of death
         /// </summary>
-        /// <value>Total capital gain distributions</value>
-        [DataMember(Name = "totalCapitalGainDistributions", EmitDefaultValue = true)]
-        public double? TotalCapitalGainDistributions { get; set; }
+        /// <value>Fair market value (FMV) of the account on the date of death</value>
+        [DataMember(Name = "fairMarketValueOnDateOfDeath", EmitDefaultValue = true)]
+        public double? FairMarketValueOnDateOfDeath { get; set; }
 
         /// <summary>
-        /// Unrecaptured Section 1250 gain
+        /// If checked, the account is a health savings account (HSA). Exactly one account type indicator must be checked.
         /// </summary>
-        /// <value>Unrecaptured Section 1250 gain</value>
-        [DataMember(Name = "unrecapturedSection1250Gain", EmitDefaultValue = true)]
-        public double? UnrecapturedSection1250Gain { get; set; }
+        /// <value>If checked, the account is a health savings account (HSA). Exactly one account type indicator must be checked.</value>
+        [DataMember(Name = "hsaIndicator", EmitDefaultValue = true)]
+        public bool? HsaIndicator { get; set; }
 
         /// <summary>
-        /// Section 1202 gain
+        /// If checked, the account is an Archer medical savings account (MSA). Exactly one account type indicator must be checked.
         /// </summary>
-        /// <value>Section 1202 gain</value>
-        [DataMember(Name = "section1202Gain", EmitDefaultValue = true)]
-        public double? Section1202Gain { get; set; }
+        /// <value>If checked, the account is an Archer medical savings account (MSA). Exactly one account type indicator must be checked.</value>
+        [DataMember(Name = "archerMsaIndicator", EmitDefaultValue = true)]
+        public bool? ArcherMsaIndicator { get; set; }
 
         /// <summary>
-        /// Collectibles (28%) gain
+        /// If checked, the account is a Medicare Advantage MSA. Exactly one account type indicator must be checked.
         /// </summary>
-        /// <value>Collectibles (28%) gain</value>
-        [DataMember(Name = "collectiblesGain", EmitDefaultValue = true)]
-        public double? CollectiblesGain { get; set; }
-
-        /// <summary>
-        /// Section 897 ordinary dividends
-        /// </summary>
-        /// <value>Section 897 ordinary dividends</value>
-        [DataMember(Name = "section897OrdinaryDividends", EmitDefaultValue = true)]
-        public double? Section897OrdinaryDividends { get; set; }
-
-        /// <summary>
-        /// Section 897 capital gain
-        /// </summary>
-        /// <value>Section 897 capital gain</value>
-        [DataMember(Name = "section897CapitalGain", EmitDefaultValue = true)]
-        public double? Section897CapitalGain { get; set; }
-
-        /// <summary>
-        /// Nondividend distributions
-        /// </summary>
-        /// <value>Nondividend distributions</value>
-        [DataMember(Name = "nondividendDistributions", EmitDefaultValue = true)]
-        public double? NondividendDistributions { get; set; }
-
-        /// <summary>
-        /// Federal income tax withheld
-        /// </summary>
-        /// <value>Federal income tax withheld</value>
-        [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
-        public double? FederalIncomeTaxWithheld { get; set; }
-
-        /// <summary>
-        /// Section 199A dividends
-        /// </summary>
-        /// <value>Section 199A dividends</value>
-        [DataMember(Name = "section199ADividends", EmitDefaultValue = true)]
-        public double? Section199ADividends { get; set; }
-
-        /// <summary>
-        /// Investment expenses
-        /// </summary>
-        /// <value>Investment expenses</value>
-        [DataMember(Name = "investmentExpenses", EmitDefaultValue = true)]
-        public double? InvestmentExpenses { get; set; }
-
-        /// <summary>
-        /// Foreign tax paid
-        /// </summary>
-        /// <value>Foreign tax paid</value>
-        [DataMember(Name = "foreignTaxPaid", EmitDefaultValue = true)]
-        public double? ForeignTaxPaid { get; set; }
-
-        /// <summary>
-        /// Foreign country or U.S. possession
-        /// </summary>
-        /// <value>Foreign country or U.S. possession</value>
-        [DataMember(Name = "foreignCountryOrUSPossession", EmitDefaultValue = true)]
-        public string ForeignCountryOrUSPossession { get; set; }
-
-        /// <summary>
-        /// Cash liquidation distributions
-        /// </summary>
-        /// <value>Cash liquidation distributions</value>
-        [DataMember(Name = "cashLiquidationDistributions", EmitDefaultValue = true)]
-        public double? CashLiquidationDistributions { get; set; }
-
-        /// <summary>
-        /// Noncash liquidation distributions
-        /// </summary>
-        /// <value>Noncash liquidation distributions</value>
-        [DataMember(Name = "noncashLiquidationDistributions", EmitDefaultValue = true)]
-        public double? NoncashLiquidationDistributions { get; set; }
-
-        /// <summary>
-        /// Exempt-interest dividends
-        /// </summary>
-        /// <value>Exempt-interest dividends</value>
-        [DataMember(Name = "exemptInterestDividends", EmitDefaultValue = true)]
-        public double? ExemptInterestDividends { get; set; }
-
-        /// <summary>
-        /// Specified private activity bond interest dividends
-        /// </summary>
-        /// <value>Specified private activity bond interest dividends</value>
-        [DataMember(Name = "specifiedPrivateActivityBondInterestDividends", EmitDefaultValue = true)]
-        public double? SpecifiedPrivateActivityBondInterestDividends { get; set; }
-
-        /// <summary>
-        /// FATCA filing requirement.
-        /// </summary>
-        /// <value>FATCA filing requirement.</value>
-        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
-        public bool? FatcaFilingRequirement { get; set; }
+        /// <value>If checked, the account is a Medicare Advantage MSA. Exactly one account type indicator must be checked.</value>
+        [DataMember(Name = "medicareAdvantageMsaIndicator", EmitDefaultValue = true)]
+        public bool? MedicareAdvantageMsaIndicator { get; set; }
 
         /// <summary>
         /// Form ID. Unique identifier set when the record is created.
@@ -882,26 +823,14 @@ namespace Avalara.SDK.Model.A1099.V2
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Form1099Div {\n");
-            sb.Append("  TotalOrdinaryDividends: ").Append(TotalOrdinaryDividends).Append("\n");
-            sb.Append("  QualifiedDividends: ").Append(QualifiedDividends).Append("\n");
-            sb.Append("  TotalCapitalGainDistributions: ").Append(TotalCapitalGainDistributions).Append("\n");
-            sb.Append("  UnrecapturedSection1250Gain: ").Append(UnrecapturedSection1250Gain).Append("\n");
-            sb.Append("  Section1202Gain: ").Append(Section1202Gain).Append("\n");
-            sb.Append("  CollectiblesGain: ").Append(CollectiblesGain).Append("\n");
-            sb.Append("  Section897OrdinaryDividends: ").Append(Section897OrdinaryDividends).Append("\n");
-            sb.Append("  Section897CapitalGain: ").Append(Section897CapitalGain).Append("\n");
-            sb.Append("  NondividendDistributions: ").Append(NondividendDistributions).Append("\n");
-            sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
-            sb.Append("  Section199ADividends: ").Append(Section199ADividends).Append("\n");
-            sb.Append("  InvestmentExpenses: ").Append(InvestmentExpenses).Append("\n");
-            sb.Append("  ForeignTaxPaid: ").Append(ForeignTaxPaid).Append("\n");
-            sb.Append("  ForeignCountryOrUSPossession: ").Append(ForeignCountryOrUSPossession).Append("\n");
-            sb.Append("  CashLiquidationDistributions: ").Append(CashLiquidationDistributions).Append("\n");
-            sb.Append("  NoncashLiquidationDistributions: ").Append(NoncashLiquidationDistributions).Append("\n");
-            sb.Append("  ExemptInterestDividends: ").Append(ExemptInterestDividends).Append("\n");
-            sb.Append("  SpecifiedPrivateActivityBondInterestDividends: ").Append(SpecifiedPrivateActivityBondInterestDividends).Append("\n");
-            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
+            sb.Append("class Form1099Sa {\n");
+            sb.Append("  GrossDistribution: ").Append(GrossDistribution).Append("\n");
+            sb.Append("  EarningsOnExcessContributions: ").Append(EarningsOnExcessContributions).Append("\n");
+            sb.Append("  DistributionCode: ").Append(DistributionCode).Append("\n");
+            sb.Append("  FairMarketValueOnDateOfDeath: ").Append(FairMarketValueOnDateOfDeath).Append("\n");
+            sb.Append("  HsaIndicator: ").Append(HsaIndicator).Append("\n");
+            sb.Append("  ArcherMsaIndicator: ").Append(ArcherMsaIndicator).Append("\n");
+            sb.Append("  MedicareAdvantageMsaIndicator: ").Append(MedicareAdvantageMsaIndicator).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");

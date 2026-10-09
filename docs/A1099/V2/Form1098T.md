@@ -1,9 +1,18 @@
-# Avalara.SDK.Model.A1099.V2.IrisFormBase
+# Avalara.SDK.Model.A1099.V2.Form1098T
+Form 1098-T: Tuition Statement                The recipient is the student and the issuer is the filer (eligible educational institution or insurer).                *Required:* at least one amount above zero (Boxes 1, 4, 5, 6 or 10). Amounts can't be negative; Boxes 4 and 6 are  reductions of prior-year amounts, entered as positive numbers. Boxes 2 and 3 are reserved by the IRS.                Form 1098-T has no state or local boxes, so `stateAndLocalWithholding` is discarded and reads back as `null`.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**PaymentsReceivedForQualifiedTuitionAndRelatedExpenses** | **double?** | Payments received for qualified tuition and related expenses | [optional] 
+**AdjustmentsMadeForPriorYear** | **double?** | Adjustments made for a prior year | [optional] 
+**ScholarshipsOrGrants** | **double?** | Scholarships or grants | [optional] 
+**AdjustmentsToScholarshipsOrGrantsForPriorYear** | **double?** | Adjustments to scholarships or grants for a prior year | [optional] 
+**IncludesAmountsForAcademicPeriodBeginningNextYearIndicator** | **bool?** | If checked, the amount in Box 1 includes amounts for an academic period beginning January through March of the  next year | [optional] 
+**AtLeastHalfTimeStudentIndicator** | **bool?** | If checked, the student was at least a half-time student during any academic period that began in the tax year | [optional] 
+**GraduateStudentIndicator** | **bool?** | If checked, the student was enrolled in a program leading to a graduate degree, certificate or credential | [optional] 
+**InsuranceContractReimbursementsOrRefunds** | **double?** | Insurance contract reimbursements or refunds (insurers only) | [optional] 
 **Type** | **string** | Form type. | 
 **Id** | **string** | Form ID. Unique identifier set when the record is created. | [optional] [readonly] 
 **IssuerId** | **string** | Issuer ID - only required when creating forms | [optional] 

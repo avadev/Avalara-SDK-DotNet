@@ -38,10 +38,10 @@ using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
 namespace Avalara.SDK.Model.A1099.V2
 {
 /// <summary>
-    /// Form 1099-DIV: Dividends and Distributions                *At least one of the following dividend or distribution amounts must be provided:*   Total ordinary dividends, Total capital gain distributions, Nondividend distributions,   Cash liquidation distributions, Noncash liquidation distributions, or Exempt-interest dividends.
+    /// Form 1098-T: Tuition Statement                The recipient is the student and the issuer is the filer (eligible educational institution or insurer).                *Required:* at least one amount above zero (Boxes 1, 4, 5, 6 or 10). Amounts can&#39;t be negative; Boxes 4 and 6 are  reductions of prior-year amounts, entered as positive numbers. Boxes 2 and 3 are reserved by the IRS.                Form 1098-T has no state or local boxes, so &#x60;stateAndLocalWithholding&#x60; is discarded and reads back as &#x60;null&#x60;.
     /// </summary>
-    [DataContract(Name = "Form1099Div")]
-    public partial class Form1099Div : IValidatableObject
+    [DataContract(Name = "Form1098T")]
+    public partial class Form1098T : IValidatableObject
     {
         /// <summary>
         /// Form type.
@@ -212,35 +212,24 @@ namespace Avalara.SDK.Model.A1099.V2
         [DataMember(Name = "tinType", EmitDefaultValue = true)]
         public TinTypeEnum? TinType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099Div" /> class.
+        /// Initializes a new instance of the <see cref="Form1098T" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Form1099Div()
+        protected Form1098T()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Form1099Div" /> class.
+        /// Initializes a new instance of the <see cref="Form1098T" /> class.
         /// </summary>
-        /// <param name="totalOrdinaryDividends">Total ordinary dividends.</param>
-        /// <param name="qualifiedDividends">Qualified dividends.</param>
-        /// <param name="totalCapitalGainDistributions">Total capital gain distributions.</param>
-        /// <param name="unrecapturedSection1250Gain">Unrecaptured Section 1250 gain.</param>
-        /// <param name="section1202Gain">Section 1202 gain.</param>
-        /// <param name="collectiblesGain">Collectibles (28%) gain.</param>
-        /// <param name="section897OrdinaryDividends">Section 897 ordinary dividends.</param>
-        /// <param name="section897CapitalGain">Section 897 capital gain.</param>
-        /// <param name="nondividendDistributions">Nondividend distributions.</param>
-        /// <param name="federalIncomeTaxWithheld">Federal income tax withheld.</param>
-        /// <param name="section199ADividends">Section 199A dividends.</param>
-        /// <param name="investmentExpenses">Investment expenses.</param>
-        /// <param name="foreignTaxPaid">Foreign tax paid.</param>
-        /// <param name="foreignCountryOrUSPossession">Foreign country or U.S. possession.</param>
-        /// <param name="cashLiquidationDistributions">Cash liquidation distributions.</param>
-        /// <param name="noncashLiquidationDistributions">Noncash liquidation distributions.</param>
-        /// <param name="exemptInterestDividends">Exempt-interest dividends.</param>
-        /// <param name="specifiedPrivateActivityBondInterestDividends">Specified private activity bond interest dividends.</param>
-        /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
+        /// <param name="paymentsReceivedForQualifiedTuitionAndRelatedExpenses">Payments received for qualified tuition and related expenses.</param>
+        /// <param name="adjustmentsMadeForPriorYear">Adjustments made for a prior year.</param>
+        /// <param name="scholarshipsOrGrants">Scholarships or grants.</param>
+        /// <param name="adjustmentsToScholarshipsOrGrantsForPriorYear">Adjustments to scholarships or grants for a prior year.</param>
+        /// <param name="includesAmountsForAcademicPeriodBeginningNextYearIndicator">If checked, the amount in Box 1 includes amounts for an academic period beginning January through March of the  next year.</param>
+        /// <param name="atLeastHalfTimeStudentIndicator">If checked, the student was at least a half-time student during any academic period that began in the tax year.</param>
+        /// <param name="graduateStudentIndicator">If checked, the student was enrolled in a program leading to a graduate degree, certificate or credential.</param>
+        /// <param name="insuranceContractReimbursementsOrRefunds">Insurance contract reimbursements or refunds (insurers only).</param>
         /// <param name="type">Form type. (required).</param>
         /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
         /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
@@ -276,46 +265,35 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office code.</param>
         /// <param name="noTin">No TIN indicator.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099Div(double? totalOrdinaryDividends = default(double?), double? qualifiedDividends = default(double?), double? totalCapitalGainDistributions = default(double?), double? unrecapturedSection1250Gain = default(double?), double? section1202Gain = default(double?), double? collectiblesGain = default(double?), double? section897OrdinaryDividends = default(double?), double? section897CapitalGain = default(double?), double? nondividendDistributions = default(double?), double? federalIncomeTaxWithheld = default(double?), double? section199ADividends = default(double?), double? investmentExpenses = default(double?), double? foreignTaxPaid = default(double?), string foreignCountryOrUSPossession = default(string), double? cashLiquidationDistributions = default(double?), double? noncashLiquidationDistributions = default(double?), double? exemptInterestDividends = default(double?), double? specifiedPrivateActivityBondInterestDividends = default(double?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
+        public Form1098T(double? paymentsReceivedForQualifiedTuitionAndRelatedExpenses = default(double?), double? adjustmentsMadeForPriorYear = default(double?), double? scholarshipsOrGrants = default(double?), double? adjustmentsToScholarshipsOrGrantsForPriorYear = default(double?), bool? includesAmountsForAcademicPeriodBeginningNextYearIndicator = default(bool?), bool? atLeastHalfTimeStudentIndicator = default(bool?), bool? graduateStudentIndicator = default(bool?), double? insuranceContractReimbursementsOrRefunds = default(double?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
         {
             this.Type = type;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("address is a required property for Form1098T and cannot be null");
             }
             this.Address = address;
             // to ensure "city" is required (not null)
             if (city == null)
             {
-                throw new ArgumentNullException("city is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("city is a required property for Form1098T and cannot be null");
             }
             this.City = city;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
-                throw new ArgumentNullException("countryCode is a required property for Form1099Div and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for Form1098T and cannot be null");
             }
             this.CountryCode = countryCode;
-            this.TotalOrdinaryDividends = totalOrdinaryDividends;
-            this.QualifiedDividends = qualifiedDividends;
-            this.TotalCapitalGainDistributions = totalCapitalGainDistributions;
-            this.UnrecapturedSection1250Gain = unrecapturedSection1250Gain;
-            this.Section1202Gain = section1202Gain;
-            this.CollectiblesGain = collectiblesGain;
-            this.Section897OrdinaryDividends = section897OrdinaryDividends;
-            this.Section897CapitalGain = section897CapitalGain;
-            this.NondividendDistributions = nondividendDistributions;
-            this.FederalIncomeTaxWithheld = federalIncomeTaxWithheld;
-            this.Section199ADividends = section199ADividends;
-            this.InvestmentExpenses = investmentExpenses;
-            this.ForeignTaxPaid = foreignTaxPaid;
-            this.ForeignCountryOrUSPossession = foreignCountryOrUSPossession;
-            this.CashLiquidationDistributions = cashLiquidationDistributions;
-            this.NoncashLiquidationDistributions = noncashLiquidationDistributions;
-            this.ExemptInterestDividends = exemptInterestDividends;
-            this.SpecifiedPrivateActivityBondInterestDividends = specifiedPrivateActivityBondInterestDividends;
-            this.FatcaFilingRequirement = fatcaFilingRequirement;
+            this.PaymentsReceivedForQualifiedTuitionAndRelatedExpenses = paymentsReceivedForQualifiedTuitionAndRelatedExpenses;
+            this.AdjustmentsMadeForPriorYear = adjustmentsMadeForPriorYear;
+            this.ScholarshipsOrGrants = scholarshipsOrGrants;
+            this.AdjustmentsToScholarshipsOrGrantsForPriorYear = adjustmentsToScholarshipsOrGrantsForPriorYear;
+            this.IncludesAmountsForAcademicPeriodBeginningNextYearIndicator = includesAmountsForAcademicPeriodBeginningNextYearIndicator;
+            this.AtLeastHalfTimeStudentIndicator = atLeastHalfTimeStudentIndicator;
+            this.GraduateStudentIndicator = graduateStudentIndicator;
+            this.InsuranceContractReimbursementsOrRefunds = insuranceContractReimbursementsOrRefunds;
             this.IssuerId = issuerId;
             this.IssuerReferenceId = issuerReferenceId;
             this.IssuerTin = issuerTin;
@@ -351,137 +329,60 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// Total ordinary dividends
+        /// Payments received for qualified tuition and related expenses
         /// </summary>
-        /// <value>Total ordinary dividends</value>
-        [DataMember(Name = "totalOrdinaryDividends", EmitDefaultValue = true)]
-        public double? TotalOrdinaryDividends { get; set; }
+        /// <value>Payments received for qualified tuition and related expenses</value>
+        [DataMember(Name = "paymentsReceivedForQualifiedTuitionAndRelatedExpenses", EmitDefaultValue = true)]
+        public double? PaymentsReceivedForQualifiedTuitionAndRelatedExpenses { get; set; }
 
         /// <summary>
-        /// Qualified dividends
+        /// Adjustments made for a prior year
         /// </summary>
-        /// <value>Qualified dividends</value>
-        [DataMember(Name = "qualifiedDividends", EmitDefaultValue = true)]
-        public double? QualifiedDividends { get; set; }
+        /// <value>Adjustments made for a prior year</value>
+        [DataMember(Name = "adjustmentsMadeForPriorYear", EmitDefaultValue = true)]
+        public double? AdjustmentsMadeForPriorYear { get; set; }
 
         /// <summary>
-        /// Total capital gain distributions
+        /// Scholarships or grants
         /// </summary>
-        /// <value>Total capital gain distributions</value>
-        [DataMember(Name = "totalCapitalGainDistributions", EmitDefaultValue = true)]
-        public double? TotalCapitalGainDistributions { get; set; }
+        /// <value>Scholarships or grants</value>
+        [DataMember(Name = "scholarshipsOrGrants", EmitDefaultValue = true)]
+        public double? ScholarshipsOrGrants { get; set; }
 
         /// <summary>
-        /// Unrecaptured Section 1250 gain
+        /// Adjustments to scholarships or grants for a prior year
         /// </summary>
-        /// <value>Unrecaptured Section 1250 gain</value>
-        [DataMember(Name = "unrecapturedSection1250Gain", EmitDefaultValue = true)]
-        public double? UnrecapturedSection1250Gain { get; set; }
+        /// <value>Adjustments to scholarships or grants for a prior year</value>
+        [DataMember(Name = "adjustmentsToScholarshipsOrGrantsForPriorYear", EmitDefaultValue = true)]
+        public double? AdjustmentsToScholarshipsOrGrantsForPriorYear { get; set; }
 
         /// <summary>
-        /// Section 1202 gain
+        /// If checked, the amount in Box 1 includes amounts for an academic period beginning January through March of the  next year
         /// </summary>
-        /// <value>Section 1202 gain</value>
-        [DataMember(Name = "section1202Gain", EmitDefaultValue = true)]
-        public double? Section1202Gain { get; set; }
+        /// <value>If checked, the amount in Box 1 includes amounts for an academic period beginning January through March of the  next year</value>
+        [DataMember(Name = "includesAmountsForAcademicPeriodBeginningNextYearIndicator", EmitDefaultValue = true)]
+        public bool? IncludesAmountsForAcademicPeriodBeginningNextYearIndicator { get; set; }
 
         /// <summary>
-        /// Collectibles (28%) gain
+        /// If checked, the student was at least a half-time student during any academic period that began in the tax year
         /// </summary>
-        /// <value>Collectibles (28%) gain</value>
-        [DataMember(Name = "collectiblesGain", EmitDefaultValue = true)]
-        public double? CollectiblesGain { get; set; }
+        /// <value>If checked, the student was at least a half-time student during any academic period that began in the tax year</value>
+        [DataMember(Name = "atLeastHalfTimeStudentIndicator", EmitDefaultValue = true)]
+        public bool? AtLeastHalfTimeStudentIndicator { get; set; }
 
         /// <summary>
-        /// Section 897 ordinary dividends
+        /// If checked, the student was enrolled in a program leading to a graduate degree, certificate or credential
         /// </summary>
-        /// <value>Section 897 ordinary dividends</value>
-        [DataMember(Name = "section897OrdinaryDividends", EmitDefaultValue = true)]
-        public double? Section897OrdinaryDividends { get; set; }
+        /// <value>If checked, the student was enrolled in a program leading to a graduate degree, certificate or credential</value>
+        [DataMember(Name = "graduateStudentIndicator", EmitDefaultValue = true)]
+        public bool? GraduateStudentIndicator { get; set; }
 
         /// <summary>
-        /// Section 897 capital gain
+        /// Insurance contract reimbursements or refunds (insurers only)
         /// </summary>
-        /// <value>Section 897 capital gain</value>
-        [DataMember(Name = "section897CapitalGain", EmitDefaultValue = true)]
-        public double? Section897CapitalGain { get; set; }
-
-        /// <summary>
-        /// Nondividend distributions
-        /// </summary>
-        /// <value>Nondividend distributions</value>
-        [DataMember(Name = "nondividendDistributions", EmitDefaultValue = true)]
-        public double? NondividendDistributions { get; set; }
-
-        /// <summary>
-        /// Federal income tax withheld
-        /// </summary>
-        /// <value>Federal income tax withheld</value>
-        [DataMember(Name = "federalIncomeTaxWithheld", EmitDefaultValue = true)]
-        public double? FederalIncomeTaxWithheld { get; set; }
-
-        /// <summary>
-        /// Section 199A dividends
-        /// </summary>
-        /// <value>Section 199A dividends</value>
-        [DataMember(Name = "section199ADividends", EmitDefaultValue = true)]
-        public double? Section199ADividends { get; set; }
-
-        /// <summary>
-        /// Investment expenses
-        /// </summary>
-        /// <value>Investment expenses</value>
-        [DataMember(Name = "investmentExpenses", EmitDefaultValue = true)]
-        public double? InvestmentExpenses { get; set; }
-
-        /// <summary>
-        /// Foreign tax paid
-        /// </summary>
-        /// <value>Foreign tax paid</value>
-        [DataMember(Name = "foreignTaxPaid", EmitDefaultValue = true)]
-        public double? ForeignTaxPaid { get; set; }
-
-        /// <summary>
-        /// Foreign country or U.S. possession
-        /// </summary>
-        /// <value>Foreign country or U.S. possession</value>
-        [DataMember(Name = "foreignCountryOrUSPossession", EmitDefaultValue = true)]
-        public string ForeignCountryOrUSPossession { get; set; }
-
-        /// <summary>
-        /// Cash liquidation distributions
-        /// </summary>
-        /// <value>Cash liquidation distributions</value>
-        [DataMember(Name = "cashLiquidationDistributions", EmitDefaultValue = true)]
-        public double? CashLiquidationDistributions { get; set; }
-
-        /// <summary>
-        /// Noncash liquidation distributions
-        /// </summary>
-        /// <value>Noncash liquidation distributions</value>
-        [DataMember(Name = "noncashLiquidationDistributions", EmitDefaultValue = true)]
-        public double? NoncashLiquidationDistributions { get; set; }
-
-        /// <summary>
-        /// Exempt-interest dividends
-        /// </summary>
-        /// <value>Exempt-interest dividends</value>
-        [DataMember(Name = "exemptInterestDividends", EmitDefaultValue = true)]
-        public double? ExemptInterestDividends { get; set; }
-
-        /// <summary>
-        /// Specified private activity bond interest dividends
-        /// </summary>
-        /// <value>Specified private activity bond interest dividends</value>
-        [DataMember(Name = "specifiedPrivateActivityBondInterestDividends", EmitDefaultValue = true)]
-        public double? SpecifiedPrivateActivityBondInterestDividends { get; set; }
-
-        /// <summary>
-        /// FATCA filing requirement.
-        /// </summary>
-        /// <value>FATCA filing requirement.</value>
-        [DataMember(Name = "fatcaFilingRequirement", EmitDefaultValue = true)]
-        public bool? FatcaFilingRequirement { get; set; }
+        /// <value>Insurance contract reimbursements or refunds (insurers only)</value>
+        [DataMember(Name = "insuranceContractReimbursementsOrRefunds", EmitDefaultValue = true)]
+        public double? InsuranceContractReimbursementsOrRefunds { get; set; }
 
         /// <summary>
         /// Form ID. Unique identifier set when the record is created.
@@ -882,26 +783,15 @@ namespace Avalara.SDK.Model.A1099.V2
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Form1099Div {\n");
-            sb.Append("  TotalOrdinaryDividends: ").Append(TotalOrdinaryDividends).Append("\n");
-            sb.Append("  QualifiedDividends: ").Append(QualifiedDividends).Append("\n");
-            sb.Append("  TotalCapitalGainDistributions: ").Append(TotalCapitalGainDistributions).Append("\n");
-            sb.Append("  UnrecapturedSection1250Gain: ").Append(UnrecapturedSection1250Gain).Append("\n");
-            sb.Append("  Section1202Gain: ").Append(Section1202Gain).Append("\n");
-            sb.Append("  CollectiblesGain: ").Append(CollectiblesGain).Append("\n");
-            sb.Append("  Section897OrdinaryDividends: ").Append(Section897OrdinaryDividends).Append("\n");
-            sb.Append("  Section897CapitalGain: ").Append(Section897CapitalGain).Append("\n");
-            sb.Append("  NondividendDistributions: ").Append(NondividendDistributions).Append("\n");
-            sb.Append("  FederalIncomeTaxWithheld: ").Append(FederalIncomeTaxWithheld).Append("\n");
-            sb.Append("  Section199ADividends: ").Append(Section199ADividends).Append("\n");
-            sb.Append("  InvestmentExpenses: ").Append(InvestmentExpenses).Append("\n");
-            sb.Append("  ForeignTaxPaid: ").Append(ForeignTaxPaid).Append("\n");
-            sb.Append("  ForeignCountryOrUSPossession: ").Append(ForeignCountryOrUSPossession).Append("\n");
-            sb.Append("  CashLiquidationDistributions: ").Append(CashLiquidationDistributions).Append("\n");
-            sb.Append("  NoncashLiquidationDistributions: ").Append(NoncashLiquidationDistributions).Append("\n");
-            sb.Append("  ExemptInterestDividends: ").Append(ExemptInterestDividends).Append("\n");
-            sb.Append("  SpecifiedPrivateActivityBondInterestDividends: ").Append(SpecifiedPrivateActivityBondInterestDividends).Append("\n");
-            sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
+            sb.Append("class Form1098T {\n");
+            sb.Append("  PaymentsReceivedForQualifiedTuitionAndRelatedExpenses: ").Append(PaymentsReceivedForQualifiedTuitionAndRelatedExpenses).Append("\n");
+            sb.Append("  AdjustmentsMadeForPriorYear: ").Append(AdjustmentsMadeForPriorYear).Append("\n");
+            sb.Append("  ScholarshipsOrGrants: ").Append(ScholarshipsOrGrants).Append("\n");
+            sb.Append("  AdjustmentsToScholarshipsOrGrantsForPriorYear: ").Append(AdjustmentsToScholarshipsOrGrantsForPriorYear).Append("\n");
+            sb.Append("  IncludesAmountsForAcademicPeriodBeginningNextYearIndicator: ").Append(IncludesAmountsForAcademicPeriodBeginningNextYearIndicator).Append("\n");
+            sb.Append("  AtLeastHalfTimeStudentIndicator: ").Append(AtLeastHalfTimeStudentIndicator).Append("\n");
+            sb.Append("  GraduateStudentIndicator: ").Append(GraduateStudentIndicator).Append("\n");
+            sb.Append("  InsuranceContractReimbursementsOrRefunds: ").Append(InsuranceContractReimbursementsOrRefunds).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");

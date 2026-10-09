@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
 *Issuers1099Api* | [**DeleteIssuer**](docs/A1099/V2/Issuers1099Api.md#deleteissuer) | **DELETE** /1099/issuers/{id} | Delete an issuer
 *Issuers1099Api* | [**GetIssuer**](docs/A1099/V2/Issuers1099Api.md#getissuer) | **GET** /1099/issuers/{id} | Retrieve an issuer
 *Issuers1099Api* | [**GetIssuers**](docs/A1099/V2/Issuers1099Api.md#getissuers) | **GET** /1099/issuers | List issuers
+*Issuers1099Api* | [**ResubmitRejectedForms**](docs/A1099/V2/Issuers1099Api.md#resubmitrejectedforms) | **POST** /1099/issuers/{issuerId}/$resubmit-rejected-forms | Request a replacement submission for an issuer's rejected forms
 *Issuers1099Api* | [**UpdateIssuer**](docs/A1099/V2/Issuers1099Api.md#updateissuer) | **PUT** /1099/issuers/{id} | Update an issuer
 *JobsApi* | [**GetJob**](docs/A1099/V2/JobsApi.md#getjob) | **GET** /jobs/{id} | Retrieves information about the job
 *TINMatchesApi* | [**GetBulkTinMatch**](docs/A1099/V2/TINMatchesApi.md#getbulktinmatch) | **GET** /tin-matches/$bulk/{id} | Get bulk TIN match details
@@ -267,6 +268,7 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.Form1095B](docs/A1099/V2/Form1095B.md)
  - [Model.A1099.V2.Form1095C](docs/A1099/V2/Form1095C.md)
  - [Model.A1099.V2.Form1098](docs/A1099/V2/Form1098.md)
+ - [Model.A1099.V2.Form1098T](docs/A1099/V2/Form1098T.md)
  - [Model.A1099.V2.Form1099Base](docs/A1099/V2/Form1099Base.md)
  - [Model.A1099.V2.Form1099C](docs/A1099/V2/Form1099C.md)
  - [Model.A1099.V2.Form1099Div](docs/A1099/V2/Form1099Div.md)
@@ -278,6 +280,7 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.Form1099Patr](docs/A1099/V2/Form1099Patr.md)
  - [Model.A1099.V2.Form1099R](docs/A1099/V2/Form1099R.md)
  - [Model.A1099.V2.Form1099S](docs/A1099/V2/Form1099S.md)
+ - [Model.A1099.V2.Form1099Sa](docs/A1099/V2/Form1099Sa.md)
  - [Model.A1099.V2.Form1099StatusDetail](docs/A1099/V2/Form1099StatusDetail.md)
  - [Model.A1099.V2.Form1099W2](docs/A1099/V2/Form1099W2.md)
  - [Model.A1099.V2.Get1099Form200Response](docs/A1099/V2/Get1099Form200Response.md)
@@ -298,6 +301,7 @@ Class | Method | HTTP request | Description
  - [Model.A1099.V2.RealTimeTinMatchIrsResponse](docs/A1099/V2/RealTimeTinMatchIrsResponse.md)
  - [Model.A1099.V2.RealTimeTinMatchRequest](docs/A1099/V2/RealTimeTinMatchRequest.md)
  - [Model.A1099.V2.RealTimeTinMatchResponse](docs/A1099/V2/RealTimeTinMatchResponse.md)
+ - [Model.A1099.V2.ResubmitRejectedFormsResponse](docs/A1099/V2/ResubmitRejectedFormsResponse.md)
  - [Model.A1099.V2.StateAndLocalWithholding](docs/A1099/V2/StateAndLocalWithholding.md)
  - [Model.A1099.V2.StateEfileStatusDetail](docs/A1099/V2/StateEfileStatusDetail.md)
  - [Model.A1099.V2.SubstantialUsOwnerRequest](docs/A1099/V2/SubstantialUsOwnerRequest.md)

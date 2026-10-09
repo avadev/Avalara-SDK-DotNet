@@ -466,7 +466,7 @@ namespace Avalara.SDK.Api.EInvoicing.V1
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "26.9.1";
+            this.Client.SdkVersion = "26.10.0";
         }
         
     }
