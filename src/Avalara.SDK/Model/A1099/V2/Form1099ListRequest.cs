@@ -44,9 +44,9 @@ namespace Avalara.SDK.Model.A1099.V2
     public partial class Form1099ListRequest : IValidatableObject
     {
         /// <summary>
-        /// Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-T&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;W-2&#x60; 
+        /// Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-E&#x60; * &#x60;1098-T&#x60; * &#x60;1099-B&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-G&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;5498&#x60; * &#x60;W-2&#x60; * &#x60;W-2G&#x60; 
         /// </summary>
-        /// <value>Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-T&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;W-2&#x60; </value>
+        /// <value>Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-E&#x60; * &#x60;1098-T&#x60; * &#x60;1099-B&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-G&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;5498&#x60; * &#x60;W-2&#x60; * &#x60;W-2G&#x60; </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -75,89 +75,119 @@ namespace Avalara.SDK.Model.A1099.V2
             _1098 = 4,
 
             /// <summary>
+            /// Enum _1098E for value: 1098-E
+            /// </summary>
+            [EnumMember(Value = "1098-E")]
+            _1098E = 5,
+
+            /// <summary>
             /// Enum _1098T for value: 1098-T
             /// </summary>
             [EnumMember(Value = "1098-T")]
-            _1098T = 5,
+            _1098T = 6,
+
+            /// <summary>
+            /// Enum _1099B for value: 1099-B
+            /// </summary>
+            [EnumMember(Value = "1099-B")]
+            _1099B = 7,
 
             /// <summary>
             /// Enum _1099C for value: 1099-C
             /// </summary>
             [EnumMember(Value = "1099-C")]
-            _1099C = 6,
+            _1099C = 8,
 
             /// <summary>
             /// Enum _1099DIV for value: 1099-DIV
             /// </summary>
             [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 7,
+            _1099DIV = 9,
+
+            /// <summary>
+            /// Enum _1099G for value: 1099-G
+            /// </summary>
+            [EnumMember(Value = "1099-G")]
+            _1099G = 10,
 
             /// <summary>
             /// Enum _1099INT for value: 1099-INT
             /// </summary>
             [EnumMember(Value = "1099-INT")]
-            _1099INT = 8,
+            _1099INT = 11,
 
             /// <summary>
             /// Enum _1099K for value: 1099-K
             /// </summary>
             [EnumMember(Value = "1099-K")]
-            _1099K = 9,
+            _1099K = 12,
 
             /// <summary>
             /// Enum _1099MISC for value: 1099-MISC
             /// </summary>
             [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 10,
+            _1099MISC = 13,
 
             /// <summary>
             /// Enum _1099NEC for value: 1099-NEC
             /// </summary>
             [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 11,
+            _1099NEC = 14,
 
             /// <summary>
             /// Enum _1099PATR for value: 1099-PATR
             /// </summary>
             [EnumMember(Value = "1099-PATR")]
-            _1099PATR = 12,
+            _1099PATR = 15,
 
             /// <summary>
             /// Enum _1099R for value: 1099-R
             /// </summary>
             [EnumMember(Value = "1099-R")]
-            _1099R = 13,
+            _1099R = 16,
 
             /// <summary>
             /// Enum _1099S for value: 1099-S
             /// </summary>
             [EnumMember(Value = "1099-S")]
-            _1099S = 14,
+            _1099S = 17,
 
             /// <summary>
             /// Enum _1099SA for value: 1099-SA
             /// </summary>
             [EnumMember(Value = "1099-SA")]
-            _1099SA = 15,
+            _1099SA = 18,
+
+            /// <summary>
+            /// Enum _5498 for value: 5498
+            /// </summary>
+            [EnumMember(Value = "5498")]
+            _5498 = 19,
 
             /// <summary>
             /// Enum W2 for value: W-2
             /// </summary>
             [EnumMember(Value = "W-2")]
-            W2 = 16
+            W2 = 20,
+
+            /// <summary>
+            /// Enum W2G for value: W-2G
+            /// </summary>
+            [EnumMember(Value = "W-2G")]
+            W2G = 21
         }
 
 
         /// <summary>
-        /// Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-T&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;W-2&#x60; 
+        /// Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-E&#x60; * &#x60;1098-T&#x60; * &#x60;1099-B&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-G&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;5498&#x60; * &#x60;W-2&#x60; * &#x60;W-2G&#x60; 
         /// </summary>
-        /// <value>Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-T&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;W-2&#x60; </value>
+        /// <value>Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-E&#x60; * &#x60;1098-T&#x60; * &#x60;1099-B&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-G&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;5498&#x60; * &#x60;W-2&#x60; * &#x60;W-2G&#x60; </value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1099ListRequest" /> class.
         /// </summary>
-        /// <param name="type">Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-T&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;W-2&#x60; .</param>
+        /// <param name="type">Available form types: * &#x60;1042-S&#x60; * &#x60;1095-B&#x60; * &#x60;1095-C&#x60; * &#x60;1098&#x60; * &#x60;1098-E&#x60; * &#x60;1098-T&#x60; * &#x60;1099-B&#x60; * &#x60;1099-C&#x60; * &#x60;1099-DIV&#x60; * &#x60;1099-G&#x60; * &#x60;1099-INT&#x60; * &#x60;1099-K&#x60; * &#x60;1099-MISC&#x60; * &#x60;1099-NEC&#x60; * &#x60;1099-PATR&#x60; * &#x60;1099-R&#x60; * &#x60;1099-S&#x60; * &#x60;1099-SA&#x60; * &#x60;5498&#x60; * &#x60;W-2&#x60; * &#x60;W-2G&#x60; .</param>
         /// <param name="forms">forms.</param>
         public Form1099ListRequest(TypeEnum? type = default(TypeEnum?), List<Get1099Form200Response> forms = default(List<Get1099Form200Response>))
         {

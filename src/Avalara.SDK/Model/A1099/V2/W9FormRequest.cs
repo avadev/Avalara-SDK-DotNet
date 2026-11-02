@@ -174,8 +174,13 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <summary>
         /// Initializes a new instance of the <see cref="W9FormRequest" /> class.
         /// </summary>
-        /// <param name="name">The name of the individual or entity associated with the form. (required).</param>
-        /// <param name="businessName">The name of the business associated with the form..</param>
+        /// <param name="name">The name of the individual or entity associated with the form. Required when neither firstName/lastName  nor businessName/name2 are provided. Up to 40 characters..</param>
+        /// <param name="firstName">Individual first name. Must be sent together with lastName; should only be used for individuals. Up to 40 characters..</param>
+        /// <param name="middleName">Individual middle name. Should only be used for individuals. Up to 40 characters..</param>
+        /// <param name="lastName">Individual last name. Must be sent together with firstName; should only be used for individuals. Up to 40 characters..</param>
+        /// <param name="suffixName">Individual name suffix (e.g. Jr., Sr.). Should only be used for individuals. Up to 10 characters..</param>
+        /// <param name="businessName">DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead..</param>
+        /// <param name="name2">The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.  When both &#x60;businessName&#x60; and &#x60;name2&#x60; are provided, &#x60;businessName&#x60; takes precedence..</param>
         /// <param name="businessClassification">The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated) (required).</param>
         /// <param name="businessOther">The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;..</param>
         /// <param name="foreignPartnerOwnerOrBeneficiary">Indicates whether the individual is a foreign partner, owner, or beneficiary..</param>
@@ -197,14 +202,8 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="email">The email address of the individual associated with the form..</param>
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="signature">The signature of the form..</param>
-        public W9FormRequest(string name = default(string), string businessName = default(string), BusinessClassificationEnum businessClassification = default(BusinessClassificationEnum), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
+        public W9FormRequest(string name = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string businessName = default(string), string name2 = default(string), BusinessClassificationEnum businessClassification = default(BusinessClassificationEnum), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), string companyId = default(string), string referenceId = default(string), string email = default(string), DateTime? eDeliveryConsentedAt = default(DateTime?), string signature = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for W9FormRequest and cannot be null");
-            }
-            this.Name = name;
             this.BusinessClassification = businessClassification;
             // to ensure "address" is required (not null)
             if (address == null)
@@ -242,7 +241,13 @@ namespace Avalara.SDK.Model.A1099.V2
                 throw new ArgumentNullException("tin is a required property for W9FormRequest and cannot be null");
             }
             this.Tin = tin;
+            this.Name = name;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.SuffixName = suffixName;
             this.BusinessName = businessName;
+            this.Name2 = name2;
             this.BusinessOther = businessOther;
             this.ForeignPartnerOwnerOrBeneficiary = foreignPartnerOwnerOrBeneficiary;
             this.ExemptPayeeCode = exemptPayeeCode;
@@ -260,18 +265,54 @@ namespace Avalara.SDK.Model.A1099.V2
         }
 
         /// <summary>
-        /// The name of the individual or entity associated with the form.
+        /// The name of the individual or entity associated with the form. Required when neither firstName/lastName  nor businessName/name2 are provided. Up to 40 characters.
         /// </summary>
-        /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The name of the individual or entity associated with the form. Required when neither firstName/lastName  nor businessName/name2 are provided. Up to 40 characters.</value>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The name of the business associated with the form.
+        /// Individual first name. Must be sent together with lastName; should only be used for individuals. Up to 40 characters.
         /// </summary>
-        /// <value>The name of the business associated with the form.</value>
+        /// <value>Individual first name. Must be sent together with lastName; should only be used for individuals. Up to 40 characters.</value>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Individual middle name. Should only be used for individuals. Up to 40 characters.
+        /// </summary>
+        /// <value>Individual middle name. Should only be used for individuals. Up to 40 characters.</value>
+        [DataMember(Name = "middleName", EmitDefaultValue = true)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Individual last name. Must be sent together with firstName; should only be used for individuals. Up to 40 characters.
+        /// </summary>
+        /// <value>Individual last name. Must be sent together with firstName; should only be used for individuals. Up to 40 characters.</value>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Individual name suffix (e.g. Jr., Sr.). Should only be used for individuals. Up to 10 characters.
+        /// </summary>
+        /// <value>Individual name suffix (e.g. Jr., Sr.). Should only be used for individuals. Up to 10 characters.</value>
+        [DataMember(Name = "suffixName", EmitDefaultValue = true)]
+        public string SuffixName { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead.
+        /// </summary>
+        /// <value>DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead.</value>
         [DataMember(Name = "businessName", EmitDefaultValue = true)]
+        [Obsolete]
         public string BusinessName { get; set; }
+
+        /// <summary>
+        /// The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.  When both &#x60;businessName&#x60; and &#x60;name2&#x60; are provided, &#x60;businessName&#x60; takes precedence.
+        /// </summary>
+        /// <value>The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.  When both &#x60;businessName&#x60; and &#x60;name2&#x60; are provided, &#x60;businessName&#x60; takes precedence.</value>
+        [DataMember(Name = "name2", EmitDefaultValue = true)]
+        public string Name2 { get; set; }
 
         /// <summary>
         /// The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;.
@@ -423,7 +464,12 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class W9FormRequest {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  SuffixName: ").Append(SuffixName).Append("\n");
             sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  Name2: ").Append(Name2).Append("\n");
             sb.Append("  BusinessClassification: ").Append(BusinessClassification).Append("\n");
             sb.Append("  BusinessOther: ").Append(BusinessOther).Append("\n");
             sb.Append("  ForeignPartnerOwnerOrBeneficiary: ").Append(ForeignPartnerOwnerOrBeneficiary).Append("\n");

@@ -101,7 +101,12 @@ namespace Avalara.SDK.Model.A1099.V2
         /// Initializes a new instance of the <see cref="W9FormResponse" /> class.
         /// </summary>
         /// <param name="name">The name of the individual or entity associated with the form..</param>
-        /// <param name="businessName">The name of the business associated with the form..</param>
+        /// <param name="firstName">Individual first name..</param>
+        /// <param name="middleName">Individual middle name..</param>
+        /// <param name="lastName">Individual last name..</param>
+        /// <param name="suffixName">Individual name suffix..</param>
+        /// <param name="businessName">DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead..</param>
+        /// <param name="name2">The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field..</param>
         /// <param name="businessClassification">The classification of the business..</param>
         /// <param name="businessOther">The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;..</param>
         /// <param name="foreignPartnerOwnerOrBeneficiary">Indicates whether the individual is a foreign partner, owner, or beneficiary..</param>
@@ -132,10 +137,15 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="eDeliveryConsentedAt">The date when e-delivery was consented..</param>
         /// <param name="createdAt">The creation date of the form..</param>
         /// <param name="updatedAt">The last updated date of the form..</param>
-        public W9FormResponse(string name = default(string), string businessName = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), TinMatchStatusResponse tinMatchStatus = default(TinMatchStatusResponse), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public W9FormResponse(string name = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string businessName = default(string), string name2 = default(string), string businessClassification = default(string), string businessOther = default(string), bool foreignPartnerOwnerOrBeneficiary = default(bool), string exemptPayeeCode = default(string), string exemptFatcaCode = default(string), bool foreignCountryIndicator = default(bool), string address = default(string), string foreignAddress = default(string), string city = default(string), string state = default(string), string zip = default(string), string accountNumber = default(string), string tinType = default(string), string tin = default(string), bool backupWithholding = default(bool), bool is1099able = default(bool), TinMatchStatusResponse tinMatchStatus = default(TinMatchStatusResponse), string id = default(string), EntryStatusResponse entryStatus = default(EntryStatusResponse), string referenceId = default(string), string companyId = default(string), string displayName = default(string), string email = default(string), bool archived = default(bool), string ancestorId = default(string), string signature = default(string), DateTime? signedDate = default(DateTime?), DateTime? eDeliveryConsentedAt = default(DateTime?), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Name = name;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.SuffixName = suffixName;
             this.BusinessName = businessName;
+            this.Name2 = name2;
             this.BusinessClassification = businessClassification;
             this.BusinessOther = businessOther;
             this.ForeignPartnerOwnerOrBeneficiary = foreignPartnerOwnerOrBeneficiary;
@@ -172,15 +182,51 @@ namespace Avalara.SDK.Model.A1099.V2
         /// The name of the individual or entity associated with the form.
         /// </summary>
         /// <value>The name of the individual or entity associated with the form.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The name of the business associated with the form.
+        /// Individual first name.
         /// </summary>
-        /// <value>The name of the business associated with the form.</value>
+        /// <value>Individual first name.</value>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Individual middle name.
+        /// </summary>
+        /// <value>Individual middle name.</value>
+        [DataMember(Name = "middleName", EmitDefaultValue = true)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Individual last name.
+        /// </summary>
+        /// <value>Individual last name.</value>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Individual name suffix.
+        /// </summary>
+        /// <value>Individual name suffix.</value>
+        [DataMember(Name = "suffixName", EmitDefaultValue = true)]
+        public string SuffixName { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead.
+        /// </summary>
+        /// <value>DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead.</value>
         [DataMember(Name = "businessName", EmitDefaultValue = true)]
+        [Obsolete]
         public string BusinessName { get; set; }
+
+        /// <summary>
+        /// The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.
+        /// </summary>
+        /// <value>The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.</value>
+        [DataMember(Name = "name2", EmitDefaultValue = true)]
+        public string Name2 { get; set; }
 
         /// <summary>
         /// The classification of the business.
@@ -402,7 +448,12 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("class W9FormResponse {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  SuffixName: ").Append(SuffixName).Append("\n");
             sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  Name2: ").Append(Name2).Append("\n");
             sb.Append("  BusinessClassification: ").Append(BusinessClassification).Append("\n");
             sb.Append("  BusinessOther: ").Append(BusinessOther).Append("\n");
             sb.Append("  ForeignPartnerOwnerOrBeneficiary: ").Append(ForeignPartnerOwnerOrBeneficiary).Append("\n");

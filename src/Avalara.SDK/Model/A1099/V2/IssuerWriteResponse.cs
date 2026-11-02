@@ -354,6 +354,21 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Issuer-level IRS/IRIS rejection errors from the federal filing submissions of the issuer&#39;s forms that are still rejected and awaiting resubmission.
+        /// </summary>
+        /// <value>Issuer-level IRS/IRIS rejection errors from the federal filing submissions of the issuer&#39;s forms that are still rejected and awaiting resubmission.</value>
+        [DataMember(Name = "federalEfileErrors", EmitDefaultValue = false)]
+        public List<FederalEfileErrorResponse> FederalEfileErrors { get; private set; }
+
+        /// <summary>
+        /// Returns false as FederalEfileErrors should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFederalEfileErrors()
+        {
+            return false;
+        }
+        /// <summary>
         /// Field-level validation errors. Populated when a POST or PUT request violated business rules  but the issuer was still persisted. Each entry identifies the affected field and the issue.  Empty array when the payload was fully valid.
         /// </summary>
         /// <value>Field-level validation errors. Populated when a POST or PUT request violated business rules  but the issuer was still persisted. Each entry identifies the affected field and the issue.  Empty array when the payload was fully valid.</value>
@@ -401,6 +416,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  FederalEfileErrors: ").Append(FederalEfileErrors).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -41,7 +41,7 @@ namespace Example
             var requestParameters = new GetBulkTinMatchRequestSdk();
             requestParameters.Id = "id_example";  // string | The bulk ID
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 77d79db6-e884-4ef0-a76d-0c10c41f5993;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 03374952-7012-4525-9ea0-56e42dabc7d4;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -87,6 +87,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **503** | Server Error |  -  |
 | **200** | Bulk TIN match details |  -  |
 | **401** | Authentication failed |  -  |
 | **404** | Bulk not found |  -  |
@@ -130,7 +131,7 @@ namespace Example
             requestParameters.OrderBy = "orderBy_example";  // string | A comma separated list of sort statements in the format (fieldname) [ASC|DESC], for example id ASC. (optional) 
             requestParameters.Count = true;  // bool? | If true, return the global count of elements in the collection. (optional) 
             requestParameters.CountOnly = true;  // bool? | If true, return ONLY the global count of elements in the collection.  It only applies when count=true. (optional) 
-            requestParameters.XCorrelationId = 8bd78a31-95dc-4091-9f0e-fd0647ecc6f5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 870967bd-fd8e-42ae-8123-2014d0b6acaa;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
 
             try
@@ -182,6 +183,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **503** | Server Error |  -  |
 | **200** | List of TIN match responses |  -  |
 | **400** | Bad request (e.g., invalid sort key) |  -  |
 | **401** | Authentication failed |  -  |
@@ -221,7 +223,7 @@ namespace Example
             var apiInstance = new TINMatchesApi(apiClient);
             var requestParameters = new PerformRealTimeTinMatchRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 7f2a23f6-59ed-4fb9-95fd-7937e99952f5;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = 1b37371e-1fec-410e-a43c-5d877903c086;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.RealTimeTinMatchRequest = new RealTimeTinMatchRequest(); // RealTimeTinMatchRequest | Required data to perform TIN match (optional) 
 
@@ -268,12 +270,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **503** | IRS Service is not available. Client should retry later. |  -  |
 | **200** | TIN match result (matched or rejected) |  -  |
 | **400** | Bad request (e.g. invalid field values) |  -  |
 | **401** | Authentication failed |  -  |
 | **429** | Usage limit exceeded (10,000 successful calls per 24 hours) |  -  |
 | **403** | Authorization failed (lack of permissions or product not purchased) |  -  |
-| **503** | IRS Service is not available. Client should retry later. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -307,7 +309,7 @@ namespace Example
             var apiInstance = new TINMatchesApi(apiClient);
             var requestParameters = new SubmitBulkTinMatchRequestSdk();
             requestParameters.AvalaraVersion = 2.0.0;  // string | API version
-            requestParameters.XCorrelationId = 88b0e4e3-1fd9-437c-9744-753f89dfef9f;  // string | Unique correlation Id in a GUID format (optional) 
+            requestParameters.XCorrelationId = a78efa3f-47be-4a5d-a2f4-07b9e16a1257;  // string | Unique correlation Id in a GUID format (optional) 
             requestParameters.XAvalaraClient = Swagger UI; 22.1.0;  // string | Identifies the software you are using to call this API. For more information on the client header, see [Client Headers](https://developer.avalara.com/avatax/client-headers/) . (optional) 
             requestParameters.BulkTinMatchRequest = new BulkTinMatchRequest(); // BulkTinMatchRequest | Required TIN collection to perform bulk TIN match (optional) 
 
@@ -354,6 +356,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **503** | Server Error |  -  |
 | **202** | Accepted submission, indicating it will be processed later and where to get results from |  -  |
 | **400** | Bad request (e.g. invalid field values) |  -  |
 | **401** | Authentication failed |  -  |
