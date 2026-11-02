@@ -1101,8 +1101,8 @@ namespace Avalara.SDK.Api.A1099.V2
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/pdf",
-                "application/json"
+                "application/json",
+                "application/pdf"
             };
 
             var localVarContentType = Avalara.SDK.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1174,8 +1174,8 @@ namespace Avalara.SDK.Api.A1099.V2
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/pdf",
-                "application/json"
+                "application/json",
+                "application/pdf"
             };
 
 
@@ -1839,7 +1839,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "26.10.0";
+            this.Client.SdkVersion = "26.11.0";
         }
         
     }

@@ -211,7 +211,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// List issuers
         /// </summary>
         /// <remarks>
-        /// List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -289,7 +289,7 @@ namespace Avalara.SDK.Api.A1099.V2
         /// List issuers
         /// </summary>
         /// <remarks>
-        /// List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </remarks>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -786,7 +786,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -798,7 +798,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -874,7 +874,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -887,7 +887,7 @@ namespace Avalara.SDK.Api.A1099.V2
         }
 
         /// <summary>
-        /// List issuers List issuers (also known as Payers). Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, and lastName.
+        /// List issuers List issuers (also known as Payers).  Filterable fields are businessName, businessName2, referenceId, taxYear, firstName, lastName, createdAt and updatedAt.                \&quot;createdAt\&quot; and \&quot;updatedAt\&quot; accept ISO 8601 values and are stored in UTC. Values without an offset are treated as UTC,  and a date-only value means midnight (00:00:00) of that day.                Examples:  &lt;ul&gt;&lt;li&gt;Issuers updated on a given day (2026-09-03): updatedAt ge &#39;2026-09-03&#39; and updatedAt lt &#39;2026-09-04&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated since a given moment (UTC): updatedAt ge &#39;2026-09-03T15:49:35Z&#39;&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;Issuers updated within an interval, with a time zone offset:    updatedAt ge &#39;2026-09-03T08:00:00-05:00&#39; and updatedAt le &#39;2026-09-03T18:00:00-05:00&#39;&lt;/li&gt;&lt;/ul&gt;
         /// </summary>
         /// <exception cref="Avalara.SDK.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestParameters">Request Object for the API</param>
@@ -1258,7 +1258,7 @@ namespace Avalara.SDK.Api.A1099.V2
             if (client.Configuration == null) throw new ArgumentNullException("ApiClient.Configuration");
 
             this.Client = (IInternalApiClient)client;
-            this.Client.SdkVersion = "26.10.0";
+            this.Client.SdkVersion = "26.11.0";
         }
         
     }

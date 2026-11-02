@@ -1,0 +1,1261 @@
+/*
+ * AvaTax Software Development Kit for C#
+ *
+ * (c) 2004-2022 Avalara, Inc.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Avalara 1099 & W-9 API Definition
+ *
+ * > **Note:** You must have an active Avalara 1099 & W-9 subscription to authenticate and use these APIs. If you don't have a subscription, please contact our [Sales team](https://www.avalara.com/us/en/products/1099/request-a-demo.html).  ## Authentication  The Avalara 1099 & W-9 API uses **Bearer Token Authentication**. To authenticate, acquire a bearer token using a **Client ID** and **Client Secret** that you generate in the Avalara 1099 & W-9 web application.  The sample cURL commands below use **production** URLs. For **sandbox**, replace them with the sandbox URLs listed in the Sandbox Environment table.  ### Option 1 — Client ID and Client Secret (recommended)  **Step 1: Create API credentials in the Avalara 1099 & W-9 web app**  For a full walkthrough, see the [Avalara 1099 & W-9 integration guide](https://developer.avalara.com/products/avalara-1099-and-w9/integration-guides/1099-and-w-9/siu2796410674799/).  > **Note:** To enable credential creation you must first enter a valid company address in **Account Settings > Account** and enable two-factor authentication in **Account Settings > Security**.  1. In Avalara 1099 & W-9, open **Account Settings** (gear icon, top-right of any page) and select **API**. 2. Click **Create new credentials** (a valid company address and 2FA are required). 3. Copy your **Client Id** and **Client Secret** securely — they will not be shown again after you leave the screen.  **Step 2: Request a bearer token**  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{client_id}}' \\   - -data-urlencode 'client_secret={{client_secret}}' ```  ### Option 2 — Account ID and License Key  If your organization already uses other Avalara products (AvaTax, CertCapture) and has access to the logged-in area of Avalara.com, you can generate the bearer token using your **Account ID** and **License Key**.  > **Note:** If you already have a license key for other Avalara products you can reuse it. Generating a new key will reset any previously created key.  1. Log in to Avalara.com. 2. Go to **Settings → License and API Keys**. 3. Click **Generate New Key**. 4. Note your **Account ID** from the Account menu.  ```bash curl -X POST 'https://identity.avalara.com/connect/token' \\   - -header 'Content-Type: application/x-www-form-urlencoded' \\   - -data-urlencode 'grant_type=client_credentials' \\   - -data-urlencode 'client_id={{accountId}}' \\   - -data-urlencode 'client_secret={{licenseKey}}' ```  ### Using and renewing the bearer token  Include the token in the `Authorization` header on every request:  ```http Authorization: Bearer {access_token} ```  Tokens expire after the number of seconds in the `expires_in` field of the token response. Your integration must renew the token before it expires.  **Example token response**  ```json {   \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI...\",   \"expires_in\": 3600,   \"token_type\": \"Bearer\",   \"scope\": \"avatax_api iam-ds\" } ```  ### Sandbox Environment  Use the same steps as production, replacing the base URLs:  | Purpose | Production | Sandbox | | - -- | - -- | - -- | | Account & License Key management (web) | `https://www.avalara.com` | `https://sandbox.admin.avalara.com` | | Account & License Key management (API) | `https://rest.avatax.com` | `https://sandbox-rest.avatax.com` | | Token generation | `https://identity.avalara.com` | `https://ai-sbx.avlr.sh` |  ## Environments  #### Production - **Avalara 1099 API URL:** [`https://api.avalara.com/avalara1099`](https://api.avalara.com/avalara1099) - **Identity Token URL:** [`https://identity.avalara.com/connect/token`](https://identity.avalara.com/connect/token)  #### Sandbox - **Avalara 1099 API URL:** [`https://api.sbx.avalara.com/avalara1099`](https://api.sbx.avalara.com/avalara1099) - **Identity Token URL:** [`https://ai-sbx.avlr.sh/connect/token`](https://ai-sbx.avlr.sh/connect/token)  - --  ## API & SDK Documentation  [Avalara 1099 API Reference](https://developer.avalara.com/api-reference/avalara1099/avalara1099/)  [Avalara SDKs](https://developer.avalara.com/sdk/)  [Swagger](https://api.avalara.com/avalara1099/swagger/index.html?api-version=2.0)
+ *
+
+ * @author     Sachin Baijal <sachin.baijal@avalara.com>
+ * @author     Jonathan Wenger <jonathan.wenger@avalara.com>
+ * @copyright  2004-2022 Avalara, Inc.
+ * @license    https://www.apache.org/licenses/LICENSE-2.0
+ * @link       https://github.com/avadev/AvaTax-REST-V3-DotNet-SDK
+ */
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
+using FileParameter = Avalara.SDK.Client.FileParameter;
+using OpenAPIDateConverter = Avalara.SDK.Client.OpenAPIDateConverter;
+
+namespace Avalara.SDK.Model.A1099.V2
+{
+/// <summary>
+    /// Form 5498: IRA Contribution Information                The recipient is the participant and the issuer is the trustee or issuer of the IRA.                *Required:* at least one amount above zero in Boxes 1-5, 8-10, 13a or 14a. Amounts can&#39;t be negative.                Paired boxes are all-or-nothing: Box 7 is required when Box 2 or Box 5 has an amount, and Boxes 8, 9 and 10 are  only allowed with Box 7 type SEP, SIMPLE and Roth IRA; Boxes 12a and 12b are required when Box 11 is checked and  not allowed otherwise; Boxes 13b and 13c go with Box 13a, Box 14b with Box 14a, and Box 15b with Box 15a.                Form 5498 has no state or local boxes, so &#x60;stateAndLocalWithholding&#x60; is discarded and reads back as &#x60;null&#x60;.
+    /// </summary>
+    [DataContract(Name = "Form5498")]
+    public partial class Form5498 : IValidatableObject
+    {
+        /// <summary>
+        /// Type of IRA. Required when Box 2 or Box 5 has an amount.                * &#x60;IRA&#x60; - Traditional IRA  * &#x60;SEP&#x60; - SEP IRA  * &#x60;SIMPLE&#x60; - SIMPLE IRA  * &#x60;ROTH&#x60; - Roth IRA
+        /// </summary>
+        /// <value>Type of IRA. Required when Box 2 or Box 5 has an amount.                * &#x60;IRA&#x60; - Traditional IRA  * &#x60;SEP&#x60; - SEP IRA  * &#x60;SIMPLE&#x60; - SIMPLE IRA  * &#x60;ROTH&#x60; - Roth IRA</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum IraTypeEnum
+        {
+            /// <summary>
+            /// Enum IRA for value: IRA
+            /// </summary>
+            [EnumMember(Value = "IRA")]
+            IRA = 1,
+
+            /// <summary>
+            /// Enum SEP for value: SEP
+            /// </summary>
+            [EnumMember(Value = "SEP")]
+            SEP = 2,
+
+            /// <summary>
+            /// Enum SIMPLE for value: SIMPLE
+            /// </summary>
+            [EnumMember(Value = "SIMPLE")]
+            SIMPLE = 3,
+
+            /// <summary>
+            /// Enum ROTH for value: ROTH
+            /// </summary>
+            [EnumMember(Value = "ROTH")]
+            ROTH = 4
+        }
+
+
+        /// <summary>
+        /// Type of IRA. Required when Box 2 or Box 5 has an amount.                * &#x60;IRA&#x60; - Traditional IRA  * &#x60;SEP&#x60; - SEP IRA  * &#x60;SIMPLE&#x60; - SIMPLE IRA  * &#x60;ROTH&#x60; - Roth IRA
+        /// </summary>
+        /// <value>Type of IRA. Required when Box 2 or Box 5 has an amount.                * &#x60;IRA&#x60; - Traditional IRA  * &#x60;SEP&#x60; - SEP IRA  * &#x60;SIMPLE&#x60; - SIMPLE IRA  * &#x60;ROTH&#x60; - Roth IRA</value>
+        [DataMember(Name = "iraType", EmitDefaultValue = true)]
+        public IraTypeEnum? IraType { get; set; }
+        /// <summary>
+        /// Postponed or late contribution code. Required when &#x60;postponedLateContribution&#x60; has an amount.                * &#x60;FD&#x60; - Federally designated disaster area  * &#x60;PL&#x60; - Public law  * &#x60;EO&#x60; - Executive order  * &#x60;PO&#x60; - Rollover of a qualified plan loan offset amount  * &#x60;SC&#x60; - Late rollover under the self-certification procedure
+        /// </summary>
+        /// <value>Postponed or late contribution code. Required when &#x60;postponedLateContribution&#x60; has an amount.                * &#x60;FD&#x60; - Federally designated disaster area  * &#x60;PL&#x60; - Public law  * &#x60;EO&#x60; - Executive order  * &#x60;PO&#x60; - Rollover of a qualified plan loan offset amount  * &#x60;SC&#x60; - Late rollover under the self-certification procedure</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PostponedLateContributionCodeEnum
+        {
+            /// <summary>
+            /// Enum FD for value: FD
+            /// </summary>
+            [EnumMember(Value = "FD")]
+            FD = 1,
+
+            /// <summary>
+            /// Enum PL for value: PL
+            /// </summary>
+            [EnumMember(Value = "PL")]
+            PL = 2,
+
+            /// <summary>
+            /// Enum EO for value: EO
+            /// </summary>
+            [EnumMember(Value = "EO")]
+            EO = 3,
+
+            /// <summary>
+            /// Enum PO for value: PO
+            /// </summary>
+            [EnumMember(Value = "PO")]
+            PO = 4,
+
+            /// <summary>
+            /// Enum SC for value: SC
+            /// </summary>
+            [EnumMember(Value = "SC")]
+            SC = 5
+        }
+
+
+        /// <summary>
+        /// Postponed or late contribution code. Required when &#x60;postponedLateContribution&#x60; has an amount.                * &#x60;FD&#x60; - Federally designated disaster area  * &#x60;PL&#x60; - Public law  * &#x60;EO&#x60; - Executive order  * &#x60;PO&#x60; - Rollover of a qualified plan loan offset amount  * &#x60;SC&#x60; - Late rollover under the self-certification procedure
+        /// </summary>
+        /// <value>Postponed or late contribution code. Required when &#x60;postponedLateContribution&#x60; has an amount.                * &#x60;FD&#x60; - Federally designated disaster area  * &#x60;PL&#x60; - Public law  * &#x60;EO&#x60; - Executive order  * &#x60;PO&#x60; - Rollover of a qualified plan loan offset amount  * &#x60;SC&#x60; - Late rollover under the self-certification procedure</value>
+        [DataMember(Name = "postponedLateContributionCode", EmitDefaultValue = true)]
+        public PostponedLateContributionCodeEnum? PostponedLateContributionCode { get; set; }
+        /// <summary>
+        /// Repayment code. Required when &#x60;repayments&#x60; has an amount.                * &#x60;QR&#x60; - Qualified reservist distribution  * &#x60;DD&#x60; - Federally designated disaster distribution  * &#x60;BA&#x60; - Qualified birth or adoption distribution  * &#x60;EP&#x60; - Emergency personal expense distribution  * &#x60;DA&#x60; - Domestic abuse victim distribution  * &#x60;TI&#x60; - Terminally ill individual distribution
+        /// </summary>
+        /// <value>Repayment code. Required when &#x60;repayments&#x60; has an amount.                * &#x60;QR&#x60; - Qualified reservist distribution  * &#x60;DD&#x60; - Federally designated disaster distribution  * &#x60;BA&#x60; - Qualified birth or adoption distribution  * &#x60;EP&#x60; - Emergency personal expense distribution  * &#x60;DA&#x60; - Domestic abuse victim distribution  * &#x60;TI&#x60; - Terminally ill individual distribution</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RepaymentCodeEnum
+        {
+            /// <summary>
+            /// Enum QR for value: QR
+            /// </summary>
+            [EnumMember(Value = "QR")]
+            QR = 1,
+
+            /// <summary>
+            /// Enum DD for value: DD
+            /// </summary>
+            [EnumMember(Value = "DD")]
+            DD = 2,
+
+            /// <summary>
+            /// Enum BA for value: BA
+            /// </summary>
+            [EnumMember(Value = "BA")]
+            BA = 3,
+
+            /// <summary>
+            /// Enum EP for value: EP
+            /// </summary>
+            [EnumMember(Value = "EP")]
+            EP = 4,
+
+            /// <summary>
+            /// Enum DA for value: DA
+            /// </summary>
+            [EnumMember(Value = "DA")]
+            DA = 5,
+
+            /// <summary>
+            /// Enum TI for value: TI
+            /// </summary>
+            [EnumMember(Value = "TI")]
+            TI = 6
+        }
+
+
+        /// <summary>
+        /// Repayment code. Required when &#x60;repayments&#x60; has an amount.                * &#x60;QR&#x60; - Qualified reservist distribution  * &#x60;DD&#x60; - Federally designated disaster distribution  * &#x60;BA&#x60; - Qualified birth or adoption distribution  * &#x60;EP&#x60; - Emergency personal expense distribution  * &#x60;DA&#x60; - Domestic abuse victim distribution  * &#x60;TI&#x60; - Terminally ill individual distribution
+        /// </summary>
+        /// <value>Repayment code. Required when &#x60;repayments&#x60; has an amount.                * &#x60;QR&#x60; - Qualified reservist distribution  * &#x60;DD&#x60; - Federally designated disaster distribution  * &#x60;BA&#x60; - Qualified birth or adoption distribution  * &#x60;EP&#x60; - Emergency personal expense distribution  * &#x60;DA&#x60; - Domestic abuse victim distribution  * &#x60;TI&#x60; - Terminally ill individual distribution</value>
+        [DataMember(Name = "repaymentCode", EmitDefaultValue = true)]
+        public RepaymentCodeEnum? RepaymentCode { get; set; }
+        /// <summary>
+        /// Specified asset code. Required when &#x60;fairMarketValueOfCertainSpecifiedAssets&#x60; has an amount.                * &#x60;A&#x60; - Stock or other ownership interest in a corporation that is not readily tradable on an established  securities market  * &#x60;B&#x60; - Short- or long-term debt obligation that is not traded on an established securities market  * &#x60;C&#x60; - Ownership interest in a limited liability company or similar entity (unless the interest is traded on  an established securities market)  * &#x60;D&#x60; - Real estate  * &#x60;E&#x60; - Ownership interest in a partnership, trust, or similar entity (unless the interest is traded on an  established securities market)  * &#x60;F&#x60; - Option contract or similar product that is not offered for trade on an established option exchange  * &#x60;G&#x60; - Other asset that does not have a readily available FMV  * &#x60;H&#x60; - More than two types of assets (listed in &#x60;A&#x60; through &#x60;G&#x60;) are held in this IRA
+        /// </summary>
+        /// <value>Specified asset code. Required when &#x60;fairMarketValueOfCertainSpecifiedAssets&#x60; has an amount.                * &#x60;A&#x60; - Stock or other ownership interest in a corporation that is not readily tradable on an established  securities market  * &#x60;B&#x60; - Short- or long-term debt obligation that is not traded on an established securities market  * &#x60;C&#x60; - Ownership interest in a limited liability company or similar entity (unless the interest is traded on  an established securities market)  * &#x60;D&#x60; - Real estate  * &#x60;E&#x60; - Ownership interest in a partnership, trust, or similar entity (unless the interest is traded on an  established securities market)  * &#x60;F&#x60; - Option contract or similar product that is not offered for trade on an established option exchange  * &#x60;G&#x60; - Other asset that does not have a readily available FMV  * &#x60;H&#x60; - More than two types of assets (listed in &#x60;A&#x60; through &#x60;G&#x60;) are held in this IRA</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SpecifiedAssetCodeEnum
+        {
+            /// <summary>
+            /// Enum A for value: A
+            /// </summary>
+            [EnumMember(Value = "A")]
+            A = 1,
+
+            /// <summary>
+            /// Enum B for value: B
+            /// </summary>
+            [EnumMember(Value = "B")]
+            B = 2,
+
+            /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 3,
+
+            /// <summary>
+            /// Enum D for value: D
+            /// </summary>
+            [EnumMember(Value = "D")]
+            D = 4,
+
+            /// <summary>
+            /// Enum E for value: E
+            /// </summary>
+            [EnumMember(Value = "E")]
+            E = 5,
+
+            /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 6,
+
+            /// <summary>
+            /// Enum G for value: G
+            /// </summary>
+            [EnumMember(Value = "G")]
+            G = 7,
+
+            /// <summary>
+            /// Enum H for value: H
+            /// </summary>
+            [EnumMember(Value = "H")]
+            H = 8
+        }
+
+
+        /// <summary>
+        /// Specified asset code. Required when &#x60;fairMarketValueOfCertainSpecifiedAssets&#x60; has an amount.                * &#x60;A&#x60; - Stock or other ownership interest in a corporation that is not readily tradable on an established  securities market  * &#x60;B&#x60; - Short- or long-term debt obligation that is not traded on an established securities market  * &#x60;C&#x60; - Ownership interest in a limited liability company or similar entity (unless the interest is traded on  an established securities market)  * &#x60;D&#x60; - Real estate  * &#x60;E&#x60; - Ownership interest in a partnership, trust, or similar entity (unless the interest is traded on an  established securities market)  * &#x60;F&#x60; - Option contract or similar product that is not offered for trade on an established option exchange  * &#x60;G&#x60; - Other asset that does not have a readily available FMV  * &#x60;H&#x60; - More than two types of assets (listed in &#x60;A&#x60; through &#x60;G&#x60;) are held in this IRA
+        /// </summary>
+        /// <value>Specified asset code. Required when &#x60;fairMarketValueOfCertainSpecifiedAssets&#x60; has an amount.                * &#x60;A&#x60; - Stock or other ownership interest in a corporation that is not readily tradable on an established  securities market  * &#x60;B&#x60; - Short- or long-term debt obligation that is not traded on an established securities market  * &#x60;C&#x60; - Ownership interest in a limited liability company or similar entity (unless the interest is traded on  an established securities market)  * &#x60;D&#x60; - Real estate  * &#x60;E&#x60; - Ownership interest in a partnership, trust, or similar entity (unless the interest is traded on an  established securities market)  * &#x60;F&#x60; - Option contract or similar product that is not offered for trade on an established option exchange  * &#x60;G&#x60; - Other asset that does not have a readily available FMV  * &#x60;H&#x60; - More than two types of assets (listed in &#x60;A&#x60; through &#x60;G&#x60;) are held in this IRA</value>
+        [DataMember(Name = "specifiedAssetCode", EmitDefaultValue = true)]
+        public SpecifiedAssetCodeEnum? SpecifiedAssetCode { get; set; }
+        /// <summary>
+        /// Second specified asset code, when the IRA holds two types of specified assets. Takes the codes &#x60;A&#x60; through &#x60;G&#x60;;  it can&#39;t repeat &#x60;specifiedAssetCode&#x60;, and isn&#39;t allowed when &#x60;specifiedAssetCode&#x60; is &#x60;H&#x60;.
+        /// </summary>
+        /// <value>Second specified asset code, when the IRA holds two types of specified assets. Takes the codes &#x60;A&#x60; through &#x60;G&#x60;;  it can&#39;t repeat &#x60;specifiedAssetCode&#x60;, and isn&#39;t allowed when &#x60;specifiedAssetCode&#x60; is &#x60;H&#x60;.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SecondSpecifiedAssetCodeEnum
+        {
+            /// <summary>
+            /// Enum A for value: A
+            /// </summary>
+            [EnumMember(Value = "A")]
+            A = 1,
+
+            /// <summary>
+            /// Enum B for value: B
+            /// </summary>
+            [EnumMember(Value = "B")]
+            B = 2,
+
+            /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 3,
+
+            /// <summary>
+            /// Enum D for value: D
+            /// </summary>
+            [EnumMember(Value = "D")]
+            D = 4,
+
+            /// <summary>
+            /// Enum E for value: E
+            /// </summary>
+            [EnumMember(Value = "E")]
+            E = 5,
+
+            /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 6,
+
+            /// <summary>
+            /// Enum G for value: G
+            /// </summary>
+            [EnumMember(Value = "G")]
+            G = 7,
+
+            /// <summary>
+            /// Enum H for value: H
+            /// </summary>
+            [EnumMember(Value = "H")]
+            H = 8
+        }
+
+
+        /// <summary>
+        /// Second specified asset code, when the IRA holds two types of specified assets. Takes the codes &#x60;A&#x60; through &#x60;G&#x60;;  it can&#39;t repeat &#x60;specifiedAssetCode&#x60;, and isn&#39;t allowed when &#x60;specifiedAssetCode&#x60; is &#x60;H&#x60;.
+        /// </summary>
+        /// <value>Second specified asset code, when the IRA holds two types of specified assets. Takes the codes &#x60;A&#x60; through &#x60;G&#x60;;  it can&#39;t repeat &#x60;specifiedAssetCode&#x60;, and isn&#39;t allowed when &#x60;specifiedAssetCode&#x60; is &#x60;H&#x60;.</value>
+        [DataMember(Name = "secondSpecifiedAssetCode", EmitDefaultValue = true)]
+        public SecondSpecifiedAssetCodeEnum? SecondSpecifiedAssetCode { get; set; }
+        /// <summary>
+        /// Form type.
+        /// </summary>
+        /// <value>Form type.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum _1042S for value: 1042-S
+            /// </summary>
+            [EnumMember(Value = "1042-S")]
+            _1042S = 1,
+
+            /// <summary>
+            /// Enum _1095B for value: 1095-B
+            /// </summary>
+            [EnumMember(Value = "1095-B")]
+            _1095B = 2,
+
+            /// <summary>
+            /// Enum _1095C for value: 1095-C
+            /// </summary>
+            [EnumMember(Value = "1095-C")]
+            _1095C = 3,
+
+            /// <summary>
+            /// Enum _1098 for value: 1098
+            /// </summary>
+            [EnumMember(Value = "1098")]
+            _1098 = 4,
+
+            /// <summary>
+            /// Enum _1098E for value: 1098-E
+            /// </summary>
+            [EnumMember(Value = "1098-E")]
+            _1098E = 5,
+
+            /// <summary>
+            /// Enum _1098T for value: 1098-T
+            /// </summary>
+            [EnumMember(Value = "1098-T")]
+            _1098T = 6,
+
+            /// <summary>
+            /// Enum _1099B for value: 1099-B
+            /// </summary>
+            [EnumMember(Value = "1099-B")]
+            _1099B = 7,
+
+            /// <summary>
+            /// Enum _1099C for value: 1099-C
+            /// </summary>
+            [EnumMember(Value = "1099-C")]
+            _1099C = 8,
+
+            /// <summary>
+            /// Enum _1099DIV for value: 1099-DIV
+            /// </summary>
+            [EnumMember(Value = "1099-DIV")]
+            _1099DIV = 9,
+
+            /// <summary>
+            /// Enum _1099G for value: 1099-G
+            /// </summary>
+            [EnumMember(Value = "1099-G")]
+            _1099G = 10,
+
+            /// <summary>
+            /// Enum _1099INT for value: 1099-INT
+            /// </summary>
+            [EnumMember(Value = "1099-INT")]
+            _1099INT = 11,
+
+            /// <summary>
+            /// Enum _1099K for value: 1099-K
+            /// </summary>
+            [EnumMember(Value = "1099-K")]
+            _1099K = 12,
+
+            /// <summary>
+            /// Enum _1099MISC for value: 1099-MISC
+            /// </summary>
+            [EnumMember(Value = "1099-MISC")]
+            _1099MISC = 13,
+
+            /// <summary>
+            /// Enum _1099NEC for value: 1099-NEC
+            /// </summary>
+            [EnumMember(Value = "1099-NEC")]
+            _1099NEC = 14,
+
+            /// <summary>
+            /// Enum _1099PATR for value: 1099-PATR
+            /// </summary>
+            [EnumMember(Value = "1099-PATR")]
+            _1099PATR = 15,
+
+            /// <summary>
+            /// Enum _1099R for value: 1099-R
+            /// </summary>
+            [EnumMember(Value = "1099-R")]
+            _1099R = 16,
+
+            /// <summary>
+            /// Enum _1099S for value: 1099-S
+            /// </summary>
+            [EnumMember(Value = "1099-S")]
+            _1099S = 17,
+
+            /// <summary>
+            /// Enum _1099SA for value: 1099-SA
+            /// </summary>
+            [EnumMember(Value = "1099-SA")]
+            _1099SA = 18,
+
+            /// <summary>
+            /// Enum _5498 for value: 5498
+            /// </summary>
+            [EnumMember(Value = "5498")]
+            _5498 = 19,
+
+            /// <summary>
+            /// Enum W2 for value: W-2
+            /// </summary>
+            [EnumMember(Value = "W-2")]
+            W2 = 20,
+
+            /// <summary>
+            /// Enum W2G for value: W-2G
+            /// </summary>
+            [EnumMember(Value = "W-2G")]
+            W2G = 21
+        }
+
+
+        /// <summary>
+        /// Form type.
+        /// </summary>
+        /// <value>Form type.</value>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+        public TypeEnum Type { get; set; }
+        /// <summary>
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
+        /// </summary>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TinTypeEnum
+        {
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 1,
+
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 2,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 3,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 4,
+
+            /// <summary>
+            /// Enum INDIVIDUAL for value: INDIVIDUAL
+            /// </summary>
+            [EnumMember(Value = "INDIVIDUAL")]
+            INDIVIDUAL = 5,
+
+            /// <summary>
+            /// Enum BUSINESS for value: BUSINESS
+            /// </summary>
+            [EnumMember(Value = "BUSINESS")]
+            BUSINESS = 6,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7
+        }
+
+
+        /// <summary>
+        /// Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number
+        /// </summary>
+        /// <value>Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number</value>
+        [DataMember(Name = "tinType", EmitDefaultValue = true)]
+        public TinTypeEnum? TinType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form5498" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected Form5498()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form5498" /> class.
+        /// </summary>
+        /// <param name="iraContributions">IRA contributions (other than amounts in Boxes 2-4, 8-10, 13a, and 14a).</param>
+        /// <param name="rolloverContributions">Rollover contributions.</param>
+        /// <param name="rothIraConversionAmount">Roth IRA conversion amount.</param>
+        /// <param name="recharacterizedContributions">Recharacterized contributions.</param>
+        /// <param name="fairMarketValueOfAccount">Fair market value (FMV) of the account.</param>
+        /// <param name="lifeInsuranceCostIncludedInIraContributions">Life insurance cost included in the IRA contributions (Box 1). Can&#39;t be more than Box 1..</param>
+        /// <param name="iraType">Type of IRA. Required when Box 2 or Box 5 has an amount.                * &#x60;IRA&#x60; - Traditional IRA  * &#x60;SEP&#x60; - SEP IRA  * &#x60;SIMPLE&#x60; - SIMPLE IRA  * &#x60;ROTH&#x60; - Roth IRA.</param>
+        /// <param name="sepContributions">SEP contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SEP&#x60;..</param>
+        /// <param name="simpleContributions">SIMPLE contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SIMPLE&#x60;..</param>
+        /// <param name="rothIraContributions">Roth IRA contributions. Only allowed when &#x60;iraType&#x60; is &#x60;ROTH&#x60;..</param>
+        /// <param name="requiredMinimumDistributionIndicator">If checked, a required minimum distribution (RMD) is due for the year after the tax year.</param>
+        /// <param name="requiredMinimumDistributionDate">RMD date, in the year after the tax year. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;..</param>
+        /// <param name="requiredMinimumDistributionAmount">RMD amount. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;..</param>
+        /// <param name="postponedLateContribution">Postponed or late contribution.</param>
+        /// <param name="postponedLateContributionYear">Year the postponed or late contribution was for (four digits, from 1998 to the tax year). Required when  &#x60;postponedLateContribution&#x60; has an amount..</param>
+        /// <param name="postponedLateContributionCode">Postponed or late contribution code. Required when &#x60;postponedLateContribution&#x60; has an amount.                * &#x60;FD&#x60; - Federally designated disaster area  * &#x60;PL&#x60; - Public law  * &#x60;EO&#x60; - Executive order  * &#x60;PO&#x60; - Rollover of a qualified plan loan offset amount  * &#x60;SC&#x60; - Late rollover under the self-certification procedure.</param>
+        /// <param name="postponedLateContributionReason">Postponed or late contribution reason, such as the public law or executive order number (up to 6 characters).</param>
+        /// <param name="repayments">Repayments.</param>
+        /// <param name="repaymentCode">Repayment code. Required when &#x60;repayments&#x60; has an amount.                * &#x60;QR&#x60; - Qualified reservist distribution  * &#x60;DD&#x60; - Federally designated disaster distribution  * &#x60;BA&#x60; - Qualified birth or adoption distribution  * &#x60;EP&#x60; - Emergency personal expense distribution  * &#x60;DA&#x60; - Domestic abuse victim distribution  * &#x60;TI&#x60; - Terminally ill individual distribution.</param>
+        /// <param name="fairMarketValueOfCertainSpecifiedAssets">FMV of certain specified assets.</param>
+        /// <param name="specifiedAssetCode">Specified asset code. Required when &#x60;fairMarketValueOfCertainSpecifiedAssets&#x60; has an amount.                * &#x60;A&#x60; - Stock or other ownership interest in a corporation that is not readily tradable on an established  securities market  * &#x60;B&#x60; - Short- or long-term debt obligation that is not traded on an established securities market  * &#x60;C&#x60; - Ownership interest in a limited liability company or similar entity (unless the interest is traded on  an established securities market)  * &#x60;D&#x60; - Real estate  * &#x60;E&#x60; - Ownership interest in a partnership, trust, or similar entity (unless the interest is traded on an  established securities market)  * &#x60;F&#x60; - Option contract or similar product that is not offered for trade on an established option exchange  * &#x60;G&#x60; - Other asset that does not have a readily available FMV  * &#x60;H&#x60; - More than two types of assets (listed in &#x60;A&#x60; through &#x60;G&#x60;) are held in this IRA.</param>
+        /// <param name="secondSpecifiedAssetCode">Second specified asset code, when the IRA holds two types of specified assets. Takes the codes &#x60;A&#x60; through &#x60;G&#x60;;  it can&#39;t repeat &#x60;specifiedAssetCode&#x60;, and isn&#39;t allowed when &#x60;specifiedAssetCode&#x60; is &#x60;H&#x60;..</param>
+        /// <param name="type">Form type. (required).</param>
+        /// <param name="issuerId">Issuer ID - only required when creating forms.</param>
+        /// <param name="issuerReferenceId">Issuer Reference ID - only required when creating forms via $bulk-upsert.</param>
+        /// <param name="issuerTin">Issuer TIN - readonly.</param>
+        /// <param name="taxYear">Tax Year - only required when creating forms via $bulk-upsert.</param>
+        /// <param name="referenceId">Internal reference ID. Never shown to any agency or recipient..</param>
+        /// <param name="tin">Recipient&#39;s Federal Tax Identification Number (TIN)..</param>
+        /// <param name="recipientName">DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals..</param>
+        /// <param name="address">Address. (required).</param>
+        /// <param name="address2">Address line 2..</param>
+        /// <param name="city">City. (required).</param>
+        /// <param name="state">Two-letter US state or Canadian province code (required for US/CA addresses)..</param>
+        /// <param name="zip">ZIP/postal code..</param>
+        /// <param name="email">Recipient&#39;s Contact email address..</param>
+        /// <param name="nonUsProvince">Province or region for non-US/CA addresses..</param>
+        /// <param name="countryCode">Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes. (required).</param>
+        /// <param name="federalEfileDate">Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
+        /// <param name="postalMail">Boolean indicating that postal mailing to the recipient should be scheduled for this form.</param>
+        /// <param name="stateEfileDate">Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
+        /// <param name="recipientEdeliveryDate">Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled..</param>
+        /// <param name="tinMatch">Boolean indicating that TIN Matching should be scheduled for this form.</param>
+        /// <param name="addressVerification">Boolean indicating that address verification should be scheduled for this form.</param>
+        /// <param name="stateAndLocalWithholding">State and local withholding information.</param>
+        /// <param name="tinType">Recipient classification.  The platform is transitioning from tax identifier classifications to recipient entity classifications. New values represent recipient entity types and should be preferred. Deprecated values represent identifier formats and remain supported for backward compatibility only.  Available values: - INDIVIDUAL: Recipient is an individual - BUSINESS: Recipient is a business - UNKNOWN: Recipient classification is unknown - EIN: (Deprecated - use BUSINESS) Employer Identification Number - SSN: (Deprecated - use INDIVIDUAL) Social Security Number - ITIN: (Deprecated - use INDIVIDUAL) Individual Taxpayer Identification Number - ATIN: (Deprecated - use INDIVIDUAL) Adoption Taxpayer Identification Number.</param>
+        /// <param name="businessName">Business name. Required when the recipient of the form is a business; should only be used for businesses..</param>
+        /// <param name="businessName2">Business name line 2. Should only be used for businesses..</param>
+        /// <param name="firstName">First name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="middleName">Middle name. Should only be used for individuals..</param>
+        /// <param name="lastName">Last name. Required when the recipient of the form is an individual; should only be used for individuals..</param>
+        /// <param name="suffixName">Suffix name. Should only be used for individuals..</param>
+        /// <param name="recipientSecondName">DEPRECATED: Use &#x60;businessName2&#x60; instead..</param>
+        /// <param name="accountNumber">Account number.</param>
+        /// <param name="officeCode">Office code.</param>
+        /// <param name="noTin">No TIN indicator.</param>
+        /// <param name="secondTinNotice">Second TIN notice.</param>
+        public Form5498(double? iraContributions = default(double?), double? rolloverContributions = default(double?), double? rothIraConversionAmount = default(double?), double? recharacterizedContributions = default(double?), double? fairMarketValueOfAccount = default(double?), double? lifeInsuranceCostIncludedInIraContributions = default(double?), IraTypeEnum? iraType = default(IraTypeEnum?), double? sepContributions = default(double?), double? simpleContributions = default(double?), double? rothIraContributions = default(double?), bool? requiredMinimumDistributionIndicator = default(bool?), DateTime? requiredMinimumDistributionDate = default(DateTime?), double? requiredMinimumDistributionAmount = default(double?), double? postponedLateContribution = default(double?), int? postponedLateContributionYear = default(int?), PostponedLateContributionCodeEnum? postponedLateContributionCode = default(PostponedLateContributionCodeEnum?), string postponedLateContributionReason = default(string), double? repayments = default(double?), RepaymentCodeEnum? repaymentCode = default(RepaymentCodeEnum?), double? fairMarketValueOfCertainSpecifiedAssets = default(double?), SpecifiedAssetCodeEnum? specifiedAssetCode = default(SpecifiedAssetCodeEnum?), SecondSpecifiedAssetCodeEnum? secondSpecifiedAssetCode = default(SecondSpecifiedAssetCodeEnum?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
+        {
+            this.Type = type;
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for Form5498 and cannot be null");
+            }
+            this.Address = address;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for Form5498 and cannot be null");
+            }
+            this.City = city;
+            // to ensure "countryCode" is required (not null)
+            if (countryCode == null)
+            {
+                throw new ArgumentNullException("countryCode is a required property for Form5498 and cannot be null");
+            }
+            this.CountryCode = countryCode;
+            this.IraContributions = iraContributions;
+            this.RolloverContributions = rolloverContributions;
+            this.RothIraConversionAmount = rothIraConversionAmount;
+            this.RecharacterizedContributions = recharacterizedContributions;
+            this.FairMarketValueOfAccount = fairMarketValueOfAccount;
+            this.LifeInsuranceCostIncludedInIraContributions = lifeInsuranceCostIncludedInIraContributions;
+            this.IraType = iraType;
+            this.SepContributions = sepContributions;
+            this.SimpleContributions = simpleContributions;
+            this.RothIraContributions = rothIraContributions;
+            this.RequiredMinimumDistributionIndicator = requiredMinimumDistributionIndicator;
+            this.RequiredMinimumDistributionDate = requiredMinimumDistributionDate;
+            this.RequiredMinimumDistributionAmount = requiredMinimumDistributionAmount;
+            this.PostponedLateContribution = postponedLateContribution;
+            this.PostponedLateContributionYear = postponedLateContributionYear;
+            this.PostponedLateContributionCode = postponedLateContributionCode;
+            this.PostponedLateContributionReason = postponedLateContributionReason;
+            this.Repayments = repayments;
+            this.RepaymentCode = repaymentCode;
+            this.FairMarketValueOfCertainSpecifiedAssets = fairMarketValueOfCertainSpecifiedAssets;
+            this.SpecifiedAssetCode = specifiedAssetCode;
+            this.SecondSpecifiedAssetCode = secondSpecifiedAssetCode;
+            this.IssuerId = issuerId;
+            this.IssuerReferenceId = issuerReferenceId;
+            this.IssuerTin = issuerTin;
+            this.TaxYear = taxYear;
+            this.ReferenceId = referenceId;
+            this.Tin = tin;
+            this.RecipientName = recipientName;
+            this.Address2 = address2;
+            this.State = state;
+            this.Zip = zip;
+            this.Email = email;
+            this.NonUsProvince = nonUsProvince;
+            this.FederalEfileDate = federalEfileDate;
+            this.PostalMail = postalMail;
+            this.StateEfileDate = stateEfileDate;
+            this.RecipientEdeliveryDate = recipientEdeliveryDate;
+            this.TinMatch = tinMatch;
+            this.AddressVerification = addressVerification;
+            this.StateAndLocalWithholding = stateAndLocalWithholding;
+            this.TinType = tinType;
+            this.BusinessName = businessName;
+            this.BusinessName2 = businessName2;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.SuffixName = suffixName;
+            this.RecipientSecondName = recipientSecondName;
+            this.AccountNumber = accountNumber;
+            this.OfficeCode = officeCode;
+            this.NoTin = noTin;
+            this.SecondTinNotice = secondTinNotice;
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
+
+        /// <summary>
+        /// IRA contributions (other than amounts in Boxes 2-4, 8-10, 13a, and 14a)
+        /// </summary>
+        /// <value>IRA contributions (other than amounts in Boxes 2-4, 8-10, 13a, and 14a)</value>
+        [DataMember(Name = "iraContributions", EmitDefaultValue = true)]
+        public double? IraContributions { get; set; }
+
+        /// <summary>
+        /// Rollover contributions
+        /// </summary>
+        /// <value>Rollover contributions</value>
+        [DataMember(Name = "rolloverContributions", EmitDefaultValue = true)]
+        public double? RolloverContributions { get; set; }
+
+        /// <summary>
+        /// Roth IRA conversion amount
+        /// </summary>
+        /// <value>Roth IRA conversion amount</value>
+        [DataMember(Name = "rothIraConversionAmount", EmitDefaultValue = true)]
+        public double? RothIraConversionAmount { get; set; }
+
+        /// <summary>
+        /// Recharacterized contributions
+        /// </summary>
+        /// <value>Recharacterized contributions</value>
+        [DataMember(Name = "recharacterizedContributions", EmitDefaultValue = true)]
+        public double? RecharacterizedContributions { get; set; }
+
+        /// <summary>
+        /// Fair market value (FMV) of the account
+        /// </summary>
+        /// <value>Fair market value (FMV) of the account</value>
+        [DataMember(Name = "fairMarketValueOfAccount", EmitDefaultValue = true)]
+        public double? FairMarketValueOfAccount { get; set; }
+
+        /// <summary>
+        /// Life insurance cost included in the IRA contributions (Box 1). Can&#39;t be more than Box 1.
+        /// </summary>
+        /// <value>Life insurance cost included in the IRA contributions (Box 1). Can&#39;t be more than Box 1.</value>
+        [DataMember(Name = "lifeInsuranceCostIncludedInIraContributions", EmitDefaultValue = true)]
+        public double? LifeInsuranceCostIncludedInIraContributions { get; set; }
+
+        /// <summary>
+        /// SEP contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SEP&#x60;.
+        /// </summary>
+        /// <value>SEP contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SEP&#x60;.</value>
+        [DataMember(Name = "sepContributions", EmitDefaultValue = true)]
+        public double? SepContributions { get; set; }
+
+        /// <summary>
+        /// SIMPLE contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SIMPLE&#x60;.
+        /// </summary>
+        /// <value>SIMPLE contributions. Only allowed when &#x60;iraType&#x60; is &#x60;SIMPLE&#x60;.</value>
+        [DataMember(Name = "simpleContributions", EmitDefaultValue = true)]
+        public double? SimpleContributions { get; set; }
+
+        /// <summary>
+        /// Roth IRA contributions. Only allowed when &#x60;iraType&#x60; is &#x60;ROTH&#x60;.
+        /// </summary>
+        /// <value>Roth IRA contributions. Only allowed when &#x60;iraType&#x60; is &#x60;ROTH&#x60;.</value>
+        [DataMember(Name = "rothIraContributions", EmitDefaultValue = true)]
+        public double? RothIraContributions { get; set; }
+
+        /// <summary>
+        /// If checked, a required minimum distribution (RMD) is due for the year after the tax year
+        /// </summary>
+        /// <value>If checked, a required minimum distribution (RMD) is due for the year after the tax year</value>
+        [DataMember(Name = "requiredMinimumDistributionIndicator", EmitDefaultValue = true)]
+        public bool? RequiredMinimumDistributionIndicator { get; set; }
+
+        /// <summary>
+        /// RMD date, in the year after the tax year. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;.
+        /// </summary>
+        /// <value>RMD date, in the year after the tax year. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;.</value>
+        [DataMember(Name = "requiredMinimumDistributionDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? RequiredMinimumDistributionDate { get; set; }
+
+        /// <summary>
+        /// RMD amount. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;.
+        /// </summary>
+        /// <value>RMD amount. Required when &#x60;requiredMinimumDistributionIndicator&#x60; is &#x60;true&#x60;.</value>
+        [DataMember(Name = "requiredMinimumDistributionAmount", EmitDefaultValue = true)]
+        public double? RequiredMinimumDistributionAmount { get; set; }
+
+        /// <summary>
+        /// Postponed or late contribution
+        /// </summary>
+        /// <value>Postponed or late contribution</value>
+        [DataMember(Name = "postponedLateContribution", EmitDefaultValue = true)]
+        public double? PostponedLateContribution { get; set; }
+
+        /// <summary>
+        /// Year the postponed or late contribution was for (four digits, from 1998 to the tax year). Required when  &#x60;postponedLateContribution&#x60; has an amount.
+        /// </summary>
+        /// <value>Year the postponed or late contribution was for (four digits, from 1998 to the tax year). Required when  &#x60;postponedLateContribution&#x60; has an amount.</value>
+        [DataMember(Name = "postponedLateContributionYear", EmitDefaultValue = true)]
+        public int? PostponedLateContributionYear { get; set; }
+
+        /// <summary>
+        /// Postponed or late contribution reason, such as the public law or executive order number (up to 6 characters)
+        /// </summary>
+        /// <value>Postponed or late contribution reason, such as the public law or executive order number (up to 6 characters)</value>
+        [DataMember(Name = "postponedLateContributionReason", EmitDefaultValue = true)]
+        public string PostponedLateContributionReason { get; set; }
+
+        /// <summary>
+        /// Repayments
+        /// </summary>
+        /// <value>Repayments</value>
+        [DataMember(Name = "repayments", EmitDefaultValue = true)]
+        public double? Repayments { get; set; }
+
+        /// <summary>
+        /// FMV of certain specified assets
+        /// </summary>
+        /// <value>FMV of certain specified assets</value>
+        [DataMember(Name = "fairMarketValueOfCertainSpecifiedAssets", EmitDefaultValue = true)]
+        public double? FairMarketValueOfCertainSpecifiedAssets { get; set; }
+
+        /// <summary>
+        /// Form ID. Unique identifier set when the record is created.
+        /// </summary>
+        /// <value>Form ID. Unique identifier set when the record is created.</value>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Issuer ID - only required when creating forms
+        /// </summary>
+        /// <value>Issuer ID - only required when creating forms</value>
+        [DataMember(Name = "issuerId", EmitDefaultValue = true)]
+        public string IssuerId { get; set; }
+
+        /// <summary>
+        /// Issuer Reference ID - only required when creating forms via $bulk-upsert
+        /// </summary>
+        /// <value>Issuer Reference ID - only required when creating forms via $bulk-upsert</value>
+        [DataMember(Name = "issuerReferenceId", EmitDefaultValue = true)]
+        public string IssuerReferenceId { get; set; }
+
+        /// <summary>
+        /// Issuer TIN - readonly
+        /// </summary>
+        /// <value>Issuer TIN - readonly</value>
+        [DataMember(Name = "issuerTin", EmitDefaultValue = true)]
+        public string IssuerTin { get; set; }
+
+        /// <summary>
+        /// Tax Year - only required when creating forms via $bulk-upsert
+        /// </summary>
+        /// <value>Tax Year - only required when creating forms via $bulk-upsert</value>
+        [DataMember(Name = "taxYear", EmitDefaultValue = true)]
+        public int? TaxYear { get; set; }
+
+        /// <summary>
+        /// Internal reference ID. Never shown to any agency or recipient.
+        /// </summary>
+        /// <value>Internal reference ID. Never shown to any agency or recipient.</value>
+        [DataMember(Name = "referenceId", EmitDefaultValue = true)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
+        /// Recipient&#39;s Federal Tax Identification Number (TIN).
+        /// </summary>
+        /// <value>Recipient&#39;s Federal Tax Identification Number (TIN).</value>
+        [DataMember(Name = "tin", EmitDefaultValue = true)]
+        public string Tin { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals.
+        /// </summary>
+        /// <value>DEPRECATED: Use &#x60;businessName&#x60; for businesses; use &#x60;firstName&#x60;, &#x60;middleName&#x60;, &#x60;lastName&#x60;, and &#x60;suffixName&#x60; for individuals.</value>
+        [DataMember(Name = "recipientName", EmitDefaultValue = true)]
+        [Obsolete]
+        public string RecipientName { get; set; }
+
+        /// <summary>
+        /// Address.
+        /// </summary>
+        /// <value>Address.</value>
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Address line 2.
+        /// </summary>
+        /// <value>Address line 2.</value>
+        [DataMember(Name = "address2", EmitDefaultValue = true)]
+        public string Address2 { get; set; }
+
+        /// <summary>
+        /// City.
+        /// </summary>
+        /// <value>City.</value>
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = true)]
+        public string City { get; set; }
+
+        /// <summary>
+        /// Two-letter US state or Canadian province code (required for US/CA addresses).
+        /// </summary>
+        /// <value>Two-letter US state or Canadian province code (required for US/CA addresses).</value>
+        [DataMember(Name = "state", EmitDefaultValue = true)]
+        public string State { get; set; }
+
+        /// <summary>
+        /// ZIP/postal code.
+        /// </summary>
+        /// <value>ZIP/postal code.</value>
+        [DataMember(Name = "zip", EmitDefaultValue = true)]
+        public string Zip { get; set; }
+
+        /// <summary>
+        /// Recipient&#39;s Contact email address.
+        /// </summary>
+        /// <value>Recipient&#39;s Contact email address.</value>
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Province or region for non-US/CA addresses.
+        /// </summary>
+        /// <value>Province or region for non-US/CA addresses.</value>
+        [DataMember(Name = "nonUsProvince", EmitDefaultValue = true)]
+        public string NonUsProvince { get; set; }
+
+        /// <summary>
+        /// Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.
+        /// </summary>
+        /// <value>Two-letter IRS country code (e.g., &#39;US&#39;, &#39;CA&#39;), as defined at https://www.irs.gov/e-file-providers/country-codes.</value>
+        [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
+        public string CountryCode { get; set; }
+
+        /// <summary>
+        /// Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
+        /// </summary>
+        /// <value>Date when federal e-filing should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
+        [DataMember(Name = "federalEfileDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? FederalEfileDate { get; set; }
+
+        /// <summary>
+        /// Boolean indicating that postal mailing to the recipient should be scheduled for this form
+        /// </summary>
+        /// <value>Boolean indicating that postal mailing to the recipient should be scheduled for this form</value>
+        [DataMember(Name = "postalMail", EmitDefaultValue = true)]
+        public bool? PostalMail { get; set; }
+
+        /// <summary>
+        /// Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
+        /// </summary>
+        /// <value>Date when state e-filing should be scheduled. Must be on or after federalEfileDate. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
+        [DataMember(Name = "stateEfileDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? StateEfileDate { get; set; }
+
+        /// <summary>
+        /// Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.
+        /// </summary>
+        /// <value>Date when recipient e-delivery should be scheduled. If set between current date and beginning of blackout period, scheduled to that date. If in the past or blackout period, scheduled to next available date. For blackout period information, see https://www.track1099.com/info/IRS_info. Set to null to leave unscheduled.</value>
+        [DataMember(Name = "recipientEdeliveryDate", EmitDefaultValue = true)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? RecipientEdeliveryDate { get; set; }
+
+        /// <summary>
+        /// Boolean indicating that TIN Matching should be scheduled for this form
+        /// </summary>
+        /// <value>Boolean indicating that TIN Matching should be scheduled for this form</value>
+        [DataMember(Name = "tinMatch", EmitDefaultValue = true)]
+        public bool? TinMatch { get; set; }
+
+        /// <summary>
+        /// Boolean indicating that address verification should be scheduled for this form
+        /// </summary>
+        /// <value>Boolean indicating that address verification should be scheduled for this form</value>
+        [DataMember(Name = "addressVerification", EmitDefaultValue = true)]
+        public bool? AddressVerification { get; set; }
+
+        /// <summary>
+        /// State and local withholding information
+        /// </summary>
+        /// <value>State and local withholding information</value>
+        [DataMember(Name = "stateAndLocalWithholding", EmitDefaultValue = true)]
+        public StateAndLocalWithholding StateAndLocalWithholding { get; set; }
+
+        /// <summary>
+        /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)  When the form&#39;s most recent IRIS filing was rejected or accepted with errors, &#x60;errors&#x60; lists what the IRS reported.
+        /// </summary>
+        /// <value>Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)  When the form&#39;s most recent IRIS filing was rejected or accepted with errors, &#x60;errors&#x60; lists what the IRS reported.</value>
+        [DataMember(Name = "federalEfileStatus", EmitDefaultValue = true)]
+        public FederalEfileStatusDetail FederalEfileStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as FederalEfileStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFederalEfileStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state
+        /// </summary>
+        /// <value>State e-file status.  Available values:  - unscheduled: Form has not been scheduled for state e-filing  - scheduled: Form is scheduled for state e-filing  - airlocked: Form is in process of being uploaded to the state  - sent: Form has been sent to the state  - rejected: Form was rejected by the state  - accepted: Form was accepted by the state  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlocked: Correction is in process of being uploaded to the state  - corrected_sent: Correction has been sent to the state  - corrected_rejected: Correction was rejected by the state  - corrected_accepted: Correction was accepted by the state</value>
+        [DataMember(Name = "stateEfileStatus", EmitDefaultValue = true)]
+        public List<StateEfileStatusDetail> StateEfileStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as StateEfileStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStateEfileStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered
+        /// </summary>
+        /// <value>Postal mail to recipient status.  Available values:  - unscheduled: Postal mail has not been scheduled  - pending: Postal mail is pending to be sent  - sent: Postal mail has been sent  - delivered: Postal mail has been delivered</value>
+        [DataMember(Name = "postalMailStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail PostalMailStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as PostalMailStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePostalMailStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued
+        /// </summary>
+        /// <value>TIN Match status.  Available values:  - none: TIN matching has not been performed  - pending: TIN matching request is pending  - matched: Name/TIN combination matches IRS records  - unknown: TIN is missing, invalid, or request contains errors  - rejected: Name/TIN combination does not match IRS records or TIN not currently issued</value>
+        [DataMember(Name = "tinMatchStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail TinMatchStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as TinMatchStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTinMatchStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted
+        /// </summary>
+        /// <value>Address verification status.  Available values:  - unknown: Address verification has not been checked  - pending: Address verification is in progress  - failed: Address verification failed  - incomplete: Address verification is incomplete  - unchanged: User declined address changes  - verified: Address has been verified and accepted</value>
+        [DataMember(Name = "addressVerificationStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail AddressVerificationStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as AddressVerificationStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressVerificationStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)
+        /// </summary>
+        /// <value>EDelivery status.  Available values:  - unscheduled: E-delivery has not been scheduled  - scheduled: E-delivery is scheduled to be sent  - sent: E-delivery has been sent to recipient  - bounced: E-delivery bounced back (invalid email)  - refused: E-delivery was refused by recipient  - bad_verify: E-delivery failed verification  - accepted: E-delivery was accepted by recipient  - bad_verify_limit: E-delivery failed verification limit reached  - second_delivery: Second e-delivery attempt  - undelivered: E-delivery is undelivered (temporary state allowing resend)</value>
+        [DataMember(Name = "eDeliveryStatus", EmitDefaultValue = true)]
+        public Form1099StatusDetail EDeliveryStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as EDeliveryStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEDeliveryStatus()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Validation errors
+        /// </summary>
+        /// <value>Validation errors</value>
+        [DataMember(Name = "validationErrors", EmitDefaultValue = true)]
+        public List<ValidationError> ValidationErrors { get; private set; }
+
+        /// <summary>
+        /// Returns false as ValidationErrors should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeValidationErrors()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Date time when the record was created.
+        /// </summary>
+        /// <value>Date time when the record was created.</value>
+        [DataMember(Name = "createdAt", EmitDefaultValue = true)]
+        public DateTime? CreatedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedAt()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Date time when the record was last updated.
+        /// </summary>
+        /// <value>Date time when the record was last updated.</value>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
+        public DateTime? UpdatedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as UpdatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUpdatedAt()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Business name. Required when the recipient of the form is a business; should only be used for businesses.
+        /// </summary>
+        /// <value>Business name. Required when the recipient of the form is a business; should only be used for businesses.</value>
+        [DataMember(Name = "businessName", EmitDefaultValue = true)]
+        public string BusinessName { get; set; }
+
+        /// <summary>
+        /// Business name line 2. Should only be used for businesses.
+        /// </summary>
+        /// <value>Business name line 2. Should only be used for businesses.</value>
+        [DataMember(Name = "businessName2", EmitDefaultValue = true)]
+        public string BusinessName2 { get; set; }
+
+        /// <summary>
+        /// First name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>First name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "firstName", EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Middle name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Middle name. Should only be used for individuals.</value>
+        [DataMember(Name = "middleName", EmitDefaultValue = true)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Last name. Required when the recipient of the form is an individual; should only be used for individuals.
+        /// </summary>
+        /// <value>Last name. Required when the recipient of the form is an individual; should only be used for individuals.</value>
+        [DataMember(Name = "lastName", EmitDefaultValue = true)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Suffix name. Should only be used for individuals.
+        /// </summary>
+        /// <value>Suffix name. Should only be used for individuals.</value>
+        [DataMember(Name = "suffixName", EmitDefaultValue = true)]
+        public string SuffixName { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Use &#x60;businessName2&#x60; instead.
+        /// </summary>
+        /// <value>DEPRECATED: Use &#x60;businessName2&#x60; instead.</value>
+        [DataMember(Name = "recipientSecondName", EmitDefaultValue = true)]
+        [Obsolete]
+        public string RecipientSecondName { get; set; }
+
+        /// <summary>
+        /// Account number
+        /// </summary>
+        /// <value>Account number</value>
+        [DataMember(Name = "accountNumber", EmitDefaultValue = true)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Office code
+        /// </summary>
+        /// <value>Office code</value>
+        [DataMember(Name = "officeCode", EmitDefaultValue = true)]
+        public string OfficeCode { get; set; }
+
+        /// <summary>
+        /// No TIN indicator
+        /// </summary>
+        /// <value>No TIN indicator</value>
+        [DataMember(Name = "noTin", EmitDefaultValue = true)]
+        public bool? NoTin { get; set; }
+
+        /// <summary>
+        /// Second TIN notice
+        /// </summary>
+        /// <value>Second TIN notice</value>
+        [DataMember(Name = "secondTinNotice", EmitDefaultValue = true)]
+        public bool? SecondTinNotice { get; set; }
+
+        /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("class Form5498 {\n");
+            sb.Append("  IraContributions: ").Append(IraContributions).Append("\n");
+            sb.Append("  RolloverContributions: ").Append(RolloverContributions).Append("\n");
+            sb.Append("  RothIraConversionAmount: ").Append(RothIraConversionAmount).Append("\n");
+            sb.Append("  RecharacterizedContributions: ").Append(RecharacterizedContributions).Append("\n");
+            sb.Append("  FairMarketValueOfAccount: ").Append(FairMarketValueOfAccount).Append("\n");
+            sb.Append("  LifeInsuranceCostIncludedInIraContributions: ").Append(LifeInsuranceCostIncludedInIraContributions).Append("\n");
+            sb.Append("  IraType: ").Append(IraType).Append("\n");
+            sb.Append("  SepContributions: ").Append(SepContributions).Append("\n");
+            sb.Append("  SimpleContributions: ").Append(SimpleContributions).Append("\n");
+            sb.Append("  RothIraContributions: ").Append(RothIraContributions).Append("\n");
+            sb.Append("  RequiredMinimumDistributionIndicator: ").Append(RequiredMinimumDistributionIndicator).Append("\n");
+            sb.Append("  RequiredMinimumDistributionDate: ").Append(RequiredMinimumDistributionDate).Append("\n");
+            sb.Append("  RequiredMinimumDistributionAmount: ").Append(RequiredMinimumDistributionAmount).Append("\n");
+            sb.Append("  PostponedLateContribution: ").Append(PostponedLateContribution).Append("\n");
+            sb.Append("  PostponedLateContributionYear: ").Append(PostponedLateContributionYear).Append("\n");
+            sb.Append("  PostponedLateContributionCode: ").Append(PostponedLateContributionCode).Append("\n");
+            sb.Append("  PostponedLateContributionReason: ").Append(PostponedLateContributionReason).Append("\n");
+            sb.Append("  Repayments: ").Append(Repayments).Append("\n");
+            sb.Append("  RepaymentCode: ").Append(RepaymentCode).Append("\n");
+            sb.Append("  FairMarketValueOfCertainSpecifiedAssets: ").Append(FairMarketValueOfCertainSpecifiedAssets).Append("\n");
+            sb.Append("  SpecifiedAssetCode: ").Append(SpecifiedAssetCode).Append("\n");
+            sb.Append("  SecondSpecifiedAssetCode: ").Append(SecondSpecifiedAssetCode).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  IssuerId: ").Append(IssuerId).Append("\n");
+            sb.Append("  IssuerReferenceId: ").Append(IssuerReferenceId).Append("\n");
+            sb.Append("  IssuerTin: ").Append(IssuerTin).Append("\n");
+            sb.Append("  TaxYear: ").Append(TaxYear).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
+            sb.Append("  Tin: ").Append(Tin).Append("\n");
+            sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Address2: ").Append(Address2).Append("\n");
+            sb.Append("  City: ").Append(City).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  Zip: ").Append(Zip).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  NonUsProvince: ").Append(NonUsProvince).Append("\n");
+            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  FederalEfileDate: ").Append(FederalEfileDate).Append("\n");
+            sb.Append("  PostalMail: ").Append(PostalMail).Append("\n");
+            sb.Append("  StateEfileDate: ").Append(StateEfileDate).Append("\n");
+            sb.Append("  RecipientEdeliveryDate: ").Append(RecipientEdeliveryDate).Append("\n");
+            sb.Append("  TinMatch: ").Append(TinMatch).Append("\n");
+            sb.Append("  AddressVerification: ").Append(AddressVerification).Append("\n");
+            sb.Append("  StateAndLocalWithholding: ").Append(StateAndLocalWithholding).Append("\n");
+            sb.Append("  FederalEfileStatus: ").Append(FederalEfileStatus).Append("\n");
+            sb.Append("  StateEfileStatus: ").Append(StateEfileStatus).Append("\n");
+            sb.Append("  PostalMailStatus: ").Append(PostalMailStatus).Append("\n");
+            sb.Append("  TinMatchStatus: ").Append(TinMatchStatus).Append("\n");
+            sb.Append("  AddressVerificationStatus: ").Append(AddressVerificationStatus).Append("\n");
+            sb.Append("  EDeliveryStatus: ").Append(EDeliveryStatus).Append("\n");
+            sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  TinType: ").Append(TinType).Append("\n");
+            sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  BusinessName2: ").Append(BusinessName2).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  SuffixName: ").Append(SuffixName).Append("\n");
+            sb.Append("  RecipientSecondName: ").Append(RecipientSecondName).Append("\n");
+            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+            sb.Append("  OfficeCode: ").Append(OfficeCode).Append("\n");
+            sb.Append("  NoTin: ").Append(NoTin).Append("\n");
+            sb.Append("  SecondTinNotice: ").Append(SecondTinNotice).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+    }
+}

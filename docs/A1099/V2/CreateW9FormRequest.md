@@ -6,7 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The form type. | [optional] [readonly] 
 **Name** | **string** | The name of the individual or entity associated with the form. | 
-**BusinessName** | **string** | The name of the business associated with the form. | [optional] 
+**FirstName** | **string** | Individual first name. Must be sent together with lastName; should only be used for individuals. Up to 40 characters. | [optional] 
+**MiddleName** | **string** | Individual middle name. Should only be used for individuals. Up to 40 characters. | [optional] 
+**LastName** | **string** | Individual last name. Must be sent together with firstName; should only be used for individuals. Up to 40 characters. | [optional] 
+**SuffixName** | **string** | Individual name suffix (e.g. Jr., Sr.). Should only be used for individuals. Up to 10 characters. | [optional] 
+**BusinessName** | **string** | DEPRECATED: The name of the business associated with the form. Use &#x60;name2&#x60; instead. | [optional] 
+**Name2** | **string** | The name of the business associated with the form. Replaces the deprecated &#x60;businessName&#x60; field.  When both &#x60;businessName&#x60; and &#x60;name2&#x60; are provided, &#x60;businessName&#x60; takes precedence. | [optional] 
 **BusinessClassification** | **string** | The classification of the business.  Available values:  - Individual: Individual/sole proprietor  - C Corporation: C Corporation  - S Corporation: S Corporation  - Partnership: Partnership  - Trust/estate: Trust/estate  - LLC-C: Limited liability company (C Corporation)  - LLC-S: Limited liability company (S Corporation)  - LLC-P: Limited liability company (Partnership)  - Other: Other (requires BusinessOther field to be populated) | 
 **BusinessOther** | **string** | The classification description when \&quot;businessClassification\&quot; is \&quot;Other\&quot;. | [optional] 
 **ForeignPartnerOwnerOrBeneficiary** | **bool** | Indicates whether the individual is a foreign partner, owner, or beneficiary. | [optional] 

@@ -354,6 +354,21 @@ namespace Avalara.SDK.Model.A1099.V2
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Issuer-level IRS/IRIS rejection errors from the federal filing submissions of the issuer&#39;s forms that are still rejected and awaiting resubmission.
+        /// </summary>
+        /// <value>Issuer-level IRS/IRIS rejection errors from the federal filing submissions of the issuer&#39;s forms that are still rejected and awaiting resubmission.</value>
+        [DataMember(Name = "federalEfileErrors", EmitDefaultValue = false)]
+        public List<FederalEfileErrorResponse> FederalEfileErrors { get; private set; }
+
+        /// <summary>
+        /// Returns false as FederalEfileErrors should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFederalEfileErrors()
+        {
+            return false;
+        }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -386,6 +401,7 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  FederalEfileErrors: ").Append(FederalEfileErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

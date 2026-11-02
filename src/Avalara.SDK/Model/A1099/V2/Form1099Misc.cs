@@ -75,76 +75,106 @@ namespace Avalara.SDK.Model.A1099.V2
             _1098 = 4,
 
             /// <summary>
+            /// Enum _1098E for value: 1098-E
+            /// </summary>
+            [EnumMember(Value = "1098-E")]
+            _1098E = 5,
+
+            /// <summary>
             /// Enum _1098T for value: 1098-T
             /// </summary>
             [EnumMember(Value = "1098-T")]
-            _1098T = 5,
+            _1098T = 6,
+
+            /// <summary>
+            /// Enum _1099B for value: 1099-B
+            /// </summary>
+            [EnumMember(Value = "1099-B")]
+            _1099B = 7,
 
             /// <summary>
             /// Enum _1099C for value: 1099-C
             /// </summary>
             [EnumMember(Value = "1099-C")]
-            _1099C = 6,
+            _1099C = 8,
 
             /// <summary>
             /// Enum _1099DIV for value: 1099-DIV
             /// </summary>
             [EnumMember(Value = "1099-DIV")]
-            _1099DIV = 7,
+            _1099DIV = 9,
+
+            /// <summary>
+            /// Enum _1099G for value: 1099-G
+            /// </summary>
+            [EnumMember(Value = "1099-G")]
+            _1099G = 10,
 
             /// <summary>
             /// Enum _1099INT for value: 1099-INT
             /// </summary>
             [EnumMember(Value = "1099-INT")]
-            _1099INT = 8,
+            _1099INT = 11,
 
             /// <summary>
             /// Enum _1099K for value: 1099-K
             /// </summary>
             [EnumMember(Value = "1099-K")]
-            _1099K = 9,
+            _1099K = 12,
 
             /// <summary>
             /// Enum _1099MISC for value: 1099-MISC
             /// </summary>
             [EnumMember(Value = "1099-MISC")]
-            _1099MISC = 10,
+            _1099MISC = 13,
 
             /// <summary>
             /// Enum _1099NEC for value: 1099-NEC
             /// </summary>
             [EnumMember(Value = "1099-NEC")]
-            _1099NEC = 11,
+            _1099NEC = 14,
 
             /// <summary>
             /// Enum _1099PATR for value: 1099-PATR
             /// </summary>
             [EnumMember(Value = "1099-PATR")]
-            _1099PATR = 12,
+            _1099PATR = 15,
 
             /// <summary>
             /// Enum _1099R for value: 1099-R
             /// </summary>
             [EnumMember(Value = "1099-R")]
-            _1099R = 13,
+            _1099R = 16,
 
             /// <summary>
             /// Enum _1099S for value: 1099-S
             /// </summary>
             [EnumMember(Value = "1099-S")]
-            _1099S = 14,
+            _1099S = 17,
 
             /// <summary>
             /// Enum _1099SA for value: 1099-SA
             /// </summary>
             [EnumMember(Value = "1099-SA")]
-            _1099SA = 15,
+            _1099SA = 18,
+
+            /// <summary>
+            /// Enum _5498 for value: 5498
+            /// </summary>
+            [EnumMember(Value = "5498")]
+            _5498 = 19,
 
             /// <summary>
             /// Enum W2 for value: W-2
             /// </summary>
             [EnumMember(Value = "W-2")]
-            W2 = 16
+            W2 = 20,
+
+            /// <summary>
+            /// Enum W2G for value: W-2G
+            /// </summary>
+            [EnumMember(Value = "W-2G")]
+            W2G = 21
         }
 
 
@@ -234,7 +264,11 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="grossProceedsPaidToAttorney">Gross proceeds paid to an attorney.</param>
         /// <param name="fishPurchasedForResale">Fish purchased for resale.</param>
         /// <param name="section409ADeferrals">Section 409A deferrals.</param>
-        /// <param name="excessGoldenParachutePayments">Excess golden parachute payments - Available only for tax year 2024 and earlier.</param>
+        /// <param name="cashTips">Box 13a. Cash tips, including tips paid in cash or charged by customers - Available only for tax year 2026 and later..</param>
+        /// <param name="treasuryTippedOccupationCode">Box 13b. Treasury Tipped Occupation Code (TTOC) for the recipient&#39;s tipped occupation - Available only for tax year 2026 and later.  A three-digit, zero-padded code from the IRS enumeration: 000 (tips received in a nonqualifying occupation), 101-110, 201-211, 301-304,  401-409, 501-508, 601-611, 701-706, or 801-809. The form accepts up to two codes - see TreasuryTippedOccupationCode2 for the second.  Send the code exactly as three characters (\&quot;001\&quot;, not \&quot;1\&quot;); leading zeros are not restored for you. Watch for spreadsheet software  that strips leading zeros when a code is exported to CSV and re-imported..</param>
+        /// <param name="treasuryTippedOccupationCode2">Box 13b. Second Treasury Tipped Occupation Code (TTOC) - Available only for tax year 2026 and later.  Same three-digit code list and formatting rules as TreasuryTippedOccupationCode, and must differ from it..</param>
+        /// <param name="overtimeCompensation">Box 14. Qualified overtime compensation - Available only for tax year 2026 and later. Named \&quot;Box 14 Excess golden parachute  payments\&quot; on revisions of the form before the December 2026 revision - see ExcessGoldenParachutePayments for that field..</param>
+        /// <param name="excessGoldenParachutePayments">Excess golden parachute payments - Available only for tax year 2024 and earlier. Was \&quot;Box 14\&quot; on those earlier revisions;  the December 2026 revision reassigns Box 14 to OvertimeCompensation..</param>
         /// <param name="nonqualifiedDeferredCompensation">Nonqualified deferred compensation.</param>
         /// <param name="fatcaFilingRequirement">FATCA filing requirement..</param>
         /// <param name="type">Form type. (required).</param>
@@ -272,7 +306,7 @@ namespace Avalara.SDK.Model.A1099.V2
         /// <param name="officeCode">Office code.</param>
         /// <param name="noTin">No TIN indicator.</param>
         /// <param name="secondTinNotice">Second TIN notice.</param>
-        public Form1099Misc(double? rents = default(double?), double? royalties = default(double?), double? otherIncome = default(double?), double? federalIncomeTaxWithheld = default(double?), double? fishingBoatProceeds = default(double?), double? medicalAndHealthCarePayments = default(double?), bool? directSalesIndicator = default(bool?), double? substitutePayments = default(double?), double? cropInsuranceProceeds = default(double?), double? grossProceedsPaidToAttorney = default(double?), double? fishPurchasedForResale = default(double?), double? section409ADeferrals = default(double?), double? excessGoldenParachutePayments = default(double?), double? nonqualifiedDeferredCompensation = default(double?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
+        public Form1099Misc(double? rents = default(double?), double? royalties = default(double?), double? otherIncome = default(double?), double? federalIncomeTaxWithheld = default(double?), double? fishingBoatProceeds = default(double?), double? medicalAndHealthCarePayments = default(double?), bool? directSalesIndicator = default(bool?), double? substitutePayments = default(double?), double? cropInsuranceProceeds = default(double?), double? grossProceedsPaidToAttorney = default(double?), double? fishPurchasedForResale = default(double?), double? section409ADeferrals = default(double?), double? cashTips = default(double?), string treasuryTippedOccupationCode = default(string), string treasuryTippedOccupationCode2 = default(string), double? overtimeCompensation = default(double?), double? excessGoldenParachutePayments = default(double?), double? nonqualifiedDeferredCompensation = default(double?), bool? fatcaFilingRequirement = default(bool?), TypeEnum type = default(TypeEnum), string issuerId = default(string), string issuerReferenceId = default(string), string issuerTin = default(string), int? taxYear = default(int?), string referenceId = default(string), string tin = default(string), string recipientName = default(string), string address = default(string), string address2 = default(string), string city = default(string), string state = default(string), string zip = default(string), string email = default(string), string nonUsProvince = default(string), string countryCode = default(string), DateTime? federalEfileDate = default(DateTime?), bool? postalMail = default(bool?), DateTime? stateEfileDate = default(DateTime?), DateTime? recipientEdeliveryDate = default(DateTime?), bool? tinMatch = default(bool?), bool? addressVerification = default(bool?), StateAndLocalWithholding stateAndLocalWithholding = default(StateAndLocalWithholding), TinTypeEnum? tinType = default(TinTypeEnum?), string businessName = default(string), string businessName2 = default(string), string firstName = default(string), string middleName = default(string), string lastName = default(string), string suffixName = default(string), string recipientSecondName = default(string), string accountNumber = default(string), string officeCode = default(string), bool? noTin = default(bool?), bool? secondTinNotice = default(bool?))
         {
             this.Type = type;
             // to ensure "address" is required (not null)
@@ -305,6 +339,10 @@ namespace Avalara.SDK.Model.A1099.V2
             this.GrossProceedsPaidToAttorney = grossProceedsPaidToAttorney;
             this.FishPurchasedForResale = fishPurchasedForResale;
             this.Section409ADeferrals = section409ADeferrals;
+            this.CashTips = cashTips;
+            this.TreasuryTippedOccupationCode = treasuryTippedOccupationCode;
+            this.TreasuryTippedOccupationCode2 = treasuryTippedOccupationCode2;
+            this.OvertimeCompensation = overtimeCompensation;
             this.ExcessGoldenParachutePayments = excessGoldenParachutePayments;
             this.NonqualifiedDeferredCompensation = nonqualifiedDeferredCompensation;
             this.FatcaFilingRequirement = fatcaFilingRequirement;
@@ -427,9 +465,37 @@ namespace Avalara.SDK.Model.A1099.V2
         public double? Section409ADeferrals { get; set; }
 
         /// <summary>
-        /// Excess golden parachute payments - Available only for tax year 2024 and earlier
+        /// Box 13a. Cash tips, including tips paid in cash or charged by customers - Available only for tax year 2026 and later.
         /// </summary>
-        /// <value>Excess golden parachute payments - Available only for tax year 2024 and earlier</value>
+        /// <value>Box 13a. Cash tips, including tips paid in cash or charged by customers - Available only for tax year 2026 and later.</value>
+        [DataMember(Name = "cashTips", EmitDefaultValue = true)]
+        public double? CashTips { get; set; }
+
+        /// <summary>
+        /// Box 13b. Treasury Tipped Occupation Code (TTOC) for the recipient&#39;s tipped occupation - Available only for tax year 2026 and later.  A three-digit, zero-padded code from the IRS enumeration: 000 (tips received in a nonqualifying occupation), 101-110, 201-211, 301-304,  401-409, 501-508, 601-611, 701-706, or 801-809. The form accepts up to two codes - see TreasuryTippedOccupationCode2 for the second.  Send the code exactly as three characters (\&quot;001\&quot;, not \&quot;1\&quot;); leading zeros are not restored for you. Watch for spreadsheet software  that strips leading zeros when a code is exported to CSV and re-imported.
+        /// </summary>
+        /// <value>Box 13b. Treasury Tipped Occupation Code (TTOC) for the recipient&#39;s tipped occupation - Available only for tax year 2026 and later.  A three-digit, zero-padded code from the IRS enumeration: 000 (tips received in a nonqualifying occupation), 101-110, 201-211, 301-304,  401-409, 501-508, 601-611, 701-706, or 801-809. The form accepts up to two codes - see TreasuryTippedOccupationCode2 for the second.  Send the code exactly as three characters (\&quot;001\&quot;, not \&quot;1\&quot;); leading zeros are not restored for you. Watch for spreadsheet software  that strips leading zeros when a code is exported to CSV and re-imported.</value>
+        [DataMember(Name = "treasuryTippedOccupationCode", EmitDefaultValue = true)]
+        public string TreasuryTippedOccupationCode { get; set; }
+
+        /// <summary>
+        /// Box 13b. Second Treasury Tipped Occupation Code (TTOC) - Available only for tax year 2026 and later.  Same three-digit code list and formatting rules as TreasuryTippedOccupationCode, and must differ from it.
+        /// </summary>
+        /// <value>Box 13b. Second Treasury Tipped Occupation Code (TTOC) - Available only for tax year 2026 and later.  Same three-digit code list and formatting rules as TreasuryTippedOccupationCode, and must differ from it.</value>
+        [DataMember(Name = "treasuryTippedOccupationCode2", EmitDefaultValue = true)]
+        public string TreasuryTippedOccupationCode2 { get; set; }
+
+        /// <summary>
+        /// Box 14. Qualified overtime compensation - Available only for tax year 2026 and later. Named \&quot;Box 14 Excess golden parachute  payments\&quot; on revisions of the form before the December 2026 revision - see ExcessGoldenParachutePayments for that field.
+        /// </summary>
+        /// <value>Box 14. Qualified overtime compensation - Available only for tax year 2026 and later. Named \&quot;Box 14 Excess golden parachute  payments\&quot; on revisions of the form before the December 2026 revision - see ExcessGoldenParachutePayments for that field.</value>
+        [DataMember(Name = "overtimeCompensation", EmitDefaultValue = true)]
+        public double? OvertimeCompensation { get; set; }
+
+        /// <summary>
+        /// Excess golden parachute payments - Available only for tax year 2024 and earlier. Was \&quot;Box 14\&quot; on those earlier revisions;  the December 2026 revision reassigns Box 14 to OvertimeCompensation.
+        /// </summary>
+        /// <value>Excess golden parachute payments - Available only for tax year 2024 and earlier. Was \&quot;Box 14\&quot; on those earlier revisions;  the December 2026 revision reassigns Box 14 to OvertimeCompensation.</value>
         [DataMember(Name = "excessGoldenParachutePayments", EmitDefaultValue = true)]
         public double? ExcessGoldenParachutePayments { get; set; }
 
@@ -621,11 +687,11 @@ namespace Avalara.SDK.Model.A1099.V2
         public StateAndLocalWithholding StateAndLocalWithholding { get; set; }
 
         /// <summary>
-        /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)
+        /// Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)  When the form&#39;s most recent IRIS filing was rejected or accepted with errors, &#x60;errors&#x60; lists what the IRS reported.
         /// </summary>
-        /// <value>Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)</value>
+        /// <value>Federal e-file status.  Available values:  - unscheduled: Form has not been scheduled for federal e-filing  - scheduled: Form is scheduled for federal e-filing  - airlock: Form is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - sent: Form has been sent to the IRS  - accepted: Form was accepted by the IRS  - corrected_scheduled: Correction is scheduled to be sent  - corrected_airlock: Correction is in process of being uploaded to the IRS (forms exist in this state for a very short period and cannot be updated while in this state)  - corrected: A correction has been sent to the IRS  - corrected_accepted: Correction was accepted by the IRS  - rejected: Form was rejected by the IRS  - corrected_rejected: Correction was rejected by the IRS  - held: Form is held and will not be submitted to IRS (used for certain forms submitted only to states)  When the form&#39;s most recent IRIS filing was rejected or accepted with errors, &#x60;errors&#x60; lists what the IRS reported.</value>
         [DataMember(Name = "federalEfileStatus", EmitDefaultValue = true)]
-        public Form1099StatusDetail FederalEfileStatus { get; private set; }
+        public FederalEfileStatusDetail FederalEfileStatus { get; private set; }
 
         /// <summary>
         /// Returns false as FederalEfileStatus should not be serialized given that it's read-only.
@@ -859,6 +925,10 @@ namespace Avalara.SDK.Model.A1099.V2
             sb.Append("  GrossProceedsPaidToAttorney: ").Append(GrossProceedsPaidToAttorney).Append("\n");
             sb.Append("  FishPurchasedForResale: ").Append(FishPurchasedForResale).Append("\n");
             sb.Append("  Section409ADeferrals: ").Append(Section409ADeferrals).Append("\n");
+            sb.Append("  CashTips: ").Append(CashTips).Append("\n");
+            sb.Append("  TreasuryTippedOccupationCode: ").Append(TreasuryTippedOccupationCode).Append("\n");
+            sb.Append("  TreasuryTippedOccupationCode2: ").Append(TreasuryTippedOccupationCode2).Append("\n");
+            sb.Append("  OvertimeCompensation: ").Append(OvertimeCompensation).Append("\n");
             sb.Append("  ExcessGoldenParachutePayments: ").Append(ExcessGoldenParachutePayments).Append("\n");
             sb.Append("  NonqualifiedDeferredCompensation: ").Append(NonqualifiedDeferredCompensation).Append("\n");
             sb.Append("  FatcaFilingRequirement: ").Append(FatcaFilingRequirement).Append("\n");
